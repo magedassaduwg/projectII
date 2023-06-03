@@ -5,7 +5,7 @@ namespace TeaLeaves.DALs
     /// <summary>
     /// Gets the connection string
     /// </summary>
-    public static class TeaLeaveConnectionstring
+    public static class TeaLeavesConnectionstring
     {
         /// <summary>
         /// returns the connection string of the tech support DB

@@ -29,23 +29,24 @@
         private void InitializeComponent()
         {
             panelImg=new Panel();
-            panelLogin=new Panel();
             pictureBoxLogo=new PictureBox();
-            labelLogin=new Label();
-            pictureBoxUser=new PictureBox();
-            pictureBox2=new PictureBox();
-            textBoxUsername=new TextBox();
-            textBoxPassword=new TextBox();
-            panel1=new Panel();
-            panel2=new Panel();
+            panelLogin=new Panel();
             buttonLogin=new Button();
+            panelPassword=new Panel();
+            pictureBox2=new PictureBox();
+            textBoxPassword=new TextBox();
+            panelUser=new Panel();
+            pictureBoxUser=new PictureBox();
+            textBoxUsername=new TextBox();
+            labelLogin=new Label();
+            lblError=new Label();
             panelImg.SuspendLayout();
-            panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).BeginInit();
+            panelLogin.SuspendLayout();
+            panelPassword.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
+            panelUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).BeginInit();
             SuspendLayout();
             // 
             // panelImg
@@ -58,18 +59,6 @@
             panelImg.Size=new Size(309, 450);
             panelImg.TabIndex=0;
             // 
-            // panelLogin
-            // 
-            panelLogin.Controls.Add(buttonLogin);
-            panelLogin.Controls.Add(panel2);
-            panelLogin.Controls.Add(panel1);
-            panelLogin.Controls.Add(labelLogin);
-            panelLogin.Dock=DockStyle.Fill;
-            panelLogin.Location=new Point(309, 0);
-            panelLogin.Name="panelLogin";
-            panelLogin.Size=new Size(491, 450);
-            panelLogin.TabIndex=1;
-            // 
             // pictureBoxLogo
             // 
             pictureBoxLogo.Dock=DockStyle.Fill;
@@ -80,6 +69,88 @@
             pictureBoxLogo.SizeMode=PictureBoxSizeMode.CenterImage;
             pictureBoxLogo.TabIndex=0;
             pictureBoxLogo.TabStop=false;
+            // 
+            // panelLogin
+            // 
+            panelLogin.Controls.Add(lblError);
+            panelLogin.Controls.Add(buttonLogin);
+            panelLogin.Controls.Add(panelPassword);
+            panelLogin.Controls.Add(panelUser);
+            panelLogin.Controls.Add(labelLogin);
+            panelLogin.Dock=DockStyle.Fill;
+            panelLogin.Location=new Point(309, 0);
+            panelLogin.Name="panelLogin";
+            panelLogin.Size=new Size(491, 450);
+            panelLogin.TabIndex=1;
+            // 
+            // buttonLogin
+            // 
+            buttonLogin.BackColor=Color.Orange;
+            buttonLogin.Font=new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
+            buttonLogin.ForeColor=Color.OliveDrab;
+            buttonLogin.Location=new Point(161, 298);
+            buttonLogin.Name="buttonLogin";
+            buttonLogin.Size=new Size(111, 47);
+            buttonLogin.TabIndex=7;
+            buttonLogin.Text="Login";
+            buttonLogin.UseVisualStyleBackColor=false;
+            buttonLogin.Click+=buttonLogin_Click;
+            // 
+            // panelPassword
+            // 
+            panelPassword.Controls.Add(pictureBox2);
+            panelPassword.Controls.Add(textBoxPassword);
+            panelPassword.Location=new Point(0, 165);
+            panelPassword.Name="panelPassword";
+            panelPassword.Size=new Size(491, 44);
+            panelPassword.TabIndex=6;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image=Properties.Resources._lock;
+            pictureBox2.Location=new Point(17, 6);
+            pictureBox2.Name="pictureBox2";
+            pictureBox2.Size=new Size(30, 30);
+            pictureBox2.SizeMode=PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex=2;
+            pictureBox2.TabStop=false;
+            // 
+            // textBoxPassword
+            // 
+            textBoxPassword.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            textBoxPassword.Location=new Point(67, 13);
+            textBoxPassword.Name="textBoxPassword";
+            textBoxPassword.Size=new Size(279, 23);
+            textBoxPassword.TabIndex=4;
+            textBoxPassword.TextChanged+=textBoxPassword_TextChanged;
+            // 
+            // panelUser
+            // 
+            panelUser.Controls.Add(pictureBoxUser);
+            panelUser.Controls.Add(textBoxUsername);
+            panelUser.Location=new Point(0, 115);
+            panelUser.Name="panelUser";
+            panelUser.Size=new Size(491, 44);
+            panelUser.TabIndex=5;
+            // 
+            // pictureBoxUser
+            // 
+            pictureBoxUser.Image=Properties.Resources.user;
+            pictureBoxUser.Location=new Point(17, 9);
+            pictureBoxUser.Name="pictureBoxUser";
+            pictureBoxUser.Size=new Size(30, 30);
+            pictureBoxUser.SizeMode=PictureBoxSizeMode.StretchImage;
+            pictureBoxUser.TabIndex=1;
+            pictureBoxUser.TabStop=false;
+            // 
+            // textBoxUsername
+            // 
+            textBoxUsername.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            textBoxUsername.Location=new Point(67, 16);
+            textBoxUsername.Name="textBoxUsername";
+            textBoxUsername.Size=new Size(279, 23);
+            textBoxUsername.TabIndex=3;
+            textBoxUsername.TextChanged+=textBoxUsername_TextChanged;
             // 
             // labelLogin
             // 
@@ -92,76 +163,14 @@
             labelLogin.TabIndex=0;
             labelLogin.Text="Login to your account";
             labelLogin.TextAlign=ContentAlignment.TopCenter;
-            labelLogin.Click+=label1_Click;
             // 
-            // pictureBoxUser
+            // lblError
             // 
-            pictureBoxUser.Image=Properties.Resources.user;
-            pictureBoxUser.Location=new Point(17, 9);
-            pictureBoxUser.Name="pictureBoxUser";
-            pictureBoxUser.Size=new Size(30, 30);
-            pictureBoxUser.SizeMode=PictureBoxSizeMode.StretchImage;
-            pictureBoxUser.TabIndex=1;
-            pictureBoxUser.TabStop=false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image=Properties.Resources._lock;
-            pictureBox2.Location=new Point(17, 6);
-            pictureBox2.Name="pictureBox2";
-            pictureBox2.Size=new Size(30, 30);
-            pictureBox2.SizeMode=PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex=2;
-            pictureBox2.TabStop=false;
-            pictureBox2.Click+=pictureBox2_Click;
-            // 
-            // textBoxUsername
-            // 
-            textBoxUsername.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            textBoxUsername.Location=new Point(67, 16);
-            textBoxUsername.Name="textBoxUsername";
-            textBoxUsername.Size=new Size(279, 23);
-            textBoxUsername.TabIndex=3;
-            textBoxUsername.TextChanged+=textBoxUsername_TextChanged;
-            // 
-            // textBoxPassword
-            // 
-            textBoxPassword.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            textBoxPassword.Location=new Point(67, 13);
-            textBoxPassword.Name="textBoxPassword";
-            textBoxPassword.Size=new Size(279, 23);
-            textBoxPassword.TabIndex=4;
-            textBoxPassword.TextChanged+=textBoxPassword_TextChanged;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(pictureBoxUser);
-            panel1.Controls.Add(textBoxUsername);
-            panel1.Location=new Point(0, 115);
-            panel1.Name="panel1";
-            panel1.Size=new Size(491, 44);
-            panel1.TabIndex=5;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(pictureBox2);
-            panel2.Controls.Add(textBoxPassword);
-            panel2.Location=new Point(0, 165);
-            panel2.Name="panel2";
-            panel2.Size=new Size(491, 44);
-            panel2.TabIndex=6;
-            // 
-            // buttonLogin
-            // 
-            buttonLogin.BackColor=Color.Orange;
-            buttonLogin.Font=new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
-            buttonLogin.ForeColor=Color.OliveDrab;
-            buttonLogin.Location=new Point(190, 248);
-            buttonLogin.Name="buttonLogin";
-            buttonLogin.Size=new Size(111, 47);
-            buttonLogin.TabIndex=7;
-            buttonLogin.Text="Login";
-            buttonLogin.UseVisualStyleBackColor=false;
+            lblError.AutoSize=true;
+            lblError.Location=new Point(35, 242);
+            lblError.Name="lblError";
+            lblError.Size=new Size(0, 15);
+            lblError.TabIndex=8;
             // 
             // LoginForm
             // 
@@ -172,16 +181,17 @@
             Controls.Add(panelImg);
             Name="LoginForm";
             Text="Login-TeaLeaves";
+            FormClosing+=LoginForm_FormClosing;
             panelImg.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).EndInit();
+            panelPassword.ResumeLayout(false);
+            panelPassword.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            panelUser.ResumeLayout(false);
+            panelUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxUser).EndInit();
             ResumeLayout(false);
         }
 
@@ -195,8 +205,9 @@
         private PictureBox pictureBox2;
         private TextBox textBoxUsername;
         private TextBox textBoxPassword;
-        private Panel panel1;
-        private Panel panel2;
+        private Panel panelUser;
+        private Panel panelPassword;
         private Button buttonLogin;
+        private Label lblError;
     }
 }

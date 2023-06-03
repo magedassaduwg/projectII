@@ -1,0 +1,42 @@
+﻿using TeaLeaves.Models;
+using Microsoft.VisualBasic.Logging;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic.ApplicationServices;
+
+namespace TeaLeaves.DALs
+{
+    public class UsersDAL
+    {
+        /// <summary>
+        /// Checks the database to see if the given users information is valid
+        /// </summary>
+        /// <returns></returns>
+        public Users VerifyUserCredentials(Users user)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = "SELECT * FROM Users WHERE Username = @Username AND Password = @Password";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Username", user.Username);
+                command.Parameters.AddWithValue("@Password", user.Password);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    user.FirstName = reader["FirstName"].ToString();
+                    user.LastName = reader["LastName"].ToString();
+                    user.Email = reader["Email"].ToString();
+                    return user;
+                }
+                return null;
+            }
+        }
+    }
+}
+
