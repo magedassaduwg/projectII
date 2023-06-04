@@ -44,9 +44,9 @@ namespace TeaLeaves
                     mainForm.Show();
                     this.Hide();
                 }
-                 else
+                else
                 {
-                    lblError.Text = "Invalid username/password";
+                    lblError.Text = "Invalid username/password.Please try again!";
                 }
             }
             catch (Exception ex)
@@ -59,6 +59,6 @@ namespace TeaLeaves
         {
             Application.Exit();
         }
-       
+
     }
 }

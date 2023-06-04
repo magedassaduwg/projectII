@@ -31,6 +31,7 @@
             panelImg=new Panel();
             pictureBoxLogo=new PictureBox();
             panelLogin=new Panel();
+            lblError=new Label();
             buttonLogin=new Button();
             panelPassword=new Panel();
             pictureBox2=new PictureBox();
@@ -39,7 +40,6 @@
             pictureBoxUser=new PictureBox();
             textBoxUsername=new TextBox();
             labelLogin=new Label();
-            lblError=new Label();
             panelImg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             panelLogin.SuspendLayout();
@@ -82,6 +82,16 @@
             panelLogin.Name="panelLogin";
             panelLogin.Size=new Size(491, 450);
             panelLogin.TabIndex=1;
+            // 
+            // lblError
+            // 
+            lblError.AutoSize=true;
+            lblError.Font=new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblError.ForeColor=Color.Red;
+            lblError.Location=new Point(35, 242);
+            lblError.Name="lblError";
+            lblError.Size=new Size(0, 20);
+            lblError.TabIndex=8;
             // 
             // buttonLogin
             // 
@@ -163,14 +173,6 @@
             labelLogin.TabIndex=0;
             labelLogin.Text="Login to your account";
             labelLogin.TextAlign=ContentAlignment.TopCenter;
-            // 
-            // lblError
-            // 
-            lblError.AutoSize=true;
-            lblError.Location=new Point(35, 242);
-            lblError.Name="lblError";
-            lblError.Size=new Size(0, 15);
-            lblError.TabIndex=8;
             // 
             // LoginForm
             // 
