@@ -3,7 +3,7 @@
     /// <summary>
     /// A class representing a User model
     /// </summary>
-    public class User
+    public class Users
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }
