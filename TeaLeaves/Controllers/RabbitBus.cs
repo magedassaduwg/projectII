@@ -19,32 +19,44 @@ namespace TeaLeaves.Controllers
         /// <summary>
         /// Initializes the connection to the cloud rabbit instance
         /// </summary>
-        public static void InitializeRabbitConnection()
+        public static async Task InitializeRabbitConnection()
         {
-            _rabbitBus = RabbitMqBusFactory.Create(config =>
+            try
             {
-                config.Host(_host, _virtualHost, host =>
+                _rabbitBus = RabbitMqBusFactory.Create(config =>
                 {
-                    host.Username(_username);
-                    host.Password(_password);
+                    config.Host(_host, _virtualHost, host =>
+                    {
+                        host.Username(_username);
+                        host.Password(_password);
+                    });
                 });
-            });
+
+                await _rabbitBus.StartAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         /// <summary>
         /// Starts a consumer to list for message
         /// </summary>
         /// <param name="queueName"></param>
-        public static void AddConsumer(string queueName)
+        public static async void AddConsumer(string queueName)
         {
+            if (_rabbitBus == null)
+            {
+                await InitializeRabbitConnection();
+            }
+
             _rabbitBus.ConnectReceiveEndpoint(queueName, config =>
             {
                 config.UseMessageRetry(r => r.Interval(2, TimeSpan.FromMinutes(1)));
                 config.UseConcurrencyLimit(1);
                 config.Consumer<MessageConsumer>();
             });
-
-            _rabbitBus.StartAsync();
         }
 
         /// <summary>
@@ -58,6 +70,18 @@ namespace TeaLeaves.Controllers
             {
                 var endpoint = _rabbitBus.GetSendEndpoint(new Uri($"queue:{queue}")).Result;
                 endpoint.Send<IMessage>(message).Wait();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static void StopRabbitConnection()
+        {
+            try
+            {
+                _rabbitBus.StopAsync();
             }
             catch (Exception)
             {

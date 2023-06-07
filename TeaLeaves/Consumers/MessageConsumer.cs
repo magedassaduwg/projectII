@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using TeaLeaves.Controllers;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Consumers
@@ -16,6 +17,8 @@ namespace TeaLeaves.Consumers
         public Task Consume(ConsumeContext<IMessage> context)
         {
             Console.WriteLine(context.Message.Text);
+            CurrentUser.NewMessageReceived(context.Message);
+
             return Task.CompletedTask;
         }
     }
