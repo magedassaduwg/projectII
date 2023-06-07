@@ -15,7 +15,7 @@ namespace TeaLeaves.DALs
     internal class ContactsDAL
     {
         /// <summary>
-        /// 
+        /// method to retrieve a list of a user's contacts represented by a list of Users objects
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>

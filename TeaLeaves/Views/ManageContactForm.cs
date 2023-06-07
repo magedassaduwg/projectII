@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeaLeaves.Controllers;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
@@ -19,6 +20,7 @@ namespace TeaLeaves.Views
         private List<Users> _ContactList;
         private Users _user;
         private UserControl _userControl;
+        private ContactsController _contactsController;
 
         /// <summary>
         /// constructor for the ManageContactForm
@@ -26,12 +28,14 @@ namespace TeaLeaves.Views
         public ManageContactForm(Users user)
         {
             this._user = user;
+            this._contactsController = new ContactsController();
             InitializeComponent();
         }
 
         private void ManageContactForm_Load(object sender, EventArgs e)
         {
-
+            this._ContactList = this._contactsController.getUsersContacts(this._user);
+            this.usersBindingSource.DataSource = this._ContactList;
         }
     }
 }

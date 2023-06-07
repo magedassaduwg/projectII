@@ -27,7 +27,7 @@ namespace TeaLeaves.Views
 
         private void manageContactsButton_Click(object sender, EventArgs e)
         {
-            ManageContactForm manageContactForm = new ManageContactForm();
+            ManageContactForm manageContactForm = new ManageContactForm(this.user);
             manageContactForm.Show();
             this.Hide();
         }
