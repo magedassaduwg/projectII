@@ -41,13 +41,11 @@
             lastNameLabel = new Label();
             emailLabel = new Label();
             usernameLabel = new Label();
-            editButton = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            firstNameText = new TextBox();
+            lastNameText = new TextBox();
+            emailText = new TextBox();
+            usernameText = new TextBox();
             closeButton = new Button();
-            saveChangeButton = new Button();
             deleteButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -120,6 +118,7 @@
             contactDataGridView.RowTemplate.Height = 25;
             contactDataGridView.Size = new Size(260, 389);
             contactDataGridView.TabIndex = 0;
+            contactDataGridView.RowEnter += contactDataGridView_RowEnter;
             // 
             // firstNameDataGridViewTextBoxColumn
             // 
@@ -152,14 +151,12 @@
             SelectedContactTable.Controls.Add(lastNameLabel, 0, 1);
             SelectedContactTable.Controls.Add(emailLabel, 0, 2);
             SelectedContactTable.Controls.Add(usernameLabel, 0, 3);
-            SelectedContactTable.Controls.Add(editButton, 0, 4);
-            SelectedContactTable.Controls.Add(textBox1, 1, 0);
-            SelectedContactTable.Controls.Add(textBox2, 1, 1);
-            SelectedContactTable.Controls.Add(textBox3, 1, 2);
-            SelectedContactTable.Controls.Add(textBox4, 1, 3);
-            SelectedContactTable.Controls.Add(closeButton, 3, 4);
-            SelectedContactTable.Controls.Add(saveChangeButton, 1, 4);
-            SelectedContactTable.Controls.Add(deleteButton, 2, 4);
+            SelectedContactTable.Controls.Add(firstNameText, 1, 0);
+            SelectedContactTable.Controls.Add(lastNameText, 1, 1);
+            SelectedContactTable.Controls.Add(emailText, 1, 2);
+            SelectedContactTable.Controls.Add(usernameText, 1, 3);
+            SelectedContactTable.Controls.Add(deleteButton, 1, 4);
+            SelectedContactTable.Controls.Add(closeButton, 2, 4);
             SelectedContactTable.Dock = DockStyle.Fill;
             SelectedContactTable.Location = new Point(0, 0);
             SelectedContactTable.Name = "SelectedContactTable";
@@ -216,86 +213,63 @@
             usernameLabel.TabIndex = 3;
             usernameLabel.Text = "Username:";
             // 
-            // editButton
+            // firstNameText
             // 
-            editButton.Anchor = AnchorStyles.None;
-            editButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            editButton.Location = new Point(3, 388);
-            editButton.Name = "editButton";
-            editButton.Size = new Size(92, 33);
-            editButton.TabIndex = 7;
-            editButton.Text = "Edit";
-            editButton.UseVisualStyleBackColor = true;
+            firstNameText.Anchor = AnchorStyles.Left;
+            SelectedContactTable.SetColumnSpan(firstNameText, 2);
+            firstNameText.Location = new Point(101, 33);
+            firstNameText.Name = "firstNameText";
+            firstNameText.ReadOnly = true;
+            firstNameText.Size = new Size(210, 23);
+            firstNameText.TabIndex = 10;
             // 
-            // textBox1
+            // lastNameText
             // 
-            textBox1.Anchor = AnchorStyles.Left;
-            SelectedContactTable.SetColumnSpan(textBox1, 2);
-            textBox1.Location = new Point(101, 33);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(210, 23);
-            textBox1.TabIndex = 10;
+            lastNameText.Anchor = AnchorStyles.Left;
+            SelectedContactTable.SetColumnSpan(lastNameText, 2);
+            lastNameText.Location = new Point(101, 123);
+            lastNameText.Name = "lastNameText";
+            lastNameText.ReadOnly = true;
+            lastNameText.Size = new Size(210, 23);
+            lastNameText.TabIndex = 11;
             // 
-            // textBox2
+            // emailText
             // 
-            textBox2.Anchor = AnchorStyles.Left;
-            SelectedContactTable.SetColumnSpan(textBox2, 2);
-            textBox2.Location = new Point(101, 123);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(210, 23);
-            textBox2.TabIndex = 11;
+            emailText.Anchor = AnchorStyles.Left;
+            SelectedContactTable.SetColumnSpan(emailText, 2);
+            emailText.Location = new Point(101, 213);
+            emailText.Name = "emailText";
+            emailText.ReadOnly = true;
+            emailText.Size = new Size(210, 23);
+            emailText.TabIndex = 12;
             // 
-            // textBox3
+            // usernameText
             // 
-            textBox3.Anchor = AnchorStyles.Left;
-            SelectedContactTable.SetColumnSpan(textBox3, 2);
-            textBox3.Location = new Point(101, 213);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(210, 23);
-            textBox3.TabIndex = 12;
-            // 
-            // textBox4
-            // 
-            textBox4.Anchor = AnchorStyles.Left;
-            SelectedContactTable.SetColumnSpan(textBox4, 2);
-            textBox4.Location = new Point(101, 303);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(210, 23);
-            textBox4.TabIndex = 13;
+            usernameText.Anchor = AnchorStyles.Left;
+            SelectedContactTable.SetColumnSpan(usernameText, 2);
+            usernameText.Location = new Point(101, 303);
+            usernameText.Name = "usernameText";
+            usernameText.ReadOnly = true;
+            usernameText.Size = new Size(210, 23);
+            usernameText.TabIndex = 13;
             // 
             // closeButton
             // 
             closeButton.Anchor = AnchorStyles.None;
             closeButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            closeButton.Location = new Point(410, 388);
+            closeButton.Location = new Point(265, 388);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(94, 33);
             closeButton.TabIndex = 9;
             closeButton.Text = "Close";
             closeButton.UseVisualStyleBackColor = true;
             // 
-            // saveChangeButton
-            // 
-            saveChangeButton.Anchor = AnchorStyles.None;
-            saveChangeButton.Enabled = false;
-            saveChangeButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            saveChangeButton.Location = new Point(122, 388);
-            saveChangeButton.Name = "saveChangeButton";
-            saveChangeButton.Size = new Size(94, 33);
-            saveChangeButton.TabIndex = 8;
-            saveChangeButton.Text = "Save";
-            saveChangeButton.UseVisualStyleBackColor = true;
-            // 
             // deleteButton
             // 
             deleteButton.Anchor = AnchorStyles.None;
             deleteButton.Enabled = false;
             deleteButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            deleteButton.Location = new Point(265, 388);
+            deleteButton.Location = new Point(122, 388);
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(94, 33);
             deleteButton.TabIndex = 14;
@@ -332,13 +306,11 @@
         private Label lastNameLabel;
         private Label usernameLabel;
         private Label emailLabel;
-        private Button editButton;
-        private Button saveChangeButton;
         private Button closeButton;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox firstNameText;
+        private TextBox lastNameText;
+        private TextBox emailText;
+        private TextBox usernameText;
         private BindingSource usersBindingSource;
         private Button deleteButton;
         private TableLayoutPanel contactLayoutPanel;

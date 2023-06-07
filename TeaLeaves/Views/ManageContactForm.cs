@@ -37,5 +37,16 @@ namespace TeaLeaves.Views
             this._ContactList = this._contactsController.getUsersContacts(this._user);
             this.usersBindingSource.DataSource = this._ContactList;
         }
+
+        private void contactDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Users selectedContact = this._ContactList[e.RowIndex];
+
+            this.firstNameText.Text = selectedContact.FirstName;
+            this.lastNameText.Text = selectedContact.LastName;
+            this.usernameText.Text = selectedContact.Username;
+            this.emailText.Text = selectedContact.Email;
+        }
+
     }
 }
