@@ -1,6 +1,7 @@
 using TeaLeaves.Models;
 using TeaLeaves.Controllers;
 using TeaLeaves.Views;
+using TeaLeaves.Helper;
 
 namespace TeaLeaves
 {
@@ -32,7 +33,7 @@ namespace TeaLeaves
             try
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
-                _userLogin.Password = textBoxPassword.Text.Trim();
+                _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
 
                 Users verifiedUser = _userController.VerifyUserCredentials(_userLogin);
                 if (verifiedUser != null)
@@ -59,11 +60,11 @@ namespace TeaLeaves
 
         private void lklblRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using(RegisterForm registerForm = new RegisterForm(this))
+            using (RegisterForm registerForm = new RegisterForm(this))
             {
                 registerForm.ShowDialog();
-                
-            }          
+
+            }
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace TeaLeaves
             Show();
             textBoxUsername.Clear();
             textBoxPassword.Clear();
-            
+
         }
     }
 }
