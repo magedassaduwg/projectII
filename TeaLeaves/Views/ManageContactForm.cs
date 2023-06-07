@@ -23,10 +23,15 @@ namespace TeaLeaves.Views
         /// <summary>
         /// constructor for the ManageContactForm
         /// </summary>
-        public ManageContactForm()
+        public ManageContactForm(Users user)
         {
+            this._user = user;
             InitializeComponent();
         }
 
+        private void ManageContactForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

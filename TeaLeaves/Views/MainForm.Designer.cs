@@ -28,19 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            manageContactsButton = new Button();
             SuspendLayout();
+            // 
+            // manageContactsButton
+            // 
+            manageContactsButton.Location = new Point(0, 0);
+            manageContactsButton.Name = "manageContactsButton";
+            manageContactsButton.Size = new Size(75, 23);
+            manageContactsButton.TabIndex = 0;
+            manageContactsButton.Text = "Contacts";
+            manageContactsButton.UseVisualStyleBackColor = true;
+            manageContactsButton.Click += manageContactsButton_Click;
             // 
             // MainForm
             // 
-            AutoScaleDimensions=new SizeF(7F, 15F);
-            AutoScaleMode=AutoScaleMode.Font;
-            ClientSize=new Size(800, 450);
-            Name="MainForm";
-            Text="MainForm";
-            FormClosed+=MainForm_FormClosed;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(manageContactsButton);
+            Name = "MainForm";
+            Text = "MainForm";
+            FormClosed += MainForm_FormClosed;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button manageContactsButton;
     }
 }

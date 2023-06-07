@@ -38,7 +38,7 @@ namespace TeaLeaves
                 Users verifiedUser = _userController.VerifyUserCredentials(_userLogin);
                 if (verifiedUser != null)
                 {
-                    MainForm mainForm = new MainForm();
+                    MainForm mainForm = new MainForm(verifiedUser);
                     mainForm.Show();
                     this.Hide();
                 }
