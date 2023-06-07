@@ -73,5 +73,23 @@ namespace TeaLeaves.DALs
                 return contactUserIDs;
             }
         }
+
+        /// <summary>
+        /// method deleting a contact from a User's contact list in the database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="contact"></param>
+        public void removeContact(Users user, Users contact)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("DELETE FROM Contacts WHERE UserId1 = @UserId1 AND UserId2 = @UserId2", connection);
+                command.Parameters.AddWithValue("@UserId1", user.UserId);
+                command.Parameters.AddWithValue("@UserId2", contact.UserId);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

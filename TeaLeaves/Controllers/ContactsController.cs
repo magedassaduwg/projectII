@@ -32,5 +32,16 @@ namespace TeaLeaves.Controllers
         {
             return this._contactsDAL.getUsersContacts(user);
         }
+
+
+        /// <summary>
+        /// method deleting a contact from a User's contact list in the database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="contact"></param>
+        public void removeContact(Users user, Users contact)
+        {
+            this._contactsDAL.removeContact(user, contact);
+        }
     }
 }

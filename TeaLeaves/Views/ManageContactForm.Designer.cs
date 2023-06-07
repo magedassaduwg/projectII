@@ -275,6 +275,7 @@
             deleteButton.TabIndex = 14;
             deleteButton.Text = "Delete";
             deleteButton.UseVisualStyleBackColor = true;
+            deleteButton.Click += deleteButton_Click;
             // 
             // ManageContactForm
             // 
