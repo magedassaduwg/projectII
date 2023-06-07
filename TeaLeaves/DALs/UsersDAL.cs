@@ -37,6 +37,28 @@ namespace TeaLeaves.DALs
                 return null;
             }
         }
+
+        /// <summary>
+        /// Adds a new user to the database
+        /// </summary>
+        /// <param name="user"></param>
+        public void AddUser(Users user)
+        {
+            string insertStatement =
+                "INSERT INTO Users (LastName, FirstName, Username, Password, Email) " +
+                "VALUES (@lastName, @firstName, @username, @password, @email) ";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+                SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+                insertCommand.Parameters.AddWithValue("@lastName", user.LastName);
+                insertCommand.Parameters.AddWithValue("@firstName", user.FirstName);
+                insertCommand.Parameters.AddWithValue("@username", user.Username);
+                insertCommand.Parameters.AddWithValue("@password", user.Password);
+                insertCommand.Parameters.AddWithValue("@email", user.Email);
+                insertCommand.ExecuteReader();
+            }
+        }
     }
 }
 

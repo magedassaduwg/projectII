@@ -2,7 +2,6 @@ using TeaLeaves.Models;
 using TeaLeaves.Controllers;
 using TeaLeaves.Views;
 
-
 namespace TeaLeaves
 {
     public partial class LoginForm : Form
@@ -32,8 +31,6 @@ namespace TeaLeaves
         {
             try
             {
-
-
                 _userLogin.Username = textBoxUsername.Text.Trim();
                 _userLogin.Password = textBoxPassword.Text.Trim();
 
@@ -60,5 +57,24 @@ namespace TeaLeaves
             Application.Exit();
         }
 
+        private void lklblRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using(RegisterForm registerForm = new RegisterForm(this))
+            {
+                registerForm.ShowDialog();
+                
+            }          
+        }
+
+        /// <summary>
+        /// Clears the textbox values
+        /// </summary>
+        public void Logout()
+        {
+            Show();
+            textBoxUsername.Clear();
+            textBoxPassword.Clear();
+            
+        }
     }
 }
