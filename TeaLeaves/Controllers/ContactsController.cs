@@ -11,7 +11,7 @@ namespace TeaLeaves.Controllers
     /// <summary>
     /// controller class to work with Contacts represented by Users objects
     /// </summary>
-    internal class ContactsController
+    public class ContactsController
     {
         private ContactsDAL _contactsDAL;
 

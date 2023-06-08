@@ -31,16 +31,23 @@
             dgvEventInvites = new DataGridView();
             btnAccept = new Button();
             btnDecline = new Button();
+            eventName = new DataGridViewTextBoxColumn();
+            eventDateAndTime = new DataGridViewTextBoxColumn();
+            eventDescription = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             SuspendLayout();
             // 
             // dgvEventInvites
             // 
+            dgvEventInvites.AllowUserToAddRows = false;
+            dgvEventInvites.AllowUserToDeleteRows = false;
             dgvEventInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEventInvites.Location = new Point(58, 73);
+            dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { eventName, eventDateAndTime, eventDescription });
+            dgvEventInvites.Location = new Point(37, 73);
             dgvEventInvites.Name = "dgvEventInvites";
+            dgvEventInvites.ReadOnly = true;
             dgvEventInvites.RowTemplate.Height = 25;
-            dgvEventInvites.Size = new Size(557, 349);
+            dgvEventInvites.Size = new Size(585, 349);
             dgvEventInvites.TabIndex = 0;
             // 
             // btnAccept
@@ -61,6 +68,30 @@
             btnDecline.Text = "Decline";
             btnDecline.UseVisualStyleBackColor = true;
             // 
+            // eventName
+            // 
+            eventName.DataPropertyName = "Name";
+            eventName.HeaderText = "Name";
+            eventName.Name = "eventName";
+            eventName.ReadOnly = true;
+            eventName.Width = 120;
+            // 
+            // eventDateAndTime
+            // 
+            eventDateAndTime.DataPropertyName = "DateTime";
+            eventDateAndTime.HeaderText = "Time";
+            eventDateAndTime.Name = "eventDateAndTime";
+            eventDateAndTime.ReadOnly = true;
+            eventDateAndTime.Width = 160;
+            // 
+            // eventDescription
+            // 
+            eventDescription.DataPropertyName = "Description";
+            eventDescription.HeaderText = "Description";
+            eventDescription.Name = "eventDescription";
+            eventDescription.ReadOnly = true;
+            eventDescription.Width = 260;
+            // 
             // EventInvites
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -79,5 +110,8 @@
         private DataGridView dgvEventInvites;
         private Button btnAccept;
         private Button btnDecline;
+        private DataGridViewTextBoxColumn eventName;
+        private DataGridViewTextBoxColumn eventDateAndTime;
+        private DataGridViewTextBoxColumn eventDescription;
     }
 }
