@@ -20,7 +20,7 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public Users VerifyUserCredentials(Users user)
+        public User VerifyUserCredentials(User user)
         {
             return _userDAL.VerifyUserCredentials(user);
         }
@@ -29,7 +29,7 @@ namespace TeaLeaves.Controllers
         /// Adds a user to the database
         /// </summary>
         /// <param name="user"></param>
-        public void Add(Users user)
+        public void Add(User user)
         {
             _userDAL.AddUser(user);
         }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Message class implementing IMessage
     /// </summary>
-    public class Message : IMessage
+    public class UserMessage : IUserMessage
     {
         public int MessageId {get; set; }
         public int SenderId {get; set; }

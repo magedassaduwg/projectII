@@ -45,8 +45,8 @@
             lastNameText = new TextBox();
             emailText = new TextBox();
             usernameText = new TextBox();
-            closeButton = new Button();
             deleteButton = new Button();
+            closeButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -138,7 +138,7 @@
             // 
             // usersBindingSource
             // 
-            usersBindingSource.DataSource = typeof(Models.Users);
+            usersBindingSource.DataSource = typeof(Models.User);
             // 
             // SelectedContactTable
             // 
@@ -253,17 +253,6 @@
             usernameText.Size = new Size(210, 23);
             usernameText.TabIndex = 13;
             // 
-            // closeButton
-            // 
-            closeButton.Anchor = AnchorStyles.None;
-            closeButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            closeButton.Location = new Point(265, 388);
-            closeButton.Name = "closeButton";
-            closeButton.Size = new Size(94, 33);
-            closeButton.TabIndex = 9;
-            closeButton.Text = "Close";
-            closeButton.UseVisualStyleBackColor = true;
-            // 
             // deleteButton
             // 
             deleteButton.Anchor = AnchorStyles.None;
@@ -277,6 +266,17 @@
             deleteButton.UseVisualStyleBackColor = true;
             deleteButton.Click += deleteButton_Click;
             // 
+            // closeButton
+            // 
+            closeButton.Anchor = AnchorStyles.None;
+            closeButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            closeButton.Location = new Point(265, 388);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(94, 33);
+            closeButton.TabIndex = 9;
+            closeButton.Text = "Close";
+            closeButton.UseVisualStyleBackColor = true;
+            // 
             // ManageContactForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -284,6 +284,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(splitContainer1);
             Name = "ManageContactForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ManageContactForm";
             Load += ManageContactForm_Load;
             splitContainer1.Panel1.ResumeLayout(false);

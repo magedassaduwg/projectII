@@ -330,6 +330,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(tlpRegisterForm);
             Name = "RegisterForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegisterForm";
             FormClosing += RegisterForm_FormClosing;
             Load += RegisterForm_Load;

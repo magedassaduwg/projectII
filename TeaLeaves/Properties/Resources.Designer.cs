@@ -65,7 +65,7 @@ namespace TeaLeaves.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _lock {
             get {
-                object obj = ResourceManager.GetObject("lock", resourceCulture);
+                object obj = ResourceManager.GetObject("_lock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +75,7 @@ namespace TeaLeaves.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap tealeaves_logo {
             get {
-                object obj = ResourceManager.GetObject("tealeaves-logo", resourceCulture);
+                object obj = ResourceManager.GetObject("tealeaves_logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
