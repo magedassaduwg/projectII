@@ -29,6 +29,7 @@ namespace TeaLeaves.DALs
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
+                    user.UserId = Convert.ToInt32(reader["UserId"]);
                     user.FirstName = reader["FirstName"].ToString();
                     user.LastName = reader["LastName"].ToString();
                     user.Email = reader["Email"].ToString();

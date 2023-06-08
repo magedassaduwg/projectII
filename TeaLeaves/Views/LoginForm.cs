@@ -33,12 +33,14 @@ namespace TeaLeaves
             try
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
-                _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
+                // commented out until password encryption is implemented with user registration
+                //_userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
+                _userLogin.Password = textBoxPassword.Text.Trim();
 
                 Users verifiedUser = _userController.VerifyUserCredentials(_userLogin);
                 if (verifiedUser != null)
                 {
-                    MainForm mainForm = new MainForm();
+                    MainForm mainForm = new MainForm(verifiedUser);
                     mainForm.Show();
                     this.Hide();
                 }

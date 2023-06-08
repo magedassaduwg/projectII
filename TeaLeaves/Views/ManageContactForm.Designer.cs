@@ -30,33 +30,31 @@
         {
             components = new System.ComponentModel.Container();
             splitContainer1 = new SplitContainer();
+            contactLayoutPanel = new TableLayoutPanel();
+            addButton = new Button();
             contactDataGridView = new DataGridView();
+            firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            usersBindingSource = new BindingSource(components);
             SelectedContactTable = new TableLayoutPanel();
             firstNameLabel = new Label();
             lastNameLabel = new Label();
             emailLabel = new Label();
             usernameLabel = new Label();
-            editButton = new Button();
-            saveChangeButton = new Button();
+            firstNameText = new TextBox();
+            lastNameText = new TextBox();
+            emailText = new TextBox();
+            usernameText = new TextBox();
             closeButton = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            usersBindingSource = new BindingSource(components);
-            firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             deleteButton = new Button();
-            contactLayoutPanel = new TableLayoutPanel();
-            addButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)contactDataGridView).BeginInit();
-            SelectedContactTable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)usersBindingSource).BeginInit();
             contactLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)contactDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)usersBindingSource).BeginInit();
+            SelectedContactTable.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -76,6 +74,34 @@
             splitContainer1.SplitterDistance = 266;
             splitContainer1.TabIndex = 0;
             // 
+            // contactLayoutPanel
+            // 
+            contactLayoutPanel.ColumnCount = 2;
+            contactLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            contactLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            contactLayoutPanel.Controls.Add(addButton, 0, 1);
+            contactLayoutPanel.Controls.Add(contactDataGridView, 0, 0);
+            contactLayoutPanel.Dock = DockStyle.Fill;
+            contactLayoutPanel.Location = new Point(0, 0);
+            contactLayoutPanel.Name = "contactLayoutPanel";
+            contactLayoutPanel.RowCount = 2;
+            contactLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 87.77778F));
+            contactLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.2222223F));
+            contactLayoutPanel.Size = new Size(266, 450);
+            contactLayoutPanel.TabIndex = 1;
+            // 
+            // addButton
+            // 
+            addButton.Anchor = AnchorStyles.None;
+            contactLayoutPanel.SetColumnSpan(addButton, 2);
+            addButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            addButton.Location = new Point(87, 406);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(92, 33);
+            addButton.TabIndex = 8;
+            addButton.Text = "Add";
+            addButton.UseVisualStyleBackColor = true;
+            // 
             // contactDataGridView
             // 
             contactDataGridView.AllowUserToAddRows = false;
@@ -92,6 +118,27 @@
             contactDataGridView.RowTemplate.Height = 25;
             contactDataGridView.Size = new Size(260, 389);
             contactDataGridView.TabIndex = 0;
+            contactDataGridView.RowEnter += contactDataGridView_RowEnter;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            firstNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
+            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            lastNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // usersBindingSource
+            // 
+            usersBindingSource.DataSource = typeof(Models.Users);
             // 
             // SelectedContactTable
             // 
@@ -104,14 +151,12 @@
             SelectedContactTable.Controls.Add(lastNameLabel, 0, 1);
             SelectedContactTable.Controls.Add(emailLabel, 0, 2);
             SelectedContactTable.Controls.Add(usernameLabel, 0, 3);
-            SelectedContactTable.Controls.Add(editButton, 0, 4);
-            SelectedContactTable.Controls.Add(textBox1, 1, 0);
-            SelectedContactTable.Controls.Add(textBox2, 1, 1);
-            SelectedContactTable.Controls.Add(textBox3, 1, 2);
-            SelectedContactTable.Controls.Add(textBox4, 1, 3);
-            SelectedContactTable.Controls.Add(closeButton, 3, 4);
-            SelectedContactTable.Controls.Add(saveChangeButton, 1, 4);
-            SelectedContactTable.Controls.Add(deleteButton, 2, 4);
+            SelectedContactTable.Controls.Add(firstNameText, 1, 0);
+            SelectedContactTable.Controls.Add(lastNameText, 1, 1);
+            SelectedContactTable.Controls.Add(emailText, 1, 2);
+            SelectedContactTable.Controls.Add(usernameText, 1, 3);
+            SelectedContactTable.Controls.Add(deleteButton, 1, 4);
+            SelectedContactTable.Controls.Add(closeButton, 2, 4);
             SelectedContactTable.Dock = DockStyle.Fill;
             SelectedContactTable.Location = new Point(0, 0);
             SelectedContactTable.Name = "SelectedContactTable";
@@ -168,139 +213,69 @@
             usernameLabel.TabIndex = 3;
             usernameLabel.Text = "Username:";
             // 
-            // editButton
+            // firstNameText
             // 
-            editButton.Anchor = AnchorStyles.None;
-            editButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            editButton.Location = new Point(3, 388);
-            editButton.Name = "editButton";
-            editButton.Size = new Size(92, 33);
-            editButton.TabIndex = 7;
-            editButton.Text = "Edit";
-            editButton.UseVisualStyleBackColor = true;
+            firstNameText.Anchor = AnchorStyles.Left;
+            SelectedContactTable.SetColumnSpan(firstNameText, 2);
+            firstNameText.Location = new Point(101, 33);
+            firstNameText.Name = "firstNameText";
+            firstNameText.ReadOnly = true;
+            firstNameText.Size = new Size(210, 23);
+            firstNameText.TabIndex = 10;
             // 
-            // saveChangeButton
+            // lastNameText
             // 
-            saveChangeButton.Anchor = AnchorStyles.None;
-            saveChangeButton.Enabled = false;
-            saveChangeButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            saveChangeButton.Location = new Point(122, 388);
-            saveChangeButton.Name = "saveChangeButton";
-            saveChangeButton.Size = new Size(94, 33);
-            saveChangeButton.TabIndex = 8;
-            saveChangeButton.Text = "Save";
-            saveChangeButton.UseVisualStyleBackColor = true;
+            lastNameText.Anchor = AnchorStyles.Left;
+            SelectedContactTable.SetColumnSpan(lastNameText, 2);
+            lastNameText.Location = new Point(101, 123);
+            lastNameText.Name = "lastNameText";
+            lastNameText.ReadOnly = true;
+            lastNameText.Size = new Size(210, 23);
+            lastNameText.TabIndex = 11;
+            // 
+            // emailText
+            // 
+            emailText.Anchor = AnchorStyles.Left;
+            SelectedContactTable.SetColumnSpan(emailText, 2);
+            emailText.Location = new Point(101, 213);
+            emailText.Name = "emailText";
+            emailText.ReadOnly = true;
+            emailText.Size = new Size(210, 23);
+            emailText.TabIndex = 12;
+            // 
+            // usernameText
+            // 
+            usernameText.Anchor = AnchorStyles.Left;
+            SelectedContactTable.SetColumnSpan(usernameText, 2);
+            usernameText.Location = new Point(101, 303);
+            usernameText.Name = "usernameText";
+            usernameText.ReadOnly = true;
+            usernameText.Size = new Size(210, 23);
+            usernameText.TabIndex = 13;
             // 
             // closeButton
             // 
             closeButton.Anchor = AnchorStyles.None;
             closeButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            closeButton.Location = new Point(410, 388);
+            closeButton.Location = new Point(265, 388);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(94, 33);
             closeButton.TabIndex = 9;
             closeButton.Text = "Close";
             closeButton.UseVisualStyleBackColor = true;
             // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Left;
-            SelectedContactTable.SetColumnSpan(textBox1, 2);
-            textBox1.Location = new Point(101, 33);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(210, 23);
-            textBox1.TabIndex = 10;
-            // 
-            // textBox2
-            // 
-            textBox2.Anchor = AnchorStyles.Left;
-            SelectedContactTable.SetColumnSpan(textBox2, 2);
-            textBox2.Location = new Point(101, 123);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(210, 23);
-            textBox2.TabIndex = 11;
-            // 
-            // textBox3
-            // 
-            textBox3.Anchor = AnchorStyles.Left;
-            SelectedContactTable.SetColumnSpan(textBox3, 2);
-            textBox3.Location = new Point(101, 213);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(210, 23);
-            textBox3.TabIndex = 12;
-            // 
-            // textBox4
-            // 
-            textBox4.Anchor = AnchorStyles.Left;
-            SelectedContactTable.SetColumnSpan(textBox4, 2);
-            textBox4.Location = new Point(101, 303);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(210, 23);
-            textBox4.TabIndex = 13;
-            // 
-            // usersBindingSource
-            // 
-            usersBindingSource.DataSource = typeof(Models.Users);
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            firstNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            lastNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // deleteButton
             // 
             deleteButton.Anchor = AnchorStyles.None;
             deleteButton.Enabled = false;
             deleteButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            deleteButton.Location = new Point(265, 388);
+            deleteButton.Location = new Point(122, 388);
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(94, 33);
             deleteButton.TabIndex = 14;
             deleteButton.Text = "Delete";
             deleteButton.UseVisualStyleBackColor = true;
-            // 
-            // contactLayoutPanel
-            // 
-            contactLayoutPanel.ColumnCount = 2;
-            contactLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            contactLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            contactLayoutPanel.Controls.Add(addButton, 0, 1);
-            contactLayoutPanel.Controls.Add(contactDataGridView, 0, 0);
-            contactLayoutPanel.Dock = DockStyle.Fill;
-            contactLayoutPanel.Location = new Point(0, 0);
-            contactLayoutPanel.Name = "contactLayoutPanel";
-            contactLayoutPanel.RowCount = 2;
-            contactLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 87.77778F));
-            contactLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.2222223F));
-            contactLayoutPanel.Size = new Size(266, 450);
-            contactLayoutPanel.TabIndex = 1;
-            // 
-            // addButton
-            // 
-            addButton.Anchor = AnchorStyles.None;
-            contactLayoutPanel.SetColumnSpan(addButton, 2);
-            addButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            addButton.Location = new Point(87, 406);
-            addButton.Name = "addButton";
-            addButton.Size = new Size(92, 33);
-            addButton.TabIndex = 8;
-            addButton.Text = "Add";
-            addButton.UseVisualStyleBackColor = true;
+            deleteButton.Click += deleteButton_Click;
             // 
             // ManageContactForm
             // 
@@ -310,15 +285,16 @@
             Controls.Add(splitContainer1);
             Name = "ManageContactForm";
             Text = "ManageContactForm";
+            Load += ManageContactForm_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            contactLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)contactDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)usersBindingSource).EndInit();
             SelectedContactTable.ResumeLayout(false);
             SelectedContactTable.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)usersBindingSource).EndInit();
-            contactLayoutPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -331,18 +307,16 @@
         private Label lastNameLabel;
         private Label usernameLabel;
         private Label emailLabel;
-        private Button editButton;
-        private Button saveChangeButton;
         private Button closeButton;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private TextBox firstNameText;
+        private TextBox lastNameText;
+        private TextBox emailText;
+        private TextBox usernameText;
         private BindingSource usersBindingSource;
         private Button deleteButton;
         private TableLayoutPanel contactLayoutPanel;
         private Button addButton;
+        private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
     }
 }
