@@ -1,6 +1,4 @@
-﻿using MassTransit.Logging;
-using System.Collections.Generic;
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
@@ -21,63 +19,28 @@ namespace TeaLeaves.Views
 
             _messageController = new MessageController();
             CurrentUser.IncomingMessageEvent += ReceiveMessage_Event;
-
         }
 
         private void ReceiveMessage_Event(IMessage e)
         {
             Invoke((MethodInvoker)delegate
             {
-                lstMessages.Items.Add(e);
-
-                Label l = new Label();
-                l.Text = e.Text;
-                panelMessages.Controls.Add(l);
-                panelMessages.ScrollControlIntoView(l);
-
+                AddMessageToScreen(e);
             });
         }
 
-        private void lstMessages_MeasureItem(object sender, MeasureItemEventArgs e)
+        private void AddMessageToScreen(IMessage message)
         {
-            e.ItemHeight = (int)e.Graphics.MeasureString(lstMessages.Items[e.Index].ToString(), lstMessages.Font, lstMessages.Width).Height;
-        }
+            Label lblMessage = new Label();
+            lblMessage.Text = message.Text;
 
-        private void lstMessages_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index > -1)
+            if (CurrentUser.User.UserId != message.SenderId)
             {
-                dynamic currentObject = lstMessages.Items[e.Index];
-                string output = currentObject.Text;
-                int lineHeight = e.Bounds.Height;
-
-                e.DrawBackground();
-                e.DrawFocusRectangle();
-
-                if (currentObject.SenderId == CurrentUser.User.UserId)
-                {
-                    float olength = e.Graphics.MeasureString(output, e.Font).Width;
-                    float pos = lstMessages.Width - olength;
-
-                    //SolidBrush brushBack = new SolidBrush(e.BackColor);
-                    //e.Graphics.FillRectangle(brushBack, e.Bounds.Left, e.Bounds.Top + 50, e.Bounds.Width - 50, lineHeight);
-
-                    //SolidBrush brush = new SolidBrush(e.ForeColor);
-                    //e.Graphics.DrawString(output, e.Font, brush, pos, e.Bounds.Top);
-
-                    e.Graphics.DrawString(output, e.Font, new SolidBrush(e.ForeColor), pos, e.Bounds.Top);
-                }
-                else
-                {
-                    e.Graphics.DrawString(output, e.Font, new SolidBrush(e.ForeColor), e.Bounds);
-
-                    //SolidBrush brushBack = new SolidBrush(e.BackColor);
-                    //e.Graphics.FillRectangle(brushBack, e.Bounds.Left, e.Bounds.Top, e.Bounds.Width - 50, lineHeight);
-
-                    //SolidBrush brush = new SolidBrush(e.ForeColor);
-                    //e.Graphics.DrawString(output, e.Font, brush, 0, e.Bounds.Top);
-                }
+                lblMessage.Margin = new Padding(panelMessages.Size.Width - lblMessage.Size.Width - 10, 0, 0, 0);
             }
+
+            panelMessages.Controls.Add(lblMessage);
+            panelMessages.ScrollControlIntoView(lblMessage);
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -87,12 +50,19 @@ namespace TeaLeaves.Views
                 MessageId = 1,
                 ReceiverId = 1,
                 SenderId = 1,
-                Text = "Test a message that is really long and hope that it will wrap around to the next line. Test a message that is really long and hope that it will wrap around to the next line.",
+                Text = "Test a message that is really long and hope that it will wrap around to the next line.",
                 MediaId = null,
                 TimeStamp = DateTime.Now
             };
 
+            AddMessageToScreen(newMessage);
+
             RabbitBus.SendMessage("magedassad1", newMessage);
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string ok = "ok";
         }
     }
 }

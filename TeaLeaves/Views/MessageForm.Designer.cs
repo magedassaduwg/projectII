@@ -42,16 +42,14 @@
             pictureBox1 = new PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel4 = new TableLayoutPanel();
-            lstMessages = new ListBox();
             panelMessages = new FlowLayoutPanel();
-            label1 = new Label();
+            lblSelectedContact = new Label();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             flpWelcomeLinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
-            panelMessages.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -215,53 +213,43 @@
             // 
             // tableLayoutPanel4
             // 
-            tableLayoutPanel4.ColumnCount = 2;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Controls.Add(lstMessages, 0, 0);
-            tableLayoutPanel4.Controls.Add(panelMessages, 1, 0);
+            tableLayoutPanel4.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Controls.Add(panelMessages, 0, 1);
+            tableLayoutPanel4.Controls.Add(lblSelectedContact, 0, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(3, 93);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
             tableLayoutPanel4.Size = new Size(665, 418);
             tableLayoutPanel4.TabIndex = 6;
-            // 
-            // lstMessages
-            // 
-            lstMessages.Dock = DockStyle.Fill;
-            lstMessages.DrawMode = DrawMode.OwnerDrawFixed;
-            lstMessages.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lstMessages.FormattingEnabled = true;
-            lstMessages.ItemHeight = 20;
-            lstMessages.Location = new Point(3, 3);
-            lstMessages.Name = "lstMessages";
-            lstMessages.SelectionMode = SelectionMode.None;
-            lstMessages.Size = new Size(326, 412);
-            lstMessages.TabIndex = 5;
             // 
             // panelMessages
             // 
             panelMessages.AutoScroll = true;
-            panelMessages.Controls.Add(label1);
+            panelMessages.BorderStyle = BorderStyle.Fixed3D;
             panelMessages.Dock = DockStyle.Fill;
             panelMessages.FlowDirection = FlowDirection.TopDown;
-            panelMessages.Location = new Point(335, 3);
+            panelMessages.Location = new Point(4, 46);
             panelMessages.Name = "panelMessages";
-            panelMessages.Size = new Size(327, 412);
-            panelMessages.TabIndex = 6;
+            panelMessages.Size = new Size(657, 368);
+            panelMessages.TabIndex = 7;
             panelMessages.WrapContents = false;
             // 
-            // label1
+            // lblSelectedContact
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            lblSelectedContact.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblSelectedContact.AutoSize = true;
+            lblSelectedContact.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSelectedContact.Location = new Point(4, 1);
+            lblSelectedContact.Name = "lblSelectedContact";
+            lblSelectedContact.Size = new Size(172, 41);
+            lblSelectedContact.TabIndex = 0;
+            lblSelectedContact.Text = "Magood Assad";
+            lblSelectedContact.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // MessageForm
             // 
@@ -279,8 +267,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
-            panelMessages.ResumeLayout(false);
-            panelMessages.PerformLayout();
+            tableLayoutPanel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -294,13 +281,12 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel4;
-        private ListBox lstMessages;
-        private FlowLayoutPanel panelMessages;
-        private Label label1;
         private FlowLayoutPanel flpWelcomeLinks;
         private Label lblWelcome;
         private LinkLabel lnkLogout;
         private Label lblStatus;
         private PictureBox pictureBox1;
+        private FlowLayoutPanel panelMessages;
+        private Label lblSelectedContact;
     }
 }
