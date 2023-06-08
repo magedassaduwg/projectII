@@ -120,10 +120,13 @@ namespace TeaLeaves.Views
 
         private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            User selectedUser = (User)lstContacts.SelectedItem;
-            lblSelectedContact.Text = selectedUser.FullName;
+            if (lstContacts.SelectedIndex > -1)
+            {
+                User selectedUser = (User)lstContacts.SelectedItem;
+                lblSelectedContact.Text = selectedUser.FullName;
 
-            LoadMessagesFromUser(selectedUser.UserId);
+                LoadMessagesFromUser(selectedUser.UserId);
+            }
         }
 
         private void LoadMessagesFromUser(int contactId)
