@@ -1,6 +1,6 @@
 using TeaLeaves.Controllers;
 using TeaLeaves.Models;
-using Message = TeaLeaves.Models.Message;
+using TeaLeaves.Views;
 
 namespace TeaLeaves
 {
@@ -15,24 +15,29 @@ namespace TeaLeaves
         [STAThread]
         static void Main()
         {
-            RabbitBus.InitializeRabbitConnection();
-            RabbitBus.AddConsumer("magedassad");
-            IMessage newMessage = new Message
+            try
             {
-                MessageId = 1,
-                ReceiverId = 1,
-                SenderId = 1,
-                Text = "Test",
-                MediaId = null,
-                TimeStamp = DateTime.Now
-            };
+                User user = new User
+                {
+                    Email = "assadmaged@gmail.com",
+                    FirstName = "Maged",
+                    LastName = "Assad",
+                    Password = "password123",
+                    UserId = 1,
+                    Username = "magedassad1"
+                };
 
-            RabbitBus.SendMessage("magedassad", newMessage);
+                CurrentUser.SetCurrentUser(user);
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+            Application.Run(new MessageForm());
         }
     }
 }
