@@ -40,12 +40,13 @@
             comboBoxState=new ComboBox();
             dateTimePickerEvent=new DateTimePicker();
             labelHour=new Label();
-            label7=new Label();
+            labelMinute=new Label();
             numericUpDownHour=new NumericUpDown();
             numericUpDownMinute=new NumericUpDown();
             richTextBoxDescription=new RichTextBox();
             buttonSave=new Button();
             buttonClose=new Button();
+            labelError=new Label();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownHour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownMinute).BeginInit();
@@ -72,12 +73,13 @@
             tableLayoutPanelAddEvent.Controls.Add(comboBoxState, 4, 1);
             tableLayoutPanelAddEvent.Controls.Add(dateTimePickerEvent, 1, 2);
             tableLayoutPanelAddEvent.Controls.Add(labelHour, 1, 3);
-            tableLayoutPanelAddEvent.Controls.Add(label7, 3, 3);
+            tableLayoutPanelAddEvent.Controls.Add(labelMinute, 3, 3);
             tableLayoutPanelAddEvent.Controls.Add(numericUpDownHour, 2, 3);
             tableLayoutPanelAddEvent.Controls.Add(numericUpDownMinute, 4, 3);
             tableLayoutPanelAddEvent.Controls.Add(richTextBoxDescription, 1, 4);
             tableLayoutPanelAddEvent.Controls.Add(buttonSave, 2, 5);
             tableLayoutPanelAddEvent.Controls.Add(buttonClose, 3, 5);
+            tableLayoutPanelAddEvent.Controls.Add(labelError, 0, 5);
             tableLayoutPanelAddEvent.Dock=DockStyle.Fill;
             tableLayoutPanelAddEvent.Location=new Point(0, 0);
             tableLayoutPanelAddEvent.Name="tableLayoutPanelAddEvent";
@@ -208,18 +210,18 @@
             labelHour.Text="Hour";
             labelHour.TextAlign=ContentAlignment.MiddleRight;
             // 
-            // label7
+            // labelMinute
             // 
-            label7.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            label7.AutoSize=true;
-            label7.Font=new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.ForeColor=Color.DarkGreen;
-            label7.Location=new Point(483, 224);
-            label7.Name="label7";
-            label7.Size=new Size(114, 21);
-            label7.TabIndex=11;
-            label7.Text="Minute";
-            label7.TextAlign=ContentAlignment.MiddleRight;
+            labelMinute.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            labelMinute.AutoSize=true;
+            labelMinute.Font=new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelMinute.ForeColor=Color.DarkGreen;
+            labelMinute.Location=new Point(483, 224);
+            labelMinute.Name="labelMinute";
+            labelMinute.Size=new Size(114, 21);
+            labelMinute.TabIndex=11;
+            labelMinute.Text="Minute";
+            labelMinute.TextAlign=ContentAlignment.MiddleRight;
             // 
             // numericUpDownHour
             // 
@@ -229,6 +231,7 @@
             numericUpDownHour.Name="numericUpDownHour";
             numericUpDownHour.Size=new Size(148, 29);
             numericUpDownHour.TabIndex=12;
+            numericUpDownHour.ValueChanged+=numericUpDownHour_ValueChanged;
             // 
             // numericUpDownMinute
             // 
@@ -238,6 +241,7 @@
             numericUpDownMinute.Name="numericUpDownMinute";
             numericUpDownMinute.Size=new Size(124, 29);
             numericUpDownMinute.TabIndex=13;
+            numericUpDownMinute.ValueChanged+=numericUpDownMinute_ValueChanged;
             // 
             // richTextBoxDescription
             // 
@@ -261,6 +265,7 @@
             buttonSave.TabIndex=15;
             buttonSave.Text="Save";
             buttonSave.UseVisualStyleBackColor=false;
+            buttonSave.Click+=buttonSave_Click;
             // 
             // buttonClose
             // 
@@ -274,6 +279,19 @@
             buttonClose.TabIndex=16;
             buttonClose.Text="Close";
             buttonClose.UseVisualStyleBackColor=false;
+            buttonClose.Click += new System.EventHandler(this.buttonClose_click);
+            // 
+            // labelError
+            // 
+            labelError.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            labelError.AutoSize=true;
+            tableLayoutPanelAddEvent.SetColumnSpan(labelError, 2);
+            labelError.ForeColor=Color.Red;
+            labelError.Location=new Point(3, 407);
+            labelError.Name="labelError";
+            labelError.Size=new Size(320, 15);
+            labelError.TabIndex=17;
+            labelError.Text="label1";
             // 
             // EventsForm
             // 
@@ -284,6 +302,7 @@
             Name="EventsForm";
             StartPosition=FormStartPosition.CenterScreen;
             Text="EventsForm";
+            Load+=EventsForm_Load;
             tableLayoutPanelAddEvent.ResumeLayout(false);
             tableLayoutPanelAddEvent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownHour).EndInit();
@@ -305,11 +324,12 @@
         private ComboBox comboBoxState;
         private DateTimePicker dateTimePickerEvent;
         private Label labelHour;
-        private Label label7;
+        private Label labelMinute;
         private NumericUpDown numericUpDownHour;
         private NumericUpDown numericUpDownMinute;
         private RichTextBox richTextBoxDescription;
         private Button buttonSave;
         private Button buttonClose;
+        private Label labelError;
     }
 }
