@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
@@ -17,35 +9,33 @@ namespace TeaLeaves.Views
     /// </summary>
     public partial class ManageContactForm : Form
     {
-        private List<Users> _ContactList;
-        private Users _user;
+        private List<User> _contactList;
         private UserControl _userControl;
         private ContactsController _contactsController;
-        private Users selectedContact;
+        private User selectedContact;
 
         /// <summary>
         /// constructor for the ManageContactForm
         /// </summary>
-        public ManageContactForm(Users user)
+        public ManageContactForm()
         {
-            this._user = user;
             this._contactsController = new ContactsController();
             InitializeComponent();
         }
 
         private void ManageContactForm_Load(object sender, EventArgs e)
         {
-            this._ContactList = this._contactsController.getUsersContacts(this._user);
-            this.usersBindingSource.DataSource = this._ContactList;
-            if (this._ContactList.Any())
+            this._contactList = this._contactsController.GetUsersContacts(CurrentUserStore.User);
+            this.usersBindingSource.DataSource = this._contactList;
+            if (this._contactList.Any())
             {
-                this.selectedContact = this._ContactList[0];
+                this.selectedContact = this._contactList[0];
             }
         }
 
         private void contactDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            Users selectedContact = this._ContactList[e.RowIndex];
+            User selectedContact = this._contactList[e.RowIndex];
 
             this.firstNameText.Text = selectedContact.FirstName;
             this.lastNameText.Text = selectedContact.LastName;
@@ -60,9 +50,9 @@ namespace TeaLeaves.Views
 
             if (result == DialogResult.Yes)
             {
-                this._contactsController.removeContact(this._user, this.selectedContact);
-                this._ContactList = this._contactsController.getUsersContacts(_user);
-                this.usersBindingSource.DataSource = this._ContactList;
+                this._contactsController.RemoveContact(CurrentUserStore.User, this.selectedContact);
+                this._contactList = this._contactsController.GetUsersContacts(CurrentUserStore.User);
+                this.usersBindingSource.DataSource = this._contactList;
                 this.firstNameText.Text = String.Empty;
                 this.lastNameText.Text = String.Empty;
                 this.usernameText.Text = String.Empty;

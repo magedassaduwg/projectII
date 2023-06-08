@@ -81,7 +81,7 @@ namespace TeaLeaves.Views
                 }
                 else
                 {
-                    Users user = new Users();
+                    User user = new User();
                     user.FirstName = firstName;
                     user.LastName = lastName;
                     user.Email = email;

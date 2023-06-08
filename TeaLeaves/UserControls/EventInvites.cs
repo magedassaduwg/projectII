@@ -4,7 +4,7 @@ namespace TeaLeaves.UserControls
 {
     public partial class EventInvites : UserControl
     {
-        public EventInvites(Users user)
+        public EventInvites(User user)
         {
             InitializeComponent();
         }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Interface represents a message being sent or received
     /// </summary>
-    public interface IMessage
+    public interface IUserMessage
     {
         int MessageId { get; set; }
         int SenderId { get; set; }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -19,11 +13,11 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public List<Users> getUsersContacts(Users user)
+        public List<User> GetUsersContacts(User user)
         {
-            List<int> contactUserIDs = this.getContactUserIDs(user);
+            List<int> contactUserIDs = this.GetContactUserIDs(user);
         
-            List<Users> contacts = new List<Users>();
+            List<User> contacts = new List<User>();
 
             foreach (int userId in contactUserIDs)
             {
@@ -38,7 +32,7 @@ namespace TeaLeaves.DALs
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        Users contact = new Users
+                        User contact = new User
                         {
                             UserId = Convert.ToInt32(reader["UserId"]),
                             FirstName = reader["FirstName"].ToString(),
@@ -53,7 +47,7 @@ namespace TeaLeaves.DALs
             return contacts;
         }
 
-        private List<int> getContactUserIDs(Users user)
+        private List<int> GetContactUserIDs(User user)
         {
             List<int> contactUserIDs = new List<int>();
 
@@ -79,7 +73,7 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="user"></param>
         /// <param name="contact"></param>
-        public void removeContact(Users user, Users contact)
+        public void RemoveContact(User user, User contact)
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {

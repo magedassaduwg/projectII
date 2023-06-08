@@ -1,14 +1,15 @@
-﻿using TeaLeaves.Models;
+﻿using TeaLeaves.Controllers;
+using TeaLeaves.Models;
 
-namespace TeaLeaves.Controllers
+namespace TeaLeaves.Helper
 {
     /// <summary>
     /// In-memory storage of the current user
     /// </summary>
-    public static class CurrentUser
+    public static class CurrentUserStore
     {
-        public static Dictionary<string, List<Models.Message>> MessageHistory = new Dictionary<string, List<Models.Message>>();
-        public delegate void EventHandler(IMessage message);
+        public static Dictionary<string, List<Models.UserMessage>> MessageHistory = new Dictionary<string, List<Models.UserMessage>>();
+        public delegate void EventHandler(IUserMessage message);
         public static event EventHandler IncomingMessageEvent;
         public static User User;
 
@@ -19,7 +20,7 @@ namespace TeaLeaves.Controllers
         public static void SetCurrentUser(User user)
         {
             User = user;
-            RabbitBus.AddConsumer(user.Username);
+            RabbitBusController.AddConsumer(user.Username);
         }
 
         /// <summary>
@@ -29,14 +30,14 @@ namespace TeaLeaves.Controllers
         {
             User = null;
             MessageHistory = null;
-            RabbitBus.StopRabbitConnection();
+            RabbitBusController.StopRabbitConnection();
         }
 
         /// <summary>
         /// Fire event to receive message from sender
         /// </summary>
         /// <param name="message"></param>
-        public static void NewMessageReceived(IMessage message)
+        public static void NewMessageReceived(IUserMessage message)
         {
             if (IncomingMessageEvent != null)
             {

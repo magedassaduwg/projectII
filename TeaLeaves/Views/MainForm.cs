@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TeaLeaves.Models;
+﻿using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
     public partial class MainForm : Form
     {
-        private Users user;
-        public MainForm(Users verifiedUser)
+        private User user;
+        public MainForm(User verifiedUser)
         {
             this.user = verifiedUser;
             InitializeComponent();
@@ -22,14 +13,23 @@ namespace TeaLeaves.Views
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            Application.Exit();
         }
 
         private void manageContactsButton_Click(object sender, EventArgs e)
         {
-            ManageContactForm manageContactForm = new ManageContactForm(this.user);
-            manageContactForm.Show();
-            this.Hide();
+            using (ManageContactForm manageContactForm = new ManageContactForm())
+            {
+                manageContactForm.ShowDialog();
+            }
+        }
+
+        private void btnMessages_Click(object sender, EventArgs e)
+        {
+            using (MessageForm chatForm = new MessageForm())
+            {
+                chatForm.ShowDialog();
+            }
         }
     }
 }

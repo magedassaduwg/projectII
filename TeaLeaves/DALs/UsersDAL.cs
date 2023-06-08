@@ -16,7 +16,7 @@ namespace TeaLeaves.DALs
         /// Checks the database to see if the given users information is valid
         /// </summary>
         /// <returns></returns>
-        public Users VerifyUserCredentials(Users user)
+        public Models.User VerifyUserCredentials(Models.User user)
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -43,7 +43,7 @@ namespace TeaLeaves.DALs
         /// Adds a new user to the database
         /// </summary>
         /// <param name="user"></param>
-        public void AddUser(Users user)
+        public void AddUser(Models.User user)
         {
             string insertStatement =
                 "INSERT INTO Users (LastName, FirstName, Username, Password, Email) " +

@@ -1,20 +1,19 @@
-using TeaLeaves.Models;
 using TeaLeaves.Controllers;
-using TeaLeaves.Views;
 using TeaLeaves.Helper;
-using TeaLeaves.UserControls;
+using TeaLeaves.Models;
+using TeaLeaves.Views;
 
 namespace TeaLeaves
 {
     public partial class LoginForm : Form
     {
         private UsersController _userController;
-        private Users _userLogin;
+        private User _userLogin;
         public LoginForm()
         {
             InitializeComponent();
             _userController = new UsersController();
-            _userLogin = new Users();
+            _userLogin = new User();
         }
 
         private void textBoxUsername_TextChanged(object sender, EventArgs e)
@@ -38,9 +37,11 @@ namespace TeaLeaves
                 //_userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
                 _userLogin.Password = textBoxPassword.Text.Trim();
 
-                Users verifiedUser = _userController.VerifyUserCredentials(_userLogin);
+                User verifiedUser = _userController.VerifyUserCredentials(_userLogin);
                 if (verifiedUser != null)
                 {
+                    CurrentUserStore.SetCurrentUser(verifiedUser);
+
                     MainForm mainForm = new MainForm(verifiedUser);
                     mainForm.Show();
                     this.Hide();

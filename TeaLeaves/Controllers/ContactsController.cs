@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeaLeaves.DALs;
+﻿using TeaLeaves.DALs;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
@@ -28,9 +23,9 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public List<Users> getUsersContacts(Users user)
+        public List<User> GetUsersContacts(User user)
         {
-            return this._contactsDAL.getUsersContacts(user);
+            return this._contactsDAL.GetUsersContacts(user);
         }
 
 
@@ -39,9 +34,9 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <param name="contact"></param>
-        public void removeContact(Users user, Users contact)
+        public void RemoveContact(User user, User contact)
         {
-            this._contactsDAL.removeContact(user, contact);
+            this._contactsDAL.RemoveContact(user, contact);
         }
     }
 }

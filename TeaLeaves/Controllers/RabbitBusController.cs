@@ -7,7 +7,7 @@ namespace TeaLeaves.Controllers
     /// <summary>
     /// Creates Rabbitmq connection, adds listener and published to cloud instance
     /// </summary>
-    public static class RabbitBus
+    public static class RabbitBusController
     {
         private static readonly string _host = "gull-01.rmq.cloudamqp.com";
         private static readonly string _username = "lclgtnip";
@@ -64,12 +64,12 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="queue"></param>
         /// <param name="message"></param>
-        public static void SendMessage(string queue, IMessage message)
+        public static void SendMessage(string queue, IUserMessage message)
         {
             try
             {
                 var endpoint = _rabbitBus.GetSendEndpoint(new Uri($"queue:{queue}")).Result;
-                endpoint.Send<IMessage>(message).Wait();
+                endpoint.Send<IUserMessage>(message).Wait();
             }
             catch (Exception)
             {
