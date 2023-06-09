@@ -8,7 +8,7 @@ namespace TeaLeaves.Controllers
     /// </summary>
     public class EventController
     {
-        private EventDAL _EventDAL;
+        private EventDAL _eventDAL;
 
         /// <summary>
         /// Constructor to initialize the DAL access
@@ -25,7 +25,7 @@ namespace TeaLeaves.Controllers
         /// <returns></returns>
         public bool SaveEvent(Event @event)
         {
-            return _EventDAL.SaveEvent(@event);
+            return _eventDAL.SaveEvent(@event);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace TeaLeaves.Controllers
         /// <exception cref="NotImplementedException"></exception>
         public List<Event> GetEventsReceivedByUserId(int userId)
         {
-            return _EventDAL.GetEventsReceivedByUserId(userId);
+            return _eventDAL.GetEventsReceivedByUserId(userId);
         }
     }
 }

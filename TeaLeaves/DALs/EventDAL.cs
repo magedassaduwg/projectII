@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -20,7 +15,7 @@ namespace TeaLeaves.DALs
         /// <returns></returns>
         public bool SaveEvent(Event @event)
         {
-            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, eventDateTime) 
+            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, EventDateTime) 
                              VALUES (@Description, @Name, @State, @City, @StreetNumber, @DateTime)";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -33,6 +28,7 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@State", @event.State);
                     saveCommand.Parameters.AddWithValue("@City", @event.City);
                     saveCommand.Parameters.AddWithValue("@StreetNumber", @event.StreetNumber);
+                    saveCommand.Parameters.AddWithValue("@DateTime", @event.DateTime);
 
                     int rowsAffected = saveCommand.ExecuteNonQuery();
                     return rowsAffected > 0;
@@ -40,6 +36,11 @@ namespace TeaLeaves.DALs
             }
         }
 
+        /// <summary>
+        /// Returns all Events which the given user by userId has been invited to
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public List<Event> GetEventsReceivedByUserId(int userId)
         {
             List<Event> userEvents = new List<Event>();
