@@ -42,8 +42,8 @@
             // 
             // tableLayoutPanelEvent
             // 
-            tableLayoutPanelEvent.BackColor = SystemColors.ControlLightLight;
-            tableLayoutPanelEvent.ColumnCount = 5;
+            tableLayoutPanelEvent.BackColor=Color.WhiteSmoke;
+            tableLayoutPanelEvent.ColumnCount=5;
             tableLayoutPanelEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanelEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanelEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
