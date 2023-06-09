@@ -12,7 +12,7 @@ namespace TeaLeaves.DALs
     {
         public bool SaveEvent(Event @event)
         {
-            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, [DateTime]) 
+            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, eventDateTime) 
                              VALUES (@Description, @Name, @State, @City, @StreetNumber, @DateTime)";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {

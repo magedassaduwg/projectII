@@ -1,7 +1,7 @@
 ﻿namespace TeaLeaves.Models
 {
     /// <summary>
-    /// The model class representing the EventResponses table
+    /// The model class representing the Events table
     /// </summary>
     public class Event
     {

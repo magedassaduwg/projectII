@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeaLeaves.Views;
 
 namespace TeaLeaves.UserControls
 {
@@ -26,5 +27,13 @@ namespace TeaLeaves.UserControls
         {
 
         }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            using (EventsForm eventForm = new EventsForm())
+                eventForm.ShowDialog();
+            }
+
+        }
     }
-}
+

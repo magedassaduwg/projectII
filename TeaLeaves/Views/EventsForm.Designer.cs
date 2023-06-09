@@ -58,10 +58,10 @@
             tableLayoutPanelAddEvent.ColumnCount=6;
             tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.625F));
             tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.125F));
-            tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.25F));
-            tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.25F));
-            tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8.75F));
+            tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.75F));
+            tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.125F));
+            tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.375F));
+            tableLayoutPanelAddEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F));
             tableLayoutPanelAddEvent.Controls.Add(labelName, 0, 0);
             tableLayoutPanelAddEvent.Controls.Add(labelEVenue, 0, 1);
             tableLayoutPanelAddEvent.Controls.Add(labelEDate, 0, 2);
@@ -159,7 +159,7 @@
             tableLayoutPanelAddEvent.SetColumnSpan(textBoxEName, 4);
             textBoxEName.Location=new Point(200, 22);
             textBoxEName.Name="textBoxEName";
-            textBoxEName.Size=new Size(527, 23);
+            textBoxEName.Size=new Size(485, 23);
             textBoxEName.TabIndex=5;
             // 
             // textBoxStreetName
@@ -168,24 +168,26 @@
             tableLayoutPanelAddEvent.SetColumnSpan(textBoxStreetName, 2);
             textBoxStreetName.Location=new Point(200, 89);
             textBoxStreetName.Name="textBoxStreetName";
-            textBoxStreetName.Size=new Size(277, 23);
+            textBoxStreetName.PlaceholderText="Street Name";
+            textBoxStreetName.Size=new Size(249, 23);
             textBoxStreetName.TabIndex=6;
             // 
             // textBoxCity
             // 
             textBoxCity.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            textBoxCity.Location=new Point(483, 89);
+            textBoxCity.Location=new Point(455, 89);
             textBoxCity.Name="textBoxCity";
-            textBoxCity.Size=new Size(114, 23);
+            textBoxCity.PlaceholderText="City";
+            textBoxCity.Size=new Size(115, 23);
             textBoxCity.TabIndex=7;
             // 
             // comboBoxState
             // 
             comboBoxState.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             comboBoxState.FormattingEnabled=true;
-            comboBoxState.Location=new Point(603, 89);
+            comboBoxState.Location=new Point(576, 89);
             comboBoxState.Name="comboBoxState";
-            comboBoxState.Size=new Size(124, 23);
+            comboBoxState.Size=new Size(109, 23);
             comboBoxState.TabIndex=8;
             // 
             // dateTimePickerEvent
@@ -194,7 +196,7 @@
             tableLayoutPanelAddEvent.SetColumnSpan(dateTimePickerEvent, 2);
             dateTimePickerEvent.Location=new Point(200, 156);
             dateTimePickerEvent.Name="dateTimePickerEvent";
-            dateTimePickerEvent.Size=new Size(277, 23);
+            dateTimePickerEvent.Size=new Size(249, 23);
             dateTimePickerEvent.TabIndex=9;
             dateTimePickerEvent.ValueChanged+=dateTimePickerEvent_ValueChanged;
             // 
@@ -217,9 +219,9 @@
             labelMinute.AutoSize=true;
             labelMinute.Font=new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelMinute.ForeColor=Color.DarkGreen;
-            labelMinute.Location=new Point(483, 224);
+            labelMinute.Location=new Point(455, 224);
             labelMinute.Name="labelMinute";
-            labelMinute.Size=new Size(114, 21);
+            labelMinute.Size=new Size(115, 21);
             labelMinute.TabIndex=11;
             labelMinute.Text="Minute";
             labelMinute.TextAlign=ContentAlignment.MiddleRight;
@@ -229,8 +231,9 @@
             numericUpDownHour.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             numericUpDownHour.Font=new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             numericUpDownHour.Location=new Point(329, 220);
+            numericUpDownHour.Maximum=new decimal(new int[] { 23, 0, 0, 0 });
             numericUpDownHour.Name="numericUpDownHour";
-            numericUpDownHour.Size=new Size(148, 29);
+            numericUpDownHour.Size=new Size(120, 29);
             numericUpDownHour.TabIndex=12;
             numericUpDownHour.ValueChanged+=numericUpDownHour_ValueChanged;
             // 
@@ -238,9 +241,10 @@
             // 
             numericUpDownMinute.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             numericUpDownMinute.Font=new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            numericUpDownMinute.Location=new Point(603, 220);
+            numericUpDownMinute.Location=new Point(576, 220);
+            numericUpDownMinute.Maximum=new decimal(new int[] { 60, 0, 0, 0 });
             numericUpDownMinute.Name="numericUpDownMinute";
-            numericUpDownMinute.Size=new Size(124, 29);
+            numericUpDownMinute.Size=new Size(109, 29);
             numericUpDownMinute.TabIndex=13;
             numericUpDownMinute.ValueChanged+=numericUpDownMinute_ValueChanged;
             // 
@@ -250,7 +254,7 @@
             tableLayoutPanelAddEvent.SetColumnSpan(richTextBoxDescription, 4);
             richTextBoxDescription.Location=new Point(200, 271);
             richTextBoxDescription.Name="richTextBoxDescription";
-            richTextBoxDescription.Size=new Size(527, 106);
+            richTextBoxDescription.Size=new Size(485, 106);
             richTextBoxDescription.TabIndex=14;
             richTextBoxDescription.Text="";
             // 
@@ -262,7 +266,7 @@
             buttonSave.ForeColor=Color.DarkGreen;
             buttonSave.Location=new Point(329, 403);
             buttonSave.Name="buttonSave";
-            buttonSave.Size=new Size(148, 23);
+            buttonSave.Size=new Size(120, 23);
             buttonSave.TabIndex=15;
             buttonSave.Text="Save";
             buttonSave.UseVisualStyleBackColor=false;
@@ -274,9 +278,9 @@
             buttonClose.BackColor=Color.Orange;
             buttonClose.Font=new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             buttonClose.ForeColor=Color.DarkGreen;
-            buttonClose.Location=new Point(483, 403);
+            buttonClose.Location=new Point(455, 403);
             buttonClose.Name="buttonClose";
-            buttonClose.Size=new Size(114, 23);
+            buttonClose.Size=new Size(115, 23);
             buttonClose.TabIndex=16;
             buttonClose.Text="Close";
             buttonClose.UseVisualStyleBackColor=false;
@@ -292,7 +296,6 @@
             labelError.Name="labelError";
             labelError.Size=new Size(320, 15);
             labelError.TabIndex=17;
-            labelError.Text="label1";
             // 
             // EventsForm
             // 
