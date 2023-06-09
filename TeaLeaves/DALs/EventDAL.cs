@@ -8,11 +8,11 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
 {
-    public class AddEventDAL
+    public class EventDAL
     {
         public bool SaveEvent(Event @event)
         {
-            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, DateTime) 
+            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, [DateTime]) 
                              VALUES (@Description, @Name, @State, @City, @StreetNumber, @DateTime)";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -25,7 +25,7 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@State", @event.State);
                     saveCommand.Parameters.AddWithValue("@City", @event.City);
                     saveCommand.Parameters.AddWithValue("@StreetNumber", @event.StreetNumber);
-                    saveCommand.Parameters.AddWithValue("@DateTime", @event.DateTime);
+                    saveCommand.Parameters.AddWithValue("@DateTime", @event.EventDateTime);
 
                     int rowsAffected = saveCommand.ExecuteNonQuery();
                     return rowsAffected > 0;

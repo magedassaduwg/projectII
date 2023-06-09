@@ -71,17 +71,17 @@ namespace TeaLeaves.Views
         private bool IsFormValid()
         {
             DateTime eventTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
-
-            if (eventTime < DateTime.Now)
-            {
-                labelError.Text = "Please choose a future time";
-                return false;
-            }
-            else if (textBoxEName.Text.Trim().Length == 0)
+            if (textBoxEName.Text.Trim().Length == 0)
             {
                 labelError.Text = "Please enter the event name";
                 return false;
             }
+            else if (eventTime < DateTime.Now)
+            {
+                labelError.Text = "Please choose a future time";
+                return false;
+            }
+
 
             return true;
         }
@@ -97,7 +97,7 @@ namespace TeaLeaves.Views
                 _event.State =comboBoxState.SelectedItem.ToString();
                 _event.City = textBoxCity.Text.Trim();
                 _event.Description = richTextBoxDescription.Text.Trim();
-                _event.DateTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
+                _event.EventDateTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
                 try
                 {
                     if (_eventController.SaveEvent(_event))
@@ -128,6 +128,11 @@ namespace TeaLeaves.Views
         private void buttonClose_click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dateTimePickerEvent_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerEvent.MinDate = DateTime.Now.Date;
         }
     }
 }

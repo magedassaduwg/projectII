@@ -11,7 +11,7 @@
         public string? State { get; set; }
         public string? City { get; set; }
         public string? StreetNumber { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime EventDateTime { get; set; }
 
       
     }

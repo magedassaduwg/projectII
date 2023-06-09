@@ -196,6 +196,7 @@
             dateTimePickerEvent.Name="dateTimePickerEvent";
             dateTimePickerEvent.Size=new Size(277, 23);
             dateTimePickerEvent.TabIndex=9;
+            dateTimePickerEvent.ValueChanged+=dateTimePickerEvent_ValueChanged;
             // 
             // labelHour
             // 
@@ -279,7 +280,7 @@
             buttonClose.TabIndex=16;
             buttonClose.Text="Close";
             buttonClose.UseVisualStyleBackColor=false;
-            buttonClose.Click += new System.EventHandler(this.buttonClose_click);
+            buttonClose.Click+=buttonClose_click;
             // 
             // labelError
             // 

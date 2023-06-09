@@ -10,19 +10,19 @@ namespace TeaLeaves.Controllers
 {
     public class EventController
     {
-        private AddEventDAL _addEventDAL;
+        private EventDAL _eventDAL;
 
         /// <summary>
         /// Constructor to initialize the DAL access
         /// </summary>
         public EventController()
         {
-            _addEventDAL = new AddEventDAL();
+            _eventDAL = new EventDAL();
         }
 
         public bool SaveEvent(Event @event)
         {
-            return _addEventDAL.SaveEvent(@event);
+            return _eventDAL.SaveEvent(@event);
         }
     }
 }
