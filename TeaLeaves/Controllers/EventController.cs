@@ -15,7 +15,7 @@ namespace TeaLeaves.Controllers
         /// </summary>
         public EventController()
         {
-            _EventDAL = new EventDAL();
+            _eventDAL = new EventDAL();
         }
 
         /// <summary>

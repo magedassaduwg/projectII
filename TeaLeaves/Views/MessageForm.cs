@@ -12,6 +12,9 @@ namespace TeaLeaves.Views
     {
         private MessageController _messageController;
         private ContactsController _contactsController;
+        private User _selectedUser;
+        private List<User> _contactList;
+
         /// <summary>
         /// Contractor to initialize the form controls
         /// </summary>
@@ -28,7 +31,7 @@ namespace TeaLeaves.Views
 
         private void LoadContacts()
         {
-            List<User> _contactList = _contactsController.GetUsersContacts(CurrentUserStore.User);
+            _contactList = _contactsController.GetUsersContacts(CurrentUserStore.User);
 
             lstContacts.Items.Clear();
 
@@ -47,41 +50,75 @@ namespace TeaLeaves.Views
         {
             Invoke((MethodInvoker)delegate
             {
-                AddMessageToScreen(e);
+                if (_selectedUser != null && _selectedUser.UserId == e.SenderId)
+                {
+                    AddMessageToScreen(e);
+                }
+                else
+                {
+                    UpdateContactUnreadStatus(e.SenderId, true);
+                }
             });
+        }
+
+        private void UpdateContactUnreadStatus(int senderId, bool isUnread)
+        {
+            int senderIndex = _contactList.FindIndex(c => c.UserId == senderId);
+
+            if (senderIndex > -1)
+            {
+                User sender = _contactList[senderIndex];
+                sender.IsContainUnread = isUnread;
+
+                lstContacts.Items.Insert(senderIndex, sender);
+                lstContacts.Items.RemoveAt(senderIndex + 1);
+
+                if (isUnread == false)
+                {
+                    lstContacts.SelectedIndex = senderIndex;
+                }
+            }
         }
 
         private void AddMessageToScreen(IUserMessage message)
         {
-            Label lblMessage = new Label();
-            lblMessage.Text = message.Text;
-            lblMessage.AutoSize = true;
-            lblMessage.MaximumSize = new Size(panelMessages.Width - 50, 0);
-            lblMessage.BorderStyle = BorderStyle.FixedSingle;
-
-            if (CurrentUserStore.User.UserId != message.SenderId)
+            if (message.Text?.Trim().Length > 0)
             {
-                using (Graphics graphic = lblMessage.CreateGraphics())
-                {
-                    SizeF size = graphic.MeasureString(message.Text, lblMessage.Font);
-                    //lblMessage.Margin = new Padding(panelMessages.Width - lblMessage.Width - 10, 0, 0, 0);
-                    lblMessage.Margin = new Padding(panelMessages.Width - Convert.ToInt32(size.Width) - 10, 0, 0, 0);
-                }
-            }
+                Label lblMessage = new Label();
+                lblMessage.Text = message.Text;
+                lblMessage.AutoSize = true;
+                lblMessage.MaximumSize = new Size(panelMessages.Width - 50, 0);
+                lblMessage.BorderStyle = BorderStyle.FixedSingle;
+                lblMessage.Padding = new Padding(5, 5, 5, 5);
+                lblMessage.BackColor = Color.White;
+                new ToolTip().SetToolTip(lblMessage, message.TimeStamp.ToString());
 
-            panelMessages.Controls.Add(lblMessage);
-            panelMessages.ScrollControlIntoView(lblMessage);
+                if (CurrentUserStore.User.UserId == message.SenderId)
+                {
+                    using (Graphics graphic = lblMessage.CreateGraphics())
+                    {
+                        SizeF size = graphic.MeasureString(message.Text, lblMessage.Font);
+                        lblMessage.Margin = new Padding(panelMessages.Width - Convert.ToInt32(size.Width) - 30, 0, 0, 5);
+                    }
+                }
+
+                panelMessages.Controls.Add(lblMessage);
+                panelMessages.ScrollControlIntoView(lblMessage);
+            }
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            User selectedUser = (User)lstContacts.SelectedItem;
+            if (txtMessage.Text.Trim().Length == 0)
+            {
+                return;
+            }
 
-            if (selectedUser != null)
+            if (_selectedUser != null)
             {
                 IUserMessage newMessage = new UserMessage
                 {
-                    ReceiverId = selectedUser.UserId,
+                    ReceiverId = _selectedUser.UserId,
                     SenderId = CurrentUserStore.User.UserId,
                     Text = txtMessage.Text,
                     MediaId = null,
@@ -93,7 +130,7 @@ namespace TeaLeaves.Views
                     _messageController.SaveMessageToDatabase(newMessage);
                     AddMessageToScreen(newMessage);
                     txtMessage.Clear();
-                    RabbitBusController.SendMessage(selectedUser.Username, newMessage);
+                    RabbitBusController.SendMessage(_selectedUser.Username, newMessage);
                 }
                 catch (SqlException ex)
                 {
@@ -118,17 +155,6 @@ namespace TeaLeaves.Views
             }
         }
 
-        private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lstContacts.SelectedIndex > -1)
-            {
-                User selectedUser = (User)lstContacts.SelectedItem;
-                lblSelectedContact.Text = selectedUser.FullName;
-
-                LoadMessagesFromUser(selectedUser.UserId);
-            }
-        }
-
         private void LoadMessagesFromUser(int contactId)
         {
             try
@@ -144,18 +170,43 @@ namespace TeaLeaves.Views
                         AddMessageToScreen(message);
                     }
                 }
-                else
-                {
-                    Label lblMessage = new Label();
-                    lblMessage.Text = "Chat History Is Empty";
-                    panelMessages.Controls.Add(lblMessage);
-                }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstContacts.SelectedIndex > -1)
+            {
+                _selectedUser = (User)lstContacts.SelectedItem;
+                lblSelectedContact.Text = _selectedUser.FullName;
+
+                if (_selectedUser.IsContainUnread)
+                {
+                    UpdateContactUnreadStatus(_selectedUser.UserId, false);
+                }
+
+                LoadMessagesFromUser(_selectedUser.UserId);
+            }
+        }
+
+        private void lstContacts_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            User contact = (User)lstContacts.Items[e.Index];
+
+            if (contact.IsContainUnread)
+            {
+                e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, e.Bounds);
+            }
+            else
+            {
+                e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
+            }
+            e.DrawFocusRectangle();
         }
     }
 }

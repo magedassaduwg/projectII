@@ -1,7 +1,7 @@
 ﻿namespace TeaLeaves.Models
 {
     /// <summary>
-    /// The model class representing the EventResponses table
+    /// The model class representing the Events table
     /// </summary>
     public class Event
     {
@@ -12,7 +12,7 @@
         public string? City { get; set; }
         public int Zipcode { get; set; }
         public string? StreetNumber { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime EventDateTime { get; set; }
 
       
     }

@@ -1,35 +1,22 @@
-﻿using TeaLeaves.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TeaLeaves.Views
 {
     public partial class MainForm : Form
     {
-        private User user;
-        public MainForm(User verifiedUser)
+        public MainForm(Models.User verifiedUser)
         {
-            this.user = verifiedUser;
             InitializeComponent();
         }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void manageContactsButton_Click(object sender, EventArgs e)
-        {
-            using (ManageContactForm manageContactForm = new ManageContactForm())
-            {
-                manageContactForm.ShowDialog();
-            }
-        }
-
-        private void btnMessages_Click(object sender, EventArgs e)
-        {
-            using (MessageForm chatForm = new MessageForm())
-            {
-                chatForm.ShowDialog();
-            }
-        }
+       
     }
 }
