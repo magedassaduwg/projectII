@@ -7,11 +7,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TeaLeaves.Views
 {
-    public partial class EventsForm : Form
+    public partial class AddEventForm : Form
     {
         private EventController _eventController;
         private Event _event;
-        public EventsForm()
+        public AddEventForm()
         {
             InitializeComponent();
             _eventController = new EventController();

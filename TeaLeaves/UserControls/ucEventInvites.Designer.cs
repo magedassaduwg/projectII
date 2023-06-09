@@ -44,11 +44,11 @@
             dgvEventInvites.BackgroundColor = Color.PapayaWhip;
             dgvEventInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { eventName, eventDateAndTime, eventDescription });
-            dgvEventInvites.Location = new Point(43, 73);
+            dgvEventInvites.Location = new Point(0, 0);
             dgvEventInvites.Name = "dgvEventInvites";
             dgvEventInvites.ReadOnly = true;
             dgvEventInvites.RowTemplate.Height = 25;
-            dgvEventInvites.Size = new Size(582, 349);
+            dgvEventInvites.Size = new Size(583, 313);
             dgvEventInvites.TabIndex = 0;
             // 
             // eventName
@@ -80,7 +80,7 @@
             btnAccept.BackColor = Color.Orange;
             btnAccept.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnAccept.ForeColor = Color.DarkGreen;
-            btnAccept.Location = new Point(651, 73);
+            btnAccept.Location = new Point(589, 3);
             btnAccept.Name = "btnAccept";
             btnAccept.Size = new Size(126, 57);
             btnAccept.TabIndex = 1;
@@ -92,22 +92,22 @@
             btnDecline.BackColor = Color.Orange;
             btnDecline.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnDecline.ForeColor = Color.DarkGreen;
-            btnDecline.Location = new Point(651, 152);
+            btnDecline.Location = new Point(589, 66);
             btnDecline.Name = "btnDecline";
             btnDecline.Size = new Size(126, 57);
             btnDecline.TabIndex = 2;
             btnDecline.Text = "Decline";
             btnDecline.UseVisualStyleBackColor = false;
             // 
-            // EventInvites
+            // ucEventInvites
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnDecline);
             Controls.Add(btnAccept);
             Controls.Add(dgvEventInvites);
-            Name = "EventInvites";
-            Size = new Size(816, 489);
+            Name = "ucEventInvites";
+            Size = new Size(719, 315);
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).EndInit();
             ResumeLayout(false);
         }

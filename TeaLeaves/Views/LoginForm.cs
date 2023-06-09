@@ -42,8 +42,8 @@ namespace TeaLeaves
                 {
                     CurrentUserStore.SetCurrentUser(verifiedUser);
 
-                   // MainForm mainForm = new MainForm(verifiedUser);
-                   EventsForm mainForm = new EventsForm();
+                    // MainForm mainForm = new MainForm(verifiedUser);
+                    AddEventForm mainForm = new AddEventForm();
                     mainForm.Show();
                     this.Hide();
                 }
@@ -68,7 +68,6 @@ namespace TeaLeaves
             using (RegisterForm registerForm = new RegisterForm(this))
             {
                 registerForm.ShowDialog();
-
             }
         }
 
