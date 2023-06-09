@@ -28,47 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            manageContactsButton = new Button();
-            btnMessages = new Button();
+            tabControlMain=new TabControl();
+            tabPageMessage=new TabPage();
+            tabPageEvent=new TabPage();
+            ucEventPlanner1=new UserControls.ucEventPlanner();
+            tabPageInvites=new TabPage();
+            tabPageContact=new TabPage();
+            tabControlMain.SuspendLayout();
+            tabPageEvent.SuspendLayout();
             SuspendLayout();
             // 
-            // manageContactsButton
+            // tabControlMain
             // 
-            manageContactsButton.Location = new Point(0, 0);
-            manageContactsButton.Name = "manageContactsButton";
-            manageContactsButton.Size = new Size(75, 23);
-            manageContactsButton.TabIndex = 0;
-            manageContactsButton.Text = "Contacts";
-            manageContactsButton.UseVisualStyleBackColor = true;
-            manageContactsButton.Click += manageContactsButton_Click;
+            tabControlMain.Controls.Add(tabPageMessage);
+            tabControlMain.Controls.Add(tabPageEvent);
+            tabControlMain.Controls.Add(tabPageInvites);
+            tabControlMain.Controls.Add(tabPageContact);
+            tabControlMain.Dock=DockStyle.Fill;
+            tabControlMain.Location=new Point(0, 0);
+            tabControlMain.Name="tabControlMain";
+            tabControlMain.SelectedIndex=0;
+            tabControlMain.Size=new Size(564, 359);
+            tabControlMain.TabIndex=0;
             // 
-            // btnMessages
+            // tabPageMessage
             // 
-            btnMessages.Location = new Point(81, 0);
-            btnMessages.Name = "btnMessages";
-            btnMessages.Size = new Size(75, 23);
-            btnMessages.TabIndex = 1;
-            btnMessages.Text = "Message";
-            btnMessages.UseVisualStyleBackColor = true;
-            btnMessages.Click += btnMessages_Click;
+            tabPageMessage.Location=new Point(4, 24);
+            tabPageMessage.Name="tabPageMessage";
+            tabPageMessage.Padding=new Padding(3);
+            tabPageMessage.Size=new Size(556, 331);
+            tabPageMessage.TabIndex=0;
+            tabPageMessage.Text="Message";
+            tabPageMessage.UseVisualStyleBackColor=true;
+            // 
+            // tabPageEvent
+            // 
+            tabPageEvent.Controls.Add(ucEventPlanner1);
+            tabPageEvent.Location=new Point(4, 24);
+            tabPageEvent.Name="tabPageEvent";
+            tabPageEvent.Padding=new Padding(3);
+            tabPageEvent.Size=new Size(556, 331);
+            tabPageEvent.TabIndex=1;
+            tabPageEvent.Text="Event Planner";
+            tabPageEvent.UseVisualStyleBackColor=true;
+            // 
+            // ucEventPlanner1
+            // 
+            ucEventPlanner1.Dock=DockStyle.Fill;
+            ucEventPlanner1.Location=new Point(3, 3);
+            ucEventPlanner1.Name="ucEventPlanner1";
+            ucEventPlanner1.Size=new Size(550, 325);
+            ucEventPlanner1.TabIndex=1;
+         
+            // 
+            // tabPageInvites
+            // 
+            tabPageInvites.Location=new Point(4, 24);
+            tabPageInvites.Name="tabPageInvites";
+            tabPageInvites.Padding=new Padding(3);
+            tabPageInvites.Size=new Size(556, 331);
+            tabPageInvites.TabIndex=2;
+            tabPageInvites.Text="Event Invite";
+            tabPageInvites.UseVisualStyleBackColor=true;
+            // 
+            // tabPageContact
+            // 
+            tabPageContact.Location=new Point(4, 24);
+            tabPageContact.Name="tabPageContact";
+            tabPageContact.Padding=new Padding(3);
+            tabPageContact.Size=new Size(556, 331);
+            tabPageContact.TabIndex=3;
+            tabPageContact.Text="Contact";
+            tabPageContact.UseVisualStyleBackColor=true;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnMessages);
-            Controls.Add(manageContactsButton);
-            Name = "MainForm";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainForm";
-            FormClosed += MainForm_FormClosed;
+            AutoScaleDimensions=new SizeF(7F, 15F);
+            AutoScaleMode=AutoScaleMode.Font;
+            ClientSize=new Size(564, 359);
+            Controls.Add(tabControlMain);
+            Name="MainForm";
+            Text="MainForm";
+            tabControlMain.ResumeLayout(false);
+            tabPageEvent.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button manageContactsButton;
-        private Button btnMessages;
+        private TabControl tabControlMain;
+        private TabPage tabPageEvent;
+        private TabPage tabPageMessage;
+        private UserControls.ucEventPlanner ucEventPlanner1;
+        private TabPage tabPageInvites;
+        private TabPage tabPageContact;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

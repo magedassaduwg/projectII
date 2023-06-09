@@ -28,21 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components=new System.ComponentModel.Container();
             tableLayoutPanelEvent=new TableLayoutPanel();
             panelHeader=new Panel();
             labelHeader=new Label();
             dataGridViewEvent=new DataGridView();
+            eventBindingSource=new BindingSource(components);
             buttonAdd=new Button();
             buttonView=new Button();
             buttonDelete=new Button();
+            idDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
+            nameDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
+            eventDateTimeDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
+            streetNumberDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
+            cityDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
+            stateDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
             tableLayoutPanelEvent.SuspendLayout();
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEvent).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)eventBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanelEvent
             // 
-            tableLayoutPanelEvent.BackColor=SystemColors.ControlLightLight;
+            tableLayoutPanelEvent.BackColor=Color.WhiteSmoke;
             tableLayoutPanelEvent.ColumnCount=5;
             tableLayoutPanelEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanelEvent.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
@@ -91,15 +101,23 @@
             // 
             // dataGridViewEvent
             // 
+            dataGridViewEvent.AutoGenerateColumns=false;
             dataGridViewEvent.BackgroundColor=Color.PapayaWhip;
             dataGridViewEvent.ColumnHeadersHeightSizeMode=DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewEvent.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, eventDateTimeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, streetNumberDataGridViewTextBoxColumn, cityDataGridViewTextBoxColumn, stateDataGridViewTextBoxColumn });
             tableLayoutPanelEvent.SetColumnSpan(dataGridViewEvent, 5);
+            dataGridViewEvent.DataSource=eventBindingSource;
             dataGridViewEvent.Dock=DockStyle.Fill;
             dataGridViewEvent.Location=new Point(3, 59);
             dataGridViewEvent.Name="dataGridViewEvent";
             dataGridViewEvent.RowTemplate.Height=25;
             dataGridViewEvent.Size=new Size(565, 219);
             dataGridViewEvent.TabIndex=1;
+            dataGridViewEvent.CellContentClick+=dataGridViewEvent_CellContentClick;
+            // 
+            // eventBindingSource
+            // 
+            eventBindingSource.DataSource=typeof(Models.Event);
             // 
             // buttonAdd
             // 
@@ -113,6 +131,7 @@
             buttonAdd.TabIndex=2;
             buttonAdd.Text="Add";
             buttonAdd.UseVisualStyleBackColor=false;
+            buttonAdd.Click+=buttonAdd_Click;
             // 
             // buttonView
             // 
@@ -140,6 +159,48 @@
             buttonDelete.Text="Delete";
             buttonDelete.UseVisualStyleBackColor=false;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.DataPropertyName="Id";
+            idDataGridViewTextBoxColumn.HeaderText="Id";
+            idDataGridViewTextBoxColumn.Name="idDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.DataPropertyName="Name";
+            nameDataGridViewTextBoxColumn.HeaderText="Name";
+            nameDataGridViewTextBoxColumn.Name="nameDataGridViewTextBoxColumn";
+            // 
+            // eventDateTimeDataGridViewTextBoxColumn
+            // 
+            eventDateTimeDataGridViewTextBoxColumn.DataPropertyName="EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn.HeaderText="Date & Time";
+            eventDateTimeDataGridViewTextBoxColumn.Name="eventDateTimeDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName="Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText="Description";
+            descriptionDataGridViewTextBoxColumn.Name="descriptionDataGridViewTextBoxColumn";
+            // 
+            // streetNumberDataGridViewTextBoxColumn
+            // 
+            streetNumberDataGridViewTextBoxColumn.DataPropertyName="StreetNumber";
+            streetNumberDataGridViewTextBoxColumn.HeaderText="StreetNumber";
+            streetNumberDataGridViewTextBoxColumn.Name="streetNumberDataGridViewTextBoxColumn";
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            cityDataGridViewTextBoxColumn.DataPropertyName="City";
+            cityDataGridViewTextBoxColumn.HeaderText="City";
+            cityDataGridViewTextBoxColumn.Name="cityDataGridViewTextBoxColumn";
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            stateDataGridViewTextBoxColumn.DataPropertyName="State";
+            stateDataGridViewTextBoxColumn.HeaderText="State";
+            stateDataGridViewTextBoxColumn.Name="stateDataGridViewTextBoxColumn";
+            // 
             // ucEventPlanner
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
@@ -151,6 +212,7 @@
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEvent).EndInit();
+            ((System.ComponentModel.ISupportInitialize)eventBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -163,5 +225,13 @@
         private Button buttonAdd;
         private Button buttonView;
         private Button buttonDelete;
+        private BindingSource eventBindingSource;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn streetNumberDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
     }
 }

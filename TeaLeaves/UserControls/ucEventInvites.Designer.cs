@@ -1,6 +1,6 @@
 ﻿namespace TeaLeaves.UserControls
 {
-    partial class EventInvites
+    partial class ucEventInvites
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             dgvEventInvites = new DataGridView();
+            eventName = new DataGridViewTextBoxColumn();
+            eventDateAndTime = new DataGridViewTextBoxColumn();
+            eventDescription = new DataGridViewTextBoxColumn();
             btnAccept = new Button();
             btnDecline = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
@@ -36,30 +39,65 @@
             // 
             // dgvEventInvites
             // 
+            dgvEventInvites.AllowUserToAddRows = false;
+            dgvEventInvites.AllowUserToDeleteRows = false;
+            dgvEventInvites.BackgroundColor = Color.PapayaWhip;
             dgvEventInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEventInvites.Location = new Point(58, 73);
+            dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { eventName, eventDateAndTime, eventDescription });
+            dgvEventInvites.Location = new Point(43, 73);
             dgvEventInvites.Name = "dgvEventInvites";
+            dgvEventInvites.ReadOnly = true;
             dgvEventInvites.RowTemplate.Height = 25;
-            dgvEventInvites.Size = new Size(557, 349);
+            dgvEventInvites.Size = new Size(582, 349);
             dgvEventInvites.TabIndex = 0;
+            // 
+            // eventName
+            // 
+            eventName.DataPropertyName = "Name";
+            eventName.HeaderText = "Name";
+            eventName.Name = "eventName";
+            eventName.ReadOnly = true;
+            eventName.Width = 120;
+            // 
+            // eventDateAndTime
+            // 
+            eventDateAndTime.DataPropertyName = "DateTime";
+            eventDateAndTime.HeaderText = "Time";
+            eventDateAndTime.Name = "eventDateAndTime";
+            eventDateAndTime.ReadOnly = true;
+            eventDateAndTime.Width = 160;
+            // 
+            // eventDescription
+            // 
+            eventDescription.DataPropertyName = "Description";
+            eventDescription.HeaderText = "Description";
+            eventDescription.Name = "eventDescription";
+            eventDescription.ReadOnly = true;
+            eventDescription.Width = 260;
             // 
             // btnAccept
             // 
+            btnAccept.BackColor = Color.Orange;
+            btnAccept.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAccept.ForeColor = Color.DarkGreen;
             btnAccept.Location = new Point(651, 73);
             btnAccept.Name = "btnAccept";
             btnAccept.Size = new Size(126, 57);
             btnAccept.TabIndex = 1;
             btnAccept.Text = "Accept";
-            btnAccept.UseVisualStyleBackColor = true;
+            btnAccept.UseVisualStyleBackColor = false;
             // 
             // btnDecline
             // 
+            btnDecline.BackColor = Color.Orange;
+            btnDecline.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDecline.ForeColor = Color.DarkGreen;
             btnDecline.Location = new Point(651, 152);
             btnDecline.Name = "btnDecline";
             btnDecline.Size = new Size(126, 57);
             btnDecline.TabIndex = 2;
             btnDecline.Text = "Decline";
-            btnDecline.UseVisualStyleBackColor = true;
+            btnDecline.UseVisualStyleBackColor = false;
             // 
             // EventInvites
             // 
@@ -79,5 +117,8 @@
         private DataGridView dgvEventInvites;
         private Button btnAccept;
         private Button btnDecline;
+        private DataGridViewTextBoxColumn eventName;
+        private DataGridViewTextBoxColumn eventDateAndTime;
+        private DataGridViewTextBoxColumn eventDescription;
     }
 }
