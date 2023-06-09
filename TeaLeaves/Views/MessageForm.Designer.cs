@@ -96,6 +96,7 @@
             // lstContacts
             // 
             lstContacts.Dock = DockStyle.Fill;
+            lstContacts.DrawMode = DrawMode.OwnerDrawFixed;
             lstContacts.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lstContacts.FormattingEnabled = true;
             lstContacts.ItemHeight = 20;
@@ -104,6 +105,7 @@
             lstContacts.Name = "lstContacts";
             lstContacts.Size = new Size(218, 418);
             lstContacts.TabIndex = 1;
+            lstContacts.DrawItem += lstContacts_DrawItem;
             lstContacts.SelectedIndexChanged += lstContacts_SelectedIndexChanged;
             // 
             // tableLayoutPanel1
