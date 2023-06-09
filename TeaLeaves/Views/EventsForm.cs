@@ -1,14 +1,21 @@
 ﻿
+using MassTransit.Logging;
+using TeaLeaves.Controllers;
 using TeaLeaves.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TeaLeaves.Views
 {
     public partial class EventsForm : Form
     {
-        private  Event _events;
+        private EventController _eventController;
+        private Event _event;
         public EventsForm()
         {
             InitializeComponent();
+            _eventController = new EventController();
+            _event = new Event();
         }
 
         private void EventsForm_Load(object sender, EventArgs e)
@@ -85,7 +92,27 @@ namespace TeaLeaves.Views
 
             if (IsFormValid())
             {
-
+                _event.Name = textBoxEName.Text.Trim();
+                _event.StreetNumber = textBoxStreetName.Text.Trim();
+                _event.State =comboBoxState.SelectedItem.ToString();
+                _event.City = textBoxCity.Text.Trim();
+                _event.Description = richTextBoxDescription.Text.Trim();
+                _event.DateTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
+                try
+                {
+                    if (_eventController.SaveEvent(_event))
+                    {
+                        labelError.Text = "Event has been saved";
+                    }
+                    else
+                    {
+                        labelError.Text = "Failed to save event, re-open page and try again";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
             }
         }
 
