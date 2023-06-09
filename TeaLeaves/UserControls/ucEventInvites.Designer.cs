@@ -1,6 +1,6 @@
 ﻿namespace TeaLeaves.UserControls
 {
-    partial class EventInvites
+    partial class ucEventInvites
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             dgvEventInvites = new DataGridView();
-            btnAccept = new Button();
-            btnDecline = new Button();
             eventName = new DataGridViewTextBoxColumn();
             eventDateAndTime = new DataGridViewTextBoxColumn();
             eventDescription = new DataGridViewTextBoxColumn();
+            btnAccept = new Button();
+            btnDecline = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             SuspendLayout();
             // 
@@ -41,32 +41,15 @@
             // 
             dgvEventInvites.AllowUserToAddRows = false;
             dgvEventInvites.AllowUserToDeleteRows = false;
+            dgvEventInvites.BackgroundColor = Color.PapayaWhip;
             dgvEventInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { eventName, eventDateAndTime, eventDescription });
-            dgvEventInvites.Location = new Point(37, 73);
+            dgvEventInvites.Location = new Point(43, 73);
             dgvEventInvites.Name = "dgvEventInvites";
             dgvEventInvites.ReadOnly = true;
             dgvEventInvites.RowTemplate.Height = 25;
-            dgvEventInvites.Size = new Size(585, 349);
+            dgvEventInvites.Size = new Size(582, 349);
             dgvEventInvites.TabIndex = 0;
-            // 
-            // btnAccept
-            // 
-            btnAccept.Location = new Point(651, 73);
-            btnAccept.Name = "btnAccept";
-            btnAccept.Size = new Size(126, 57);
-            btnAccept.TabIndex = 1;
-            btnAccept.Text = "Accept";
-            btnAccept.UseVisualStyleBackColor = true;
-            // 
-            // btnDecline
-            // 
-            btnDecline.Location = new Point(651, 152);
-            btnDecline.Name = "btnDecline";
-            btnDecline.Size = new Size(126, 57);
-            btnDecline.TabIndex = 2;
-            btnDecline.Text = "Decline";
-            btnDecline.UseVisualStyleBackColor = true;
             // 
             // eventName
             // 
@@ -91,6 +74,30 @@
             eventDescription.Name = "eventDescription";
             eventDescription.ReadOnly = true;
             eventDescription.Width = 260;
+            // 
+            // btnAccept
+            // 
+            btnAccept.BackColor = Color.Orange;
+            btnAccept.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAccept.ForeColor = Color.DarkGreen;
+            btnAccept.Location = new Point(651, 73);
+            btnAccept.Name = "btnAccept";
+            btnAccept.Size = new Size(126, 57);
+            btnAccept.TabIndex = 1;
+            btnAccept.Text = "Accept";
+            btnAccept.UseVisualStyleBackColor = false;
+            // 
+            // btnDecline
+            // 
+            btnDecline.BackColor = Color.Orange;
+            btnDecline.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDecline.ForeColor = Color.DarkGreen;
+            btnDecline.Location = new Point(651, 152);
+            btnDecline.Name = "btnDecline";
+            btnDecline.Size = new Size(126, 57);
+            btnDecline.TabIndex = 2;
+            btnDecline.Text = "Decline";
+            btnDecline.UseVisualStyleBackColor = false;
             // 
             // EventInvites
             // 
