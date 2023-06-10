@@ -33,10 +33,6 @@
             panelHeader=new Panel();
             labelHeader=new Label();
             dataGridViewEvent=new DataGridView();
-            eventBindingSource=new BindingSource(components);
-            buttonAdd=new Button();
-            buttonView=new Button();
-            buttonDelete=new Button();
             idDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
             eventDateTimeDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
@@ -44,6 +40,10 @@
             streetNumberDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
             cityDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
             stateDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
+            eventBindingSource=new BindingSource(components);
+            buttonAdd=new Button();
+            buttonView=new Button();
+            buttonDelete=new Button();
             tableLayoutPanelEvent.SuspendLayout();
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEvent).BeginInit();
@@ -115,50 +115,6 @@
             dataGridViewEvent.TabIndex=1;
             dataGridViewEvent.CellContentClick+=dataGridViewEvent_CellContentClick;
             // 
-            // eventBindingSource
-            // 
-            eventBindingSource.DataSource=typeof(Models.Event);
-            // 
-            // buttonAdd
-            // 
-            buttonAdd.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            buttonAdd.BackColor=Color.Orange;
-            buttonAdd.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAdd.ForeColor=Color.DarkGreen;
-            buttonAdd.Location=new Point(117, 307);
-            buttonAdd.Name="buttonAdd";
-            buttonAdd.Size=new Size(108, 23);
-            buttonAdd.TabIndex=2;
-            buttonAdd.Text="Add";
-            buttonAdd.UseVisualStyleBackColor=false;
-            buttonAdd.Click+=buttonAdd_Click;
-            // 
-            // buttonView
-            // 
-            buttonView.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            buttonView.BackColor=Color.Orange;
-            buttonView.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonView.ForeColor=Color.DarkGreen;
-            buttonView.Location=new Point(231, 307);
-            buttonView.Name="buttonView";
-            buttonView.Size=new Size(108, 23);
-            buttonView.TabIndex=3;
-            buttonView.Text="View";
-            buttonView.UseVisualStyleBackColor=false;
-            // 
-            // buttonDelete
-            // 
-            buttonDelete.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            buttonDelete.BackColor=Color.Orange;
-            buttonDelete.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDelete.ForeColor=Color.DarkGreen;
-            buttonDelete.Location=new Point(345, 307);
-            buttonDelete.Name="buttonDelete";
-            buttonDelete.Size=new Size(108, 23);
-            buttonDelete.TabIndex=4;
-            buttonDelete.Text="Delete";
-            buttonDelete.UseVisualStyleBackColor=false;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             idDataGridViewTextBoxColumn.DataPropertyName="Id";
@@ -200,6 +156,50 @@
             stateDataGridViewTextBoxColumn.DataPropertyName="State";
             stateDataGridViewTextBoxColumn.HeaderText="State";
             stateDataGridViewTextBoxColumn.Name="stateDataGridViewTextBoxColumn";
+            // 
+            // eventBindingSource
+            // 
+            eventBindingSource.DataSource=typeof(Models.Event);
+            // 
+            // buttonAdd
+            // 
+            buttonAdd.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            buttonAdd.BackColor=Color.Orange;
+            buttonAdd.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAdd.ForeColor=Color.DarkGreen;
+            buttonAdd.Location=new Point(117, 307);
+            buttonAdd.Name="buttonAdd";
+            buttonAdd.Size=new Size(108, 23);
+            buttonAdd.TabIndex=1;
+            buttonAdd.Text="Add";
+            buttonAdd.UseVisualStyleBackColor=false;
+            buttonAdd.Click+=buttonAdd_Click;
+            // 
+            // buttonView
+            // 
+            buttonView.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            buttonView.BackColor=Color.Orange;
+            buttonView.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonView.ForeColor=Color.DarkGreen;
+            buttonView.Location=new Point(231, 307);
+            buttonView.Name="buttonView";
+            buttonView.Size=new Size(108, 23);
+            buttonView.TabIndex=2;
+            buttonView.Text="View";
+            buttonView.UseVisualStyleBackColor=false;
+            // 
+            // buttonDelete
+            // 
+            buttonDelete.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            buttonDelete.BackColor=Color.Orange;
+            buttonDelete.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonDelete.ForeColor=Color.DarkGreen;
+            buttonDelete.Location=new Point(345, 307);
+            buttonDelete.Name="buttonDelete";
+            buttonDelete.Size=new Size(108, 23);
+            buttonDelete.TabIndex=3;
+            buttonDelete.Text="Delete";
+            buttonDelete.UseVisualStyleBackColor=false;
             // 
             // ucEventPlanner
             // 
