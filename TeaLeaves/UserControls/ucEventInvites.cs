@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
@@ -26,15 +25,20 @@ namespace TeaLeaves.UserControls
 
                 dgvEventInvites.DataSource = _events;
 
-                if (dgvEventInvites.Rows.Count > 0)
-                {
-                    dgvEventInvites.Rows[0].Selected = true;
-                }
+                //if (dgvEventInvites.Rows.Count > 0)
+                //{
+                //    dgvEventInvites.Rows[0].Selected = true;
+                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            GetUserEvents();
         }
     }
 }

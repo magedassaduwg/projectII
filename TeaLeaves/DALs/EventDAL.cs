@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
 using System.Data.SqlClient;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -31,8 +32,8 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@City", @event.City);
                     saveCommand.Parameters.AddWithValue("@Zipcode", @event.Zipcode.ToString().TrimStart('0'));
                     saveCommand.Parameters.AddWithValue("@StreetNumber", @event.StreetNumber);
-                    saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
-                    saveCommand.Parameters.AddWithValue("@CreatorId", @event.UserId);
+                    saveCommand.Parameters.AddWithValue("@DateTime", @event.EventDateTime);
+                    saveCommand.Parameters.AddWithValue("@UserId", CurrentUserStore.User.UserId);
 
                     int rowsAffected = saveCommand.ExecuteNonQuery();
                     return rowsAffected > 0;
@@ -51,11 +52,11 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description " +
+                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description " +
                     "FROM Events e " +
-                    "JOIN EventResponse er " +
-                    "ON e.EventId = er.ReceiverId " +
-                    "WHERE UserId = @UserId;";
+                    "JOIN EventResponses er " +
+                    "ON e.EventID = er.EventID " +
+                    "WHERE er.EventReceiverId = @UserId;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);
@@ -66,7 +67,8 @@ namespace TeaLeaves.DALs
                 {
                     Event userEvent = new Event
                     {
-                        Id = Convert.ToInt32(reader["EventId"]),
+                        Id = Convert.ToInt32(reader["UserEventId"]),
+                        CreatorId = Convert.ToInt32(reader["CreatorId"]),
                         EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
                         State = reader["State"].ToString(),
                         City = reader["City"].ToString(),

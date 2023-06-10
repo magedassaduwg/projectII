@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             dgvEventInvites = new DataGridView();
+            btnAccept = new Button();
+            btnDecline = new Button();
+            btnRefresh = new Button();
             eventName = new DataGridViewTextBoxColumn();
             eventDateAndTime = new DataGridViewTextBoxColumn();
             eventDescription = new DataGridViewTextBoxColumn();
-            btnAccept = new Button();
-            btnDecline = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             SuspendLayout();
             // 
@@ -48,32 +49,9 @@
             dgvEventInvites.Name = "dgvEventInvites";
             dgvEventInvites.ReadOnly = true;
             dgvEventInvites.RowTemplate.Height = 25;
+            dgvEventInvites.ScrollBars = ScrollBars.Vertical;
             dgvEventInvites.Size = new Size(583, 313);
             dgvEventInvites.TabIndex = 0;
-            // 
-            // eventName
-            // 
-            eventName.DataPropertyName = "Name";
-            eventName.HeaderText = "Name";
-            eventName.Name = "eventName";
-            eventName.ReadOnly = true;
-            eventName.Width = 120;
-            // 
-            // eventDateAndTime
-            // 
-            eventDateAndTime.DataPropertyName = "DateTime";
-            eventDateAndTime.HeaderText = "Time";
-            eventDateAndTime.Name = "eventDateAndTime";
-            eventDateAndTime.ReadOnly = true;
-            eventDateAndTime.Width = 160;
-            // 
-            // eventDescription
-            // 
-            eventDescription.DataPropertyName = "Description";
-            eventDescription.HeaderText = "Description";
-            eventDescription.Name = "eventDescription";
-            eventDescription.ReadOnly = true;
-            eventDescription.Width = 260;
             // 
             // btnAccept
             // 
@@ -99,10 +77,51 @@
             btnDecline.Text = "Decline";
             btnDecline.UseVisualStyleBackColor = false;
             // 
+            // btnRefresh
+            // 
+            btnRefresh.BackColor = Color.Orange;
+            btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRefresh.ForeColor = Color.DarkGreen;
+            btnRefresh.Location = new Point(589, 172);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(126, 57);
+            btnRefresh.TabIndex = 3;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // eventName
+            // 
+            eventName.DataPropertyName = "Name";
+            eventName.Frozen = true;
+            eventName.HeaderText = "Name";
+            eventName.Name = "eventName";
+            eventName.ReadOnly = true;
+            eventName.Width = 120;
+            // 
+            // eventDateAndTime
+            // 
+            eventDateAndTime.DataPropertyName = "DateTime";
+            eventDateAndTime.Frozen = true;
+            eventDateAndTime.HeaderText = "Time";
+            eventDateAndTime.Name = "eventDateAndTime";
+            eventDateAndTime.ReadOnly = true;
+            eventDateAndTime.Width = 160;
+            // 
+            // eventDescription
+            // 
+            eventDescription.DataPropertyName = "Description";
+            eventDescription.Frozen = true;
+            eventDescription.HeaderText = "Description";
+            eventDescription.Name = "eventDescription";
+            eventDescription.ReadOnly = true;
+            eventDescription.Width = 260;
+            // 
             // ucEventInvites
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnRefresh);
             Controls.Add(btnDecline);
             Controls.Add(btnAccept);
             Controls.Add(dgvEventInvites);
@@ -117,6 +136,7 @@
         private DataGridView dgvEventInvites;
         private Button btnAccept;
         private Button btnDecline;
+        private Button btnRefresh;
         private DataGridViewTextBoxColumn eventName;
         private DataGridViewTextBoxColumn eventDateAndTime;
         private DataGridViewTextBoxColumn eventDescription;
