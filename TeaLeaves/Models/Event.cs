@@ -3,7 +3,7 @@
     /// <summary>
     /// The model class representing the Events table
     /// </summary>
-    public class Event
+    public class Event 
     {
         public int Id { get; set; }
         public string? Description { get; set; }
@@ -13,7 +13,6 @@
         public int Zipcode { get; set; }
         public string? StreetNumber { get; set; }
         public DateTime EventDateTime { get; set; }
-
-      
+        public int UserId { get; internal set; }
     }
 }

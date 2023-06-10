@@ -47,6 +47,7 @@
             buttonSave=new Button();
             buttonClose=new Button();
             labelError=new Label();
+            textBoxZip=new TextBox();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownHour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownMinute).BeginInit();
@@ -80,6 +81,7 @@
             tableLayoutPanelAddEvent.Controls.Add(buttonSave, 2, 5);
             tableLayoutPanelAddEvent.Controls.Add(buttonClose, 3, 5);
             tableLayoutPanelAddEvent.Controls.Add(labelError, 0, 5);
+            tableLayoutPanelAddEvent.Controls.Add(textBoxZip, 5, 1);
             tableLayoutPanelAddEvent.Dock=DockStyle.Fill;
             tableLayoutPanelAddEvent.Location=new Point(0, 0);
             tableLayoutPanelAddEvent.Name="tableLayoutPanelAddEvent";
@@ -297,13 +299,22 @@
             labelError.Size=new Size(320, 15);
             labelError.TabIndex=17;
             // 
-            // EventsForm
+            // textBoxZip
+            // 
+            textBoxZip.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            textBoxZip.Location=new Point(691, 89);
+            textBoxZip.Name="textBoxZip";
+            textBoxZip.Size=new Size(106, 23);
+            textBoxZip.TabIndex=18;
+            textBoxZip.TextChanged+=textBoxZip_TextChanged;
+            // 
+            // AddEventForm
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             ClientSize=new Size(800, 450);
             Controls.Add(tableLayoutPanelAddEvent);
-            Name="EventsForm";
+            Name="AddEventForm";
             StartPosition=FormStartPosition.CenterScreen;
             Text="EventsForm";
             Load+=EventsForm_Load;
@@ -335,5 +346,6 @@
         private Button buttonSave;
         private Button buttonClose;
         private Label labelError;
+        private TextBox textBoxZip;
     }
 }

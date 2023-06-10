@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System.Data.SqlClient;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -15,8 +16,9 @@ namespace TeaLeaves.DALs
         /// <returns></returns>
         public bool SaveEvent(Event @event)
         {
-            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, EventDateTime) 
-                             VALUES (@Description, @Name, @State, @City, @StreetNumber, @DateTime)";
+
+            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
+                             VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
@@ -27,8 +29,10 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@Name", @event.Name);
                     saveCommand.Parameters.AddWithValue("@State", @event.State);
                     saveCommand.Parameters.AddWithValue("@City", @event.City);
+                    saveCommand.Parameters.AddWithValue("@Zipcode", @event.Zipcode.ToString().TrimStart('0'));
                     saveCommand.Parameters.AddWithValue("@StreetNumber", @event.StreetNumber);
-                    saveCommand.Parameters.AddWithValue("@DateTime", @event.DateTime);
+                    saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
+                    saveCommand.Parameters.AddWithValue("@CreatorId", @event.UserId);
 
                     int rowsAffected = saveCommand.ExecuteNonQuery();
                     return rowsAffected > 0;
@@ -63,7 +67,7 @@ namespace TeaLeaves.DALs
                     Event userEvent = new Event
                     {
                         Id = Convert.ToInt32(reader["EventId"]),
-                        DateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                        EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
                         State = reader["State"].ToString(),
                         City = reader["City"].ToString(),
                         StreetNumber = reader["StreetNumber"].ToString(),

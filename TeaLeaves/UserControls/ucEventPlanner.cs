@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeaLeaves.Models;
 using TeaLeaves.Views;
 
 namespace TeaLeaves.UserControls
@@ -18,10 +19,11 @@ namespace TeaLeaves.UserControls
             InitializeComponent();
         }
 
+        public User UserId { get; private set; }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            using (EventsForm eventForm = new EventsForm())
+            using (AddEventForm eventForm = new AddEventForm(UserId))
                 eventForm.ShowDialog();
         }
 
