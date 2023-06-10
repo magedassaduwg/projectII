@@ -3,7 +3,7 @@
     /// <summary>
     /// The model class representing the Events table
     /// </summary>
-    public class Event
+    public class Event 
     {
         public string? Name { get; set; }
         public DateTime EventDateTime { get; set; }

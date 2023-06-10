@@ -11,11 +11,13 @@ namespace TeaLeaves.Views
     {
         private EventController _eventController;
         private Event _event;
-        public AddEventForm()
+        private User _user;
+        public AddEventForm(User verifiedUser)
         {
             InitializeComponent();
             _eventController = new EventController();
             _event = new Event();
+            _user = verifiedUser;
         }
 
         private void EventsForm_Load(object sender, EventArgs e)
@@ -66,10 +68,12 @@ namespace TeaLeaves.Views
 
             if (IsFormValid())
             {
+                _event.UserId = _user.UserId;
                 _event.Name = textBoxEName.Text.Trim();
                 _event.StreetNumber = textBoxStreetName.Text.Trim();
                 _event.State =comboBoxState.SelectedItem.ToString();
                 _event.City = textBoxCity.Text.Trim();
+              //  _event.Zipcode = textBoxZip.Text.Trim();
                 _event.Description = richTextBoxDescription.Text.Trim();
                 _event.EventDateTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
                 try
@@ -131,5 +135,19 @@ namespace TeaLeaves.Views
         {
             dateTimePickerEvent.MinDate = DateTime.Now.Date;
         }
+
+        private void textBoxZip_TextChanged(object sender, EventArgs e)
+        {
+            labelError.Text = string.Empty;
+            if (!int.TryParse(textBoxZip.Text.Trim(), out int zipcode))
+            {
+                labelError.Text = "Invalid ZIP code";
+            }
+            else
+            {
+                _event.Zipcode = zipcode;
+            }
+        }
+
     }
 }

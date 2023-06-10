@@ -9,6 +9,7 @@ namespace TeaLeaves.UserControls
             InitializeComponent();
         }
 
+        public User UserId { get; private set; }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {

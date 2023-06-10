@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System.Data.SqlClient;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
@@ -16,8 +17,9 @@ namespace TeaLeaves.DALs
         /// <returns></returns>
         public bool SaveEvent(Event @event)
         {
-            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, EventDateTime, CreatorId) 
-                             VALUES (@Description, @Name, @State, @City, @StreetNumber, @DateTime, @UserId)";
+
+            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
+                             VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
@@ -28,6 +30,7 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@Name", @event.Name);
                     saveCommand.Parameters.AddWithValue("@State", @event.State);
                     saveCommand.Parameters.AddWithValue("@City", @event.City);
+                    saveCommand.Parameters.AddWithValue("@Zipcode", @event.Zipcode.ToString().TrimStart('0'));
                     saveCommand.Parameters.AddWithValue("@StreetNumber", @event.StreetNumber);
                     saveCommand.Parameters.AddWithValue("@DateTime", @event.EventDateTime);
                     saveCommand.Parameters.AddWithValue("@UserId", CurrentUserStore.User.UserId);
