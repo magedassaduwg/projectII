@@ -82,5 +82,46 @@ namespace TeaLeaves.DALs
             }
             return userEvents;
             }
+        public List<Event> GetEventsByUserId(int userId)
+        {
+            List<Event> events = new List<Event>();
+
+            string query = @"SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description
+                     FROM Events
+                     WHERE CreatorId = @UserId";
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Event @event = new Event
+                            {
+                                Id = Convert.ToInt32(reader["EventId"]),
+                                EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                                State = reader["State"].ToString(),
+                                City = reader["City"].ToString(),
+                                StreetNumber = reader["StreetNumber"].ToString(),
+                                Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                                Name = reader["Name"].ToString(),
+                                Description = reader["Description"].ToString(),
+                            };
+
+                            events.Add(@event);
+                        }
+                    }
+                }
+            }
+
+            return events;
+        }
+
     }
 }
