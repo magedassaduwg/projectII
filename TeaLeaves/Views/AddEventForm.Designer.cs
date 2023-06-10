@@ -160,15 +160,18 @@
             textBoxEName.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(textBoxEName, 4);
             textBoxEName.Location=new Point(200, 22);
+            textBoxEName.MaxLength=100;
             textBoxEName.Name="textBoxEName";
             textBoxEName.Size=new Size(485, 23);
             textBoxEName.TabIndex=5;
+            textBoxEName.TextChanged+=textBoxEName_TextChanged;
             // 
             // textBoxStreetName
             // 
             textBoxStreetName.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(textBoxStreetName, 2);
             textBoxStreetName.Location=new Point(200, 89);
+            textBoxStreetName.MaxLength=50;
             textBoxStreetName.Name="textBoxStreetName";
             textBoxStreetName.PlaceholderText="Street Name";
             textBoxStreetName.Size=new Size(249, 23);
@@ -178,6 +181,7 @@
             // 
             textBoxCity.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             textBoxCity.Location=new Point(455, 89);
+            textBoxCity.MaxLength=25;
             textBoxCity.Name="textBoxCity";
             textBoxCity.PlaceholderText="City";
             textBoxCity.Size=new Size(115, 23);
@@ -244,7 +248,7 @@
             numericUpDownMinute.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             numericUpDownMinute.Font=new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             numericUpDownMinute.Location=new Point(576, 220);
-            numericUpDownMinute.Maximum=new decimal(new int[] { 60, 0, 0, 0 });
+            numericUpDownMinute.Maximum=new decimal(new int[] { 59, 0, 0, 0 });
             numericUpDownMinute.Name="numericUpDownMinute";
             numericUpDownMinute.Size=new Size(109, 29);
             numericUpDownMinute.TabIndex=13;
@@ -255,6 +259,7 @@
             richTextBoxDescription.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(richTextBoxDescription, 4);
             richTextBoxDescription.Location=new Point(200, 271);
+            richTextBoxDescription.MaxLength=250;
             richTextBoxDescription.Name="richTextBoxDescription";
             richTextBoxDescription.Size=new Size(485, 106);
             richTextBoxDescription.TabIndex=14;
@@ -303,10 +308,13 @@
             // 
             textBoxZip.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             textBoxZip.Location=new Point(691, 89);
+            textBoxZip.MaxLength=5;
             textBoxZip.Name="textBoxZip";
+            textBoxZip.PlaceholderText="Zip Code";
             textBoxZip.Size=new Size(106, 23);
             textBoxZip.TabIndex=18;
             textBoxZip.TextChanged+=textBoxZip_TextChanged;
+            textBoxZip.KeyPress+=textBoxZip_KeyPress;
             // 
             // AddEventForm
             // 
