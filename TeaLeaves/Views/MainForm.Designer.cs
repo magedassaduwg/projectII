@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControlMain=new TabControl();
-            tabPageMessage=new TabPage();
-            tabPageEvent=new TabPage();
-            ucEventPlanner1=new UserControls.ucEventPlanner();
-            tabPageInvites=new TabPage();
-            tabPageContact=new TabPage();
+            tabControlMain = new TabControl();
+            tabPageMessage = new TabPage();
+            tabPageEvent = new TabPage();
+            ucEventPlanner1 = new UserControls.ucEventPlanner();
+            tabPageInvites = new TabPage();
+            tabPageContact = new TabPage();
+            button1 = new Button();
             tabControlMain.SuspendLayout();
+            tabPageMessage.SuspendLayout();
             tabPageEvent.SuspendLayout();
             SuspendLayout();
             // 
@@ -44,72 +46,83 @@
             tabControlMain.Controls.Add(tabPageEvent);
             tabControlMain.Controls.Add(tabPageInvites);
             tabControlMain.Controls.Add(tabPageContact);
-            tabControlMain.Dock=DockStyle.Fill;
-            tabControlMain.Location=new Point(0, 0);
-            tabControlMain.Name="tabControlMain";
-            tabControlMain.SelectedIndex=0;
-            tabControlMain.Size=new Size(564, 359);
-            tabControlMain.TabIndex=0;
+            tabControlMain.Dock = DockStyle.Fill;
+            tabControlMain.Location = new Point(0, 0);
+            tabControlMain.Name = "tabControlMain";
+            tabControlMain.SelectedIndex = 0;
+            tabControlMain.Size = new Size(564, 359);
+            tabControlMain.TabIndex = 0;
             // 
             // tabPageMessage
             // 
-            tabPageMessage.Location=new Point(4, 24);
-            tabPageMessage.Name="tabPageMessage";
-            tabPageMessage.Padding=new Padding(3);
-            tabPageMessage.Size=new Size(556, 331);
-            tabPageMessage.TabIndex=0;
-            tabPageMessage.Text="Message";
-            tabPageMessage.UseVisualStyleBackColor=true;
+            tabPageMessage.Controls.Add(button1);
+            tabPageMessage.Location = new Point(4, 24);
+            tabPageMessage.Name = "tabPageMessage";
+            tabPageMessage.Padding = new Padding(3);
+            tabPageMessage.Size = new Size(556, 331);
+            tabPageMessage.TabIndex = 0;
+            tabPageMessage.Text = "Message";
+            tabPageMessage.UseVisualStyleBackColor = true;
             // 
             // tabPageEvent
             // 
             tabPageEvent.Controls.Add(ucEventPlanner1);
-            tabPageEvent.Location=new Point(4, 24);
-            tabPageEvent.Name="tabPageEvent";
-            tabPageEvent.Padding=new Padding(3);
-            tabPageEvent.Size=new Size(556, 331);
-            tabPageEvent.TabIndex=1;
-            tabPageEvent.Text="Event Planner";
-            tabPageEvent.UseVisualStyleBackColor=true;
+            tabPageEvent.Location = new Point(4, 24);
+            tabPageEvent.Name = "tabPageEvent";
+            tabPageEvent.Padding = new Padding(3);
+            tabPageEvent.Size = new Size(556, 331);
+            tabPageEvent.TabIndex = 1;
+            tabPageEvent.Text = "Event Planner";
+            tabPageEvent.UseVisualStyleBackColor = true;
             // 
             // ucEventPlanner1
             // 
-            ucEventPlanner1.Dock=DockStyle.Fill;
-            ucEventPlanner1.Location=new Point(3, 3);
-            ucEventPlanner1.Name="ucEventPlanner1";
-            ucEventPlanner1.Size=new Size(550, 325);
-            ucEventPlanner1.TabIndex=1;
-         
+            ucEventPlanner1.Dock = DockStyle.Fill;
+            ucEventPlanner1.Location = new Point(3, 3);
+            ucEventPlanner1.Name = "ucEventPlanner1";
+            ucEventPlanner1.Size = new Size(550, 325);
+            ucEventPlanner1.TabIndex = 1;
             // 
             // tabPageInvites
             // 
-            tabPageInvites.Location=new Point(4, 24);
-            tabPageInvites.Name="tabPageInvites";
-            tabPageInvites.Padding=new Padding(3);
-            tabPageInvites.Size=new Size(556, 331);
-            tabPageInvites.TabIndex=2;
-            tabPageInvites.Text="Event Invite";
-            tabPageInvites.UseVisualStyleBackColor=true;
+            tabPageInvites.Location = new Point(4, 24);
+            tabPageInvites.Name = "tabPageInvites";
+            tabPageInvites.Padding = new Padding(3);
+            tabPageInvites.Size = new Size(556, 331);
+            tabPageInvites.TabIndex = 2;
+            tabPageInvites.Text = "Event Invite";
+            tabPageInvites.UseVisualStyleBackColor = true;
             // 
             // tabPageContact
             // 
-            tabPageContact.Location=new Point(4, 24);
-            tabPageContact.Name="tabPageContact";
-            tabPageContact.Padding=new Padding(3);
-            tabPageContact.Size=new Size(556, 331);
-            tabPageContact.TabIndex=3;
-            tabPageContact.Text="Contact";
-            tabPageContact.UseVisualStyleBackColor=true;
+            tabPageContact.Location = new Point(4, 24);
+            tabPageContact.Name = "tabPageContact";
+            tabPageContact.Padding = new Padding(3);
+            tabPageContact.Size = new Size(556, 331);
+            tabPageContact.TabIndex = 3;
+            tabPageContact.Text = "Contact";
+            tabPageContact.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(110, 80);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // MainForm
             // 
-            AutoScaleDimensions=new SizeF(7F, 15F);
-            AutoScaleMode=AutoScaleMode.Font;
-            ClientSize=new Size(564, 359);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(564, 359);
             Controls.Add(tabControlMain);
-            Name="MainForm";
-            Text="MainForm";
+            Name = "MainForm";
+            Text = "MainForm";
             tabControlMain.ResumeLayout(false);
+            tabPageMessage.ResumeLayout(false);
             tabPageEvent.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -123,5 +136,6 @@
         private TabPage tabPageInvites;
         private TabPage tabPageContact;
         private TableLayoutPanel tableLayoutPanel1;
+        private Button button1;
     }
 }
