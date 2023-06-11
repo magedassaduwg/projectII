@@ -33,10 +33,6 @@
             panelHeader=new Panel();
             labelHeader=new Label();
             dataGridViewEvent=new DataGridView();
-            eventBindingSource=new BindingSource(components);
-            buttonAdd=new Button();
-            buttonView=new Button();
-            buttonDelete=new Button();
             idDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
             eventDateTimeDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
@@ -44,6 +40,11 @@
             streetNumberDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
             cityDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
             stateDataGridViewTextBoxColumn=new DataGridViewTextBoxColumn();
+            Zipcode=new DataGridViewTextBoxColumn();
+            eventBindingSource=new BindingSource(components);
+            buttonAdd=new Button();
+            buttonView=new Button();
+            buttonDelete=new Button();
             tableLayoutPanelEvent.SuspendLayout();
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEvent).BeginInit();
@@ -101,19 +102,77 @@
             // 
             // dataGridViewEvent
             // 
+            dataGridViewEvent.AllowUserToAddRows=false;
+            dataGridViewEvent.AllowUserToDeleteRows=false;
             dataGridViewEvent.AutoGenerateColumns=false;
             dataGridViewEvent.BackgroundColor=Color.PapayaWhip;
             dataGridViewEvent.ColumnHeadersHeightSizeMode=DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewEvent.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, eventDateTimeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, streetNumberDataGridViewTextBoxColumn, cityDataGridViewTextBoxColumn, stateDataGridViewTextBoxColumn });
+            dataGridViewEvent.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, eventDateTimeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, streetNumberDataGridViewTextBoxColumn, cityDataGridViewTextBoxColumn, stateDataGridViewTextBoxColumn, Zipcode });
             tableLayoutPanelEvent.SetColumnSpan(dataGridViewEvent, 5);
             dataGridViewEvent.DataSource=eventBindingSource;
             dataGridViewEvent.Dock=DockStyle.Fill;
             dataGridViewEvent.Location=new Point(3, 59);
             dataGridViewEvent.Name="dataGridViewEvent";
+            dataGridViewEvent.ReadOnly=true;
             dataGridViewEvent.RowTemplate.Height=25;
             dataGridViewEvent.Size=new Size(565, 219);
             dataGridViewEvent.TabIndex=1;
-            dataGridViewEvent.CellContentClick+=dataGridViewEvent_CellContentClick;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.DataPropertyName="Id";
+            idDataGridViewTextBoxColumn.HeaderText="Id";
+            idDataGridViewTextBoxColumn.Name="idDataGridViewTextBoxColumn";
+            idDataGridViewTextBoxColumn.ReadOnly=true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.DataPropertyName="Name";
+            nameDataGridViewTextBoxColumn.HeaderText="Name";
+            nameDataGridViewTextBoxColumn.Name="nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.ReadOnly=true;
+            // 
+            // eventDateTimeDataGridViewTextBoxColumn
+            // 
+            eventDateTimeDataGridViewTextBoxColumn.DataPropertyName="EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn.HeaderText="Date & Time";
+            eventDateTimeDataGridViewTextBoxColumn.Name="eventDateTimeDataGridViewTextBoxColumn";
+            eventDateTimeDataGridViewTextBoxColumn.ReadOnly=true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName="Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText="Description";
+            descriptionDataGridViewTextBoxColumn.Name="descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly=true;
+            // 
+            // streetNumberDataGridViewTextBoxColumn
+            // 
+            streetNumberDataGridViewTextBoxColumn.DataPropertyName="StreetNumber";
+            streetNumberDataGridViewTextBoxColumn.HeaderText="StreetNumber";
+            streetNumberDataGridViewTextBoxColumn.Name="streetNumberDataGridViewTextBoxColumn";
+            streetNumberDataGridViewTextBoxColumn.ReadOnly=true;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            cityDataGridViewTextBoxColumn.DataPropertyName="City";
+            cityDataGridViewTextBoxColumn.HeaderText="City";
+            cityDataGridViewTextBoxColumn.Name="cityDataGridViewTextBoxColumn";
+            cityDataGridViewTextBoxColumn.ReadOnly=true;
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            stateDataGridViewTextBoxColumn.DataPropertyName="State";
+            stateDataGridViewTextBoxColumn.HeaderText="State";
+            stateDataGridViewTextBoxColumn.Name="stateDataGridViewTextBoxColumn";
+            stateDataGridViewTextBoxColumn.ReadOnly=true;
+            // 
+            // Zipcode
+            // 
+            Zipcode.DataPropertyName="Zipcode";
+            Zipcode.HeaderText="Zipcode";
+            Zipcode.Name="Zipcode";
+            Zipcode.ReadOnly=true;
             // 
             // eventBindingSource
             // 
@@ -128,7 +187,7 @@
             buttonAdd.Location=new Point(117, 307);
             buttonAdd.Name="buttonAdd";
             buttonAdd.Size=new Size(108, 23);
-            buttonAdd.TabIndex=2;
+            buttonAdd.TabIndex=1;
             buttonAdd.Text="Add";
             buttonAdd.UseVisualStyleBackColor=false;
             buttonAdd.Click+=buttonAdd_Click;
@@ -142,7 +201,7 @@
             buttonView.Location=new Point(231, 307);
             buttonView.Name="buttonView";
             buttonView.Size=new Size(108, 23);
-            buttonView.TabIndex=3;
+            buttonView.TabIndex=2;
             buttonView.Text="View";
             buttonView.UseVisualStyleBackColor=false;
             // 
@@ -155,51 +214,9 @@
             buttonDelete.Location=new Point(345, 307);
             buttonDelete.Name="buttonDelete";
             buttonDelete.Size=new Size(108, 23);
-            buttonDelete.TabIndex=4;
+            buttonDelete.TabIndex=3;
             buttonDelete.Text="Delete";
             buttonDelete.UseVisualStyleBackColor=false;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            idDataGridViewTextBoxColumn.DataPropertyName="Id";
-            idDataGridViewTextBoxColumn.HeaderText="Id";
-            idDataGridViewTextBoxColumn.Name="idDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            nameDataGridViewTextBoxColumn.DataPropertyName="Name";
-            nameDataGridViewTextBoxColumn.HeaderText="Name";
-            nameDataGridViewTextBoxColumn.Name="nameDataGridViewTextBoxColumn";
-            // 
-            // eventDateTimeDataGridViewTextBoxColumn
-            // 
-            eventDateTimeDataGridViewTextBoxColumn.DataPropertyName="EventDateTime";
-            eventDateTimeDataGridViewTextBoxColumn.HeaderText="Date & Time";
-            eventDateTimeDataGridViewTextBoxColumn.Name="eventDateTimeDataGridViewTextBoxColumn";
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            descriptionDataGridViewTextBoxColumn.DataPropertyName="Description";
-            descriptionDataGridViewTextBoxColumn.HeaderText="Description";
-            descriptionDataGridViewTextBoxColumn.Name="descriptionDataGridViewTextBoxColumn";
-            // 
-            // streetNumberDataGridViewTextBoxColumn
-            // 
-            streetNumberDataGridViewTextBoxColumn.DataPropertyName="StreetNumber";
-            streetNumberDataGridViewTextBoxColumn.HeaderText="StreetNumber";
-            streetNumberDataGridViewTextBoxColumn.Name="streetNumberDataGridViewTextBoxColumn";
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            cityDataGridViewTextBoxColumn.DataPropertyName="City";
-            cityDataGridViewTextBoxColumn.HeaderText="City";
-            cityDataGridViewTextBoxColumn.Name="cityDataGridViewTextBoxColumn";
-            // 
-            // stateDataGridViewTextBoxColumn
-            // 
-            stateDataGridViewTextBoxColumn.DataPropertyName="State";
-            stateDataGridViewTextBoxColumn.HeaderText="State";
-            stateDataGridViewTextBoxColumn.Name="stateDataGridViewTextBoxColumn";
             // 
             // ucEventPlanner
             // 
@@ -208,6 +225,7 @@
             Controls.Add(tableLayoutPanelEvent);
             Name="ucEventPlanner";
             Size=new Size(571, 376);
+            Load+=ucEventPlanner_Load;
             tableLayoutPanelEvent.ResumeLayout(false);
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
@@ -233,5 +251,6 @@
         private DataGridViewTextBoxColumn streetNumberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Zipcode;
     }
 }

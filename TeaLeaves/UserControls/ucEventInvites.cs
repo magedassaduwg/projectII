@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
@@ -7,36 +6,39 @@ namespace TeaLeaves.UserControls
 {
     public partial class ucEventInvites : UserControl
     {
-        EventResponseController _eventResponseController;
+        EventController _eventController;
         List<Event> _events;
 
         public ucEventInvites()
         {
             InitializeComponent();
-            _eventResponseController = new EventResponseController();
+            _eventController = new EventController();
             _events = new List<Event>();
+            //GetUserEvents();
         }
-
-        //CurrentUserStore.User
 
         private void GetUserEvents()
         {
-            //try
-            //{
-            //    _events = _eventResponseController.GetEventResponses(CurrentUserStore.User.UserId)
-            //    lblPatientName.Text = $"{_user.FirstName} {_user.LastName}";
+            try
+            {
+                _events = _eventController.GetEventsReceivedByUserId(CurrentUserStore.User.UserId);
 
-            //    dgAppointments.DataSource = _appointments;
+                dgvEventInvites.DataSource = _events;
 
-            //    if (dgAppointments.Rows.Count > 0)
-            //    {
-            //        dgAppointments.Rows[0].Selected = true;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, ex.GetType().ToString());
-            //}
+                //if (dgvEventInvites.Rows.Count > 0)
+                //{
+                //    dgvEventInvites.Rows[0].Selected = true;
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            GetUserEvents();
         }
     }
 }

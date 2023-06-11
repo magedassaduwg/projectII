@@ -2,6 +2,8 @@ using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 using TeaLeaves.Views;
+using System;
+using System.Windows.Forms;
 
 namespace TeaLeaves
 {
@@ -42,10 +44,11 @@ namespace TeaLeaves
                 {
                     CurrentUserStore.SetCurrentUser(verifiedUser);
 
-                    MainForm mainForm = new MainForm(verifiedUser);
-                   
-                    mainForm.Show();
-                    this.Hide();
+                    // MainForm mainForm = new MainForm(verifiedUser);
+
+                    using (EventForm mainForm = new EventForm())
+                        mainForm.ShowDialog();
+                    //this.Hide();
                 }
                 else
                 {
@@ -68,7 +71,6 @@ namespace TeaLeaves
             using (RegisterForm registerForm = new RegisterForm(this))
             {
                 registerForm.ShowDialog();
-
             }
         }
 

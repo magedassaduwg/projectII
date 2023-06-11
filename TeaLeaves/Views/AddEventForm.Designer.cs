@@ -1,6 +1,6 @@
 ﻿namespace TeaLeaves.Views
 {
-    partial class EventsForm
+    partial class AddEventForm
     {
         /// <summary>
         /// Required designer variable.
@@ -47,6 +47,7 @@
             buttonSave=new Button();
             buttonClose=new Button();
             labelError=new Label();
+            textBoxZip=new TextBox();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownHour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownMinute).BeginInit();
@@ -80,6 +81,7 @@
             tableLayoutPanelAddEvent.Controls.Add(buttonSave, 2, 5);
             tableLayoutPanelAddEvent.Controls.Add(buttonClose, 3, 5);
             tableLayoutPanelAddEvent.Controls.Add(labelError, 0, 5);
+            tableLayoutPanelAddEvent.Controls.Add(textBoxZip, 5, 1);
             tableLayoutPanelAddEvent.Dock=DockStyle.Fill;
             tableLayoutPanelAddEvent.Location=new Point(0, 0);
             tableLayoutPanelAddEvent.Name="tableLayoutPanelAddEvent";
@@ -158,28 +160,32 @@
             textBoxEName.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(textBoxEName, 4);
             textBoxEName.Location=new Point(200, 22);
+            textBoxEName.MaxLength=100;
             textBoxEName.Name="textBoxEName";
             textBoxEName.Size=new Size(485, 23);
-            textBoxEName.TabIndex=5;
+            textBoxEName.TabIndex=1;
+            textBoxEName.TextChanged+=textBoxEName_TextChanged;
             // 
             // textBoxStreetName
             // 
             textBoxStreetName.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(textBoxStreetName, 2);
             textBoxStreetName.Location=new Point(200, 89);
+            textBoxStreetName.MaxLength=50;
             textBoxStreetName.Name="textBoxStreetName";
             textBoxStreetName.PlaceholderText="Street Name";
             textBoxStreetName.Size=new Size(249, 23);
-            textBoxStreetName.TabIndex=6;
+            textBoxStreetName.TabIndex=2;
             // 
             // textBoxCity
             // 
             textBoxCity.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             textBoxCity.Location=new Point(455, 89);
+            textBoxCity.MaxLength=25;
             textBoxCity.Name="textBoxCity";
             textBoxCity.PlaceholderText="City";
             textBoxCity.Size=new Size(115, 23);
-            textBoxCity.TabIndex=7;
+            textBoxCity.TabIndex=3;
             // 
             // comboBoxState
             // 
@@ -188,7 +194,7 @@
             comboBoxState.Location=new Point(576, 89);
             comboBoxState.Name="comboBoxState";
             comboBoxState.Size=new Size(109, 23);
-            comboBoxState.TabIndex=8;
+            comboBoxState.TabIndex=4;
             // 
             // dateTimePickerEvent
             // 
@@ -197,7 +203,7 @@
             dateTimePickerEvent.Location=new Point(200, 156);
             dateTimePickerEvent.Name="dateTimePickerEvent";
             dateTimePickerEvent.Size=new Size(249, 23);
-            dateTimePickerEvent.TabIndex=9;
+            dateTimePickerEvent.TabIndex=6;
             dateTimePickerEvent.ValueChanged+=dateTimePickerEvent_ValueChanged;
             // 
             // labelHour
@@ -234,7 +240,7 @@
             numericUpDownHour.Maximum=new decimal(new int[] { 23, 0, 0, 0 });
             numericUpDownHour.Name="numericUpDownHour";
             numericUpDownHour.Size=new Size(120, 29);
-            numericUpDownHour.TabIndex=12;
+            numericUpDownHour.TabIndex=7;
             numericUpDownHour.ValueChanged+=numericUpDownHour_ValueChanged;
             // 
             // numericUpDownMinute
@@ -242,10 +248,10 @@
             numericUpDownMinute.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             numericUpDownMinute.Font=new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             numericUpDownMinute.Location=new Point(576, 220);
-            numericUpDownMinute.Maximum=new decimal(new int[] { 60, 0, 0, 0 });
+            numericUpDownMinute.Maximum=new decimal(new int[] { 59, 0, 0, 0 });
             numericUpDownMinute.Name="numericUpDownMinute";
             numericUpDownMinute.Size=new Size(109, 29);
-            numericUpDownMinute.TabIndex=13;
+            numericUpDownMinute.TabIndex=8;
             numericUpDownMinute.ValueChanged+=numericUpDownMinute_ValueChanged;
             // 
             // richTextBoxDescription
@@ -253,9 +259,10 @@
             richTextBoxDescription.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(richTextBoxDescription, 4);
             richTextBoxDescription.Location=new Point(200, 271);
+            richTextBoxDescription.MaxLength=250;
             richTextBoxDescription.Name="richTextBoxDescription";
             richTextBoxDescription.Size=new Size(485, 106);
-            richTextBoxDescription.TabIndex=14;
+            richTextBoxDescription.TabIndex=9;
             richTextBoxDescription.Text="";
             // 
             // buttonSave
@@ -267,7 +274,7 @@
             buttonSave.Location=new Point(329, 403);
             buttonSave.Name="buttonSave";
             buttonSave.Size=new Size(120, 23);
-            buttonSave.TabIndex=15;
+            buttonSave.TabIndex=10;
             buttonSave.Text="Save";
             buttonSave.UseVisualStyleBackColor=false;
             buttonSave.Click+=buttonSave_Click;
@@ -281,7 +288,7 @@
             buttonClose.Location=new Point(455, 403);
             buttonClose.Name="buttonClose";
             buttonClose.Size=new Size(115, 23);
-            buttonClose.TabIndex=16;
+            buttonClose.TabIndex=11;
             buttonClose.Text="Close";
             buttonClose.UseVisualStyleBackColor=false;
             buttonClose.Click+=buttonClose_click;
@@ -297,13 +304,25 @@
             labelError.Size=new Size(320, 15);
             labelError.TabIndex=17;
             // 
-            // EventsForm
+            // textBoxZip
+            // 
+            textBoxZip.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            textBoxZip.Location=new Point(691, 89);
+            textBoxZip.MaxLength=5;
+            textBoxZip.Name="textBoxZip";
+            textBoxZip.PlaceholderText="Zip Code";
+            textBoxZip.Size=new Size(106, 23);
+            textBoxZip.TabIndex=5;
+            textBoxZip.TextChanged+=textBoxZip_TextChanged;
+            textBoxZip.KeyPress+=textBoxZip_KeyPress;
+            // 
+            // AddEventForm
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             ClientSize=new Size(800, 450);
             Controls.Add(tableLayoutPanelAddEvent);
-            Name="EventsForm";
+            Name="AddEventForm";
             StartPosition=FormStartPosition.CenterScreen;
             Text="EventsForm";
             Load+=EventsForm_Load;
@@ -335,5 +354,6 @@
         private Button buttonSave;
         private Button buttonClose;
         private Label labelError;
+        private TextBox textBoxZip;
     }
 }
