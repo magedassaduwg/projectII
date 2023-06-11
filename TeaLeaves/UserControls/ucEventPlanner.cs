@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 using TeaLeaves.Views;
 
@@ -17,20 +9,17 @@ namespace TeaLeaves.UserControls
     {
         private List<Event> _events;
         private EventController _eventController;
-        private User _user;
-        public ucEventPlanner(User user)
+
+        public ucEventPlanner()
         {
             InitializeComponent();
             _eventController = new EventController();
             dataGridViewEvent.AutoGenerateColumns = false;
-            _user = user;
         }
-
-        public User UserId { get; }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            using (AddEventForm eventForm = new AddEventForm(UserId))
+            using (AddEventForm eventForm = new AddEventForm())
                 if (eventForm.ShowDialog() == DialogResult.OK)
                 {
                     InitializeEvents();
@@ -41,11 +30,12 @@ namespace TeaLeaves.UserControls
         {
             InitializeEvents();
         }
+
         private void InitializeEvents()
         {
             try
             {
-                _events = _eventController.GetAllEvents(_user.UserId);
+                _events = _eventController.GetAllEvents(CurrentUserStore.User.UserId);
 
                 dataGridViewEvent.DataSource = _events;
 

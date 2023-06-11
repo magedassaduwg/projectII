@@ -2,7 +2,7 @@
 {
     public partial class MainForm : Form
     {
-        public MainForm(Models.User verifiedUser)
+        public MainForm()
         {
             InitializeComponent();
         }

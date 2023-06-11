@@ -1,8 +1,6 @@
 ﻿
 using TeaLeaves.Controllers;
 using TeaLeaves.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TeaLeaves.Views
 {
@@ -11,12 +9,11 @@ namespace TeaLeaves.Views
         private EventController _eventController;
         private Event _event;
         private User _user;
-        public AddEventForm(User verifiedUser)
+        public AddEventForm()
         {
             InitializeComponent();
             _eventController = new EventController();
             _event = new Event();
-            _user = verifiedUser;
         }
 
         private void EventsForm_Load(object sender, EventArgs e)
@@ -25,9 +22,7 @@ namespace TeaLeaves.Views
             numericUpDownMinute.Value = DateTime.Now.Minute;
 
             BindState();
-
         }
-
 
         private void BindState()
         {
