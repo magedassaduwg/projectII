@@ -5,7 +5,7 @@
     /// </summary>
     public class Event 
     {
-        public string? Name { get; set; }
+        public string? EventName { get; set; }
         public DateTime EventDateTime { get; set; }
         public string? Description { get; set; }
         public int CreatorId { get; set; }
@@ -13,6 +13,7 @@
         public string? State { get; set; }
         public string? City { get; set; }
         public int Zipcode { get; set; }
-        public string? StreetNumber { get; set; }      
+        public string? StreetNumber { get; set; }
+        public int UserId { get; internal set; }
     }
 }

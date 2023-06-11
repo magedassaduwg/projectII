@@ -91,7 +91,7 @@
             lklblRegister.Location = new Point(357, 426);
             lklblRegister.Name = "lklblRegister";
             lklblRegister.Size = new Size(120, 15);
-            lklblRegister.TabIndex = 9;
+            lklblRegister.TabIndex = 3;
             lklblRegister.TabStop = true;
             lklblRegister.Text = "Register new account";
             lklblRegister.LinkClicked += lklblRegister_LinkClicked;
@@ -114,7 +114,7 @@
             buttonLogin.Location = new Point(161, 298);
             buttonLogin.Name = "buttonLogin";
             buttonLogin.Size = new Size(111, 47);
-            buttonLogin.TabIndex = 7;
+            buttonLogin.TabIndex = 2;
             buttonLogin.Text = "Login";
             buttonLogin.UseVisualStyleBackColor = false;
             buttonLogin.Click += buttonLogin_Click;
@@ -144,7 +144,8 @@
             textBoxPassword.Location = new Point(67, 13);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(279, 23);
-            textBoxPassword.TabIndex = 4;
+            textBoxPassword.TabIndex = 1;
+            textBoxPassword.UseSystemPasswordChar = true;
             textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
             // panelUser
@@ -172,7 +173,7 @@
             textBoxUsername.Location = new Point(67, 16);
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.Size = new Size(279, 23);
-            textBoxUsername.TabIndex = 3;
+            textBoxUsername.TabIndex = 0;
             textBoxUsername.TextChanged += textBoxUsername_TextChanged;
             // 
             // labelLogin
@@ -198,6 +199,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login-TeaLeaves";
             FormClosing += LoginForm_FormClosing;
+            Load += LoginForm_Load;
             panelImg.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             panelLogin.ResumeLayout(false);

@@ -38,5 +38,10 @@ namespace TeaLeaves.Controllers
         {
             return _eventDAL.GetEventsReceivedByUserId(userId);
         }
+
+        public List<Event> GetAllEvents(int userId)
+        {
+            return _eventDAL.GetEventsByUserId(userId);
+        }
     }
 }

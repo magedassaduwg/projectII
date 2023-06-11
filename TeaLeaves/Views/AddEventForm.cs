@@ -1,4 +1,6 @@
-﻿using TeaLeaves.Controllers;
+﻿
+using TeaLeaves.Controllers;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
@@ -7,13 +9,12 @@ namespace TeaLeaves.Views
     {
         private EventController _eventController;
         private Event _event;
-        private User _user;
-        public AddEventForm(User verifiedUser)
+
+        public AddEventForm()
         {
             InitializeComponent();
             _eventController = new EventController();
             _event = new Event();
-            _user = verifiedUser;
         }
 
         public AddEventForm()
@@ -22,12 +23,11 @@ namespace TeaLeaves.Views
 
         private void EventsForm_Load(object sender, EventArgs e)
         {
-            DateTime newAvailableTime = (DateTime.Now);
+            numericUpDownHour.Value = DateTime.Now.Hour;
+            numericUpDownMinute.Value = DateTime.Now.Minute;
 
             BindState();
-
         }
-
 
         private void BindState()
         {
@@ -68,13 +68,13 @@ namespace TeaLeaves.Views
 
             if (IsFormValid())
             {
-                _event.CreatorId = _user.UserId;
-                _event.Name = textBoxEName.Text.Trim();
+                _event.UserId = CurrentUserStore.User.UserId;
+                _event.EventName = textBoxEName.Text.Trim();
                 _event.StreetNumber = textBoxStreetName.Text.Trim();
-                _event.State =comboBoxState.SelectedItem.ToString();
+                _event.State = comboBoxState.SelectedItem.ToString();
                 _event.City = textBoxCity.Text.Trim();
-              //  _event.Zipcode = textBoxZip.Text.Trim();
                 _event.Description = richTextBoxDescription.Text.Trim();
+                //_event.Zipcode = textBoxZip.Text.Trim();
                 _event.EventDateTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
                 try
                 {
@@ -103,28 +103,7 @@ namespace TeaLeaves.Views
         private void numericUpDownMinute_ValueChanged(object sender, EventArgs e)
         {
             labelError.Text = string.Empty;
-            int selectedMinute = (int)numericUpDownMinute.Value;
 
-            if (selectedMinute != 0 && selectedMinute != 15 && selectedMinute != 30 && selectedMinute != 45)
-            {
-
-                if (selectedMinute < 15)
-                {
-                    numericUpDownMinute.Value = 0;
-                }
-                else if (selectedMinute < 30)
-                {
-                    numericUpDownMinute.Value = 15;
-                }
-                else if (selectedMinute < 45)
-                {
-                    numericUpDownMinute.Value = 30;
-                }
-                else if (selectedMinute < 60)
-                {
-                    numericUpDownMinute.Value = 45;
-                }
-            }
         }
         private void buttonClose_click(object sender, EventArgs e)
         {
@@ -139,15 +118,31 @@ namespace TeaLeaves.Views
         private void textBoxZip_TextChanged(object sender, EventArgs e)
         {
             labelError.Text = string.Empty;
-            if (!int.TryParse(textBoxZip.Text.Trim(), out int zipcode))
+            string zipCode = textBoxZip.Text.Trim();
+
+            if (zipCode.Length != 5)
             {
-                labelError.Text = "Invalid ZIP code";
+                labelError.Text = "Invalid ZIP code. Please enter a 5-digit number.";
             }
             else
             {
-                _event.Zipcode = zipcode;
+                labelError.Text = string.Empty;
+                _event.Zipcode = int.Parse(zipCode);
             }
         }
 
+        private void textBoxEName_TextChanged(object sender, EventArgs e)
+        {
+            labelError.Text = string.Empty;
+        }
+
+        private void textBoxZip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelError.Text = string.Empty;
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+            {
+                e.Handled = true; // Suppress the non-numeric key press
+            }
+        }
     }
 }

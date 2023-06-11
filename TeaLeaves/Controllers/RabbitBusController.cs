@@ -51,12 +51,19 @@ namespace TeaLeaves.Controllers
                 await InitializeRabbitConnection();
             }
 
-            _rabbitBus.ConnectReceiveEndpoint(queueName, config =>
+            try
             {
-                config.UseMessageRetry(r => r.Interval(2, TimeSpan.FromMinutes(1)));
-                config.UseConcurrencyLimit(1);
-                config.Consumer<MessageConsumer>();
-            });
+                _rabbitBus.ConnectReceiveEndpoint(queueName, config =>
+                {
+                    config.UseMessageRetry(r => r.Interval(2, TimeSpan.FromMinutes(1)));
+                    config.UseConcurrencyLimit(1);
+                    config.Consumer<MessageConsumer>();
+                });
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Couldn't listen to queue");
+            }
         }
 
         /// <summary>

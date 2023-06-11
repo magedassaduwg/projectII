@@ -87,23 +87,36 @@ namespace TeaLeaves.Views
                 Label lblMessage = new Label();
                 lblMessage.Text = message.Text;
                 lblMessage.AutoSize = true;
-                lblMessage.MaximumSize = new Size(panelMessages.Width - 50, 0);
                 lblMessage.BorderStyle = BorderStyle.FixedSingle;
                 lblMessage.Padding = new Padding(5, 5, 5, 5);
                 lblMessage.BackColor = Color.White;
                 new ToolTip().SetToolTip(lblMessage, message.TimeStamp.ToString());
 
-                if (CurrentUserStore.User.UserId == message.SenderId)
+                int row = tblMessages.RowCount - 1;
+
+                if (tblMessages.RowCount == 1 && tblMessages.GetControlFromPosition(0, 0) == null
+                    && tblMessages.GetControlFromPosition(1, 0) == null)
                 {
-                    using (Graphics graphic = lblMessage.CreateGraphics())
-                    {
-                        SizeF size = graphic.MeasureString(message.Text, lblMessage.Font);
-                        lblMessage.Margin = new Padding(panelMessages.Width - Convert.ToInt32(size.Width) - 30, 0, 0, 5);
-                    }
+                    row = 0;
+                }
+                else
+                {
+                    tblMessages.RowCount = tblMessages.RowCount + 1;
+                    tblMessages.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                 }
 
-                panelMessages.Controls.Add(lblMessage);
-                panelMessages.ScrollControlIntoView(lblMessage);
+                if (CurrentUserStore.User.UserId == message.SenderId)
+                {
+                    lblMessage.Dock = DockStyle.Right;
+                    tblMessages.Controls.Add(lblMessage, 1, row);
+                }
+                else
+                {
+                    lblMessage.Dock = DockStyle.Left;
+                    tblMessages.Controls.Add(lblMessage, 0, row);
+                }
+
+                tblMessages.ScrollControlIntoView(lblMessage);
             }
         }
 
@@ -159,7 +172,7 @@ namespace TeaLeaves.Views
         {
             try
             {
-                panelMessages.Controls.Clear();
+                tblMessages.Controls.Clear();
 
                 List<IUserMessage> userMessages = _messageController.GetMessagesByUserId(CurrentUserStore.User.UserId, contactId);
 
