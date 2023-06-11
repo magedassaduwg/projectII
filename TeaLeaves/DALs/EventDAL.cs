@@ -41,6 +41,29 @@ namespace TeaLeaves.DALs
         }
 
         /// <summary>
+        /// Deletes an event from the database
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public bool DeleteEvent(int eventId)
+        {
+            string query = @"DELETE Events " +
+                            "WHERE EventId = @eventId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@eventId", eventId);
+
+                    int rowsAffected = saveCommand.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
+        /// <summary>
         /// Returns all Events which the given user by userId has been invited to
         /// </summary>
         /// <param name="userId"></param>
@@ -80,7 +103,13 @@ namespace TeaLeaves.DALs
                 }
             }
             return userEvents;
-            }
+        }
+
+        /// <summary>
+        /// Returns all the Events in the database with the given creatorId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public List<Event> GetEventsByUserId(int userId)
         {
             List<Event> events = new List<Event>();

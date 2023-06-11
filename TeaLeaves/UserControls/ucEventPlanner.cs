@@ -38,7 +38,7 @@ namespace TeaLeaves.UserControls
         {
             try
             {
-                _events = _eventController.GetAllEvents(CurrentUserStore.User.UserId);
+                _events = _eventController.GetEventsByUserId(CurrentUserStore.User.UserId);
 
                 dgEvents.DataSource = _events;
 

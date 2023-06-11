@@ -29,6 +29,16 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Deletes an event in the database
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public bool DeleteEvent(int eventId)
+        {
+            return _eventDAL.DeleteEvent(eventId);
+        }
+
+        /// <summary>
         /// Returns all the events the given user has received
         /// </summary>
         /// <param name="userId"></param>
@@ -39,7 +49,12 @@ namespace TeaLeaves.Controllers
             return _eventDAL.GetEventsReceivedByUserId(userId);
         }
 
-        public List<Event> GetAllEvents(int userId)
+        /// <summary>
+        /// Returns all the events in the database with the given creatorId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Event> GetEventsByUserId(int userId)
         {
             return _eventDAL.GetEventsByUserId(userId);
         }

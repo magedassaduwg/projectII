@@ -17,10 +17,6 @@ namespace TeaLeaves.Views
             _event = new Event();
         }
 
-        public AddEventForm()
-        {
-        }
-
         private void EventsForm_Load(object sender, EventArgs e)
         {
             numericUpDownHour.Value = DateTime.Now.Hour;

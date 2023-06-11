@@ -14,7 +14,6 @@ namespace TeaLeaves.UserControls
             InitializeComponent();
             _eventController = new EventController();
             _events = new List<Event>();
-            //GetUserEvents();
         }
 
         private void GetUserEvents()
@@ -25,10 +24,10 @@ namespace TeaLeaves.UserControls
 
                 dgvEventInvites.DataSource = _events;
 
-                //if (dgvEventInvites.Rows.Count > 0)
-                //{
-                //    dgvEventInvites.Rows[0].Selected = true;
-                //}
+                if (dgvEventInvites.Rows.Count > 0)
+                {
+                    dgvEventInvites.Rows[0].Selected = true;
+                }
             }
             catch (Exception ex)
             {
@@ -37,6 +36,11 @@ namespace TeaLeaves.UserControls
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            GetUserEvents();
+        }
+
+        private void ucEventInvites_Load(object sender, EventArgs e)
         {
             GetUserEvents();
         }

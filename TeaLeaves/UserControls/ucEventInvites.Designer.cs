@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             dgvEventInvites = new DataGridView();
-            btnAccept = new Button();
-            btnDecline = new Button();
-            btnRefresh = new Button();
             eventName = new DataGridViewTextBoxColumn();
             eventDateAndTime = new DataGridViewTextBoxColumn();
             eventDescription = new DataGridViewTextBoxColumn();
+            btnAccept = new Button();
+            btnDecline = new Button();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             SuspendLayout();
             // 
@@ -50,15 +50,42 @@
             dgvEventInvites.ReadOnly = true;
             dgvEventInvites.RowTemplate.Height = 25;
             dgvEventInvites.ScrollBars = ScrollBars.Vertical;
-            dgvEventInvites.Size = new Size(583, 313);
+            dgvEventInvites.Size = new Size(765, 313);
             dgvEventInvites.TabIndex = 0;
+            // 
+            // eventName
+            // 
+            eventName.DataPropertyName = "Name";
+            eventName.Frozen = true;
+            eventName.HeaderText = "Name";
+            eventName.Name = "eventName";
+            eventName.ReadOnly = true;
+            eventName.Width = 150;
+            // 
+            // eventDateAndTime
+            // 
+            eventDateAndTime.DataPropertyName = "DateTime";
+            eventDateAndTime.Frozen = true;
+            eventDateAndTime.HeaderText = "Time";
+            eventDateAndTime.Name = "eventDateAndTime";
+            eventDateAndTime.ReadOnly = true;
+            eventDateAndTime.Width = 180;
+            // 
+            // eventDescription
+            // 
+            eventDescription.DataPropertyName = "Description";
+            eventDescription.Frozen = true;
+            eventDescription.HeaderText = "Description";
+            eventDescription.Name = "eventDescription";
+            eventDescription.ReadOnly = true;
+            eventDescription.Width = 392;
             // 
             // btnAccept
             // 
             btnAccept.BackColor = Color.Orange;
             btnAccept.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnAccept.ForeColor = Color.DarkGreen;
-            btnAccept.Location = new Point(589, 3);
+            btnAccept.Location = new Point(771, 3);
             btnAccept.Name = "btnAccept";
             btnAccept.Size = new Size(126, 57);
             btnAccept.TabIndex = 1;
@@ -70,7 +97,7 @@
             btnDecline.BackColor = Color.Orange;
             btnDecline.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnDecline.ForeColor = Color.DarkGreen;
-            btnDecline.Location = new Point(589, 66);
+            btnDecline.Location = new Point(771, 66);
             btnDecline.Name = "btnDecline";
             btnDecline.Size = new Size(126, 57);
             btnDecline.TabIndex = 2;
@@ -82,40 +109,13 @@
             btnRefresh.BackColor = Color.Orange;
             btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnRefresh.ForeColor = Color.DarkGreen;
-            btnRefresh.Location = new Point(589, 172);
+            btnRefresh.Location = new Point(771, 172);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(126, 57);
             btnRefresh.TabIndex = 3;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
-            // 
-            // eventName
-            // 
-            eventName.DataPropertyName = "Name";
-            eventName.Frozen = true;
-            eventName.HeaderText = "Name";
-            eventName.Name = "eventName";
-            eventName.ReadOnly = true;
-            eventName.Width = 120;
-            // 
-            // eventDateAndTime
-            // 
-            eventDateAndTime.DataPropertyName = "DateTime";
-            eventDateAndTime.Frozen = true;
-            eventDateAndTime.HeaderText = "Time";
-            eventDateAndTime.Name = "eventDateAndTime";
-            eventDateAndTime.ReadOnly = true;
-            eventDateAndTime.Width = 160;
-            // 
-            // eventDescription
-            // 
-            eventDescription.DataPropertyName = "Description";
-            eventDescription.Frozen = true;
-            eventDescription.HeaderText = "Description";
-            eventDescription.Name = "eventDescription";
-            eventDescription.ReadOnly = true;
-            eventDescription.Width = 260;
             // 
             // ucEventInvites
             // 
@@ -126,7 +126,8 @@
             Controls.Add(btnAccept);
             Controls.Add(dgvEventInvites);
             Name = "ucEventInvites";
-            Size = new Size(719, 315);
+            Size = new Size(900, 315);
+            Load += ucEventInvites_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).EndInit();
             ResumeLayout(false);
         }

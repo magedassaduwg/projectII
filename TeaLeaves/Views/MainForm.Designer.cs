@@ -34,6 +34,7 @@
             tabPageEvent = new TabPage();
             ucEventPlanner1 = new UserControls.ucEventPlanner();
             tabPageInvites = new TabPage();
+            ucEventInvites1 = new UserControls.ucEventInvites();
             tabPageContact = new TabPage();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblGreeting = new Label();
@@ -41,6 +42,7 @@
             tableLayoutPanel2.SuspendLayout();
             tabControlMain.SuspendLayout();
             tabPageEvent.SuspendLayout();
+            tabPageInvites.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -104,6 +106,7 @@
             // 
             // tabPageInvites
             // 
+            tabPageInvites.Controls.Add(ucEventInvites1);
             tabPageInvites.Location = new Point(4, 24);
             tabPageInvites.Name = "tabPageInvites";
             tabPageInvites.Padding = new Padding(3);
@@ -111,6 +114,14 @@
             tabPageInvites.TabIndex = 2;
             tabPageInvites.Text = "Event Invite";
             tabPageInvites.UseVisualStyleBackColor = true;
+            // 
+            // ucEventInvites1
+            // 
+            ucEventInvites1.Dock = DockStyle.Fill;
+            ucEventInvites1.Location = new Point(3, 3);
+            ucEventInvites1.Name = "ucEventInvites1";
+            ucEventInvites1.Size = new Size(1086, 344);
+            ucEventInvites1.TabIndex = 0;
             // 
             // tabPageContact
             // 
@@ -170,6 +181,7 @@
             tableLayoutPanel2.ResumeLayout(false);
             tabControlMain.ResumeLayout(false);
             tabPageEvent.ResumeLayout(false);
+            tabPageInvites.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -187,5 +199,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblGreeting;
         private LinkLabel lnkLogout;
+        private UserControls.ucEventInvites ucEventInvites1;
     }
 }
