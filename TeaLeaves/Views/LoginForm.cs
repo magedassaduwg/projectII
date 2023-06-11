@@ -33,9 +33,8 @@ namespace TeaLeaves
             try
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
-                // commented out until password encryption is implemented with user registration
-                //_userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
-                _userLogin.Password = textBoxPassword.Text.Trim();
+
+                _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
 
                 User verifiedUser = _userController.VerifyUserCredentials(_userLogin);
                 if (verifiedUser != null)
@@ -45,8 +44,13 @@ namespace TeaLeaves
                     // MainForm mainForm = new MainForm(verifiedUser);
 
                     using (MainForm mainForm = new MainForm())
+                    {
+                        Hide();
                         mainForm.ShowDialog();
-                    //this.Hide();
+                    }
+
+                    textBoxPassword.Text = string.Empty;
+                    Show();
                 }
                 else
                 {
@@ -80,6 +84,11 @@ namespace TeaLeaves
             Show();
             textBoxUsername.Clear();
             textBoxPassword.Clear();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            textBoxUsername.Focus();
         }
     }
 }

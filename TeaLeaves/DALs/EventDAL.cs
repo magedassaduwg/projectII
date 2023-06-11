@@ -27,13 +27,13 @@ namespace TeaLeaves.DALs
                 using (SqlCommand saveCommand = new SqlCommand(query, connection))
                 {
                     saveCommand.Parameters.AddWithValue("@Description", @event.Description);
-                    saveCommand.Parameters.AddWithValue("@Name", @event.Name);
+                    saveCommand.Parameters.AddWithValue("@Name", @event.EventName);
                     saveCommand.Parameters.AddWithValue("@State", @event.State);
                     saveCommand.Parameters.AddWithValue("@City", @event.City);
                     saveCommand.Parameters.AddWithValue("@Zipcode", @event.Zipcode.ToString().TrimStart('0'));
                     saveCommand.Parameters.AddWithValue("@StreetNumber", @event.StreetNumber);
-                    saveCommand.Parameters.AddWithValue("@DateTime", @event.EventDateTime);
-                    saveCommand.Parameters.AddWithValue("@UserId", CurrentUserStore.User.UserId);
+                    saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
+                    saveCommand.Parameters.AddWithValue("@CreatorId", CurrentUserStore.User.UserId);
 
                     int rowsAffected = saveCommand.ExecuteNonQuery();
                     return rowsAffected > 0;
@@ -74,7 +74,7 @@ namespace TeaLeaves.DALs
                         City = reader["City"].ToString(),
                         StreetNumber = reader["StreetNumber"].ToString(),
                         Zipcode = Convert.ToInt32(reader["Zipcode"]),
-                        Name = reader["Name"].ToString(),
+                        EventName = reader["Name"].ToString(),
                         Description = reader["Description"].ToString(),
                     };
                     userEvents.Add(userEvent);
@@ -110,7 +110,7 @@ namespace TeaLeaves.DALs
                                 City = reader["City"].ToString(),
                                 StreetNumber = reader["StreetNumber"].ToString(),
                                 Zipcode = Convert.ToInt32(reader["Zipcode"]),
-                                Name = reader["Name"].ToString(),
+                                EventName = reader["Name"].ToString(),
                                 Description = reader["Description"].ToString(),
                             };
 

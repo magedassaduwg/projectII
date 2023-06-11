@@ -14,16 +14,19 @@ namespace TeaLeaves.UserControls
         {
             InitializeComponent();
             _eventController = new EventController();
-            dataGridViewEvent.AutoGenerateColumns = false;
+            dgEvents.AutoGenerateColumns = false;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             using (AddEventForm eventForm = new AddEventForm())
-                if (eventForm.ShowDialog() == DialogResult.OK)
+            {
+                DialogResult result = eventForm.ShowDialog();
+                if (result == DialogResult.OK)
                 {
                     InitializeEvents();
                 }
+            }
         }
 
         private void ucEventPlanner_Load(object sender, EventArgs e)
@@ -37,17 +40,22 @@ namespace TeaLeaves.UserControls
             {
                 _events = _eventController.GetAllEvents(CurrentUserStore.User.UserId);
 
-                dataGridViewEvent.DataSource = _events;
+                dgEvents.DataSource = _events;
 
-                if (dataGridViewEvent.Rows.Count > 0)
+                if (dgEvents.Rows.Count > 0)
                 {
-                    dataGridViewEvent.Rows[0].Selected = true;
+                    dgEvents.Rows[0].Selected = true;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

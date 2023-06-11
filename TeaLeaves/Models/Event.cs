@@ -5,7 +5,7 @@
     /// </summary>
     public class Event 
     {
-        public string? Name { get; set; }
+        public string? EventName { get; set; }
         public DateTime EventDateTime { get; set; }
         public string? Description { get; set; }
         public int CreatorId { get; set; }

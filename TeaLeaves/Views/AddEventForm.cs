@@ -1,5 +1,6 @@
 ﻿
 using TeaLeaves.Controllers;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
@@ -8,7 +9,7 @@ namespace TeaLeaves.Views
     {
         private EventController _eventController;
         private Event _event;
-        private User _user;
+
         public AddEventForm()
         {
             InitializeComponent();
@@ -63,10 +64,10 @@ namespace TeaLeaves.Views
 
             if (IsFormValid())
             {
-                _event.UserId = _user.UserId;
-                _event.Name = textBoxEName.Text.Trim();
+                _event.UserId = CurrentUserStore.User.UserId;
+                _event.EventName = textBoxEName.Text.Trim();
                 _event.StreetNumber = textBoxStreetName.Text.Trim();
-                _event.State =comboBoxState.SelectedItem.ToString();
+                _event.State = comboBoxState.SelectedItem.ToString();
                 _event.City = textBoxCity.Text.Trim();
                 _event.Description = richTextBoxDescription.Text.Trim();
                 //_event.Zipcode = textBoxZip.Text.Trim();
