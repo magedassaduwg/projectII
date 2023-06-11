@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
