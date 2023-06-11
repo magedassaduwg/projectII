@@ -21,11 +21,10 @@ namespace TeaLeaves.UserControls
         {
             using (AddEventForm eventForm = new AddEventForm())
             {
-                DialogResult result = eventForm.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    InitializeEvents();
-                }
+                eventForm.ShowDialog();
+
+                InitializeEvents();
+
             }
         }
 
