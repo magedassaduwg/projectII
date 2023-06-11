@@ -1,9 +1,5 @@
-﻿
-using MassTransit.Logging;
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
 using TeaLeaves.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TeaLeaves.Views
 {
@@ -18,6 +14,10 @@ namespace TeaLeaves.Views
             _eventController = new EventController();
             _event = new Event();
             _user = verifiedUser;
+        }
+
+        public AddEventForm()
+        {
         }
 
         private void EventsForm_Load(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace TeaLeaves.Views
 
             if (IsFormValid())
             {
-                _event.UserId = _user.UserId;
+                _event.CreatorId = _user.UserId;
                 _event.Name = textBoxEName.Text.Trim();
                 _event.StreetNumber = textBoxStreetName.Text.Trim();
                 _event.State =comboBoxState.SelectedItem.ToString();
