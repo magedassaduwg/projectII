@@ -2,23 +2,18 @@
 using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
+using TeaLeaves.Views;
 
-namespace TeaLeaves.Views
+namespace TeaLeaves.UserControls
 {
-    /// <summary>
-    /// Main form for the message client application
-    /// </summary>
-    public partial class MessageForm : Form
+    public partial class ucMessage : UserControl
     {
         private MessageController _messageController;
         private ContactsController _contactsController;
         private User _selectedUser;
         private List<User> _contactList;
 
-        /// <summary>
-        /// Contractor to initialize the form controls
-        /// </summary>
-        public MessageForm()
+        public ucMessage()
         {
             InitializeComponent();
 
@@ -89,6 +84,7 @@ namespace TeaLeaves.Views
                 lblMessage.AutoSize = true;
                 lblMessage.BorderStyle = BorderStyle.FixedSingle;
                 lblMessage.Padding = new Padding(5, 5, 5, 5);
+                lblMessage.Margin = new Padding(0, 0, 20, 0);
                 lblMessage.BackColor = Color.White;
                 new ToolTip().SetToolTip(lblMessage, message.TimeStamp.ToString());
 
@@ -219,32 +215,8 @@ namespace TeaLeaves.Views
             {
                 e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
             }
+
             e.DrawFocusRectangle();
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tblMessages_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void txtMessage_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void lblSelectedContact_Click(object sender, EventArgs e)
-        {
         }
     }
 }

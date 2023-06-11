@@ -32,7 +32,8 @@
             tabControlMain = new TabControl();
             tabPageMessage = new TabPage();
             tabPageEvent = new TabPage();
-            ucEventPlanner1 = new UserControls.ucEventPlanner();
+            ucEventPlanners = new UserControls.ucEventPlanner();
+            ucMessages = new UserControls.ucMessage();
             tabPageInvites = new TabPage();
             tabPageContact = new TabPage();
             flowLayoutPanel1 = new FlowLayoutPanel();
@@ -75,6 +76,7 @@
             // 
             // tabPageMessage
             // 
+            tabPageMessage.Controls.Add(ucMessages);
             tabPageMessage.Location = new Point(4, 24);
             tabPageMessage.Name = "tabPageMessage";
             tabPageMessage.Padding = new Padding(3);
@@ -82,10 +84,16 @@
             tabPageMessage.TabIndex = 0;
             tabPageMessage.Text = "Message";
             tabPageMessage.UseVisualStyleBackColor = true;
+
+            ucMessages.Dock = DockStyle.Fill;
+            ucMessages.Location = new Point(0, 0);
+            ucMessages.Name = "ucMessages";
+            ucMessages.Size = new Size(1086, 344);
+            ucMessages.TabIndex = 0;
             // 
             // tabPageEvent
             // 
-            tabPageEvent.Controls.Add(ucEventPlanner1);
+            tabPageEvent.Controls.Add(ucEventPlanners);
             tabPageEvent.Location = new Point(4, 24);
             tabPageEvent.Name = "tabPageEvent";
             tabPageEvent.Padding = new Padding(3);
@@ -96,11 +104,11 @@
             // 
             // ucEventPlanner1
             // 
-            ucEventPlanner1.Dock = DockStyle.Fill;
-            ucEventPlanner1.Location = new Point(3, 3);
-            ucEventPlanner1.Name = "ucEventPlanner1";
-            ucEventPlanner1.Size = new Size(1086, 344);
-            ucEventPlanner1.TabIndex = 0;
+            ucEventPlanners.Dock = DockStyle.Fill;
+            ucEventPlanners.Location = new Point(3, 3);
+            ucEventPlanners.Name = "ucEventPlanners";
+            ucEventPlanners.Size = new Size(1086, 344);
+            ucEventPlanners.TabIndex = 0;
             // 
             // tabPageInvites
             // 
@@ -160,7 +168,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1106, 426);
+            ClientSize = new Size(1300, 600);
+            MinimumSize = new Size(1200, 500);
             Controls.Add(tableLayoutPanel2);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -181,7 +190,8 @@
         private TabControl tabControlMain;
         private TabPage tabPageMessage;
         private TabPage tabPageEvent;
-        private UserControls.ucEventPlanner ucEventPlanner1;
+        private UserControls.ucEventPlanner ucEventPlanners;
+        private UserControls.ucMessage ucMessages;
         private TabPage tabPageInvites;
         private TabPage tabPageContact;
         private FlowLayoutPanel flowLayoutPanel1;
