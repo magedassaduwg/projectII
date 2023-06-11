@@ -33,9 +33,14 @@ namespace TeaLeaves.Controllers
         /// Saves a message to the database
         /// </summary>
         /// <param name="message"></param>
-        public void SaveMessageToDatabase(IUserMessage message)
+        public int SaveMessageToDatabase(IUserMessage message)
         {
-            _messagesDAL.SaveMessage(message);
+            return _messagesDAL.SaveMessage(message);
+        }
+
+        public void DeleteMessageFromDatabase(int messageId)
+        {
+            _messagesDAL.DeleteMessageById(messageId);
         }
     }
 }

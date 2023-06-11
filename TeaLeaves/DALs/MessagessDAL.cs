@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Windows.Forms;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -59,12 +60,13 @@ namespace TeaLeaves.DALs
         /// Saves a message between contacts in the database
         /// </summary>
         /// <param name="message"></param>
-        public void SaveMessage(IUserMessage message)
+        public int SaveMessage(IUserMessage message)
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 SqlCommand command = new SqlCommand("Insert into Messages(SenderId, ReceiverId, Text, MediaId, Timestamp) " +
-                                                "Values(@senderId, @receiverId, @text, @mediaId, @timestamp)", connection);
+                                                "Values(@senderId, @receiverId, @text, @mediaId, @timestamp) " +
+                                                "select scope_identity", connection);
 
                 command.Parameters.AddWithValue("@senderId", message.SenderId);
                 command.Parameters.AddWithValue("@receiverId", message.ReceiverId);
@@ -81,7 +83,20 @@ namespace TeaLeaves.DALs
                 command.Parameters.AddWithValue("@timestamp", message.TimeStamp);
 
                 connection.Open();
-                command.ExecuteNonQuery();
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+        public void DeleteMessageById(int messageId)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("Delete From Messages where MessageId = @messageId", connection);
+                
+                command.Parameters.AddWithValue("@messageId", messageId);
+                connection.Open();
+                command.ExecuteScalar();
             }
         }
     }

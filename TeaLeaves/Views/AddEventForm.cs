@@ -17,6 +17,7 @@ namespace TeaLeaves.Views
             _event = new Event();
         }
 
+
         private void EventsForm_Load(object sender, EventArgs e)
         {
             numericUpDownHour.Value = DateTime.Now.Hour;
@@ -28,7 +29,7 @@ namespace TeaLeaves.Views
         private void BindState()
         {
             string[] states = {
-    "Online", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",
+    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",
     "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
     "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada",
     "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma",
@@ -38,6 +39,7 @@ namespace TeaLeaves.Views
             comboBoxState.Items.Clear();
             comboBoxState.Items.AddRange(states);
             comboBoxState.SelectedIndex = 0;
+
         }
 
         private bool IsFormValid()
@@ -48,6 +50,22 @@ namespace TeaLeaves.Views
                 labelError.Text = "Please enter the event name";
                 return false;
             }
+            else if (textBoxStreetName.Text.Trim().Length == 0)
+            {
+                labelError.Text = "Please enter the street name";
+                return false;
+            }
+            else if (textBoxCity.Text.Trim().Length == 0)
+            {
+                labelError.Text = "Please enter the city name";
+                return false;
+            }
+            else if (textBoxZip.Text.Trim().Length == 0)
+            {
+                labelError.Text = "Please enter the zip code";
+                return false;
+            }
+
             else if (eventTime < DateTime.Now)
             {
                 labelError.Text = "Please choose a future time";
