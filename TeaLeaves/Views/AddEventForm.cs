@@ -15,14 +15,34 @@ namespace TeaLeaves.Views
             InitializeComponent();
             _eventController = new EventController();
             _event = selectedEvent ?? new Event();
-            textBoxEName.Text = _event.EventName;
+            BindEventValue();
+
         }
+        private void BindEventValue()
+        {
 
-
+            textBoxEName.Text = _event.EventName;
+            textBoxStreetName.Text=_event.StreetNumber;
+            textBoxCity.Text = _event.City;
+            comboBoxState.Text = _event.State;
+            textBoxZip.Text = _event.Zipcode.ToString();
+            richTextBoxDescription.Text = _event.Description;
+            if (_event.Id > 0)
+            {
+                dateTimePickerEvent.Value = _event.EventDateTime;
+                numericUpDownHour.Value = _event.EventDateTime.Hour;
+                numericUpDownMinute.Value = _event.EventDateTime.Minute;
+            }
+        }
         private void EventsForm_Load(object sender, EventArgs e)
         {
-            numericUpDownHour.Value = DateTime.Now.Hour;
-            numericUpDownMinute.Value = DateTime.Now.Minute;
+            if (_event.Id == 0)
+            {
+                dateTimePickerEvent.Value = DateTime.Now;
+                numericUpDownHour.Value = DateTime.Now.Hour;
+                numericUpDownMinute.Value = DateTime.Now.Minute;
+            }
+
 
             BindState();
         }

@@ -45,6 +45,7 @@
             // tblMessages
             // 
             tblMessages.AutoScroll = true;
+            tblMessages.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tblMessages.ColumnCount = 2;
             tblMessages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblMessages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
