@@ -103,9 +103,9 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                SqlCommand command = new SqlCommand("INSERT INTO Contacts(UserId1, UserId2) VALUES(@UserId1, @UserId2);");
-                command.Parameters.AddWithValue("@UserId1", user.Email);
-                command.Parameters.AddWithValue("@UsedId2", contactId);
+                SqlCommand command = new SqlCommand("INSERT INTO Contacts(UserId1, UserId2) VALUES(@UserId1, @UserId2);", connection);
+                command.Parameters.AddWithValue("@UserId1", user.UserId);
+                command.Parameters.AddWithValue("@UserId2", contactId);
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -117,7 +117,7 @@ namespace TeaLeaves.DALs
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                SqlCommand command = new SqlCommand("SELECT UserId FROM Users WHERE Email = @email;");
+                SqlCommand command = new SqlCommand("SELECT UserId FROM Users WHERE Email = @email;", connection);
                 command.Parameters.AddWithValue("@email", email);
 
                 connection.Open();
@@ -134,7 +134,8 @@ namespace TeaLeaves.DALs
                 command.Parameters.AddWithValue("@email", email);
 
                 connection.Open();
-                if (command.ExecuteNonQuery() == 0)
+                
+                if (command.ExecuteScalar() == null)
                 {
                     return false;
                 } else
