@@ -1,4 +1,5 @@
 ﻿using TeaLeaves.Controllers;
+using TeaLeaves.DALs;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 using TeaLeaves.Views;
@@ -19,7 +20,8 @@ namespace TeaLeaves.UserControls
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            using (AddEventForm eventForm = new AddEventForm())
+            Event newEvent = new Event();
+            using (AddEventForm eventForm = new AddEventForm(newEvent))
             {
                 eventForm.ShowDialog();
 
@@ -52,7 +54,7 @@ namespace TeaLeaves.UserControls
             }
         }
 
-      
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -80,5 +82,22 @@ namespace TeaLeaves.UserControls
                 }
             }
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgEvents.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgEvents.SelectedRows[0].DataBoundItem;
+                Event eventDetails = _eventController.GetEventById(selectedEvent.Id);
+
+                using (AddEventForm eventForm = new AddEventForm(eventDetails))
+                {
+                    eventForm.ShowDialog();
+                }
+                InitializeEvents();
+            }
+           
+        }
     }
 }
+           
