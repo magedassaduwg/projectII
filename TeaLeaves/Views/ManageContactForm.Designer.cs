@@ -114,9 +114,11 @@
             contactDataGridView.DataSource = usersBindingSource;
             contactDataGridView.Dock = DockStyle.Fill;
             contactDataGridView.Location = new Point(3, 3);
+            contactDataGridView.MultiSelect = false;
             contactDataGridView.Name = "contactDataGridView";
             contactDataGridView.ReadOnly = true;
             contactDataGridView.RowTemplate.Height = 25;
+            contactDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             contactDataGridView.Size = new Size(260, 389);
             contactDataGridView.TabIndex = 0;
             contactDataGridView.RowEnter += contactDataGridView_RowEnter;
@@ -277,6 +279,7 @@
             closeButton.TabIndex = 9;
             closeButton.Text = "Close";
             closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // ManageContactForm
             // 
@@ -286,7 +289,7 @@
             Controls.Add(splitContainer1);
             Name = "ManageContactForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ManageContactForm";
+            Text = "Your Contacts";
             Load += ManageContactForm_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
