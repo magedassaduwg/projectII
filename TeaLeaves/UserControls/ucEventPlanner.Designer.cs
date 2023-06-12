@@ -193,7 +193,6 @@
             btnView.TabIndex=2;
             btnView.Text="View";
             btnView.UseVisualStyleBackColor=false;
-            btnView.Click+=btnView_Click;
             // 
             // btnDelete
             // 
