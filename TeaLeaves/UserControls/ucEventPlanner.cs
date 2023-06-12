@@ -52,25 +52,31 @@ namespace TeaLeaves.UserControls
             }
         }
 
-        private void btnView_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgEvents.SelectedRows.Count > 0)
             {
                 Event selectedEvent = (Event)dgEvents.SelectedRows[0].DataBoundItem;
-                bool deleted = _eventController.DeleteEvent(selectedEvent.Id);
-                if (deleted)
+                DateTime eventDateTime = (DateTime)selectedEvent.EventDateTime;
+                if (eventDateTime > DateTime.Now)
                 {
-                    MessageBox.Show("Event deleted successfully.");
-                    InitializeEvents();
+                    bool deleted = _eventController.DeleteEvent(selectedEvent.Id);
+                    if (deleted)
+                    {
+                        MessageBox.Show("Event deleted successfully.");
+                        InitializeEvents();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete the event.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Failed to delete the event.");
+                    MessageBox.Show("Selected event cannot be deleted because it has already passed.");
+                    InitializeEvents();
                 }
             }
         }
