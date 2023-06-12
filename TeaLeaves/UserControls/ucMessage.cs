@@ -112,6 +112,7 @@ namespace TeaLeaves.UserControls
                     tblMessages.Controls.Add(lblMessage, 0, row);
                 }
 
+                //tblMessages.SetColumnSpan(lblMessage, 2);
                 tblMessages.ScrollControlIntoView(lblMessage);
             }
         }
@@ -205,17 +206,21 @@ namespace TeaLeaves.UserControls
         private void lstContacts_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
-            User contact = (User)lstContacts.Items[e.Index];
+            var dataItem = lstContacts.Items[e.Index];
 
-            if (contact.IsContainUnread)
+            if (dataItem.GetType() == typeof(User))
             {
-                e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, e.Bounds);
-            }
-            else
-            {
-                e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
-            }
+                User contact = (User)lstContacts.Items[e.Index];
 
+                if (contact.IsContainUnread)
+                {
+                    e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
+                }
+            }
             e.DrawFocusRectangle();
         }
     }
