@@ -1,5 +1,4 @@
-﻿
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
@@ -10,11 +9,13 @@ namespace TeaLeaves.Views
         private EventController _eventController;
         private Event _event;
 
-        public AddEventForm()
+
+        public AddEventForm(Event selectedEvent)
         {
             InitializeComponent();
             _eventController = new EventController();
-            _event = new Event();
+            _event = selectedEvent ?? new Event();
+            textBoxEName.Text = _event.EventName;
         }
 
 
@@ -158,5 +159,7 @@ namespace TeaLeaves.Views
                 e.Handled = true; // Suppress the non-numeric key press
             }
         }
+
+
     }
 }

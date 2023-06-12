@@ -14,6 +14,7 @@ namespace TeaLeaves.UserControls
             InitializeComponent();
             _eventController = new EventController();
             _events = new List<Event>();
+            dgvEventInvites.AutoGenerateColumns = false;
         }
 
         private void GetUserEvents()

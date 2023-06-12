@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.Logging;
 using TeaLeaves.Controllers;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
@@ -24,80 +25,80 @@ namespace TeaLeaves.Views
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            try
+            bool lastNameValid = true;
+            bool firstNameValid = true;
+            bool emailValid = true;
+            bool usernameValid = true;
+            bool passwordValid = true;
+            bool passwordConfirmValid = true;
+
+            string lastName = this.tbLastName.Text;
+            if (lastName == null || lastName == "")
             {
-                bool lastNameValid = true;
-                bool firstNameValid = true;
-                bool emailValid = true;
-                bool usernameValid = true;
-                bool passwordValid = true;
-                bool passwordConfirmValid = true;
+                lastNameValid = false;
+                lblLastNameError.Text = "Please enter a valid last name";
+            }
 
-                string lastName = this.tbLastName.Text;
-                if (lastName == null || lastName == "")
-                {
-                    lastNameValid = false;
-                    lblLastNameError.Text = "Please enter a valid last name";
-                }
+            string firstName = this.tbFirstName.Text;
+            if (firstName == null || firstName == "")
+            {
+                firstNameValid = false;
+                lblFirstNameError.Text = "Please enter a valid first name";
+            }
 
-                string firstName = this.tbFirstName.Text;
-                if (firstName == null || firstName == "")
-                {
-                    firstNameValid = false;
-                    lblFirstNameError.Text = "Please enter a valid first name";
-                }
+            string email = this.tbEmail.Text;
+            if (email == null || email == "")
+            {
+                emailValid = false;
+                lblEmailError.Text = "Please enter a valid email";
+            }
 
-                string email = this.tbEmail.Text;
-                if (email == null || email == "")
-                {
-                    emailValid = false;
-                    lblEmailError.Text = "Please enter a valid email";
-                }
+            string username = this.tbUsername.Text;
+            if (username == null || username == "")
+            {
+                usernameValid = false;
+                lblUsernameError.Text = "Please enter a valid username";
+            }
 
-                string username = this.tbUsername.Text;
-                if (username == null || username == "")
-                {
-                    usernameValid = false;
-                    lblUsernameError.Text = "Please enter a valid username";
-                }
+            string password = this.tbPassword.Text;
+            if (password == null || password == "")
+            {
+                passwordValid = false;
+                lblPasswordError.Text = "Please enter a valid password";
+            }
 
-                string password = this.tbPassword.Text;
-                if (password == null || password == "")
-                {
-                    passwordValid = false;
-                    lblPasswordError.Text = "Please enter a valid password";
-                }
+            string passwordConfirm = this.tbPasswordConfirm.Text;
+            if (passwordConfirm != password)
+            {
+                passwordValid = false;
+                lblPasswordConfirmError.Text = "Passwords must match";
+            }
 
-                string passwordConfirm = this.tbPasswordConfirm.Text;
-                if (passwordConfirm != password)
-                {
-                    passwordValid = false;
-                    lblPasswordConfirmError.Text = "Passwords must match";
-                }
+            if (!lastNameValid || !firstNameValid || !emailValid || !usernameValid || !passwordValid || !passwordConfirmValid)
+            {
+                return;
+            }
+            else
+            {
+                User user = new User();
+                user.FirstName = firstName;
+                user.LastName = lastName;
+                user.Email = email;
+                user.Username = username;
+                user.Password = EncryptionHelper.EncryptString(password);
 
-                if (!lastNameValid || !firstNameValid || !emailValid || !usernameValid || !passwordValid || !passwordConfirmValid)
+                try
                 {
-                    return;
-                }
-                else
-                {
-                    User user = new User();
-                    user.FirstName = firstName;
-                    user.LastName = lastName;
-                    user.Email = email;
-                    user.Username = username;
-                    user.Password = password;
-
                     this._usersController.Add(user);
                     this.lblMessage.ForeColor = Color.Black;
                     Clear();
                     this.lblMessage.Text = "The patient has been registered.";
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("The input is invalid." + Environment.NewLine + ex.Message,
-                "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The input is invalid." + Environment.NewLine + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
