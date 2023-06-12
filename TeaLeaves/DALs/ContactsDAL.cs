@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System.Data.SqlClient;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -13,11 +14,11 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public List<User> GetUsersContacts(User user)
+        public List<Models.User> GetUsersContacts(Models.User user)
         {
             List<int> contactUserIDs = this.GetContactUserIDs(user);
         
-            List<User> contacts = new List<User>();
+            List<Models.User> contacts = new List<Models.User>();
 
             foreach (int userId in contactUserIDs)
             {
@@ -32,7 +33,7 @@ namespace TeaLeaves.DALs
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        User contact = new User
+                        Models.User contact = new Models.User
                         {
                             UserId = Convert.ToInt32(reader["UserId"]),
                             FirstName = reader["FirstName"].ToString(),
@@ -47,7 +48,7 @@ namespace TeaLeaves.DALs
             return contacts;
         }
 
-        private List<int> GetContactUserIDs(User user)
+        private List<int> GetContactUserIDs(Models.User user)
         {
             List<int> contactUserIDs = new List<int>();
 
@@ -73,7 +74,7 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="user"></param>
         /// <param name="contact"></param>
-        public void RemoveContact(User user, User contact)
+        public void RemoveContact(Models.User user, Models.User contact)
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -83,6 +84,63 @@ namespace TeaLeaves.DALs
 
                 connection.Open();
                 command.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
+        /// method that calls on helper method to check if a email exists. If so, returns true and adds the contact.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public Boolean AddContact(Models.User user, string email)
+        {
+            if (!DoesEmailExist(email))
+            {
+                return false;
+            }
+            int contactId = this.GetUserId(email);
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("INSERT INTO Contacts(UserId1, UserId2) VALUES(@UserId1, @UserId2);");
+                command.Parameters.AddWithValue("@UserId1", user.Email);
+                command.Parameters.AddWithValue("@UsedId2", contactId);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+        }
+
+        private int GetUserId(string email)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("SELECT UserId FROM Users WHERE Email = @email;");
+                command.Parameters.AddWithValue("@email", email);
+
+                connection.Open();
+                int userId = Convert.ToInt32(command.ExecuteScalar());
+                return userId;
+            }
+        }
+
+        private Boolean DoesEmailExist(string email)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("SELECT UserId FROM Users WHERE Email = @email;", connection);
+                command.Parameters.AddWithValue("@email", email);
+
+                connection.Open();
+                if (command.ExecuteNonQuery() == 0)
+                {
+                    return false;
+                } else
+                {
+                    return true;
+                }
             }
         }
     }
