@@ -1,4 +1,5 @@
-﻿using TeaLeaves.DALs;
+﻿using System.Data.SqlClient;
+using TeaLeaves.DALs;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
@@ -23,7 +24,7 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public List<User> GetUsersContacts(User user)
+        public List<User> GetUsersContacts(Models.User user)
         {
             return this._contactsDAL.GetUsersContacts(user);
         }
@@ -34,9 +35,20 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <param name="contact"></param>
-        public void RemoveContact(User user, User contact)
+        public void RemoveContact(Models.User user, User contact)
         {
             this._contactsDAL.RemoveContact(user, contact);
+        }
+
+        /// <summary>
+        /// method that calls on helper method to check if a email exists. If so, returns true and adds the contact.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public Boolean AddContact(Models.User user, string email)
+        {
+            return this._contactsDAL.AddContact(user, email);
         }
     }
 }

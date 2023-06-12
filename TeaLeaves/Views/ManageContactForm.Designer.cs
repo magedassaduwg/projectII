@@ -101,6 +101,7 @@
             addButton.TabIndex = 8;
             addButton.Text = "Add";
             addButton.UseVisualStyleBackColor = true;
+            addButton.Click += addButton_Click;
             // 
             // contactDataGridView
             // 

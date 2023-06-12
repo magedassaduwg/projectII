@@ -60,5 +60,13 @@ namespace TeaLeaves.Views
             }
 
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            using (AddContactForm contactForm = new AddContactForm())
+            {
+                contactForm.ShowDialog();
+            }
+        }
     }
 }
