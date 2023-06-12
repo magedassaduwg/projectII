@@ -88,9 +88,8 @@ namespace TeaLeaves.UserControls
             if (dgEvents.SelectedRows.Count > 0)
             {
                 Event selectedEvent = (Event)dgEvents.SelectedRows[0].DataBoundItem;
-                Event eventDetails = _eventController.GetEventById(selectedEvent.Id);
 
-                using (AddEventForm eventForm = new AddEventForm(eventDetails))
+                using (AddEventForm eventForm = new AddEventForm(selectedEvent))
                 {
                     eventForm.ShowDialog();
                 }
