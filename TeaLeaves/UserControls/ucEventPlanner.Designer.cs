@@ -42,7 +42,7 @@
             Zipcode=new DataGridViewTextBoxColumn();
             eventBindingSource=new BindingSource(components);
             buttonAdd=new Button();
-            btnView=new Button();
+            btnEdit=new Button();
             btnDelete=new Button();
             tableLayoutPanelEvent.SuspendLayout();
             panelHeader.SuspendLayout();
@@ -62,7 +62,7 @@
             tableLayoutPanelEvent.Controls.Add(panelHeader, 0, 0);
             tableLayoutPanelEvent.Controls.Add(dgEvents, 0, 1);
             tableLayoutPanelEvent.Controls.Add(buttonAdd, 1, 2);
-            tableLayoutPanelEvent.Controls.Add(btnView, 2, 2);
+            tableLayoutPanelEvent.Controls.Add(btnEdit, 2, 2);
             tableLayoutPanelEvent.Controls.Add(btnDelete, 3, 2);
             tableLayoutPanelEvent.Dock=DockStyle.Fill;
             tableLayoutPanelEvent.Location=new Point(0, 0);
@@ -181,18 +181,19 @@
             buttonAdd.UseVisualStyleBackColor=false;
             buttonAdd.Click+=buttonAdd_Click;
             // 
-            // btnView
+            // btnEdit
             // 
-            btnView.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            btnView.BackColor=Color.Orange;
-            btnView.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnView.ForeColor=Color.DarkGreen;
-            btnView.Location=new Point(347, 295);
-            btnView.Name="btnView";
-            btnView.Size=new Size(166, 46);
-            btnView.TabIndex=2;
-            btnView.Text="View";
-            btnView.UseVisualStyleBackColor=false;
+            btnEdit.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            btnEdit.BackColor=Color.Orange;
+            btnEdit.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEdit.ForeColor=Color.DarkGreen;
+            btnEdit.Location=new Point(347, 295);
+            btnEdit.Name="btnEdit";
+            btnEdit.Size=new Size(166, 46);
+            btnEdit.TabIndex=2;
+            btnEdit.Text="Edit";
+            btnEdit.UseVisualStyleBackColor=false;
+            btnEdit.Click+=btnEdit_Click;
             // 
             // btnDelete
             // 
@@ -231,7 +232,7 @@
         private Label labelHeader;
         private DataGridView dgEvents;
         private Button buttonAdd;
-        private Button btnView;
+        private Button btnEdit;
         private Button btnDelete;
         private BindingSource eventBindingSource;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;

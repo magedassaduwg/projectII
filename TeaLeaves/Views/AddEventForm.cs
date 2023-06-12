@@ -1,5 +1,7 @@
 ﻿
+using System.Windows.Forms.VisualStyles;
 using TeaLeaves.Controllers;
+using TeaLeaves.DALs;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
@@ -9,8 +11,9 @@ namespace TeaLeaves.Views
     {
         private EventController _eventController;
         private Event _event;
+    
 
-        public AddEventForm()
+        public AddEventForm(Event selectedEvent)
         {
             InitializeComponent();
             _eventController = new EventController();
@@ -158,5 +161,7 @@ namespace TeaLeaves.Views
                 e.Handled = true; // Suppress the non-numeric key press
             }
         }
+
+     
     }
 }

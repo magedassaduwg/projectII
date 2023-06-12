@@ -17,12 +17,17 @@ namespace TeaLeaves.DALs
         public bool SaveEvent(Event @event)
         {
 
-            string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
-                             VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)";
+            string query = @event.Id <= 0 ?
+                @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
+                             VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)"
+                 :
+                 "Update Appointments " +
+                "Set Name = @Name, StreetNumber = @StreetNumber, State = @State,City = @City, Zipcode =@Zipcode, EventDateTime = @EventDateTime, Description = @Description " +
+                "Where eventId = @eventId";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
-               
+
                 using (SqlCommand saveCommand = new SqlCommand(query, connection))
                 {
                     saveCommand.Parameters.AddWithValue("@Description", @event.Description);
@@ -151,5 +156,47 @@ namespace TeaLeaves.DALs
             return events;
         }
 
+        public Event GetEventById(int selectedEventId)
+        {
+            Event @event = null;
+
+            string selectStatement = @"SELECT [EventId],[Name],[StreetNumber],[City] ,[State], [Zipcode] , [EventDateTime], [Description],[CreatorId] " +
+                "FROM [Events]  " +
+                "Where EventId = @EventId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@EventId", selectedEventId);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            @event = new Event
+                            {
+                                Id = Convert.ToInt32(reader["EventId"]),
+                                CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                                EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                                State = reader["State"].ToString(),
+                                City = reader["City"].ToString(),
+                                StreetNumber = reader["StreetNumber"].ToString(),
+                                Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                                EventName = reader["Name"].ToString(),
+                                Description = reader["Description"].ToString(),
+                            };
+                           
+                        }
+                    }
+
+                }
+            }
+            return @event;
+        }
+
     }
+    
 }
+    
