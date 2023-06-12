@@ -33,10 +33,6 @@
             panelHeader=new Panel();
             labelHeader=new Label();
             dgEvents=new DataGridView();
-            eventBindingSource=new BindingSource(components);
-            buttonAdd=new Button();
-            btnView=new Button();
-            btnDelete=new Button();
             EventName=new DataGridViewTextBoxColumn();
             EventDateTime=new DataGridViewTextBoxColumn();
             Description=new DataGridViewTextBoxColumn();
@@ -44,6 +40,10 @@
             City=new DataGridViewTextBoxColumn();
             State=new DataGridViewTextBoxColumn();
             Zipcode=new DataGridViewTextBoxColumn();
+            eventBindingSource=new BindingSource(components);
+            buttonAdd=new Button();
+            btnView=new Button();
+            btnDelete=new Button();
             tableLayoutPanelEvent.SuspendLayout();
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgEvents).BeginInit();
@@ -118,47 +118,6 @@
             dgEvents.Size=new Size(856, 219);
             dgEvents.TabIndex=1;
             // 
-            // buttonAdd
-            // 
-            buttonAdd.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            buttonAdd.BackColor=Color.Orange;
-            buttonAdd.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAdd.ForeColor=Color.DarkGreen;
-            buttonAdd.Location=new Point(175, 307);
-            buttonAdd.Name="buttonAdd";
-            buttonAdd.Size=new Size(166, 23);
-            buttonAdd.TabIndex=1;
-            buttonAdd.Text="Add";
-            buttonAdd.UseVisualStyleBackColor=false;
-            buttonAdd.Click+=buttonAdd_Click;
-            // 
-            // btnView
-            // 
-            btnView.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            btnView.BackColor=Color.Orange;
-            btnView.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnView.ForeColor=Color.DarkGreen;
-            btnView.Location=new Point(347, 307);
-            btnView.Name="btnView";
-            btnView.Size=new Size(166, 23);
-            btnView.TabIndex=2;
-            btnView.Text="View";
-            btnView.UseVisualStyleBackColor=false;
-            btnView.Click+=btnView_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            btnDelete.BackColor=Color.Orange;
-            btnDelete.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDelete.ForeColor=Color.DarkGreen;
-            btnDelete.Location=new Point(519, 307);
-            btnDelete.Name="btnDelete";
-            btnDelete.Size=new Size(166, 23);
-            btnDelete.TabIndex=3;
-            btnDelete.Text="Delete";
-            btnDelete.UseVisualStyleBackColor=false;
-            // 
             // EventName
             // 
             EventName.DataPropertyName="EventName";
@@ -207,6 +166,48 @@
             Zipcode.HeaderText="Zipcode";
             Zipcode.Name="Zipcode";
             Zipcode.ReadOnly=true;
+            // 
+            // buttonAdd
+            // 
+            buttonAdd.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            buttonAdd.BackColor=Color.Orange;
+            buttonAdd.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAdd.ForeColor=Color.DarkGreen;
+            buttonAdd.Location=new Point(175, 297);
+            buttonAdd.Name="buttonAdd";
+            buttonAdd.Size=new Size(166, 43);
+            buttonAdd.TabIndex=1;
+            buttonAdd.Text="Add";
+            buttonAdd.UseVisualStyleBackColor=false;
+            buttonAdd.Click+=buttonAdd_Click;
+            // 
+            // btnView
+            // 
+            btnView.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            btnView.BackColor=Color.Orange;
+            btnView.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnView.ForeColor=Color.DarkGreen;
+            btnView.Location=new Point(347, 295);
+            btnView.Name="btnView";
+            btnView.Size=new Size(166, 46);
+            btnView.TabIndex=2;
+            btnView.Text="View";
+            btnView.UseVisualStyleBackColor=false;
+            btnView.Click+=btnView_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            btnDelete.BackColor=Color.Orange;
+            btnDelete.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDelete.ForeColor=Color.DarkGreen;
+            btnDelete.Location=new Point(519, 295);
+            btnDelete.Name="btnDelete";
+            btnDelete.Size=new Size(166, 46);
+            btnDelete.TabIndex=3;
+            btnDelete.Text="Delete";
+            btnDelete.UseVisualStyleBackColor=false;
+            btnDelete.Click+=btnDelete_Click;
             // 
             // ucEventPlanner
             // 

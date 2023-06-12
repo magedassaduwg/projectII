@@ -56,5 +56,23 @@ namespace TeaLeaves.UserControls
         {
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgEvents.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgEvents.SelectedRows[0].DataBoundItem;
+                bool deleted = _eventController.DeleteEvent(selectedEvent.Id);
+                if (deleted)
+                {
+                    MessageBox.Show("Event deleted successfully.");
+                    InitializeEvents();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete the event.");
+                }
+            }
+        }
     }
 }
