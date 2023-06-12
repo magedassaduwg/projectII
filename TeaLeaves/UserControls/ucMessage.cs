@@ -189,9 +189,11 @@ namespace TeaLeaves.UserControls
 
         private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstContacts.SelectedIndex > -1)
+            var selectedItem = lstContacts.SelectedItem;
+
+            if (lstContacts.SelectedIndex > -1 && selectedItem.GetType() == typeof(User))
             {
-                _selectedUser = (User)lstContacts.SelectedItem;
+                _selectedUser = (User)selectedItem;
                 lblSelectedContact.Text = _selectedUser.FullName;
 
                 if (_selectedUser.IsContainUnread)
@@ -210,7 +212,7 @@ namespace TeaLeaves.UserControls
 
             if (dataItem.GetType() == typeof(User))
             {
-                User contact = (User)lstContacts.Items[e.Index];
+                User contact = (User)dataItem;
 
                 if (contact.IsContainUnread)
                 {
@@ -221,6 +223,11 @@ namespace TeaLeaves.UserControls
                     e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
                 }
             }
+            else if (dataItem.GetType() == typeof(string))
+            {
+                e.Graphics.DrawString(dataItem.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
+            }
+
             e.DrawFocusRectangle();
         }
     }

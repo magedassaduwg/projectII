@@ -199,7 +199,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login-TeaLeaves";
             FormClosing += LoginForm_FormClosing;
-            Load += LoginForm_Load;
             panelImg.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             panelLogin.ResumeLayout(false);
