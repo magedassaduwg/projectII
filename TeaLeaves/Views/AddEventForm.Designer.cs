@@ -273,11 +273,11 @@
             // 
             buttonSave.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             buttonSave.BackColor=Color.Orange;
-            buttonSave.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSave.Font=new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSave.ForeColor=Color.DarkGreen;
-            buttonSave.Location=new Point(329, 403);
+            buttonSave.Location=new Point(329, 393);
             buttonSave.Name="buttonSave";
-            buttonSave.Size=new Size(120, 23);
+            buttonSave.Size=new Size(120, 43);
             buttonSave.TabIndex=10;
             buttonSave.Text="Save";
             buttonSave.UseVisualStyleBackColor=false;
@@ -287,11 +287,11 @@
             // 
             buttonClose.Anchor=AnchorStyles.Left|AnchorStyles.Right;
             buttonClose.BackColor=Color.Orange;
-            buttonClose.Font=new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClose.Font=new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             buttonClose.ForeColor=Color.DarkGreen;
-            buttonClose.Location=new Point(455, 403);
+            buttonClose.Location=new Point(455, 393);
             buttonClose.Name="buttonClose";
-            buttonClose.Size=new Size(115, 23);
+            buttonClose.Size=new Size(115, 43);
             buttonClose.TabIndex=11;
             buttonClose.Text="Close";
             buttonClose.UseVisualStyleBackColor=false;

@@ -74,14 +74,6 @@ namespace TeaLeaves
             Application.Exit();
         }
 
-        private void lklblRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            using (RegisterForm registerForm = new RegisterForm(this))
-            {
-                registerForm.ShowDialog();
-            }
-        }
-
         /// <summary>
         /// Clears the textbox values
         /// </summary>
@@ -91,6 +83,14 @@ namespace TeaLeaves
             textBoxUsername.Clear();
             textBoxPassword.Clear();
             textBoxPassword.Focus();
+        }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            using (RegisterForm registerForm = new RegisterForm(this))
+            {
+                registerForm.ShowDialog();
+            }
         }
     }
 }

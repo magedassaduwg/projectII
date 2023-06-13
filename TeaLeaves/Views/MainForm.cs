@@ -8,7 +8,7 @@ namespace TeaLeaves.Views
 
         public MainForm()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,7 +33,9 @@ namespace TeaLeaves.Views
             lblGreeting.Text = $"Welcome {CurrentUserStore.User.FullName}";
         }
 
-        private void lnkLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+
+        private void buttonLogout_Click(object sender, EventArgs e)
         {
             CurrentUserStore.Logout();
             _isManulClose = true;
