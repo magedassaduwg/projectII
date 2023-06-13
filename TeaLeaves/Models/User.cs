@@ -17,5 +17,8 @@
         {
             get { return $"{FirstName} {LastName}"; }
         }
+
+        public Image ProfilePicture { get; set; }
+        public string Blurb { get; set; }
     }
 }
