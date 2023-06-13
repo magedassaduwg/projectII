@@ -81,5 +81,12 @@ namespace TeaLeaves.Views
             this.Close();
         }
 
+        private void viewProfileButton_Click(object sender, EventArgs e)
+        {
+            using (ProfileForm profileForm = new ProfileForm())
+            {
+                profileForm.ShowDialog();
+            }
+        }
     }
 }
