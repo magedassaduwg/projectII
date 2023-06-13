@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tableLayoutPanel2 = new TableLayoutPanel();
-            tabControlMain = new TabControl();
-            tabPageMessage = new TabPage();
-            tabPageEvent = new TabPage();
-            ucEventPlanners = new UserControls.ucEventPlanner();
-            ucMessages = new UserControls.ucMessage();
-            tabPageInvites = new TabPage();
-            ucEventInvites1 = new UserControls.ucEventInvites();
-            tabPageContact = new TabPage();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            lblGreeting = new Label();
-            lnkLogout = new LinkLabel();
+            tableLayoutPanel2=new TableLayoutPanel();
+            tabControlMain=new TabControl();
+            tabPageMessage=new TabPage();
+            tabPageEvent=new TabPage();
+            ucEventPlanners=new UserControls.ucEventPlanner();
+            tabPageInvites=new TabPage();
+            ucEventInvites1=new UserControls.ucEventInvites();
+            tabPageContact=new TabPage();
+            flowLayoutPanel1=new FlowLayoutPanel();
+            lblGreeting=new Label();
+            buttonLogout=new Button();
             tableLayoutPanel2.SuspendLayout();
             tabControlMain.SuspendLayout();
             tabPageEvent.SuspendLayout();
@@ -49,19 +48,19 @@
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnCount=1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Controls.Add(tabControlMain, 0, 1);
             tableLayoutPanel2.Controls.Add(flowLayoutPanel1, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(0, 0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.Dock=DockStyle.Fill;
+            tableLayoutPanel2.Location=new Point(0, 0);
+            tableLayoutPanel2.Name="tableLayoutPanel2";
+            tableLayoutPanel2.RowCount=2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
-            tableLayoutPanel2.Size = new Size(1300, 600);
-            tableLayoutPanel2.TabIndex = 0;
+            tableLayoutPanel2.Size=new Size(1300, 600);
+            tableLayoutPanel2.TabIndex=0;
             // 
             // tabControlMain
             // 
@@ -69,126 +68,118 @@
             tabControlMain.Controls.Add(tabPageEvent);
             tabControlMain.Controls.Add(tabPageInvites);
             tabControlMain.Controls.Add(tabPageContact);
-            tabControlMain.Dock = DockStyle.Fill;
-            tabControlMain.Location = new Point(3, 63);
-            tabControlMain.Name = "tabControlMain";
-            tabControlMain.SelectedIndex = 0;
-            tabControlMain.Size = new Size(1294, 534);
-            tabControlMain.TabIndex = 1;
+            tabControlMain.Dock=DockStyle.Fill;
+            tabControlMain.Location=new Point(3, 63);
+            tabControlMain.Name="tabControlMain";
+            tabControlMain.SelectedIndex=0;
+            tabControlMain.Size=new Size(1294, 534);
+            tabControlMain.TabIndex=1;
             // 
             // tabPageMessage
             // 
-            tabPageMessage.Controls.Add(ucMessages);
-            tabPageMessage.Location = new Point(4, 24);
-            tabPageMessage.Name = "tabPageMessage";
-            tabPageMessage.Padding = new Padding(3);
-            tabPageMessage.Size = new Size(1286, 506);
-            tabPageMessage.TabIndex = 0;
-            tabPageMessage.Text = "Message";
-            tabPageMessage.UseVisualStyleBackColor = true;
-            //
-            // ucMessages
-            //
-            ucMessages.Dock = DockStyle.Fill;
-            ucMessages.Location = new Point(3, 3);
-            ucMessages.Name = "ucMessages";
-            ucMessages.Size = new Size(1086, 450);
-            ucMessages.TabIndex = 0;
+            tabPageMessage.Location=new Point(4, 24);
+            tabPageMessage.Name="tabPageMessage";
+            tabPageMessage.Padding=new Padding(3);
+            tabPageMessage.Size=new Size(1286, 506);
+            tabPageMessage.TabIndex=0;
+            tabPageMessage.Text="Message";
+            tabPageMessage.UseVisualStyleBackColor=true;
             // 
             // tabPageEvent
             // 
             tabPageEvent.Controls.Add(ucEventPlanners);
-            tabPageEvent.Location = new Point(4, 24);
-            tabPageEvent.Name = "tabPageEvent";
-            tabPageEvent.Padding = new Padding(3);
-            tabPageEvent.Size = new Size(1092, 350);
-            tabPageEvent.TabIndex = 1;
-            tabPageEvent.Text = "Event Planner";
-            tabPageEvent.UseVisualStyleBackColor = true;
+            tabPageEvent.Location=new Point(4, 24);
+            tabPageEvent.Name="tabPageEvent";
+            tabPageEvent.Padding=new Padding(3);
+            tabPageEvent.Size=new Size(1286, 506);
+            tabPageEvent.TabIndex=1;
+            tabPageEvent.Text="Event Planner";
+            tabPageEvent.UseVisualStyleBackColor=true;
             // 
             // ucEventPlanners
             // 
-            ucEventPlanners.Dock = DockStyle.Fill;
-            ucEventPlanners.Location = new Point(3, 3);
-            ucEventPlanners.Name = "ucEventPlanners";
-            ucEventPlanners.Size = new Size(1086, 344);
-            ucEventPlanners.TabIndex = 0;
+            ucEventPlanners.Dock=DockStyle.Fill;
+            ucEventPlanners.Location=new Point(3, 3);
+            ucEventPlanners.Name="ucEventPlanners";
+            ucEventPlanners.Size=new Size(1280, 500);
+            ucEventPlanners.TabIndex=0;
             // 
             // tabPageInvites
             // 
             tabPageInvites.Controls.Add(ucEventInvites1);
-            tabPageInvites.Location = new Point(4, 24);
-            tabPageInvites.Name = "tabPageInvites";
-            tabPageInvites.Padding = new Padding(3);
-            tabPageInvites.Size = new Size(1092, 350);
-            tabPageInvites.TabIndex = 2;
-            tabPageInvites.Text = "Event Invite";
-            tabPageInvites.UseVisualStyleBackColor = true;
+            tabPageInvites.Location=new Point(4, 24);
+            tabPageInvites.Name="tabPageInvites";
+            tabPageInvites.Padding=new Padding(3);
+            tabPageInvites.Size=new Size(1286, 506);
+            tabPageInvites.TabIndex=2;
+            tabPageInvites.Text="Event Invite";
+            tabPageInvites.UseVisualStyleBackColor=true;
             // 
             // ucEventInvites1
             // 
-            ucEventInvites1.Dock = DockStyle.Fill;
-            ucEventInvites1.Location = new Point(3, 3);
-            ucEventInvites1.Name = "ucEventInvites1";
-            ucEventInvites1.Size = new Size(1086, 344);
-            ucEventInvites1.TabIndex = 0;
+            ucEventInvites1.Dock=DockStyle.Fill;
+            ucEventInvites1.Location=new Point(3, 3);
+            ucEventInvites1.Name="ucEventInvites1";
+            ucEventInvites1.Size=new Size(1280, 500);
+            ucEventInvites1.TabIndex=0;
             // 
             // tabPageContact
             // 
-            tabPageContact.Location = new Point(4, 24);
-            tabPageContact.Name = "tabPageContact";
-            tabPageContact.Padding = new Padding(3);
-            tabPageContact.Size = new Size(1092, 350);
-            tabPageContact.TabIndex = 3;
-            tabPageContact.Text = "Contact";
-            tabPageContact.UseVisualStyleBackColor = true;
+            tabPageContact.Location=new Point(4, 24);
+            tabPageContact.Name="tabPageContact";
+            tabPageContact.Padding=new Padding(3);
+            tabPageContact.Size=new Size(1286, 506);
+            tabPageContact.TabIndex=3;
+            tabPageContact.Text="Contact";
+            tabPageContact.UseVisualStyleBackColor=true;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(lblGreeting);
-            flowLayoutPanel1.Controls.Add(lnkLogout);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(3, 3);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1294, 54);
-            flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.Controls.Add(buttonLogout);
+            flowLayoutPanel1.Dock=DockStyle.Fill;
+            flowLayoutPanel1.Location=new Point(3, 3);
+            flowLayoutPanel1.Name="flowLayoutPanel1";
+            flowLayoutPanel1.Size=new Size(1294, 54);
+            flowLayoutPanel1.TabIndex=0;
             // 
             // lblGreeting
             // 
-            lblGreeting.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            lblGreeting.AutoSize = true;
-            lblGreeting.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblGreeting.Location = new Point(3, 0);
-            lblGreeting.Name = "lblGreeting";
-            lblGreeting.Size = new Size(0, 21);
-            lblGreeting.TabIndex = 0;
-            lblGreeting.TextAlign = ContentAlignment.MiddleCenter;
+            lblGreeting.Anchor=AnchorStyles.Top|AnchorStyles.Bottom|AnchorStyles.Left;
+            lblGreeting.AutoSize=true;
+            lblGreeting.Font=new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point);
+            lblGreeting.Location=new Point(3, 0);
+            lblGreeting.Name="lblGreeting";
+            lblGreeting.Size=new Size(0, 41);
+            lblGreeting.TabIndex=0;
+            lblGreeting.TextAlign=ContentAlignment.MiddleCenter;
             // 
-            // lnkLogout
+            // buttonLogout
             // 
-            lnkLogout.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            lnkLogout.AutoSize = true;
-            lnkLogout.Location = new Point(9, 0);
-            lnkLogout.Name = "lnkLogout";
-            lnkLogout.Size = new Size(48, 21);
-            lnkLogout.TabIndex = 1;
-            lnkLogout.TabStop = true;
-            lnkLogout.Text = "Log out";
-            lnkLogout.TextAlign = ContentAlignment.MiddleCenter;
-            lnkLogout.LinkClicked += lnkLogout_LinkClicked;
+            buttonLogout.Anchor=AnchorStyles.Top|AnchorStyles.Right;
+            buttonLogout.BackColor=Color.YellowGreen;
+            buttonLogout.Font=new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonLogout.ForeColor=Color.DarkOrange;
+            buttonLogout.Location=new Point(9, 3);
+            buttonLogout.Name="buttonLogout";
+            buttonLogout.Size=new Size(84, 35);
+            buttonLogout.TabIndex=2;
+            buttonLogout.Text="Logout";
+            buttonLogout.UseVisualStyleBackColor=false;
+            buttonLogout.Click+=buttonLogout_Click;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1300, 600);
+            AutoScaleDimensions=new SizeF(7F, 15F);
+            AutoScaleMode=AutoScaleMode.Font;
+            ClientSize=new Size(1300, 600);
             Controls.Add(tableLayoutPanel2);
-            MinimumSize = new Size(1200, 500);
-            Name = "MainForm";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainForm";
-            FormClosing += MainForm_FormClosing;
-            Load += MainForm_Load;
+            MinimumSize=new Size(1200, 500);
+            Name="MainForm";
+            StartPosition=FormStartPosition.CenterScreen;
+            Text="MainForm";
+            FormClosing+=MainForm_FormClosing;
+            Load+=MainForm_Load;
             tableLayoutPanel2.ResumeLayout(false);
             tabControlMain.ResumeLayout(false);
             tabPageEvent.ResumeLayout(false);
@@ -210,7 +201,7 @@
         private TabPage tabPageContact;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblGreeting;
-        private LinkLabel lnkLogout;
         private UserControls.ucEventInvites ucEventInvites1;
+        private Button buttonLogout;
     }
 }
