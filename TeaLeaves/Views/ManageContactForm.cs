@@ -41,7 +41,7 @@ namespace TeaLeaves.Views
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            User contactToBeRemoved = this.selectedContact;
+            User contactToBeRemoved = this._contactList.Find(User => User.Email == this.emailText.Text);
             DialogResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Warning", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
