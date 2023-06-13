@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -40,6 +41,31 @@ namespace TeaLeaves.DALs
                 }
             }
             return userEventResponses;
+        }
+
+        /// <summary>
+        /// Inserts a new EventResponse row into the database
+        /// </summary>
+        /// <param name="eventResponse"></param>
+        /// <returns></returns>
+        public int AddEventResponse(EventResponse @eventResponse)
+        {
+
+            string query = @"INSERT INTO EventResponses (EventInviterId, EventReceiverId, EventId, Accepted) 
+                             VALUES (@InvidedId, @ReceivedId, @EventId, @Accepted)";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@InvitedId", @eventResponse.InviterId);
+                    saveCommand.Parameters.AddWithValue("@ReceivedId", @eventResponse.ReceiverId);
+                    saveCommand.Parameters.AddWithValue("@EventId", @eventResponse.EventId);
+                    saveCommand.Parameters.AddWithValue("@Accepted", @eventResponse.Accepted);
+                    return Convert.ToInt32(saveCommand.ExecuteScalar());
+                }
+            }
         }
     }
 }

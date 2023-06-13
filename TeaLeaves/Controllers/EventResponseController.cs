@@ -19,6 +19,16 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Adds an EventResponse to the database
+        /// </summary>
+        /// <param name="eventResponse"></param>
+        /// <returns></returns>
+        public int AddEventResponse(EventResponse eventResponse)
+        {
+            return _eventResponseDAL.AddEventResponse(eventResponse);
+        }
+
+        /// <summary>
         /// Returns all EventResponses with matching receivingId
         /// </summary>
         /// <param name="receivingId"></param>

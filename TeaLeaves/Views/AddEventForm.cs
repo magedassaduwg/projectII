@@ -103,7 +103,7 @@ namespace TeaLeaves.Views
 
             if (IsFormValid())
             {
-                _event.UserId = CurrentUserStore.User.UserId;
+                _event.CreatorId = CurrentUserStore.User.UserId;
                 _event.EventName = textBoxEName.Text.Trim();
                 _event.StreetNumber = textBoxStreetName.Text.Trim();
                 _event.State = comboBoxState.SelectedItem.ToString();
@@ -113,7 +113,7 @@ namespace TeaLeaves.Views
                 _event.EventDateTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
                 try
                 {
-                    if (_eventController.SaveEvent(_event))
+                    if (_eventController.SaveEvent(_event) > 0)
                     {
                         labelError.Text = "Event has been saved";
                         Close();

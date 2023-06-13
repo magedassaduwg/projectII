@@ -25,12 +25,7 @@ namespace TeaLeaves.Views
 
         private void ManageContactForm_Load(object sender, EventArgs e)
         {
-            this._contactList = this._contactsController.GetUsersContacts(CurrentUserStore.User);
-            this.usersBindingSource.DataSource = this._contactList;
-            if (this._contactList.Any())
-            {
-                this.selectedContact = this._contactList[0];
-            }
+            this.refreshContactList();
         }
 
         private void contactDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -46,11 +41,12 @@ namespace TeaLeaves.Views
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            User contactToBeRemoved = this._contactList.Find(User => User.Email == this.emailText.Text);
             DialogResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Warning", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
-                this._contactsController.RemoveContact(CurrentUserStore.User, this.selectedContact);
+                this._contactsController.RemoveContact(CurrentUserStore.User, contactToBeRemoved);
                 this._contactList = this._contactsController.GetUsersContacts(CurrentUserStore.User);
                 this.usersBindingSource.DataSource = this._contactList;
                 this.firstNameText.Text = String.Empty;
@@ -60,5 +56,30 @@ namespace TeaLeaves.Views
             }
 
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            using (AddContactForm contactForm = new AddContactForm())
+            {
+                contactForm.ShowDialog();
+                this.refreshContactList();
+            }
+        }
+
+        private void refreshContactList()
+        {
+            this._contactList = this._contactsController.GetUsersContacts(CurrentUserStore.User);
+            this.usersBindingSource.DataSource = this._contactList;
+            if (this._contactList.Any())
+            {
+                this.selectedContact = this._contactList[0];
+            }
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
