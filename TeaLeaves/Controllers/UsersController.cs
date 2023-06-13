@@ -33,5 +33,27 @@ namespace TeaLeaves.Controllers
         {
             _userDAL.AddUser(user);
         }
+
+
+        /// <summary>
+        /// method retrieving the profile picture of a given user from the database
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public Image GetUserProfilePicture(int userId)
+        {
+            return this._userDAL.GetUserProfilePicture(userId);
+        }
+
+
+        /// <summary>
+        /// method retrieving the givne user's blurb from the database
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public string GetUserBlurb(int userId)
+        {
+            return this._userDAL.GetUserBlurb(userId);
+        }
     }
 }

@@ -83,7 +83,9 @@ namespace TeaLeaves.Views
 
         private void viewProfileButton_Click(object sender, EventArgs e)
         {
-            using (ProfileForm profileForm = new ProfileForm())
+            User contactToBeViewed = this._contactList.Find(User => User.Email == this.emailText.Text);
+
+            using (ProfileForm profileForm = new ProfileForm(contactToBeViewed))
             {
                 profileForm.ShowDialog();
             }

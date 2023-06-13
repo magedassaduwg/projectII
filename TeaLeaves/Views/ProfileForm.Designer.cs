@@ -111,6 +111,7 @@
             // editButton
             // 
             editButton.Anchor = AnchorStyles.None;
+            editButton.Enabled = false;
             editButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             editButton.Location = new Point(379, 544);
             editButton.Name = "editButton";
@@ -124,6 +125,7 @@
             // saveButton
             // 
             saveButton.Anchor = AnchorStyles.None;
+            saveButton.Enabled = false;
             saveButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             saveButton.Location = new Point(379, 427);
             saveButton.Name = "saveButton";
@@ -136,6 +138,7 @@
             // uploadButton
             // 
             uploadButton.Anchor = AnchorStyles.None;
+            uploadButton.Enabled = false;
             uploadButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             uploadButton.Location = new Point(379, 146);
             uploadButton.Name = "uploadButton";
@@ -153,6 +156,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "ProfileForm";
             Text = "TeaLeaves";
+            Load += ProfileForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)userProfilePictureBox).EndInit();

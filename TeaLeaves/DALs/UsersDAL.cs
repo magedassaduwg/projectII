@@ -60,6 +60,69 @@ namespace TeaLeaves.DALs
                 insertCommand.ExecuteReader();
             }
         }
+
+        /// <summary>
+        /// method retrieving the profile picture of a given user from the database
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public Image GetUserProfilePicture(int userId)
+        {
+            MemoryStream userImage = new MemoryStream();
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection()) 
+            {
+                SqlCommand command = new SqlCommand("Select ProfilePicture FROM Users WHERE UserId = @UserId;", connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+                
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    try
+                    {
+                        var bytes = (byte[])reader["ProfilePicture"];
+                        userImage.Write(bytes);
+                        Image loadedImage = Image.FromStream(userImage);
+                        return loadedImage;
+                    } catch (Exception ex)
+                    {
+                        
+                    }
+                }
+                Image defaultImage = Image.FromFile("TeaLeaves/Images/user.jpg");
+                return defaultImage;
+            }
+        }
+
+        /// <summary>
+        /// method retrieving the givne user's blurb from the database
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public string GetUserBlurb(int userId)
+        {
+            string userBlurb = "";
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("Select Blurb FROM Users WHERE UserId = @UserId;", connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    try
+                    {
+                        userBlurb = reader["Blurb"].ToString();
+                    } catch (Exception ex)
+                    {
+                        userBlurb = "";
+                    }
+                }
+            }
+            return userBlurb;
+        }
     }
 }
 
