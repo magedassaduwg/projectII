@@ -47,6 +47,88 @@ namespace TeaLeaves.DALs
             return contacts;
         }
 
+        /// <summary>
+        /// method to retrieve a list of a user's contacts represented by a list of Users objects for a given event
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public List<User> GetUsersContactsByEvent(User user, Event @event)
+        {
+            List<int> contactUserIDs = this.GetContactUserIDs(user);
+
+            List<User> contacts = new List<User>();
+
+            foreach (int userId in contactUserIDs)
+            {
+                using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+                {
+                    string query = "SELECT UserId, FirstName, LastName, Username, Email FROM Users u " +
+                        "JOIN EventResponses er ON u.UserId = er.ReceiverId WHERE UserId = @UserId AND er.EventId = @EventId;";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@EventId", @event.Id);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        User contact = new User
+                        {
+                            UserId = Convert.ToInt32(reader["UserId"]),
+                            FirstName = reader["FirstName"].ToString(),
+                            LastName = reader["LastName"].ToString(),
+                            Username = reader["Username"].ToString(),
+                            Email = reader["Email"].ToString()
+                        };
+                        contacts.Add(contact);
+                    }
+                }
+            }
+            return contacts;
+        }
+
+        /// <summary>
+        /// method to retrieve a list of a user's contacts represented by a list of Users objects for a given event who have not been invited
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public List<User> GetUsersContactsNotInvitedByEvent(User user, Event @event)
+        {
+            List<int> contactUserIDs = this.GetContactUserIDs(user);
+
+            List<User> contacts = new List<User>();
+
+            foreach (int userId in contactUserIDs)
+            {
+                using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+                {
+                    string query = "SELECT UserId, FirstName, LastName, Username, Email FROM Users u " +
+                        "JOIN EventResponses er ON u.UserId != er.ReceiverId WHERE UserId = @UserId AND er.EventId = @EventId;";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@EventId", @event.Id);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        User contact = new User
+                        {
+                            UserId = Convert.ToInt32(reader["UserId"]),
+                            FirstName = reader["FirstName"].ToString(),
+                            LastName = reader["LastName"].ToString(),
+                            Username = reader["Username"].ToString(),
+                            Email = reader["Email"].ToString()
+                        };
+                        contacts.Add(contact);
+                    }
+                }
+            }
+            return contacts;
+        }
+
         private List<int> GetContactUserIDs(User user)
         {
             List<int> contactUserIDs = new List<int>();

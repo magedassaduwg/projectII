@@ -23,7 +23,7 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="event"></param>
         /// <returns></returns>
-        public bool SaveEvent(Event @event)
+        public int SaveEvent(Event @event)
         {
             return _eventDAL.SaveEvent(@event);
         }

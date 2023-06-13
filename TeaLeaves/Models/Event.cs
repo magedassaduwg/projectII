@@ -14,6 +14,5 @@
         public string? City { get; set; }
         public int Zipcode { get; set; }
         public string? StreetNumber { get; set; }
-        public int UserId { get; internal set; }
     }
 }

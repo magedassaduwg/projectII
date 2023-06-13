@@ -14,7 +14,7 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="event"></param>
         /// <returns></returns>
-        public bool SaveEvent(Event @event)
+        public int SaveEvent(Event @event)
         {
 
             string query = @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
@@ -34,8 +34,9 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
                     saveCommand.Parameters.AddWithValue("@CreatorId", CurrentUserStore.User.UserId);
 
-                    int rowsAffected = saveCommand.ExecuteNonQuery();
-                    return rowsAffected > 0;
+                    //int rowsAffected = saveCommand.ExecuteNonQuery();
+                    //return rowsAffected > 0;
+                    return Convert.ToInt32(saveCommand.ExecuteScalar());
                 }
             }
         }

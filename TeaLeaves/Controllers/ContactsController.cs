@@ -28,6 +28,28 @@ namespace TeaLeaves.Controllers
             return this._contactsDAL.GetUsersContacts(user);
         }
 
+        /// <summary>
+        /// Returns the users who have been invited to an event
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="event"></param>
+        /// <returns></returns>
+        public List<User> GetUsersContactsByEvent(User user, Event @event)
+        {
+            return _contactsDAL.GetUsersContactsByEvent(user, @event);
+        }
+
+
+        /// <summary>
+        /// Returns the users who have not been invited to an event
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="event"></param>
+        /// <returns></returns>
+        public List<User> GetUsersContactsNotInvitedByEvent(User user, Event @event)
+        {
+            return _contactsDAL.GetUsersContactsNotInvitedByEvent(user, @event);
+        }
 
         /// <summary>
         /// method deleting a contact from a User's contact list in the database
