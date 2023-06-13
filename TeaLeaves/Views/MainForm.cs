@@ -8,7 +8,7 @@ namespace TeaLeaves.Views
 
         public MainForm()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void button1_Click(object sender, EventArgs e)

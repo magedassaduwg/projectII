@@ -1,4 +1,5 @@
 ﻿using TeaLeaves.Controllers;
+using TeaLeaves.DALs;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 using TeaLeaves.Views;
@@ -19,7 +20,8 @@ namespace TeaLeaves.UserControls
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            using (AddEventForm eventForm = new AddEventForm())
+            Event newEvent = new Event();
+            using (AddEventForm eventForm = new AddEventForm(newEvent))
             {
                 eventForm.ShowDialog();
 
@@ -52,9 +54,49 @@ namespace TeaLeaves.UserControls
             }
         }
 
-        private void btnView_Click(object sender, EventArgs e)
+
+
+        private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dgEvents.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgEvents.SelectedRows[0].DataBoundItem;
+                DateTime eventDateTime = (DateTime)selectedEvent.EventDateTime;
+                if (eventDateTime > DateTime.Now)
+                {
+                    bool deleted = _eventController.DeleteEvent(selectedEvent.Id);
+                    if (deleted)
+                    {
+                        MessageBox.Show("Event deleted successfully.");
+                        InitializeEvents();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete the event.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selected event cannot be deleted because it has already passed.");
+                    InitializeEvents();
+                }
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgEvents.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgEvents.SelectedRows[0].DataBoundItem;
+
+                using (AddEventForm eventForm = new AddEventForm(selectedEvent))
+                {
+                    eventForm.ShowDialog();
+                }
+                InitializeEvents();
+            }
 
         }
     }
 }
+

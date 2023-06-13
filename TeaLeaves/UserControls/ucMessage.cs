@@ -112,6 +112,7 @@ namespace TeaLeaves.UserControls
                     tblMessages.Controls.Add(lblMessage, 0, row);
                 }
 
+                //tblMessages.SetColumnSpan(lblMessage, 2);
                 tblMessages.ScrollControlIntoView(lblMessage);
             }
         }
@@ -188,9 +189,11 @@ namespace TeaLeaves.UserControls
 
         private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstContacts.SelectedIndex > -1)
+            var selectedItem = lstContacts.SelectedItem;
+
+            if (lstContacts.SelectedIndex > -1 && selectedItem.GetType() == typeof(User))
             {
-                _selectedUser = (User)lstContacts.SelectedItem;
+                _selectedUser = (User)selectedItem;
                 lblSelectedContact.Text = _selectedUser.FullName;
 
                 if (_selectedUser.IsContainUnread)
@@ -205,15 +208,24 @@ namespace TeaLeaves.UserControls
         private void lstContacts_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
-            User contact = (User)lstContacts.Items[e.Index];
+            var dataItem = lstContacts.Items[e.Index];
 
-            if (contact.IsContainUnread)
+            if (dataItem.GetType() == typeof(User))
             {
-                e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, e.Bounds);
+                User contact = (User)dataItem;
+
+                if (contact.IsContainUnread)
+                {
+                    e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
+                }
             }
-            else
+            else if (dataItem.GetType() == typeof(string))
             {
-                e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
+                e.Graphics.DrawString(dataItem.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
             }
 
             e.DrawFocusRectangle();

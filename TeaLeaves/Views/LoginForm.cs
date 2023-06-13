@@ -16,6 +16,12 @@ namespace TeaLeaves
             _userLogin = new User();
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            textBoxUsername.Focus();
+            base.OnShown(e);
+        }
+
         private void textBoxUsername_TextChanged(object sender, EventArgs e)
         {
             _userLogin.Password = textBoxUsername.Text;
@@ -84,11 +90,7 @@ namespace TeaLeaves
             Show();
             textBoxUsername.Clear();
             textBoxPassword.Clear();
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            textBoxUsername.Focus();
+            textBoxPassword.Focus();
         }
     }
 }

@@ -199,13 +199,16 @@
             // 
             // dateTimePickerEvent
             // 
-            dateTimePickerEvent.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePickerEvent.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            dateTimePickerEvent.CalendarMonthBackground=Color.Orange;
+            dateTimePickerEvent.CalendarTrailingForeColor=Color.DarkGreen;
             tableLayoutPanelAddEvent.SetColumnSpan(dateTimePickerEvent, 2);
-            dateTimePickerEvent.Location = new Point(200, 156);
-            dateTimePickerEvent.Name = "dateTimePickerEvent";
-            dateTimePickerEvent.Size = new Size(249, 23);
-            dateTimePickerEvent.TabIndex = 6;
-            dateTimePickerEvent.ValueChanged += dateTimePickerEvent_ValueChanged;
+            dateTimePickerEvent.Location=new Point(200, 156);
+            dateTimePickerEvent.Name="dateTimePickerEvent";
+            dateTimePickerEvent.Size=new Size(249, 23);
+            dateTimePickerEvent.TabIndex=6;
+            dateTimePickerEvent.Value=new DateTime(2023, 6, 12, 0, 0, 0, 0);
+            dateTimePickerEvent.ValueChanged+=dateTimePickerEvent_ValueChanged;
             // 
             // labelHour
             // 

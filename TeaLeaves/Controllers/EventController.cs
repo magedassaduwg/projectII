@@ -1,4 +1,5 @@
-﻿using TeaLeaves.DALs;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using TeaLeaves.DALs;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
@@ -57,6 +58,11 @@ namespace TeaLeaves.Controllers
         public List<Event> GetEventsByUserId(int userId)
         {
             return _eventDAL.GetEventsByUserId(userId);
+        }
+
+        public Event GetEventById(int selectedEventId)
+        {
+            return _eventDAL.GetEventById(selectedEventId);
         }
     }
 }

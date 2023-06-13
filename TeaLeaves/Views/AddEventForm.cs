@@ -1,5 +1,4 @@
-﻿
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
@@ -10,18 +9,40 @@ namespace TeaLeaves.Views
         private EventController _eventController;
         private Event _event;
 
-        public AddEventForm()
+
+        public AddEventForm(Event selectedEvent)
         {
             InitializeComponent();
             _eventController = new EventController();
-            _event = new Event();
+            _event = selectedEvent ?? new Event();
+            BindEventValue();
+
         }
+        private void BindEventValue()
+        {
 
-
+            textBoxEName.Text = _event.EventName;
+            textBoxStreetName.Text=_event.StreetNumber;
+            textBoxCity.Text = _event.City;
+            comboBoxState.Text = _event.State;
+            textBoxZip.Text = _event.Zipcode.ToString();
+            richTextBoxDescription.Text = _event.Description;
+            if (_event.Id > 0)
+            {
+                dateTimePickerEvent.Value = _event.EventDateTime;
+                numericUpDownHour.Value = _event.EventDateTime.Hour;
+                numericUpDownMinute.Value = _event.EventDateTime.Minute;
+            }
+        }
         private void EventsForm_Load(object sender, EventArgs e)
         {
-            numericUpDownHour.Value = DateTime.Now.Hour;
-            numericUpDownMinute.Value = DateTime.Now.Minute;
+            if (_event.Id == 0)
+            {
+                dateTimePickerEvent.Value = DateTime.Now;
+                numericUpDownHour.Value = DateTime.Now.Hour;
+                numericUpDownMinute.Value = DateTime.Now.Minute;
+            }
+
 
             BindState();
         }
@@ -158,5 +179,7 @@ namespace TeaLeaves.Views
                 e.Handled = true; // Suppress the non-numeric key press
             }
         }
+
+
     }
 }
