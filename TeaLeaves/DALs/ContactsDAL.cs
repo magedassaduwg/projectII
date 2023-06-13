@@ -53,11 +53,11 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public List<User> GetUsersContactsByEvent(User user, Event @event)
+        public List<Models.User> GetUsersContactsByEvent(Models.User user, Event @event)
         {
             List<int> contactUserIDs = this.GetContactUserIDs(user);
 
-            List<User> contacts = new List<User>();
+            List<Models.User> contacts = new List<Models.User>();
 
             foreach (int userId in contactUserIDs)
             {
@@ -74,7 +74,7 @@ namespace TeaLeaves.DALs
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        User contact = new User
+                        Models.User contact = new Models.User
                         {
                             UserId = Convert.ToInt32(reader["UserId"]),
                             FirstName = reader["FirstName"].ToString(),
@@ -94,11 +94,11 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public List<User> GetUsersContactsNotInvitedByEvent(User user, Event @event)
+        public List<Models.User> GetUsersContactsNotInvitedByEvent(Models.User user, Event @event)
         {
             List<int> contactUserIDs = this.GetContactUserIDs(user);
 
-            List<User> contacts = new List<User>();
+            List<Models.User> contacts = new List<Models.User>();
 
             foreach (int userId in contactUserIDs)
             {
@@ -115,7 +115,7 @@ namespace TeaLeaves.DALs
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        User contact = new User
+                        Models.User contact = new Models.User
                         {
                             UserId = Convert.ToInt32(reader["UserId"]),
                             FirstName = reader["FirstName"].ToString(),
@@ -130,7 +130,7 @@ namespace TeaLeaves.DALs
             return contacts;
         }
 
-        private List<int> GetContactUserIDs(User user)
+        private List<int> GetContactUserIDs(Models.User user)
         {
             List<int> contactUserIDs = new List<int>();
 
