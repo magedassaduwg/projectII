@@ -14,15 +14,16 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="event"></param>
         /// <returns></returns>
-        public int SaveEvent(Event @event)
+        public bool SaveEvent(Event @event)
         {
             string query = @event.Id <= 0 ?
                 @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
-                             VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)"
-                 :
-                 "Update Events " +
-                "Set Name = @Name, StreetNumber = @StreetNumber, State = @State,City = @City, Zipcode =@Zipcode, EventDateTime = @EventDateTime, Description = @Description " +
-                "Where eventId = @eventId";
+        VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)"
+                :
+                @"UPDATE Events 
+        SET Name = @Name, StreetNumber = @StreetNumber, State = @State, City = @City, Zipcode = @Zipcode, EventDateTime = @EventDateTime, Description = @Description 
+        WHERE eventId = @eventId";
+
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
@@ -45,11 +46,13 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@Name", @event.EventName);
                     saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
                     saveCommand.Parameters.AddWithValue("@CreatorId", CurrentUserStore.User.UserId);
+                    saveCommand.Parameters.AddWithValue("@eventId", @event.Id);
 
                     return Convert.ToInt32(saveCommand.ExecuteScalar());
                 }
             }
         }
+
 
         /// <summary>
         /// Deletes an event from the database
