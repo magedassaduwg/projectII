@@ -14,16 +14,16 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="event"></param>
         /// <returns></returns>
-        public int SaveEvent(Event @event)
+        public bool SaveEvent(Event @event)
         {
-
             string query = @event.Id <= 0 ?
                 @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
-                             VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)"
-                 :
-                 "Update Appointments " +
-                "Set Name = @Name, StreetNumber = @StreetNumber, State = @State,City = @City, Zipcode =@Zipcode, EventDateTime = @EventDateTime, Description = @Description " +
-                "Where eventId = @eventId";
+        VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)"
+                :
+                @"UPDATE Events 
+        SET Name = @Name, StreetNumber = @StreetNumber, State = @State, City = @City, Zipcode = @Zipcode, EventDateTime = @EventDateTime, Description = @Description 
+        WHERE eventId = @eventId";
+
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
@@ -38,13 +38,14 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@StreetNumber", @event.StreetNumber);
                     saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
                     saveCommand.Parameters.AddWithValue("@CreatorId", CurrentUserStore.User.UserId);
+                    saveCommand.Parameters.AddWithValue("@eventId", @event.Id);
 
-                    //int rowsAffected = saveCommand.ExecuteNonQuery();
-                    //return rowsAffected > 0;
-                    return Convert.ToInt32(saveCommand.ExecuteScalar());
+                    int rowsAffected = saveCommand.ExecuteNonQuery();
+                    return rowsAffected > 0;
                 }
             }
         }
+
 
         /// <summary>
         /// Deletes an event from the database

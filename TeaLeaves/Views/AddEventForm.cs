@@ -113,9 +113,10 @@ namespace TeaLeaves.Views
                 _event.EventDateTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
                 try
                 {
-                    if (_eventController.SaveEvent(_event) > 0)
+                    if (_eventController.SaveEvent(_event))
                     {
                         labelError.Text = "Event has been saved";
+                        MessageBox.Show("Event has been saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Close();
                     }
                     else
