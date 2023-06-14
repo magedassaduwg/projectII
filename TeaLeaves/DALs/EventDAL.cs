@@ -164,7 +164,11 @@ namespace TeaLeaves.DALs
 
             return events;
         }
-
+        /// <summary>
+        /// Get event by ID
+        /// </summary>
+        /// <param name="selectedEventId"></param>
+        /// <returns></returns>
         public Event GetEventById(int selectedEventId)
         {
             Event @event = null;

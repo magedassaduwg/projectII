@@ -12,10 +12,17 @@ using TeaLeaves.Helper;
 
 namespace TeaLeaves.Views
 {
+    /// <summary>
+    /// Represents a form for viewing and editing user profiles.
+    /// </summary>
     public partial class ProfileForm : Form
     {
         private UsersController _userController;
         private Models.User viewedUser;
+        /// <summary>
+        /// Initializes a new instance of the ProfileForm class
+        /// </summary>
+        /// <param name="selectedUser">The user whose profile is being viewed.</param>
         public ProfileForm(Models.User selectedUser)
         {
             this._userController = new UsersController();

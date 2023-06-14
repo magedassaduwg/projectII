@@ -5,10 +5,16 @@ using TeaLeaves.Views;
 
 namespace TeaLeaves
 {
+    /// <summary>
+    /// Represents the login form for user authentication.
+    /// </summary>
     public partial class LoginForm : Form
     {
         private UsersController _userController;
         private User _userLogin;
+        /// <summary>
+        /// Initializes a new instance of the LoginForm.
+        /// </summary>
         public LoginForm()
         {
             InitializeComponent();

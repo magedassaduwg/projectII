@@ -1,16 +1,20 @@
 ﻿using TeaLeaves.Controllers;
-using TeaLeaves.DALs;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 using TeaLeaves.Views;
 
 namespace TeaLeaves.UserControls
 {
+    /// <summary>
+    /// Represents a user control for event planning.
+    /// </summary>
     public partial class ucEventPlanner : UserControl
     {
         private List<Event> _events;
         private EventController _eventController;
-
+        /// <summary>
+        /// Initializes a new instance of the ucEventPlanner.
+        /// </summary>
         public ucEventPlanner()
         {
             InitializeComponent();

@@ -4,12 +4,18 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
+    /// <summary>
+    /// Represents a form for adding or editing an event.
+    /// </summary>
     public partial class AddEventForm : Form
     {
         private EventController _eventController;
         private Event _event;
 
-
+        /// <summary>
+        /// Initializes a new instance of the AddEventForm class with the specified selected event.
+        /// </summary>
+        /// <param name="selectedEvent">The event to be edited. If null, a new event will be created.</param>
         public AddEventForm(Event selectedEvent)
         {
             InitializeComponent();
@@ -158,7 +164,7 @@ namespace TeaLeaves.Views
             labelError.Text = string.Empty;
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
             {
-                e.Handled = true; // Suppress the non-numeric key press
+                e.Handled = true; 
             }
         }
 
