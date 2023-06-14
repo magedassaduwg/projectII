@@ -2,10 +2,15 @@
 
 namespace TeaLeaves.Views
 {
+    /// <summary>
+    /// Represents the main form of the application.
+    /// </summary>
     public partial class MainForm : Form
     {
         private bool _isManulClose = false;
-
+        /// <summary>
+        /// Initializes a new instance of the MainForm.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();

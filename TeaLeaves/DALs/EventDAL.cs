@@ -46,7 +46,7 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@Name", @event.EventName);
                     saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
                     saveCommand.Parameters.AddWithValue("@CreatorId", CurrentUserStore.User.UserId);
-                    saveCommand.Parameters.AddWithValue("@eventId", @event.Id);
+                    
 
                     return Convert.ToInt32(saveCommand.ExecuteScalar());
                 }
@@ -206,7 +206,11 @@ namespace TeaLeaves.DALs
 
             return events;
         }
-
+        /// <summary>
+        /// Get event by ID
+        /// </summary>
+        /// <param name="selectedEventId"></param>
+        /// <returns></returns>
         public Event GetEventById(int selectedEventId)
         {
             Event @event = null;

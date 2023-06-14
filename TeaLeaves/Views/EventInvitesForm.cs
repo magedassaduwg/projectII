@@ -4,6 +4,9 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
+    /// <summary>
+    /// Represents a form for managing event invites.
+    /// </summary>
     public partial class EventInvitesForm : Form
     {
         ContactsController _contactsController;
@@ -11,7 +14,10 @@ namespace TeaLeaves.Views
         List<User> _invitedUsers;
         List<User> _uninvitedUsers;
         Event _event;
-
+        /// <summary>
+        /// Initializes a new instance of the EventInvitesForm
+        /// </summary>
+        /// <param name="event">The event for which invites are being managed.</param>
         public EventInvitesForm(Event @event)
         {
             InitializeComponent();
