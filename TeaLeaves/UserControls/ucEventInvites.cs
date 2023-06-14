@@ -45,5 +45,10 @@ namespace TeaLeaves.UserControls
         {
             GetUserEvents();
         }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

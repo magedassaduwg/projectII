@@ -41,7 +41,7 @@ namespace TeaLeaves.Views
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            User contactToBeRemoved = this.selectedContact;
+            User contactToBeRemoved = this._contactList.Find(User => User.Email == this.emailText.Text);
             DialogResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Warning", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
@@ -81,5 +81,14 @@ namespace TeaLeaves.Views
             this.Close();
         }
 
+        private void viewProfileButton_Click(object sender, EventArgs e)
+        {
+            User contactToBeViewed = this._contactList.Find(User => User.Email == this.emailText.Text);
+
+            using (ProfileForm profileForm = new ProfileForm(contactToBeViewed))
+            {
+                profileForm.ShowDialog();
+            }
+        }
     }
 }

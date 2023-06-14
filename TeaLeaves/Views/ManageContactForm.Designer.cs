@@ -47,6 +47,7 @@
             usernameText = new TextBox();
             deleteButton = new Button();
             closeButton = new Button();
+            viewProfileButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -158,8 +159,9 @@
             SelectedContactTable.Controls.Add(lastNameText, 1, 1);
             SelectedContactTable.Controls.Add(emailText, 1, 2);
             SelectedContactTable.Controls.Add(usernameText, 1, 3);
-            SelectedContactTable.Controls.Add(deleteButton, 1, 4);
-            SelectedContactTable.Controls.Add(closeButton, 2, 4);
+            SelectedContactTable.Controls.Add(closeButton, 3, 4);
+            SelectedContactTable.Controls.Add(viewProfileButton, 1, 4);
+            SelectedContactTable.Controls.Add(deleteButton, 2, 4);
             SelectedContactTable.Dock = DockStyle.Fill;
             SelectedContactTable.Location = new Point(0, 0);
             SelectedContactTable.Name = "SelectedContactTable";
@@ -261,7 +263,7 @@
             deleteButton.Anchor = AnchorStyles.None;
             deleteButton.Enabled = false;
             deleteButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            deleteButton.Location = new Point(122, 388);
+            deleteButton.Location = new Point(265, 388);
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(94, 33);
             deleteButton.TabIndex = 14;
@@ -273,13 +275,25 @@
             // 
             closeButton.Anchor = AnchorStyles.None;
             closeButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            closeButton.Location = new Point(265, 388);
+            closeButton.Location = new Point(410, 388);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(94, 33);
             closeButton.TabIndex = 9;
             closeButton.Text = "Close";
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += closeButton_Click;
+            // 
+            // viewProfileButton
+            // 
+            viewProfileButton.Anchor = AnchorStyles.None;
+            viewProfileButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            viewProfileButton.Location = new Point(122, 388);
+            viewProfileButton.Name = "viewProfileButton";
+            viewProfileButton.Size = new Size(94, 33);
+            viewProfileButton.TabIndex = 15;
+            viewProfileButton.Text = "Profile";
+            viewProfileButton.UseVisualStyleBackColor = true;
+            viewProfileButton.Click += viewProfileButton_Click;
             // 
             // ManageContactForm
             // 
@@ -323,5 +337,6 @@
         private Button addButton;
         private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private Button viewProfileButton;
     }
 }

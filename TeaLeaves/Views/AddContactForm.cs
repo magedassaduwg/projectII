@@ -31,11 +31,12 @@ namespace TeaLeaves.Views
         private void addButton_Click(object sender, EventArgs e)
         {
             string contactUsername = this.contactTextBox.Text.Trim();
-            
+
             if (!this._contactsController.AddContact(CurrentUserStore.User, contactUsername))
             {
-                MessageBox.Show("We're sorry, but a user with that email doesn't exist.", "User Not Found", MessageBoxButtons.OK); 
-            } else
+                MessageBox.Show("We're sorry, but a user with that email doesn't exist.", "User Not Found", MessageBoxButtons.OK);
+            }
+            else
             {
                 MessageBox.Show("Contact Added!", "Contact Added!", MessageBoxButtons.OK);
             }

@@ -75,6 +75,7 @@
             ClientSize = new Size(401, 101);
             Controls.Add(tableLayoutPanel1);
             Name = "AddContactForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Add a Contact!";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

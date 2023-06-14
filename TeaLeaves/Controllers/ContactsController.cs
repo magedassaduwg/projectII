@@ -35,7 +35,7 @@ namespace TeaLeaves.Controllers
         /// <param name="user"></param>
         /// <param name="event"></param>
         /// <returns></returns>
-        public List<User> GetUsersContactsByEvent(User user, Event @event)
+        public List<User> GetUsersContactsByEvent(Models.User user, Event @event)
         {
             return _contactsDAL.GetUsersContactsByEvent(user, @event);
         }
@@ -47,7 +47,7 @@ namespace TeaLeaves.Controllers
         /// <param name="user"></param>
         /// <param name="event"></param>
         /// <returns></returns>
-        public List<User> GetUsersContactsNotInvitedByEvent(User user, Event @event)
+        public List<User> GetUsersContactsNotInvitedByEvent(Models.User user, Event @event)
         {
             return _contactsDAL.GetUsersContactsNotInvitedByEvent(user, @event);
         }
@@ -57,9 +57,9 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <param name="contact"></param>
-        public void RemoveContact(Models.User user, User contact)
+        public Boolean RemoveContact(Models.User user, User contact)
         {
-            this._contactsDAL.RemoveContact(user, contact);
+            return this._contactsDAL.RemoveContact(user, contact);
         }
 
         /// <summary>

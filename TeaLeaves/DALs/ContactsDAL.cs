@@ -177,7 +177,7 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="user"></param>
         /// <param name="contact"></param>
-        public void RemoveContact(User user, User contact)
+        public Boolean RemoveContact(Models.User user, Models.User contact)
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -186,7 +186,14 @@ namespace TeaLeaves.DALs
                 command.Parameters.AddWithValue("@UserId2", contact.UserId);
 
                 connection.Open();
-                command.ExecuteNonQuery();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
