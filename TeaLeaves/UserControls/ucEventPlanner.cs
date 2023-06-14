@@ -97,6 +97,20 @@ namespace TeaLeaves.UserControls
             }
 
         }
+
+        private void btnInvites_Click(object sender, EventArgs e)
+        {
+            if (dgEvents.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgEvents.SelectedRows[0].DataBoundItem;
+
+                using (EventInvitesForm eventForm = new EventInvitesForm(selectedEvent))
+                {
+                    eventForm.ShowDialog();
+                }
+                InitializeEvents();
+            }
+        }
     }
 }
 

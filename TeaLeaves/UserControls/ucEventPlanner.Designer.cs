@@ -44,6 +44,7 @@
             buttonAdd = new Button();
             btnEdit = new Button();
             btnDelete = new Button();
+            btnInvites = new Button();
             tableLayoutPanelEvent.SuspendLayout();
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgEvents).BeginInit();
@@ -64,6 +65,7 @@
             tableLayoutPanelEvent.Controls.Add(buttonAdd, 1, 2);
             tableLayoutPanelEvent.Controls.Add(btnEdit, 2, 2);
             tableLayoutPanelEvent.Controls.Add(btnDelete, 3, 2);
+            tableLayoutPanelEvent.Controls.Add(btnInvites, 0, 2);
             tableLayoutPanelEvent.Dock = DockStyle.Fill;
             tableLayoutPanelEvent.Location = new Point(0, 0);
             tableLayoutPanelEvent.Name = "tableLayoutPanelEvent";
@@ -211,6 +213,20 @@
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
+            // btnInvites
+            // 
+            btnInvites.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnInvites.BackColor = Color.Orange;
+            btnInvites.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInvites.ForeColor = Color.DarkGreen;
+            btnInvites.Location = new Point(3, 295);
+            btnInvites.Name = "btnInvites";
+            btnInvites.Size = new Size(166, 46);
+            btnInvites.TabIndex = 4;
+            btnInvites.Text = "Invites";
+            btnInvites.UseVisualStyleBackColor = false;
+            btnInvites.Click += btnInvites_Click;
+            // 
             // ucEventPlanner
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -250,5 +266,6 @@
         private DataGridViewTextBoxColumn City;
         private DataGridViewTextBoxColumn State;
         private DataGridViewTextBoxColumn Zipcode;
+        private Button btnInvites;
     }
 }

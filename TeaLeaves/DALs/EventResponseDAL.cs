@@ -52,7 +52,7 @@ namespace TeaLeaves.DALs
         {
 
             string query = @"INSERT INTO EventResponses (EventInviterId, EventReceiverId, EventId, Accepted) 
-                             VALUES (@InvidedId, @ReceivedId, @EventId, @Accepted)";
+                             VALUES (@InvitedId, @ReceivedId, @EventId, @Accepted)";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();

@@ -39,10 +39,15 @@
             // 
             // dgvInvitedContacts
             // 
+            dgvInvitedContacts.AllowUserToAddRows = false;
+            dgvInvitedContacts.AllowUserToDeleteRows = false;
+            dgvInvitedContacts.AllowUserToResizeColumns = false;
+            dgvInvitedContacts.AllowUserToResizeRows = false;
             dgvInvitedContacts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInvitedContacts.Location = new Point(28, 82);
             dgvInvitedContacts.Name = "dgvInvitedContacts";
             dgvInvitedContacts.RowTemplate.Height = 25;
+            dgvInvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvInvitedContacts.Size = new Size(357, 253);
             dgvInvitedContacts.TabIndex = 0;
             // 
@@ -68,10 +73,15 @@
             // 
             // dgvUninvitedContacts
             // 
+            dgvUninvitedContacts.AllowUserToAddRows = false;
+            dgvUninvitedContacts.AllowUserToDeleteRows = false;
+            dgvUninvitedContacts.AllowUserToResizeColumns = false;
+            dgvUninvitedContacts.AllowUserToResizeRows = false;
             dgvUninvitedContacts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUninvitedContacts.Location = new Point(414, 82);
             dgvUninvitedContacts.Name = "dgvUninvitedContacts";
             dgvUninvitedContacts.RowTemplate.Height = 25;
+            dgvUninvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUninvitedContacts.Size = new Size(357, 253);
             dgvUninvitedContacts.TabIndex = 3;
             // 

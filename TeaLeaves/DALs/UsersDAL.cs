@@ -1,12 +1,4 @@
-﻿using TeaLeaves.Models;
-using Microsoft.VisualBasic.Logging;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic.ApplicationServices;
+﻿using System.Data.SqlClient;
 
 namespace TeaLeaves.DALs
 {
