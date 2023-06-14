@@ -20,6 +20,8 @@ namespace TeaLeaves.Views
             _invitedUsers = new List<User>();
             _uninvitedUsers = new List<User>();
             _event = @event;
+            dgvInvitedContacts.AutoGenerateColumns = false;
+            dgvUninvitedContacts.AutoGenerateColumns = false;
             GetUserEvents();
         }
 
@@ -27,20 +29,18 @@ namespace TeaLeaves.Views
         {
             try
             {
-                //_invitedUsers = _contactsController.GetUsersContacts(CurrentUserStore.User);
                 _invitedUsers = _contactsController.GetUsersContactsByEvent(CurrentUserStore.User, _event);
 
                 dgvInvitedContacts.DataSource = _invitedUsers;
 
-                //_uninvitedUsers = _contactsController.GetUsersContacts(CurrentUserStore.User);
                 _uninvitedUsers = _contactsController.GetUsersContactsNotInvitedByEvent(CurrentUserStore.User, _event);
 
                 dgvUninvitedContacts.DataSource = _uninvitedUsers;
 
-                //if (dgvEventInvites.Rows.Count > 0)
-                //{
-                //    dgvEventInvites.Rows[0].Selected = true;
-                //}
+                if (dgvUninvitedContacts.Rows.Count > 0)
+                {
+                    dgvUninvitedContacts.Rows[0].Selected = true;
+                }
             }
             catch (Exception ex)
             {

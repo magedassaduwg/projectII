@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using TeaLeaves.DALs;
+﻿using TeaLeaves.DALs;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
@@ -48,6 +47,16 @@ namespace TeaLeaves.Controllers
         public List<Event> GetEventsReceivedByUserId(int userId)
         {
             return _eventDAL.GetEventsReceivedByUserId(userId);
+        }
+
+        /// <summary>
+        /// Returns all the events the given user has accepted
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Event> GetAcceptedEventsReceivedByUserId(int  userId)
+        {
+            return _eventDAL.GetAcceptedEventsReceivedByUserId(userId);
         }
 
         /// <summary>

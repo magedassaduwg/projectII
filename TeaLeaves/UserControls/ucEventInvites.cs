@@ -8,13 +8,16 @@ namespace TeaLeaves.UserControls
     {
         EventController _eventController;
         List<Event> _events;
+        List<Event> _eventsAccepted;
 
         public ucEventInvites()
         {
             InitializeComponent();
             _eventController = new EventController();
             _events = new List<Event>();
+            _eventsAccepted = new List<Event>();
             dgvEventInvites.AutoGenerateColumns = false;
+            dgvAcceptedInvites.AutoGenerateColumns = false;
         }
 
         private void GetUserEvents()
@@ -24,6 +27,8 @@ namespace TeaLeaves.UserControls
                 _events = _eventController.GetEventsReceivedByUserId(CurrentUserStore.User.UserId);
 
                 dgvEventInvites.DataSource = _events;
+
+                _eventsAccepted = _eventController.GetAcceptedEventsReceivedByUserId(CurrentUserStore.User.UserId);
 
                 if (dgvEventInvites.Rows.Count > 0)
                 {

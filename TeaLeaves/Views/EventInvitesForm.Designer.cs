@@ -33,6 +33,12 @@
             lblInvitedContacts = new Label();
             dgvUninvitedContacts = new DataGridView();
             lblUninvitedContacts = new Label();
+            FirstName = new DataGridViewTextBoxColumn();
+            lastName = new DataGridViewTextBoxColumn();
+            username = new DataGridViewTextBoxColumn();
+            firstName1 = new DataGridViewTextBoxColumn();
+            lastName2 = new DataGridViewTextBoxColumn();
+            username1 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvInvitedContacts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUninvitedContacts).BeginInit();
             SuspendLayout();
@@ -44,8 +50,10 @@
             dgvInvitedContacts.AllowUserToResizeColumns = false;
             dgvInvitedContacts.AllowUserToResizeRows = false;
             dgvInvitedContacts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvInvitedContacts.Columns.AddRange(new DataGridViewColumn[] { firstName1, lastName2, username1 });
             dgvInvitedContacts.Location = new Point(28, 82);
             dgvInvitedContacts.Name = "dgvInvitedContacts";
+            dgvInvitedContacts.ReadOnly = true;
             dgvInvitedContacts.RowTemplate.Height = 25;
             dgvInvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvInvitedContacts.Size = new Size(357, 253);
@@ -78,8 +86,10 @@
             dgvUninvitedContacts.AllowUserToResizeColumns = false;
             dgvUninvitedContacts.AllowUserToResizeRows = false;
             dgvUninvitedContacts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUninvitedContacts.Columns.AddRange(new DataGridViewColumn[] { FirstName, lastName, username });
             dgvUninvitedContacts.Location = new Point(414, 82);
             dgvUninvitedContacts.Name = "dgvUninvitedContacts";
+            dgvUninvitedContacts.ReadOnly = true;
             dgvUninvitedContacts.RowTemplate.Height = 25;
             dgvUninvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUninvitedContacts.Size = new Size(357, 253);
@@ -93,6 +103,48 @@
             lblUninvitedContacts.Size = new Size(108, 15);
             lblUninvitedContacts.TabIndex = 4;
             lblUninvitedContacts.Text = "Uninvited Contacts";
+            // 
+            // FirstName
+            // 
+            FirstName.DataPropertyName = "FirstName";
+            FirstName.HeaderText = "First Name";
+            FirstName.Name = "FirstName";
+            FirstName.ReadOnly = true;
+            // 
+            // lastName
+            // 
+            lastName.DataPropertyName = "LastName";
+            lastName.HeaderText = "Last Name";
+            lastName.Name = "lastName";
+            lastName.ReadOnly = true;
+            // 
+            // username
+            // 
+            username.DataPropertyName = "Username";
+            username.HeaderText = "Username";
+            username.Name = "username";
+            username.ReadOnly = true;
+            // 
+            // firstName1
+            // 
+            firstName1.DataPropertyName = "FirstName";
+            firstName1.HeaderText = "First Name";
+            firstName1.Name = "firstName1";
+            firstName1.ReadOnly = true;
+            // 
+            // lastName2
+            // 
+            lastName2.DataPropertyName = "LastName";
+            lastName2.HeaderText = "Last Name";
+            lastName2.Name = "lastName2";
+            lastName2.ReadOnly = true;
+            // 
+            // username1
+            // 
+            username1.DataPropertyName = "Username";
+            username1.HeaderText = "Username";
+            username1.Name = "username1";
+            username1.ReadOnly = true;
             // 
             // EventInvitesForm
             // 
@@ -119,5 +171,11 @@
         private Label lblInvitedContacts;
         private DataGridView dgvUninvitedContacts;
         private Label lblUninvitedContacts;
+        private DataGridViewTextBoxColumn FirstName;
+        private DataGridViewTextBoxColumn lastName;
+        private DataGridViewTextBoxColumn username;
+        private DataGridViewTextBoxColumn firstName1;
+        private DataGridViewTextBoxColumn lastName2;
+        private DataGridViewTextBoxColumn username1;
     }
 }

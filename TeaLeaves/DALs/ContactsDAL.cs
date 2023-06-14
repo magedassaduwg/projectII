@@ -154,7 +154,7 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT DISTINCT UserId, FirstName, LastName, Username, Email FROM Contacts c JOIN EventResponses er ON er.EventId = 2 AND er.EventInviterId = 3 JOIN Users u ON c.UserId1 = 3 WHERE UserId = c.UserId2 AND c.UserId2 = er.EventReceiverId";
+                string query = "SELECT DISTINCT UserId, FirstName, LastName, Username, Email FROM Contacts c JOIN EventResponses er ON er.EventId = @EventId AND er.EventInviterId = @UserId JOIN Users u ON c.UserId1 = @UserId WHERE UserId = c.UserId2 AND c.UserId2 = er.EventReceiverId";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", user.UserId);

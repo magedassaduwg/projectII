@@ -78,6 +78,48 @@ namespace TeaLeaves.DALs
         }
 
         /// <summary>
+        /// Returns all Events which the given user by userId has been invited to and has accepted
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Event> GetAcceptedEventsReceivedByUserId(int userId)
+        {
+            List<Event> userEvents = new List<Event>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description " +
+                    "FROM Events e " +
+                    "JOIN EventResponses er " +
+                    "ON e.EventID = er.EventID " +
+                    "WHERE er.EventReceiverId = @UserId AND er.Accepted = 1;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Event userEvent = new Event
+                    {
+                        Id = Convert.ToInt32(reader["UserEventId"]),
+                        CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                        State = reader["State"].ToString(),
+                        City = reader["City"].ToString(),
+                        StreetNumber = reader["StreetNumber"].ToString(),
+                        Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                        EventName = reader["Name"].ToString(),
+                        Description = reader["Description"].ToString(),
+                    };
+                    userEvents.Add(userEvent);
+                }
+            }
+            return userEvents;
+        }
+
+        /// <summary>
         /// Returns all Events which the given user by userId has been invited to
         /// </summary>
         /// <param name="userId"></param>
@@ -92,7 +134,7 @@ namespace TeaLeaves.DALs
                     "FROM Events e " +
                     "JOIN EventResponses er " +
                     "ON e.EventID = er.EventID " +
-                    "WHERE er.EventReceiverId = @UserId;";
+                    "WHERE er.EventReceiverId = @UserId AND er.Accepted = 0;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);
