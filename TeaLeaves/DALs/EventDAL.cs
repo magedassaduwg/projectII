@@ -16,12 +16,11 @@ namespace TeaLeaves.DALs
         /// <returns></returns>
         public int SaveEvent(Event @event)
         {
-
             string query = @event.Id <= 0 ?
                 @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
                              VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)"
                  :
-                 "Update Appointments " +
+                 "Update Events " +
                 "Set Name = @Name, StreetNumber = @StreetNumber, State = @State,City = @City, Zipcode =@Zipcode, EventDateTime = @EventDateTime, Description = @Description " +
                 "Where eventId = @eventId";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
@@ -30,17 +29,23 @@ namespace TeaLeaves.DALs
 
                 using (SqlCommand saveCommand = new SqlCommand(query, connection))
                 {
+                    saveCommand.Parameters.AddWithValue("@eventId", @event.Id);
                     saveCommand.Parameters.AddWithValue("@Description", @event.Description);
-                    saveCommand.Parameters.AddWithValue("@Name", @event.EventName);
                     saveCommand.Parameters.AddWithValue("@State", @event.State);
                     saveCommand.Parameters.AddWithValue("@City", @event.City);
-                    saveCommand.Parameters.AddWithValue("@Zipcode", @event.Zipcode.ToString().TrimStart('0'));
+                    if (@event.Zipcode != 0)
+                    {
+                        saveCommand.Parameters.AddWithValue("@Zipcode", @event.Zipcode.ToString().TrimStart('0'));
+                    }
+                    else
+                    {
+                        saveCommand.Parameters.AddWithValue("@Zipcode", "00000");
+                    }
                     saveCommand.Parameters.AddWithValue("@StreetNumber", @event.StreetNumber);
+                    saveCommand.Parameters.AddWithValue("@Name", @event.EventName);
                     saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
                     saveCommand.Parameters.AddWithValue("@CreatorId", CurrentUserStore.User.UserId);
 
-                    //int rowsAffected = saveCommand.ExecuteNonQuery();
-                    //return rowsAffected > 0;
                     return Convert.ToInt32(saveCommand.ExecuteScalar());
                 }
             }

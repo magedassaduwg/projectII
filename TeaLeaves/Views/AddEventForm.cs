@@ -71,21 +71,21 @@ namespace TeaLeaves.Views
                 labelError.Text = "Please enter the event name";
                 return false;
             }
-            else if (textBoxStreetName.Text.Trim().Length == 0)
-            {
-                labelError.Text = "Please enter the street name";
-                return false;
-            }
-            else if (textBoxCity.Text.Trim().Length == 0)
-            {
-                labelError.Text = "Please enter the city name";
-                return false;
-            }
-            else if (textBoxZip.Text.Trim().Length == 0)
-            {
-                labelError.Text = "Please enter the zip code";
-                return false;
-            }
+            //else if (textBoxStreetName.Text.Trim().Length == 0)
+            //{
+            //    labelError.Text = "Please enter the street name";
+            //    return false;
+            //}
+            //else if (textBoxCity.Text.Trim().Length == 0)
+            //{
+            //    labelError.Text = "Please enter the city name";
+            //    return false;
+            //}
+            //else if (textBoxZip.Text.Trim().Length == 0)
+            //{
+            //    labelError.Text = "Please enter the zip code";
+            //    return false;
+            //}
 
             else if (eventTime < DateTime.Now)
             {
@@ -113,15 +113,10 @@ namespace TeaLeaves.Views
                 _event.EventDateTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
                 try
                 {
-                    if (_eventController.SaveEvent(_event) > 0)
-                    {
-                        labelError.Text = "Event has been saved";
-                        Close();
-                    }
-                    else
-                    {
-                        labelError.Text = "Failed to save event, re-open page and try again";
-                    }
+                    _eventController.SaveEvent(_event);
+                    labelError.Text = "Event has been saved";
+                    Close();
+                    //labelError.Text = "Failed to save event, re-open page and try again";
                 }
                 catch (Exception ex)
                 {

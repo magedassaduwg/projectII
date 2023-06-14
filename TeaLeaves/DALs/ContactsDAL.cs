@@ -54,8 +54,6 @@ namespace TeaLeaves.DALs
         /// <returns></returns>
         public List<User> GetUsersContactsByEvent(User user, Event @event)
         {
-            List<int> contactUserIDs = this.GetContactUserIDs(user);
-
             List<User> contacts = new List<User>();
 
             //foreach (int userId in contactUserIDs)
