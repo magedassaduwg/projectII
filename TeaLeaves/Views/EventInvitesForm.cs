@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
@@ -16,6 +7,7 @@ namespace TeaLeaves.Views
     public partial class EventInvitesForm : Form
     {
         ContactsController _contactsController;
+        EventResponseController _eventResponseController;
         List<User> _invitedUsers;
         List<User> _uninvitedUsers;
         Event _event;
@@ -24,19 +16,23 @@ namespace TeaLeaves.Views
         {
             InitializeComponent();
             _contactsController = new ContactsController();
+            _eventResponseController = new EventResponseController();
             _invitedUsers = new List<User>();
             _uninvitedUsers = new List<User>();
             _event = @event;
+            GetUserEvents();
         }
 
         private void GetUserEvents()
         {
             try
             {
+                //_invitedUsers = _contactsController.GetUsersContacts(CurrentUserStore.User);
                 _invitedUsers = _contactsController.GetUsersContactsByEvent(CurrentUserStore.User, _event);
 
                 dgvInvitedContacts.DataSource = _invitedUsers;
 
+                //_uninvitedUsers = _contactsController.GetUsersContacts(CurrentUserStore.User);
                 _uninvitedUsers = _contactsController.GetUsersContactsNotInvitedByEvent(CurrentUserStore.User, _event);
 
                 dgvUninvitedContacts.DataSource = _uninvitedUsers;
@@ -54,7 +50,14 @@ namespace TeaLeaves.Views
 
         private void btnInvite_Click(object sender, EventArgs e)
         {
-
+            User selectedUser = (User)dgvUninvitedContacts.SelectedRows[0].DataBoundItem;
+            EventResponse eventResponse = new EventResponse();
+            eventResponse.InviterId = CurrentUserStore.User.UserId;
+            eventResponse.ReceiverId = selectedUser.UserId;
+            eventResponse.Accepted = false;
+            eventResponse.EventId = _event.Id;
+            _eventResponseController.AddEventResponse(eventResponse);
+            GetUserEvents();
         }
     }
 }
