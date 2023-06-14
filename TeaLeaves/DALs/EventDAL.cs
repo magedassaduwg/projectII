@@ -14,7 +14,7 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="event"></param>
         /// <returns></returns>
-        public bool SaveEvent(Event @event)
+        public int SaveEvent(Event @event)
         {
             string query = @event.Id <= 0 ?
                 @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
