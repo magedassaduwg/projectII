@@ -34,7 +34,6 @@ namespace TeaLeaves.Controllers
             _userDAL.AddUser(user);
         }
 
-
         /// <summary>
         /// method retrieving the profile picture of a given user from the database
         /// </summary>
@@ -45,7 +44,6 @@ namespace TeaLeaves.Controllers
             return this._userDAL.GetUserProfilePicture(userId);
         }
 
-
         /// <summary>
         /// method retrieving the givne user's blurb from the database
         /// </summary>
@@ -54,6 +52,24 @@ namespace TeaLeaves.Controllers
         public string GetUserBlurb(int userId)
         {
             return this._userDAL.GetUserBlurb(userId);
+        }
+
+        /// <summary>
+        /// method setting the blurb of a user in the database.
+        /// </summary>
+        /// <param name="user"></param>
+        public void SetUserBlurb(Models.User user)
+        {
+            this._userDAL.SetUserBlurb(user);
+        }
+
+        /// <summary>
+        /// method uploading a User's ProfilePicture
+        /// </summary>
+        /// <param name="user"></param>
+        public void UploadProfilePicture(Models.User user)
+        {
+            this._userDAL.UploadProfilePicture(user);
         }
     }
 }

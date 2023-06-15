@@ -134,6 +134,7 @@
             saveButton.Text = "Save";
             saveButton.UseVisualStyleBackColor = true;
             saveButton.Visible = false;
+            saveButton.Click += saveButton_Click;
             // 
             // uploadButton
             // 
@@ -147,6 +148,7 @@
             uploadButton.Text = "Upload";
             uploadButton.UseVisualStyleBackColor = true;
             uploadButton.Visible = false;
+            uploadButton.Click += uploadButton_Click;
             // 
             // ProfileForm
             // 

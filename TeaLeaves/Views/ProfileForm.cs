@@ -72,5 +72,29 @@ namespace TeaLeaves.Views
             }
             this.userBlurbBox.Text = this.viewedUser.Blurb;
         }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            this.viewedUser.Blurb = this.userBlurbBox.Text;
+            this._userController.SetUserBlurb(this.viewedUser);
+            this._userController.UploadProfilePicture(this.viewedUser);
+            this.saveButton.Enabled = false;
+            this.saveButton.Visible = false;
+            this.uploadButton.Visible = false;
+            this.uploadButton.Enabled = false;
+            this.userBlurbBox.ReadOnly = true;
+        }
+
+        private void uploadButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            // image filters  
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                this.viewedUser.ProfilePicture = Image.FromFile((open.FileName));
+                this.userProfilePictureBox.Image = viewedUser.ProfilePicture;
+            }
+        }
     }
 }

@@ -117,6 +117,54 @@ namespace TeaLeaves.DALs
             }
             return userBlurb;
         }
+
+        /// <summary>
+        /// method setting the blurb of a user in the database.
+        /// </summary>
+        /// <param name="user"></param>
+        public void SetUserBlurb(Models.User user)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("UPDATE Users SET Blurb = @blurb WHERE UserId = @UserId", connection);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+                command.Parameters.AddWithValue("@blurb", user.Blurb);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+        }
+
+        /// <summary>
+        /// method uploading a User's ProfilePicture
+        /// </summary>
+        /// <param name="user"></param>
+        public void UploadProfilePicture(Models.User user)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("UPDATE Users SET ProfilePicture = @profilePicture WHERE UserId = @UserId", connection);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+                command.Parameters.AddWithValue("@profilePicture", this.ImageToByte(user.ProfilePicture));
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+        }
+
+        private byte[] ImageToByte(Image img)
+        {
+            byte[] byteArray = new byte[0];
+            using (MemoryStream stream = new MemoryStream())
+            {
+                img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                stream.Close();
+
+                byteArray = stream.ToArray();
+            }
+            return byteArray;
+        }
     }
 }
 
