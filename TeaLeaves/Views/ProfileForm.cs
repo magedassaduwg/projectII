@@ -19,6 +19,20 @@ namespace TeaLeaves.Views
     {
         private UsersController _userController;
         private Models.User viewedUser;
+
+        public ProfileForm()
+        {
+            this._userController = new UsersController();
+            this.viewedUser = CurrentUserStore.User;
+            InitializeComponent();
+
+            this.editButton.Visible = true;
+            this.editButton.Enabled = true;
+
+            this.viewedUser.Blurb = this._userController.GetUserBlurb(this.viewedUser.UserId);
+            this.viewedUser.ProfilePicture = this._userController.GetUserProfilePicture(this.viewedUser.UserId);
+
+        }
         /// <summary>
         /// Initializes a new instance of the ProfileForm class
         /// </summary>
@@ -27,16 +41,7 @@ namespace TeaLeaves.Views
         {
             this._userController = new UsersController();
 
-            if (selectedUser.UserId == CurrentUserStore.User.UserId)
-            {
-                this.viewedUser = CurrentUserStore.User;
-                this.editButton.Visible = true;
-                this.editButton.Enabled = true;
-            }
-            else
-            {
-                this.viewedUser = selectedUser;
-            }
+            this.viewedUser = selectedUser;
 
             this.viewedUser.Blurb = this._userController.GetUserBlurb(this.viewedUser.UserId);
             this.viewedUser.ProfilePicture = this._userController.GetUserProfilePicture(this.viewedUser.UserId);
@@ -51,7 +56,11 @@ namespace TeaLeaves.Views
 
         private void editButton_Click(object sender, EventArgs e)
         {
-
+            this.userBlurbBox.ReadOnly = false;
+            this.saveButton.Enabled = true;
+            this.saveButton.Visible = true;
+            this.uploadButton.Enabled = true;
+            this.uploadButton.Visible = true;
         }
 
         private void ProfileForm_Load(object sender, EventArgs e)

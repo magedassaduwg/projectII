@@ -66,6 +66,7 @@ namespace TeaLeaves.DALs
                 SqlCommand command = new SqlCommand("Select ProfilePicture FROM Users WHERE UserId = @UserId;", connection);
                 command.Parameters.AddWithValue("@UserId", userId);
                 
+                connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -81,7 +82,7 @@ namespace TeaLeaves.DALs
                         
                     }
                 }
-                Image defaultImage = Image.FromFile("TeaLeaves/Images/user.jpg");
+                Image defaultImage = Image.FromFile("Resources\\user.png");
                 return defaultImage;
             }
         }
@@ -100,6 +101,7 @@ namespace TeaLeaves.DALs
                 SqlCommand command = new SqlCommand("Select Blurb FROM Users WHERE UserId = @UserId;", connection);
                 command.Parameters.AddWithValue("@UserId", userId);
 
+                connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
