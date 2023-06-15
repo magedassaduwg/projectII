@@ -1,12 +1,14 @@
 ﻿using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
+using TeaLeaves.Views;
 
 namespace TeaLeaves.UserControls
 {
     public partial class ucEventInvites : UserControl
     {
         EventController _eventController;
+        EventResponseController _eventResponseController;
         List<Event> _events;
         List<Event> _eventsAccepted;
 
@@ -14,6 +16,7 @@ namespace TeaLeaves.UserControls
         {
             InitializeComponent();
             _eventController = new EventController();
+            _eventResponseController = new EventResponseController();
             _events = new List<Event>();
             _eventsAccepted = new List<Event>();
             dgvEventInvites.AutoGenerateColumns = false;
@@ -29,6 +32,8 @@ namespace TeaLeaves.UserControls
                 dgvEventInvites.DataSource = _events;
 
                 _eventsAccepted = _eventController.GetAcceptedEventsReceivedByUserId(CurrentUserStore.User.UserId);
+
+                dgvAcceptedInvites.DataSource = _eventsAccepted;
 
                 if (dgvEventInvites.Rows.Count > 0)
                 {
@@ -53,7 +58,42 @@ namespace TeaLeaves.UserControls
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            if (dgvEventInvites.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgvEventInvites.SelectedRows[0].DataBoundItem;
+                _eventResponseController.AcceptEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
+                GetUserEvents();
+            }
+            if (dgvEventInvites.SelectedRows.Count > 0)
+            {
+                dgvEventInvites.Rows[0].Selected = true;
+            }
+        }
 
+        private void btnDecline_Click(object sender, EventArgs e)
+        {
+            if (dgvEventInvites.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgvEventInvites.SelectedRows[0].DataBoundItem;
+                _eventResponseController.DeleteEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
+                GetUserEvents();
+            }
+            if (dgvEventInvites.SelectedRows.Count > 0)
+            {
+                dgvEventInvites.Rows[0].Selected = true;
+            }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            if (dgvEventInvites.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgvEventInvites.SelectedRows[0].DataBoundItem;
+                using (ViewEventForm viewEventForm = new ViewEventForm(selectedEvent))
+                {
+                    viewEventForm.ShowDialog();
+                }
+            }
         }
     }
 }

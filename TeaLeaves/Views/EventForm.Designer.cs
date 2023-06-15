@@ -46,7 +46,7 @@
             tcEvent.Location = new Point(0, 0);
             tcEvent.Name = "tcEvent";
             tcEvent.SelectedIndex = 0;
-            tcEvent.Size = new Size(803, 450);
+            tcEvent.Size = new Size(800, 450);
             tcEvent.TabIndex = 0;
             // 
             // myEvents
@@ -55,7 +55,7 @@
             myEvents.Location = new Point(4, 24);
             myEvents.Name = "myEvents";
             myEvents.Padding = new Padding(3);
-            myEvents.Size = new Size(795, 422);
+            myEvents.Size = new Size(792, 422);
             myEvents.TabIndex = 0;
             myEvents.Text = "My Events";
             myEvents.UseVisualStyleBackColor = true;
@@ -65,7 +65,7 @@
             ucEventPlanner1.Dock = DockStyle.Fill;
             ucEventPlanner1.Location = new Point(3, 3);
             ucEventPlanner1.Name = "ucEventPlanner1";
-            ucEventPlanner1.Size = new Size(789, 416);
+            ucEventPlanner1.Size = new Size(786, 416);
             ucEventPlanner1.TabIndex = 0;
             // 
             // invites
@@ -74,7 +74,7 @@
             invites.Location = new Point(4, 24);
             invites.Name = "invites";
             invites.Padding = new Padding(3);
-            invites.Size = new Size(795, 422);
+            invites.Size = new Size(792, 422);
             invites.TabIndex = 1;
             invites.Text = "Invites";
             invites.UseVisualStyleBackColor = true;
@@ -84,7 +84,7 @@
             ucEventInvites1.Dock = DockStyle.Fill;
             ucEventInvites1.Location = new Point(3, 3);
             ucEventInvites1.Name = "ucEventInvites1";
-            ucEventInvites1.Size = new Size(789, 416);
+            ucEventInvites1.Size = new Size(786, 416);
             ucEventInvites1.TabIndex = 0;
             // 
             // EventForm

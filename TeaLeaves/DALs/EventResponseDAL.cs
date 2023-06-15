@@ -44,6 +44,52 @@ namespace TeaLeaves.DALs
         }
 
         /// <summary>
+        /// Deletes an EventResponse from the database
+        /// </summary>
+        /// <param name="receiverId"></param>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public int DeleteEventResponse(int receiverId, int eventId)
+        {
+            string query = @"DELETE FROM EventResponses
+                             WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@EventReceiverId", receiverId);
+                    saveCommand.Parameters.AddWithValue("@EventId", eventId);
+                    return Convert.ToInt32(saveCommand.ExecuteScalar());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the given response to accepted
+        /// </summary>
+        /// <param name="eventResponseId"></param>
+        /// <returns></returns>
+        public int AcceptEventResponse(int receiverId, int eventId)
+        {
+            string query = @"UPDATE EventResponses
+                            SET Accepted = 1
+                            WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@EventReceiverId", receiverId);
+                    saveCommand.Parameters.AddWithValue("@EventId", eventId);
+                    return Convert.ToInt32(saveCommand.ExecuteScalar());
+                }
+            }
+        }
+
+        /// <summary>
         /// Inserts a new EventResponse row into the database
         /// </summary>
         /// <param name="eventResponse"></param>

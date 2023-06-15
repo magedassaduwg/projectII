@@ -176,13 +176,6 @@ namespace TeaLeaves.Views
             _loginForm.Hide();
         }
 
-        private void tlpRegisterForm_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-
         private void buttonLoginBack_Click(object sender, EventArgs e)
         {
             ReturnToLoginForm();
