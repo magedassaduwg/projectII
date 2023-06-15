@@ -29,6 +29,28 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Removes an EventResponse from the database
+        /// </summary>
+        /// <param name="eventReceiverId"></param>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public int DeleteEventResponse(int eventReceiverId, int eventId)
+        {
+            return _eventResponseDAL.DeleteEventResponse(eventReceiverId, eventId);
+        }
+
+        /// <summary>
+        /// Sets an EventResponse accept column to true for the given event response
+        /// </summary>
+        /// <param name="eventReceiverId"></param>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public int AcceptEventResponse(int eventReceiverId, int eventId)
+        {
+            return _eventResponseDAL.AcceptEventResponse(eventReceiverId, eventId);
+        }
+
+        /// <summary>
         /// Returns all EventResponses with matching receivingId
         /// </summary>
         /// <param name="receivingId"></param>

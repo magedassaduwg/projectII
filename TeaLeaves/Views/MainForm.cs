@@ -38,8 +38,6 @@ namespace TeaLeaves.Views
             lblGreeting.Text = $"Welcome {CurrentUserStore.User.FullName}";
         }
 
-
-
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             CurrentUserStore.Logout();

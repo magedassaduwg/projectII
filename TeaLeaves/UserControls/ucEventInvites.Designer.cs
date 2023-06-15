@@ -28,21 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dgvEventInvites = new DataGridView();
-            eventName = new DataGridViewTextBoxColumn();
-            eventDateAndTime = new DataGridViewTextBoxColumn();
-            eventDescription = new DataGridViewTextBoxColumn();
+            eventBindingSource = new BindingSource(components);
             btnAccept = new Button();
             btnDecline = new Button();
             btnRefresh = new Button();
             btnView = new Button();
             dgvAcceptedInvites = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            eventNameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            eventDateTimeDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
             lblInvites = new Label();
             lblAcceptedInvites = new Label();
+            eventNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Id2 = new DataGridViewTextBoxColumn();
+            eventDateTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)eventBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
             SuspendLayout();
             // 
@@ -50,41 +55,23 @@
             // 
             dgvEventInvites.AllowUserToAddRows = false;
             dgvEventInvites.AllowUserToDeleteRows = false;
+            dgvEventInvites.AutoGenerateColumns = false;
             dgvEventInvites.BackgroundColor = Color.PapayaWhip;
             dgvEventInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { eventName, eventDateAndTime, eventDescription });
+            dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { eventNameDataGridViewTextBoxColumn, Id2, eventDateTimeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
+            dgvEventInvites.DataSource = eventBindingSource;
             dgvEventInvites.Location = new Point(3, 52);
             dgvEventInvites.Name = "dgvEventInvites";
             dgvEventInvites.ReadOnly = true;
             dgvEventInvites.RowTemplate.Height = 25;
             dgvEventInvites.ScrollBars = ScrollBars.Vertical;
             dgvEventInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEventInvites.Size = new Size(918, 179);
+            dgvEventInvites.Size = new Size(974, 179);
             dgvEventInvites.TabIndex = 0;
             // 
-            // eventName
+            // eventBindingSource
             // 
-            eventName.DataPropertyName = "Name";
-            eventName.HeaderText = "Name";
-            eventName.Name = "eventName";
-            eventName.ReadOnly = true;
-            eventName.Width = 150;
-            // 
-            // eventDateAndTime
-            // 
-            eventDateAndTime.DataPropertyName = "DateTime";
-            eventDateAndTime.HeaderText = "Time";
-            eventDateAndTime.Name = "eventDateAndTime";
-            eventDateAndTime.ReadOnly = true;
-            eventDateAndTime.Width = 180;
-            // 
-            // eventDescription
-            // 
-            eventDescription.DataPropertyName = "Description";
-            eventDescription.HeaderText = "Description";
-            eventDescription.Name = "eventDescription";
-            eventDescription.ReadOnly = true;
-            eventDescription.Width = 392;
+            eventBindingSource.DataSource = typeof(Models.Event);
             // 
             // btnAccept
             // 
@@ -110,6 +97,7 @@
             btnDecline.TabIndex = 2;
             btnDecline.Text = "Decline";
             btnDecline.UseVisualStyleBackColor = false;
+            btnDecline.Click += btnDecline_Click;
             // 
             // btnRefresh
             // 
@@ -135,64 +123,111 @@
             btnView.TabIndex = 4;
             btnView.Text = "View";
             btnView.UseVisualStyleBackColor = false;
+            btnView.Click += btnView_Click;
             // 
             // dgvAcceptedInvites
             // 
             dgvAcceptedInvites.AllowUserToAddRows = false;
             dgvAcceptedInvites.AllowUserToDeleteRows = false;
+            dgvAcceptedInvites.AutoGenerateColumns = false;
             dgvAcceptedInvites.BackgroundColor = Color.PapayaWhip;
             dgvAcceptedInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAcceptedInvites.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
+            dgvAcceptedInvites.Columns.AddRange(new DataGridViewColumn[] { eventNameDataGridViewTextBoxColumn1, eventDateTimeDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn1, Id });
+            dgvAcceptedInvites.DataSource = eventBindingSource;
             dgvAcceptedInvites.Location = new Point(3, 268);
             dgvAcceptedInvites.Name = "dgvAcceptedInvites";
             dgvAcceptedInvites.ReadOnly = true;
             dgvAcceptedInvites.RowTemplate.Height = 25;
             dgvAcceptedInvites.ScrollBars = ScrollBars.Vertical;
             dgvAcceptedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAcceptedInvites.Size = new Size(918, 179);
+            dgvAcceptedInvites.Size = new Size(974, 179);
             dgvAcceptedInvites.TabIndex = 5;
             // 
-            // dataGridViewTextBoxColumn1
+            // eventNameDataGridViewTextBoxColumn1
             // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            dataGridViewTextBoxColumn1.HeaderText = "Name";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Width = 150;
+            eventNameDataGridViewTextBoxColumn1.DataPropertyName = "EventName";
+            eventNameDataGridViewTextBoxColumn1.HeaderText = "EventName";
+            eventNameDataGridViewTextBoxColumn1.Name = "eventNameDataGridViewTextBoxColumn1";
+            eventNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            eventNameDataGridViewTextBoxColumn1.Width = 240;
             // 
-            // dataGridViewTextBoxColumn2
+            // eventDateTimeDataGridViewTextBoxColumn1
             // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "DateTime";
-            dataGridViewTextBoxColumn2.HeaderText = "Time";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 180;
+            eventDateTimeDataGridViewTextBoxColumn1.DataPropertyName = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn1.HeaderText = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn1.Name = "eventDateTimeDataGridViewTextBoxColumn1";
+            eventDateTimeDataGridViewTextBoxColumn1.ReadOnly = true;
+            eventDateTimeDataGridViewTextBoxColumn1.Width = 240;
             // 
-            // dataGridViewTextBoxColumn3
+            // descriptionDataGridViewTextBoxColumn1
             // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "Description";
-            dataGridViewTextBoxColumn3.HeaderText = "Description";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 392;
+            descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
             // 
             // lblInvites
             // 
             lblInvites.AutoSize = true;
+            lblInvites.BackColor = SystemColors.Control;
+            lblInvites.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblInvites.ForeColor = Color.DarkOrange;
             lblInvites.Location = new Point(382, 22);
             lblInvites.Name = "lblInvites";
-            lblInvites.Size = new Size(41, 15);
+            lblInvites.Size = new Size(61, 21);
             lblInvites.TabIndex = 6;
             lblInvites.Text = "Invites";
             // 
             // lblAcceptedInvites
             // 
             lblAcceptedInvites.AutoSize = true;
+            lblAcceptedInvites.BackColor = SystemColors.Control;
+            lblAcceptedInvites.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAcceptedInvites.ForeColor = Color.DarkOrange;
             lblAcceptedInvites.Location = new Point(354, 234);
             lblAcceptedInvites.Name = "lblAcceptedInvites";
-            lblAcceptedInvites.Size = new Size(94, 15);
+            lblAcceptedInvites.Size = new Size(136, 21);
             lblAcceptedInvites.TabIndex = 7;
             lblAcceptedInvites.Text = "Accepted Invites";
+            // 
+            // eventNameDataGridViewTextBoxColumn
+            // 
+            eventNameDataGridViewTextBoxColumn.DataPropertyName = "EventName";
+            eventNameDataGridViewTextBoxColumn.HeaderText = "EventName";
+            eventNameDataGridViewTextBoxColumn.Name = "eventNameDataGridViewTextBoxColumn";
+            eventNameDataGridViewTextBoxColumn.ReadOnly = true;
+            eventNameDataGridViewTextBoxColumn.Width = 240;
+            // 
+            // Id2
+            // 
+            Id2.DataPropertyName = "Id";
+            Id2.HeaderText = "Id";
+            Id2.Name = "Id2";
+            Id2.ReadOnly = true;
+            // 
+            // eventDateTimeDataGridViewTextBoxColumn
+            // 
+            eventDateTimeDataGridViewTextBoxColumn.DataPropertyName = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn.HeaderText = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn.Name = "eventDateTimeDataGridViewTextBoxColumn";
+            eventDateTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            eventDateTimeDataGridViewTextBoxColumn.Width = 240;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.Width = 200;
             // 
             // ucEventInvites
             // 
@@ -210,6 +245,7 @@
             Size = new Size(1134, 449);
             Load += ucEventInvites_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).EndInit();
+            ((System.ComponentModel.ISupportInitialize)eventBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -222,14 +258,17 @@
         private Button btnDecline;
         private Button btnRefresh;
         private Button btnView;
-        private DataGridViewTextBoxColumn eventName;
-        private DataGridViewTextBoxColumn eventDateAndTime;
-        private DataGridViewTextBoxColumn eventDescription;
         private DataGridView dgvAcceptedInvites;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private Label lblInvites;
         private Label lblAcceptedInvites;
+        private BindingSource eventBindingSource;
+        private DataGridViewTextBoxColumn eventNameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn eventNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Id2;
+        private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }

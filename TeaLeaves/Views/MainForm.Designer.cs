@@ -36,11 +36,9 @@
             tabPageInvites = new TabPage();
             ucEventInvites1 = new UserControls.ucEventInvites();
             tabPageContact = new TabPage();
-            button1 = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblGreeting = new Label();
             buttonLogout = new Button();
-            yourProfileButton = new Button();
             tableLayoutPanel2.SuspendLayout();
             tabControlMain.SuspendLayout();
             tabPageEvent.SuspendLayout();
@@ -128,7 +126,6 @@
             // 
             // tabPageContact
             // 
-            tabPageContact.Controls.Add(button1);
             tabPageContact.Location = new Point(4, 24);
             tabPageContact.Name = "tabPageContact";
             tabPageContact.Padding = new Padding(3);
@@ -137,21 +134,10 @@
             tabPageContact.Text = "Contact";
             tabPageContact.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(338, 252);
-            button1.TabIndex = 0;
-            button1.Text = "temp Manage Contacts Button";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
-            // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(lblGreeting);
             flowLayoutPanel1.Controls.Add(buttonLogout);
-            flowLayoutPanel1.Controls.Add(yourProfileButton);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -182,20 +168,6 @@
             buttonLogout.Text = "Logout";
             buttonLogout.UseVisualStyleBackColor = false;
             buttonLogout.Click += buttonLogout_Click;
-            // 
-            // yourProfileButton
-            // 
-            yourProfileButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            yourProfileButton.BackColor = Color.YellowGreen;
-            yourProfileButton.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            yourProfileButton.ForeColor = Color.DarkOrange;
-            yourProfileButton.Location = new Point(99, 3);
-            yourProfileButton.Name = "yourProfileButton";
-            yourProfileButton.Size = new Size(119, 35);
-            yourProfileButton.TabIndex = 3;
-            yourProfileButton.Text = "Your Profile";
-            yourProfileButton.UseVisualStyleBackColor = false;
-            yourProfileButton.Click += yourProfileButton_Click;
             // 
             // MainForm
             // 

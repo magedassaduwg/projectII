@@ -53,7 +53,6 @@ namespace TeaLeaves.DALs
             }
         }
 
-
         /// <summary>
         /// Deletes an event from the database
         /// </summary>
