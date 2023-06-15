@@ -20,4 +20,10 @@
     <ProjectReference Include="..\TeaLeaves\TeaLeaves.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

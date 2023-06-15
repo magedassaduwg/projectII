@@ -53,7 +53,7 @@ namespace TeaLeavesTests
 
             try
             {
-                Boolean wasRemoved = contactsController.AddContact(user, contact.Email);
+                Boolean wasRemoved = contactsController.RemoveContact(user, contact);
                 Assert.IsTrue(wasRemoved);
             }
             catch (Exception ex)

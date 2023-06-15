@@ -122,7 +122,7 @@ namespace TeaLeaves.DALs
         /// method setting the blurb of a user in the database.
         /// </summary>
         /// <param name="user"></param>
-        public void SetUserBlurb(Models.User user)
+        public Boolean SetUserBlurb(Models.User user)
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -131,8 +131,14 @@ namespace TeaLeaves.DALs
                 command.Parameters.AddWithValue("@blurb", user.Blurb);
 
                 connection.Open();
-                command.ExecuteNonQuery();
-
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -140,7 +146,7 @@ namespace TeaLeaves.DALs
         /// method uploading a User's ProfilePicture
         /// </summary>
         /// <param name="user"></param>
-        public void UploadProfilePicture(Models.User user)
+        public Boolean UploadProfilePicture(Models.User user)
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -148,8 +154,13 @@ namespace TeaLeaves.DALs
                 command.Parameters.AddWithValue("@UserId", user.UserId);
                 command.Parameters.AddWithValue("@profilePicture", this.ImageToByte(user.ProfilePicture));
                 connection.Open();
-                command.ExecuteNonQuery();
-
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
             }
         }
 
