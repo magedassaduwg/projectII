@@ -40,11 +40,11 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblGreeting = new Label();
             buttonLogout = new Button();
+            viewProfileButton = new Button();
             tableLayoutPanel2.SuspendLayout();
             tabControlMain.SuspendLayout();
             tabPageEvent.SuspendLayout();
             tabPageInvites.SuspendLayout();
-            tabPageContact.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -148,6 +148,7 @@
             // 
             flowLayoutPanel1.Controls.Add(lblGreeting);
             flowLayoutPanel1.Controls.Add(buttonLogout);
+            flowLayoutPanel1.Controls.Add(viewProfileButton);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -179,6 +180,20 @@
             buttonLogout.UseVisualStyleBackColor = false;
             buttonLogout.Click += buttonLogout_Click;
             // 
+            // viewProfileButton
+            // 
+            viewProfileButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            viewProfileButton.BackColor = Color.YellowGreen;
+            viewProfileButton.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            viewProfileButton.ForeColor = Color.DarkOrange;
+            viewProfileButton.Location = new Point(99, 3);
+            viewProfileButton.Name = "viewProfileButton";
+            viewProfileButton.Size = new Size(115, 35);
+            viewProfileButton.TabIndex = 3;
+            viewProfileButton.Text = "Your Profile";
+            viewProfileButton.UseVisualStyleBackColor = false;
+            viewProfileButton.Click += viewProfileButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -195,7 +210,6 @@
             tabControlMain.ResumeLayout(false);
             tabPageEvent.ResumeLayout(false);
             tabPageInvites.ResumeLayout(false);
-            tabPageContact.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -217,5 +231,6 @@
         private Button buttonLogout;
         private Button button1;
         private Button yourProfileButton;
+        private Button viewProfileButton;
     }
 }
