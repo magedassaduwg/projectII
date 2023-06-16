@@ -35,6 +35,7 @@
             ucEventPlanners = new UserControls.ucEventPlanner();
             tabPageInvites = new TabPage();
             ucEventInvites1 = new UserControls.ucEventInvites();
+            ucMessages = new UserControls.ucMessage();
             tabPageContact = new TabPage();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblGreeting = new Label();
@@ -78,6 +79,7 @@
             // 
             // tabPageMessage
             // 
+            tabPageMessage.Controls.Add(ucMessages);
             tabPageMessage.Location = new Point(4, 24);
             tabPageMessage.Name = "tabPageMessage";
             tabPageMessage.Padding = new Padding(3);
@@ -85,6 +87,14 @@
             tabPageMessage.TabIndex = 0;
             tabPageMessage.Text = "Message";
             tabPageMessage.UseVisualStyleBackColor = true;
+            //
+            // ucMessages
+            //
+            ucMessages.Dock = DockStyle.Fill;
+            ucMessages.Location = new Point(3, 3);
+            ucMessages.Name = "ucMessages";
+            ucMessages.Size = new Size(1280, 500);
+            ucMessages.TabIndex = 0;
             // 
             // tabPageEvent
             // 

@@ -20,7 +20,7 @@ namespace TeaLeaves.DALs
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 SqlCommand command = new SqlCommand("select top 50 MessageId, SenderId, ReceiverId, Text, MediaId, TimeStamp " +
-                    "from dbo.Messages where SenderId in (@receiverId, @senderId) or ReceiverId in (@receiverId, @senderId) " +
+                    "from dbo.Messages where (SenderId = @senderId and ReceiverId = @receiverId) or (SenderId = @receiverId and ReceiverId = @senderId)" +
                     "order by TimeStamp Desc", connection);
 
                 command.Parameters.AddWithValue("@receiverId", userId);

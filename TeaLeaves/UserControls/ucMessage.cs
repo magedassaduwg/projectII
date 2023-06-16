@@ -21,6 +21,11 @@ namespace TeaLeaves.UserControls
             _contactsController = new ContactsController();
 
             LoadContacts();
+
+            if(!IsHandleCreated)
+            {
+                Thread.Sleep(500);
+            }
             CurrentUserStore.IncomingMessageEvent += ReceiveMessage_Event;
         }
 
@@ -112,7 +117,6 @@ namespace TeaLeaves.UserControls
                     tblMessages.Controls.Add(lblMessage, 0, row);
                 }
 
-                //tblMessages.SetColumnSpan(lblMessage, 2);
                 tblMessages.ScrollControlIntoView(lblMessage);
             }
         }
@@ -163,6 +167,8 @@ namespace TeaLeaves.UserControls
             {
                 contacts.ShowDialog();
             }
+
+            LoadContacts();
         }
 
         private void LoadMessagesFromUser(int contactId)
