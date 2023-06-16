@@ -3,11 +3,17 @@ using TeaLeaves.Models;
 
 namespace TeaLeavesTests
 {
+    /// <summary>
+    /// Tests the methods of the EventController class
+    /// </summary>
     [TestClass]
     public class TestEventController
     {
+        /// <summary>
+        /// Tests the GetEventsByUserId method.
+        /// </summary>
         [TestMethod]
-        public void TestGetEventsById()
+        public void TestGetEventsByUserId()
         {
             EventController controller = new EventController();
             try
@@ -21,6 +27,9 @@ namespace TeaLeavesTests
             }
         }
 
+        /// <summary>
+        /// Tests the SaveEvent method
+        /// </summary>
         [TestMethod]
         public void TestSaveEvent()
         {
@@ -45,6 +54,66 @@ namespace TeaLeavesTests
 
                 controller.DeleteEvent(eventId);
                 Assert.IsTrue(true);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        /// <summary>
+        /// Tests the GetEventById method
+        /// </summary>
+        [TestMethod]
+        public void TestGetEventById()
+        {
+            EventController controller = new EventController();
+            Event userEvent;
+            try
+            {
+                userEvent = controller.GetEventById(70);
+                Assert.AreEqual(userEvent.EventName, "test");
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        /// <summary>
+        /// Tests the GetEventsReceivedByUserId method
+        /// </summary>
+        [TestMethod]
+        public void TestGetEventsReceivedByUserId()
+        {
+            EventController controller = new EventController();
+            List<Event> userEvents;
+            try
+            {
+                userEvents = controller.GetEventsReceivedByUserId(25);
+                Assert.AreEqual(userEvents[0].Id, 70);
+                Assert.AreEqual(userEvents[1].Id, 71);
+                Assert.AreEqual(userEvents[2].Id, 72);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        /// <summary>
+        /// Tests the GetAcceptedEventsReceivedByUserId method
+        /// </summary>
+        [TestMethod]
+        public void TestGetAcceptedEventsReceivedByUserId()
+        {
+            EventController controller = new EventController();
+            List<Event> userEvents;
+            try
+            {
+                userEvents = controller.GetAcceptedEventsReceivedByUserId(25);
+                Assert.AreEqual(userEvents[0].Id, 67);
+                Assert.AreEqual(userEvents[1].Id, 69);
             }
             catch (Exception)
             {

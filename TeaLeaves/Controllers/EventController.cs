@@ -54,7 +54,7 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public List<Event> GetAcceptedEventsReceivedByUserId(int  userId)
+        public List<Event> GetAcceptedEventsReceivedByUserId(int userId)
         {
             return _eventDAL.GetAcceptedEventsReceivedByUserId(userId);
         }
@@ -69,6 +69,11 @@ namespace TeaLeaves.Controllers
             return _eventDAL.GetEventsByUserId(userId);
         }
 
+        /// <summary>
+        /// Returns an event by it's id
+        /// </summary>
+        /// <param name="selectedEventId"></param>
+        /// <returns></returns>
         public Event GetEventById(int selectedEventId)
         {
             return _eventDAL.GetEventById(selectedEventId);
