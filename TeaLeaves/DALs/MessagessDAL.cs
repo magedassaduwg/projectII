@@ -65,7 +65,7 @@ namespace TeaLeaves.DALs
             {
                 SqlCommand command = new SqlCommand("Insert into Messages(SenderId, ReceiverId, Text, MediaId, Timestamp) " +
                                                 "Values(@senderId, @receiverId, @text, @mediaId, @timestamp) " +
-                                                "select scope_identity", connection);
+                                                "select scope_identity()", connection);
 
                 command.Parameters.AddWithValue("@senderId", message.SenderId);
                 command.Parameters.AddWithValue("@receiverId", message.ReceiverId);

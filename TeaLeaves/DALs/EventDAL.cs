@@ -18,11 +18,14 @@ namespace TeaLeaves.DALs
         {
             string query = @event.Id <= 0 ?
                 @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
-        VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)"
+                VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)
+                select scope_identity()"
                 :
                 @"UPDATE Events 
-        SET Name = @Name, StreetNumber = @StreetNumber, State = @State, City = @City, Zipcode = @Zipcode, EventDateTime = @EventDateTime, Description = @Description 
-        WHERE eventId = @eventId";
+                SET Name = @Name, StreetNumber = @StreetNumber, State = @State, City = @City, Zipcode = @Zipcode, EventDateTime = @EventDateTime, Description = @Description 
+                WHERE eventId = @eventId
+
+                select @eventId";
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -45,8 +48,8 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@StreetNumber", @event.StreetNumber);
                     saveCommand.Parameters.AddWithValue("@Name", @event.EventName);
                     saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
-                    saveCommand.Parameters.AddWithValue("@CreatorId", CurrentUserStore.User.UserId);
-                    
+                    saveCommand.Parameters.AddWithValue("@CreatorId", @event.CreatorId);
+
 
                     return Convert.ToInt32(saveCommand.ExecuteScalar());
                 }
@@ -241,7 +244,7 @@ namespace TeaLeaves.DALs
                                 EventName = reader["Name"].ToString(),
                                 Description = reader["Description"].ToString(),
                             };
-                           
+
                         }
                     }
 
@@ -251,6 +254,6 @@ namespace TeaLeaves.DALs
         }
 
     }
-    
+
 }
-    
+

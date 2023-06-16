@@ -15,16 +15,16 @@ namespace TeaLeavesTests
 
             User user = new User
             {
+                UserId = 1,
                 ProfilePicture = Image.FromFile("Resources\\user.png")
             };
 
-            Boolean wasUploaded = controller.UploadProfilePicture(user);
             try
             {
+                Boolean wasUploaded = controller.UploadProfilePicture(user);
                 Assert.IsTrue(wasUploaded);
             }
-
-            catch (Exception ex)
+            catch (Exception)
             {
                 Assert.IsTrue(false);
             }
@@ -36,17 +36,18 @@ namespace TeaLeavesTests
             UsersController controller = new UsersController();
             User user = new User
             {
+                UserId = 1,
                 Blurb = "test"
             };
             try
             {
                 Assert.IsTrue(controller.SetUserBlurb(user));
-            } 
+            }
             catch (Exception ex)
             {
                 Assert.IsTrue(false);
             }
-            
+
         }
 
         [TestMethod]
@@ -55,11 +56,12 @@ namespace TeaLeavesTests
             UsersController controller = new UsersController();
             User user = new User
             {
+                UserId = 1,
                 Blurb = "test"
             };
-            controller.SetUserBlurb(user);
             try
             {
+                controller.SetUserBlurb(user);
                 Assert.IsTrue(controller.GetUserBlurb(user.UserId) == "test");
             }
             catch (Exception ex)
