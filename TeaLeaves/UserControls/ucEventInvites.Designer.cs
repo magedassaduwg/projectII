@@ -36,14 +36,12 @@
             btnRefresh = new Button();
             btnView = new Button();
             dgvAcceptedInvites = new DataGridView();
+            lblInvites = new Label();
+            lblAcceptedInvites = new Label();
             eventNameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             eventDateTimeDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             descriptionDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            Id = new DataGridViewTextBoxColumn();
-            lblInvites = new Label();
-            lblAcceptedInvites = new Label();
             eventNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            Id2 = new DataGridViewTextBoxColumn();
             eventDateTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
@@ -58,7 +56,7 @@
             dgvEventInvites.AutoGenerateColumns = false;
             dgvEventInvites.BackgroundColor = Color.PapayaWhip;
             dgvEventInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { eventNameDataGridViewTextBoxColumn, Id2, eventDateTimeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
+            dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { eventNameDataGridViewTextBoxColumn, eventDateTimeDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
             dgvEventInvites.DataSource = eventBindingSource;
             dgvEventInvites.Location = new Point(3, 52);
             dgvEventInvites.Name = "dgvEventInvites";
@@ -66,7 +64,7 @@
             dgvEventInvites.RowTemplate.Height = 25;
             dgvEventInvites.ScrollBars = ScrollBars.Vertical;
             dgvEventInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEventInvites.Size = new Size(974, 179);
+            dgvEventInvites.Size = new Size(953, 179);
             dgvEventInvites.TabIndex = 0;
             // 
             // eventBindingSource
@@ -132,7 +130,7 @@
             dgvAcceptedInvites.AutoGenerateColumns = false;
             dgvAcceptedInvites.BackgroundColor = Color.PapayaWhip;
             dgvAcceptedInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAcceptedInvites.Columns.AddRange(new DataGridViewColumn[] { eventNameDataGridViewTextBoxColumn1, eventDateTimeDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn1, Id });
+            dgvAcceptedInvites.Columns.AddRange(new DataGridViewColumn[] { eventNameDataGridViewTextBoxColumn1, eventDateTimeDataGridViewTextBoxColumn1, descriptionDataGridViewTextBoxColumn1 });
             dgvAcceptedInvites.DataSource = eventBindingSource;
             dgvAcceptedInvites.Location = new Point(3, 268);
             dgvAcceptedInvites.Name = "dgvAcceptedInvites";
@@ -140,39 +138,8 @@
             dgvAcceptedInvites.RowTemplate.Height = 25;
             dgvAcceptedInvites.ScrollBars = ScrollBars.Vertical;
             dgvAcceptedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAcceptedInvites.Size = new Size(974, 179);
+            dgvAcceptedInvites.Size = new Size(953, 179);
             dgvAcceptedInvites.TabIndex = 5;
-            // 
-            // eventNameDataGridViewTextBoxColumn1
-            // 
-            eventNameDataGridViewTextBoxColumn1.DataPropertyName = "EventName";
-            eventNameDataGridViewTextBoxColumn1.HeaderText = "EventName";
-            eventNameDataGridViewTextBoxColumn1.Name = "eventNameDataGridViewTextBoxColumn1";
-            eventNameDataGridViewTextBoxColumn1.ReadOnly = true;
-            eventNameDataGridViewTextBoxColumn1.Width = 240;
-            // 
-            // eventDateTimeDataGridViewTextBoxColumn1
-            // 
-            eventDateTimeDataGridViewTextBoxColumn1.DataPropertyName = "EventDateTime";
-            eventDateTimeDataGridViewTextBoxColumn1.HeaderText = "EventDateTime";
-            eventDateTimeDataGridViewTextBoxColumn1.Name = "eventDateTimeDataGridViewTextBoxColumn1";
-            eventDateTimeDataGridViewTextBoxColumn1.ReadOnly = true;
-            eventDateTimeDataGridViewTextBoxColumn1.Width = 240;
-            // 
-            // descriptionDataGridViewTextBoxColumn1
-            // 
-            descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
-            descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
-            descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
-            descriptionDataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
             // 
             // lblInvites
             // 
@@ -198,6 +165,30 @@
             lblAcceptedInvites.TabIndex = 7;
             lblAcceptedInvites.Text = "Accepted Invites";
             // 
+            // eventNameDataGridViewTextBoxColumn1
+            // 
+            eventNameDataGridViewTextBoxColumn1.DataPropertyName = "EventName";
+            eventNameDataGridViewTextBoxColumn1.HeaderText = "EventName";
+            eventNameDataGridViewTextBoxColumn1.Name = "eventNameDataGridViewTextBoxColumn1";
+            eventNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            eventNameDataGridViewTextBoxColumn1.Width = 240;
+            // 
+            // eventDateTimeDataGridViewTextBoxColumn1
+            // 
+            eventDateTimeDataGridViewTextBoxColumn1.DataPropertyName = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn1.HeaderText = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn1.Name = "eventDateTimeDataGridViewTextBoxColumn1";
+            eventDateTimeDataGridViewTextBoxColumn1.ReadOnly = true;
+            eventDateTimeDataGridViewTextBoxColumn1.Width = 240;
+            // 
+            // descriptionDataGridViewTextBoxColumn1
+            // 
+            descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn1.Width = 430;
+            // 
             // eventNameDataGridViewTextBoxColumn
             // 
             eventNameDataGridViewTextBoxColumn.DataPropertyName = "EventName";
@@ -205,13 +196,6 @@
             eventNameDataGridViewTextBoxColumn.Name = "eventNameDataGridViewTextBoxColumn";
             eventNameDataGridViewTextBoxColumn.ReadOnly = true;
             eventNameDataGridViewTextBoxColumn.Width = 240;
-            // 
-            // Id2
-            // 
-            Id2.DataPropertyName = "Id";
-            Id2.HeaderText = "Id";
-            Id2.Name = "Id2";
-            Id2.ReadOnly = true;
             // 
             // eventDateTimeDataGridViewTextBoxColumn
             // 
@@ -227,7 +211,7 @@
             descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
             descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            descriptionDataGridViewTextBoxColumn.Width = 200;
+            descriptionDataGridViewTextBoxColumn.Width = 430;
             // 
             // ucEventInvites
             // 
@@ -262,13 +246,11 @@
         private Label lblInvites;
         private Label lblAcceptedInvites;
         private BindingSource eventBindingSource;
+        private DataGridViewTextBoxColumn eventNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn eventNameDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn eventNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Id2;
-        private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }
