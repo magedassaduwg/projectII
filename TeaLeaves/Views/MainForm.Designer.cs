@@ -1,4 +1,7 @@
-﻿namespace TeaLeaves.Views
+﻿using TeaLeaves.UserControls;
+using static MassTransit.Monitoring.Performance.BuiltInCounters;
+
+namespace TeaLeaves.Views
 {
     partial class MainForm
     {
@@ -32,11 +35,10 @@
             tabControlMain = new TabControl();
             tabPageMessage = new TabPage();
             tabPageEvent = new TabPage();
-            ucEventPlanners = new UserControls.ucEventPlanner();
+            ucEventPlanners = new ucEventPlanner();
             tabPageInvites = new TabPage();
-            ucEventInvites1 = new UserControls.ucEventInvites();
-            ucMessages = new UserControls.ucMessage();
-            tabPageContact = new TabPage();
+            ucEventInvites1 = new ucEventInvites();
+            ucMessages1 = new ucMessage();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblGreeting = new Label();
             buttonLogout = new Button();
@@ -69,7 +71,6 @@
             tabControlMain.Controls.Add(tabPageMessage);
             tabControlMain.Controls.Add(tabPageEvent);
             tabControlMain.Controls.Add(tabPageInvites);
-            tabControlMain.Controls.Add(tabPageContact);
             tabControlMain.Dock = DockStyle.Fill;
             tabControlMain.Location = new Point(3, 63);
             tabControlMain.Name = "tabControlMain";
@@ -79,7 +80,7 @@
             // 
             // tabPageMessage
             // 
-            tabPageMessage.Controls.Add(ucMessages);
+            tabPageMessage.Controls.Add(ucMessages1);
             tabPageMessage.Location = new Point(4, 24);
             tabPageMessage.Name = "tabPageMessage";
             tabPageMessage.Padding = new Padding(3);
@@ -87,14 +88,14 @@
             tabPageMessage.TabIndex = 0;
             tabPageMessage.Text = "Message";
             tabPageMessage.UseVisualStyleBackColor = true;
-            //
-            // ucMessages
-            //
-            ucMessages.Dock = DockStyle.Fill;
-            ucMessages.Location = new Point(3, 3);
-            ucMessages.Name = "ucMessages";
-            ucMessages.Size = new Size(1280, 500);
-            ucMessages.TabIndex = 0;
+            // 
+            // ucMessages1
+            // 
+            ucMessages1.Dock = DockStyle.Fill;
+            ucMessages1.Location = new Point(3, 3);
+            ucMessages1.Name = "ucMessages1";
+            ucMessages1.Size = new Size(1280, 500);
+            ucMessages1.TabIndex = 0;
             // 
             // tabPageEvent
             // 
@@ -133,16 +134,6 @@
             ucEventInvites1.Name = "ucEventInvites1";
             ucEventInvites1.Size = new Size(1280, 500);
             ucEventInvites1.TabIndex = 0;
-            // 
-            // tabPageContact
-            // 
-            tabPageContact.Location = new Point(4, 24);
-            tabPageContact.Name = "tabPageContact";
-            tabPageContact.Padding = new Padding(3);
-            tabPageContact.Size = new Size(1286, 506);
-            tabPageContact.TabIndex = 3;
-            tabPageContact.Text = "Contact";
-            tabPageContact.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -222,9 +213,8 @@
         private TabPage tabPageMessage;
         private TabPage tabPageEvent;
         private UserControls.ucEventPlanner ucEventPlanners;
-        private UserControls.ucMessage ucMessages;
+        private UserControls.ucMessage ucMessages1;
         private TabPage tabPageInvites;
-        private TabPage tabPageContact;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblGreeting;
         private UserControls.ucEventInvites ucEventInvites1;
