@@ -92,7 +92,7 @@ namespace TeaLeaves.Views
                     this._usersController.Add(user);
                     this.lblMessage.ForeColor = Color.Black;
                     Clear();
-                    this.lblMessage.Text = "The patient has been registered.";
+                    this.lblMessage.Text = "You have been registered.";
                 }
                 catch (Exception ex)
                 {
