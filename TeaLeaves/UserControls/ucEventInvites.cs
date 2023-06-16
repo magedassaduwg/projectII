@@ -70,17 +70,30 @@ namespace TeaLeaves.UserControls
             }
         }
 
+        private bool ShouldDecline()
+        {
+            DialogResult decline = MessageBox.Show("Are you sure you want to decline this event?", "" +
+                "", MessageBoxButtons.YesNo);
+            return DialogResult.Yes == decline;
+        }
+
         private void btnDecline_Click(object sender, EventArgs e)
         {
-            if (dgvEventInvites.SelectedRows.Count > 0)
+            if (ShouldDecline())
             {
-                Event selectedEvent = (Event)dgvEventInvites.SelectedRows[0].DataBoundItem;
-                _eventResponseController.DeleteEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
-                GetUserEvents();
-            }
-            if (dgvEventInvites.SelectedRows.Count > 0)
+                if (dgvEventInvites.SelectedRows.Count > 0)
+                {
+                    Event selectedEvent = (Event)dgvEventInvites.SelectedRows[0].DataBoundItem;
+                    _eventResponseController.DeleteEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
+                    GetUserEvents();
+                }
+                if (dgvEventInvites.SelectedRows.Count > 0)
+                {
+                    dgvEventInvites.Rows[0].Selected = true;
+                }
+            } else
             {
-                dgvEventInvites.Rows[0].Selected = true;
+                return;
             }
         }
 
