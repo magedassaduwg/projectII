@@ -43,6 +43,7 @@
             tabControlMain.SuspendLayout();
             tabPageEvent.SuspendLayout();
             tabPageInvites.SuspendLayout();
+            tabPageContact.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -184,6 +185,7 @@
             tabControlMain.ResumeLayout(false);
             tabPageEvent.ResumeLayout(false);
             tabPageInvites.ResumeLayout(false);
+            tabPageContact.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -203,5 +205,7 @@
         private Label lblGreeting;
         private UserControls.ucEventInvites ucEventInvites1;
         private Button buttonLogout;
+        private Button button1;
+        private Button yourProfileButton;
     }
 }

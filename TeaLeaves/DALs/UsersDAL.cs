@@ -66,6 +66,7 @@ namespace TeaLeaves.DALs
                 SqlCommand command = new SqlCommand("Select ProfilePicture FROM Users WHERE UserId = @UserId;", connection);
                 command.Parameters.AddWithValue("@UserId", userId);
                 
+                connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -81,7 +82,7 @@ namespace TeaLeaves.DALs
                         
                     }
                 }
-                Image defaultImage = Image.FromFile("TeaLeaves/Images/user.jpg");
+                Image defaultImage = Image.FromFile("Resources\\user.png");
                 return defaultImage;
             }
         }
@@ -100,6 +101,7 @@ namespace TeaLeaves.DALs
                 SqlCommand command = new SqlCommand("Select Blurb FROM Users WHERE UserId = @UserId;", connection);
                 command.Parameters.AddWithValue("@UserId", userId);
 
+                connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -114,6 +116,65 @@ namespace TeaLeaves.DALs
                 }
             }
             return userBlurb;
+        }
+
+        /// <summary>
+        /// method setting the blurb of a user in the database.
+        /// </summary>
+        /// <param name="user"></param>
+        public Boolean SetUserBlurb(Models.User user)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("UPDATE Users SET Blurb = @blurb WHERE UserId = @UserId", connection);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+                command.Parameters.AddWithValue("@blurb", user.Blurb);
+
+                connection.Open();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// method uploading a User's ProfilePicture
+        /// </summary>
+        /// <param name="user"></param>
+        public Boolean UploadProfilePicture(Models.User user)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("UPDATE Users SET ProfilePicture = @profilePicture WHERE UserId = @UserId", connection);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+                command.Parameters.AddWithValue("@profilePicture", this.ImageToByte(user.ProfilePicture));
+                connection.Open();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
+            }
+        }
+
+        private byte[] ImageToByte(Image img)
+        {
+            byte[] byteArray = new byte[0];
+            using (MemoryStream stream = new MemoryStream())
+            {
+                img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                stream.Close();
+
+                byteArray = stream.ToArray();
+            }
+            return byteArray;
         }
     }
 }

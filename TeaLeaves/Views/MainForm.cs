@@ -44,5 +44,21 @@ namespace TeaLeaves.Views
             _isManulClose = true;
             Close();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            using (ManageContactForm contactForm = new ManageContactForm())
+            {
+                contactForm.ShowDialog();
+            }
+        }
+
+        private void yourProfileButton_Click(object sender, EventArgs e)
+        {
+            using (ProfileForm profileForm = new ProfileForm())
+            {
+                profileForm.ShowDialog();
+            }
+        }
     }
 }

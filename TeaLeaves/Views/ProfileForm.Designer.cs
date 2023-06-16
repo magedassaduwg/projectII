@@ -71,7 +71,7 @@
             userProfilePictureBox.Location = new Point(58, 3);
             userProfilePictureBox.Name = "userProfilePictureBox";
             userProfilePictureBox.Size = new Size(314, 318);
-            userProfilePictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+            userProfilePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             userProfilePictureBox.TabIndex = 0;
             userProfilePictureBox.TabStop = false;
             // 
@@ -134,6 +134,7 @@
             saveButton.Text = "Save";
             saveButton.UseVisualStyleBackColor = true;
             saveButton.Visible = false;
+            saveButton.Click += saveButton_Click;
             // 
             // uploadButton
             // 
@@ -147,6 +148,7 @@
             uploadButton.Text = "Upload";
             uploadButton.UseVisualStyleBackColor = true;
             uploadButton.Visible = false;
+            uploadButton.Click += uploadButton_Click;
             // 
             // ProfileForm
             // 
