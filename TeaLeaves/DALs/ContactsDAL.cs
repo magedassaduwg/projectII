@@ -211,7 +211,8 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                SqlCommand command = new SqlCommand("INSERT INTO Contacts(UserId1, UserId2) VALUES(@UserId1, @UserId2);", connection);
+                SqlCommand command = new SqlCommand("INSERT INTO Contacts(UserId1, UserId2) VALUES(@UserId1, @UserId2); " +
+                    "INSERT INTO Contacts(UserId1, UserId2) VALUES(@UserId2, @UserId1)", connection);
                 command.Parameters.AddWithValue("@UserId1", user.UserId);
                 command.Parameters.AddWithValue("@UserId2", contactId);
 

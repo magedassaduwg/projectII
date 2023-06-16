@@ -37,9 +37,9 @@
             tbName = new TextBox();
             tbAddress = new TextBox();
             tbDescription = new RichTextBox();
-            labelError = new Label();
             tbDate = new TextBox();
             tbTime = new TextBox();
+            labelError = new Label();
             btnBack = new Button();
             tableLayoutPanelAddEvent.SuspendLayout();
             SuspendLayout();
@@ -173,17 +173,6 @@
             tbDescription.TabIndex = 9;
             tbDescription.Text = "";
             // 
-            // labelError
-            // 
-            labelError.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            labelError.AutoSize = true;
-            tableLayoutPanelAddEvent.SetColumnSpan(labelError, 2);
-            labelError.ForeColor = Color.Red;
-            labelError.Location = new Point(329, 407);
-            labelError.Name = "labelError";
-            labelError.Size = new Size(241, 15);
-            labelError.TabIndex = 17;
-            // 
             // tbDate
             // 
             tbDate.Anchor = AnchorStyles.Left | AnchorStyles.Right;
@@ -206,6 +195,17 @@
             tbTime.Size = new Size(249, 23);
             tbTime.TabIndex = 19;
             // 
+            // labelError
+            // 
+            labelError.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            labelError.AutoSize = true;
+            tableLayoutPanelAddEvent.SetColumnSpan(labelError, 2);
+            labelError.ForeColor = Color.Red;
+            labelError.Location = new Point(329, 407);
+            labelError.Name = "labelError";
+            labelError.Size = new Size(241, 15);
+            labelError.TabIndex = 17;
+            // 
             // btnBack
             // 
             btnBack.BackColor = Color.Orange;
@@ -227,6 +227,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanelAddEvent);
             Name = "ViewEventForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ViewEventForm";
             Load += ViewEventForm_Load;
             tableLayoutPanelAddEvent.ResumeLayout(false);

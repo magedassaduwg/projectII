@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             dgvInvitedContacts = new DataGridView();
-            btnInvite = new Button();
-            lblInvitedContacts = new Label();
-            dgvUninvitedContacts = new DataGridView();
-            lblUninvitedContacts = new Label();
-            FirstName = new DataGridViewTextBoxColumn();
-            lastName = new DataGridViewTextBoxColumn();
-            username = new DataGridViewTextBoxColumn();
             firstName1 = new DataGridViewTextBoxColumn();
             lastName2 = new DataGridViewTextBoxColumn();
             username1 = new DataGridViewTextBoxColumn();
+            btnInvite = new Button();
+            lblInvitedContacts = new Label();
+            dgvUninvitedContacts = new DataGridView();
+            FirstName = new DataGridViewTextBoxColumn();
+            lastName = new DataGridViewTextBoxColumn();
+            username = new DataGridViewTextBoxColumn();
+            lblUninvitedContacts = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvInvitedContacts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUninvitedContacts).BeginInit();
             SuspendLayout();
@@ -58,6 +58,27 @@
             dgvInvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvInvitedContacts.Size = new Size(357, 253);
             dgvInvitedContacts.TabIndex = 0;
+            // 
+            // firstName1
+            // 
+            firstName1.DataPropertyName = "FirstName";
+            firstName1.HeaderText = "First Name";
+            firstName1.Name = "firstName1";
+            firstName1.ReadOnly = true;
+            // 
+            // lastName2
+            // 
+            lastName2.DataPropertyName = "LastName";
+            lastName2.HeaderText = "Last Name";
+            lastName2.Name = "lastName2";
+            lastName2.ReadOnly = true;
+            // 
+            // username1
+            // 
+            username1.DataPropertyName = "Username";
+            username1.HeaderText = "Username";
+            username1.Name = "username1";
+            username1.ReadOnly = true;
             // 
             // btnInvite
             // 
@@ -95,15 +116,6 @@
             dgvUninvitedContacts.Size = new Size(357, 253);
             dgvUninvitedContacts.TabIndex = 3;
             // 
-            // lblUninvitedContacts
-            // 
-            lblUninvitedContacts.AutoSize = true;
-            lblUninvitedContacts.Location = new Point(414, 49);
-            lblUninvitedContacts.Name = "lblUninvitedContacts";
-            lblUninvitedContacts.Size = new Size(108, 15);
-            lblUninvitedContacts.TabIndex = 4;
-            lblUninvitedContacts.Text = "Uninvited Contacts";
-            // 
             // FirstName
             // 
             FirstName.DataPropertyName = "FirstName";
@@ -125,26 +137,14 @@
             username.Name = "username";
             username.ReadOnly = true;
             // 
-            // firstName1
+            // lblUninvitedContacts
             // 
-            firstName1.DataPropertyName = "FirstName";
-            firstName1.HeaderText = "First Name";
-            firstName1.Name = "firstName1";
-            firstName1.ReadOnly = true;
-            // 
-            // lastName2
-            // 
-            lastName2.DataPropertyName = "LastName";
-            lastName2.HeaderText = "Last Name";
-            lastName2.Name = "lastName2";
-            lastName2.ReadOnly = true;
-            // 
-            // username1
-            // 
-            username1.DataPropertyName = "Username";
-            username1.HeaderText = "Username";
-            username1.Name = "username1";
-            username1.ReadOnly = true;
+            lblUninvitedContacts.AutoSize = true;
+            lblUninvitedContacts.Location = new Point(414, 49);
+            lblUninvitedContacts.Name = "lblUninvitedContacts";
+            lblUninvitedContacts.Size = new Size(108, 15);
+            lblUninvitedContacts.TabIndex = 4;
+            lblUninvitedContacts.Text = "Uninvited Contacts";
             // 
             // EventInvitesForm
             // 
@@ -157,6 +157,7 @@
             Controls.Add(btnInvite);
             Controls.Add(dgvInvitedContacts);
             Name = "EventInvitesForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EventInvitesForm";
             ((System.ComponentModel.ISupportInitialize)dgvInvitedContacts).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvUninvitedContacts).EndInit();

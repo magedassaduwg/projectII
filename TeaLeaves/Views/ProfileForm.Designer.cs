@@ -157,6 +157,7 @@
             ClientSize = new Size(449, 583);
             Controls.Add(tableLayoutPanel1);
             Name = "ProfileForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "TeaLeaves";
             Load += ProfileForm_Load;
             tableLayoutPanel1.ResumeLayout(false);

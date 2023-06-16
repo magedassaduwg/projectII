@@ -16,15 +16,6 @@ namespace TeaLeaves.Views
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            using (MessageForm chatForm = new MessageForm())
-            {
-                chatForm.ShowDialog();
-            }
-        }
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_isManulClose)
