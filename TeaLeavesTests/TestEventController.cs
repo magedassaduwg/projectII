@@ -31,7 +31,7 @@ namespace TeaLeavesTests
                 EventName = "test",
                 EventDateTime = DateTime.Now,
                 Description = "test",
-                CreatorId = 0,
+                CreatorId = 24,
                 State = "test",
                 City = "test",
                 Zipcode = 12345,
