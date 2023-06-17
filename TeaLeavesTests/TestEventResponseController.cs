@@ -14,7 +14,7 @@ namespace TeaLeavesTests
         /// Tests the AddEventResponse and DeleteEventResponse methods
         /// </summary>
         [TestMethod]
-        public void TestAddEventResponse()
+        public void TestAddEventResponseAndDeleteEventResponse()
         {
             EventResponseController controller = new EventResponseController();
             EventResponse userEventResponse = new EventResponse

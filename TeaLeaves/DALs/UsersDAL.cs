@@ -35,11 +35,12 @@ namespace TeaLeaves.DALs
         /// Adds a new user to the database
         /// </summary>
         /// <param name="user"></param>
-        public void AddUser(Models.User user)
+        public int AddUser(Models.User user)
         {
             string insertStatement =
                 "INSERT INTO Users (LastName, FirstName, Username, Password, Email) " +
-                "VALUES (@lastName, @firstName, @username, @password, @email) ";
+                "VALUES (@lastName, @firstName, @username, @password, @email) " +
+                "select scope_identity()";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
@@ -49,7 +50,30 @@ namespace TeaLeaves.DALs
                 insertCommand.Parameters.AddWithValue("@username", user.Username);
                 insertCommand.Parameters.AddWithValue("@password", user.Password);
                 insertCommand.Parameters.AddWithValue("@email", user.Email);
-                insertCommand.ExecuteReader();
+                return Convert.ToInt32(insertCommand.ExecuteScalar());
+            }
+        }
+
+        /// <summary>
+        /// Removes the given user from the database
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool DeleteUser(int userId)
+        {
+            string query = @"DELETE Users " +
+                            "WHERE UserId = @userId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@userId", userId);
+
+                    int rowsAffected = saveCommand.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
             }
         }
 

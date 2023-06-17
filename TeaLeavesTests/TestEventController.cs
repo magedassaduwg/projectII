@@ -28,10 +28,10 @@ namespace TeaLeavesTests
         }
 
         /// <summary>
-        /// Tests the SaveEvent method
+        /// Tests the SaveEvent and DeleteEvent methods
         /// </summary>
         [TestMethod]
-        public void TestSaveEvent()
+        public void TestSaveEventAndDeleteEvent()
         {
             EventController controller = new EventController();
             Event userEvent = new Event

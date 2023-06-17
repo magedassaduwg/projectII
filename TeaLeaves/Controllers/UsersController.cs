@@ -29,9 +29,19 @@ namespace TeaLeaves.Controllers
         /// Adds a user to the database
         /// </summary>
         /// <param name="user"></param>
-        public void Add(User user)
+        public int Add(User user)
         {
-            _userDAL.AddUser(user);
+            return _userDAL.AddUser(user);
+        }
+
+        /// <summary>
+        /// Removes the given user from the database
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool Delete(int userId)
+        {
+            return _userDAL.DeleteUser(userId);
         }
 
         /// <summary>
