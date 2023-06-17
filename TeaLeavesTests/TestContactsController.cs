@@ -27,14 +27,64 @@ namespace TeaLeavesTests
             }
         }
 
+        [TestMethod]
         public void TestGetUsersContactsByEvents()
         {
-
+            ContactsController contactsController = new ContactsController();
+            EventResponseController eventResponseController = new EventResponseController();
+            User user = new User
+            {
+                UserId = 1,
+            };
+            User userTwo = new User
+            {
+                UserId = 2,
+                Email = "test@email.com"
+            };
+            Event @event = new Event
+            {
+                Id = 1,
+            };
+            EventResponse @eventResponse = new EventResponse
+            {
+                Id = 1,
+                InviterId = 1,
+                ReceiverId = 2
+            };
+            try
+            {
+                contactsController.AddContact(user, userTwo.Email);
+                eventResponseController.AddEventResponse(@eventResponse);
+                var message = contactsController.GetUsersContactsByEvent(user, @event);
+                Assert.IsTrue(message.Any());
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
         }
 
+        [TestMethod]
         public void TestGetUsersContactsNotInvitedByEvent()
         {
-
+            ContactsController contactsController = new ContactsController();
+            User user = new User
+            {
+                UserId = 1
+            };
+            Event @event = new Event
+            {
+                Id = 1
+            };
+            try
+            {
+                var message = contactsController.GetUsersContactsNotInvitedByEvent(user, @event);
+                Assert.IsTrue(message.Any());
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
         }
 
         [TestMethod]
