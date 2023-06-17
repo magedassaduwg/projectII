@@ -34,7 +34,7 @@ namespace TeaLeaves.Controllers
         /// <param name="eventReceiverId"></param>
         /// <param name="eventId"></param>
         /// <returns></returns>
-        public int DeleteEventResponse(int eventReceiverId, int eventId)
+        public bool DeleteEventResponse(int eventReceiverId, int eventId)
         {
             return _eventResponseDAL.DeleteEventResponse(eventReceiverId, eventId);
         }

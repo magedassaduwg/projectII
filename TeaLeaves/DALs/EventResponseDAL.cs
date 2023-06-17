@@ -1,5 +1,4 @@
 ﻿using System.Data.SqlClient;
-using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -21,7 +20,7 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT EventResponseId, EventInviterId, EventReceiverId, EventId FROM Events WHERE ReceiverId = @ReceiverId;";
+                string query = "SELECT EventResponseId, EventInviterId, EventReceiverId, EventId, Accepted FROM EventResponses WHERE EventReceiverId = @ReceiverId;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ReceiverId", receiverId);
@@ -36,6 +35,7 @@ namespace TeaLeaves.DALs
                         InviterId = Convert.ToInt32(reader["EventInviterId"]),
                         ReceiverId = Convert.ToInt32(reader["EventReceiverId"]),
                         EventId = Convert.ToInt32(reader["EventId"]),
+                        Accepted = Convert.ToInt32(reader["Accepted"]) > 0,
                     };
                     userEventResponses.Add(userEventResponse);
                 }
@@ -49,7 +49,7 @@ namespace TeaLeaves.DALs
         /// <param name="receiverId"></param>
         /// <param name="eventId"></param>
         /// <returns></returns>
-        public int DeleteEventResponse(int receiverId, int eventId)
+        public bool DeleteEventResponse(int receiverId, int eventId)
         {
             string query = @"DELETE FROM EventResponses
                              WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId";
@@ -61,7 +61,7 @@ namespace TeaLeaves.DALs
                 {
                     saveCommand.Parameters.AddWithValue("@EventReceiverId", receiverId);
                     saveCommand.Parameters.AddWithValue("@EventId", eventId);
-                    return Convert.ToInt32(saveCommand.ExecuteScalar());
+                    return saveCommand.ExecuteNonQuery() > 0;
                 }
             }
         }
@@ -75,7 +75,8 @@ namespace TeaLeaves.DALs
         {
             string query = @"UPDATE EventResponses
                             SET Accepted = 1
-                            WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId";
+                            WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId
+                            select EventResponseId FROM EventResponses WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
@@ -98,7 +99,8 @@ namespace TeaLeaves.DALs
         {
 
             string query = @"INSERT INTO EventResponses (EventInviterId, EventReceiverId, EventId, Accepted) 
-                             VALUES (@InvitedId, @ReceivedId, @EventId, @Accepted)";
+                             VALUES (@InvitedId, @ReceivedId, @EventId, @Accepted)
+                             select scope_identity()";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
