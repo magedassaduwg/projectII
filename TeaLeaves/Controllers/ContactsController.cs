@@ -68,7 +68,7 @@ namespace TeaLeaves.Controllers
         /// <param name="user"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        public Boolean AddContact(Models.User user, string email)
+        public bool AddContact(Models.User user, string email)
         {
             return this._contactsDAL.AddContact(user, email);
         }

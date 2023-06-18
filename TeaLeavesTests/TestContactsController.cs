@@ -34,28 +34,32 @@ namespace TeaLeavesTests
             EventResponseController eventResponseController = new EventResponseController();
             User user = new User
             {
-                UserId = 1,
+                UserId = 25,
             };
             User userTwo = new User
             {
-                UserId = 2,
-                Email = "test@email.com"
+                UserId = 24,
+                Email = "test"
             };
             Event @event = new Event
             {
-                Id = 1,
+                Id = 91,
             };
             EventResponse @eventResponse = new EventResponse
             {
-                Id = 1,
-                InviterId = 1,
-                ReceiverId = 2
+                EventId = 91,
+                InviterId = 25,
+                ReceiverId = 24
             };
             try
             {
                 contactsController.AddContact(user, userTwo.Email);
                 eventResponseController.AddEventResponse(@eventResponse);
                 var message = contactsController.GetUsersContactsByEvent(user, @event);
+                eventResponseController.DeleteEventResponse(24, 91);
+                Boolean wasRemoved = contactsController.RemoveContact(user, userTwo);
+                Assert.IsTrue(wasRemoved);
+
                 Assert.IsTrue(message.Any());
             }
             catch (Exception)
