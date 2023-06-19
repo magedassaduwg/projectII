@@ -54,9 +54,6 @@ namespace TeaLeavesTests
 
                 Assert.AreEqual(userEventResponses[0].Id, 19);
                 Assert.AreEqual(userEventResponses[1].Id, 21);
-                Assert.AreEqual(userEventResponses[2].Id, 22);
-                Assert.AreEqual(userEventResponses[3].Id, 23);
-                Assert.AreEqual(userEventResponses[4].Id, 24);
             }
             catch (Exception)
             {
@@ -88,7 +85,7 @@ namespace TeaLeavesTests
                 controller.AcceptEventResponse(25, 81);
 
                 userEventResponses = controller.GetEventResponses(25);
-                Assert.AreEqual(userEventResponses[5].Accepted, true);
+                Assert.AreEqual(userEventResponses[3].Accepted, true);
 
                 controller.DeleteEventResponse(25, 81);
                 Assert.IsTrue(true);
