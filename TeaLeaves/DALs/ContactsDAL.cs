@@ -6,7 +6,7 @@ namespace TeaLeaves.DALs
     /// <summary>
     /// DAL for the modification and retrieval of Contacts from the Database
     /// </summary>
-    internal class ContactsDAL
+    public class ContactsDAL
     {
         /// <summary>
         /// method to retrieve a list of a user's contacts represented by a list of Users objects
@@ -60,8 +60,6 @@ namespace TeaLeaves.DALs
             //{
                 using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
                 {
-                //string query = "SELECT UserId, FirstName, LastName, Username, Email FROM Users u " +
-                //    "JOIN EventResponses er ON u.UserId = er.EventReceiverId WHERE UserId = @UserId AND er.EventId = @EventId;";
                 string query = "SELECT DISTINCT UserId, FirstName, LastName, Username, Email " +
                     "FROM Contacts c JOIN EventResponses er ON er.EventId = @EventId AND er.EventInviterId = @UserId " +
                     "JOIN Users u ON c.UserId1 = @UserId  AND UserId = er.EventReceiverId " +

@@ -2,6 +2,9 @@
 
 namespace TeaLeaves.DALs
 {
+    /// <summary>
+    /// Data access layer for the Users table
+    /// </summary>
     public class UsersDAL
     {
         /// <summary>

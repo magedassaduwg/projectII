@@ -57,16 +57,17 @@
             button3 = new Button();
             bindingSource1 = new BindingSource(components);
             button4 = new Button();
-            dataGridView1 = new DataGridView();
+            dgvContacts = new DataGridView();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             splitContainer1 = new SplitContainer();
+            FullName = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)usersBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)contactDataGridView).BeginInit();
             contactLayoutPanel.SuspendLayout();
             SelectedContactTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvContacts).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -263,9 +264,9 @@
             label1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 28);
+            label1.Location = new Point(3, 39);
             label1.Name = "label1";
-            label1.Size = new Size(89, 42);
+            label1.Size = new Size(173, 21);
             label1.TabIndex = 0;
             label1.Text = "First Name:";
             // 
@@ -274,9 +275,9 @@
             label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 127);
+            label2.Location = new Point(3, 138);
             label2.Name = "label2";
-            label2.Size = new Size(89, 42);
+            label2.Size = new Size(173, 21);
             label2.TabIndex = 1;
             label2.Text = "Last Name:";
             // 
@@ -287,7 +288,7 @@
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label3.Location = new Point(3, 237);
             label3.Name = "label3";
-            label3.Size = new Size(89, 21);
+            label3.Size = new Size(173, 21);
             label3.TabIndex = 6;
             label3.Text = "Email:";
             // 
@@ -296,7 +297,7 @@
             label4.Anchor = AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(5, 336);
+            label4.Location = new Point(89, 336);
             label4.Name = "label4";
             label4.Size = new Size(87, 21);
             label4.TabIndex = 3;
@@ -306,40 +307,40 @@
             // 
             textBox1.Anchor = AnchorStyles.Left;
             tableLayoutPanel2.SetColumnSpan(textBox1, 2);
-            textBox1.Location = new Point(98, 38);
+            textBox1.Location = new Point(182, 38);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(210, 23);
+            textBox1.Size = new Size(198, 23);
             textBox1.TabIndex = 10;
             // 
             // textBox2
             // 
             textBox2.Anchor = AnchorStyles.Left;
             tableLayoutPanel2.SetColumnSpan(textBox2, 2);
-            textBox2.Location = new Point(98, 137);
+            textBox2.Location = new Point(182, 137);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(210, 23);
+            textBox2.Size = new Size(198, 23);
             textBox2.TabIndex = 11;
             // 
             // textBox3
             // 
             textBox3.Anchor = AnchorStyles.Left;
             tableLayoutPanel2.SetColumnSpan(textBox3, 2);
-            textBox3.Location = new Point(98, 236);
+            textBox3.Location = new Point(182, 236);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(210, 23);
+            textBox3.Size = new Size(198, 23);
             textBox3.TabIndex = 12;
             // 
             // textBox4
             // 
             textBox4.Anchor = AnchorStyles.Left;
             tableLayoutPanel2.SetColumnSpan(textBox4, 2);
-            textBox4.Location = new Point(98, 335);
+            textBox4.Location = new Point(182, 335);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(210, 23);
+            textBox4.Size = new Size(198, 23);
             textBox4.TabIndex = 13;
             // 
             // button2
@@ -348,7 +349,7 @@
             button2.BackColor = Color.YellowGreen;
             button2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             button2.ForeColor = Color.DarkGreen;
-            button2.Location = new Point(117, 429);
+            button2.Location = new Point(183, 429);
             button2.Name = "button2";
             button2.Size = new Size(94, 33);
             button2.TabIndex = 15;
@@ -362,7 +363,7 @@
             button3.Enabled = false;
             button3.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             button3.ForeColor = Color.DarkGreen;
-            button3.Location = new Point(256, 429);
+            button3.Location = new Point(285, 429);
             button3.Name = "button3";
             button3.Size = new Size(94, 33);
             button3.TabIndex = 14;
@@ -383,23 +384,23 @@
             button4.Text = "Add";
             button4.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgvContacts
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tableLayoutPanel1.SetColumnSpan(dataGridView1, 2);
-            dataGridView1.DataSource = bindingSource1;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(252, 428);
-            dataGridView1.TabIndex = 0;
+            dgvContacts.AllowUserToAddRows = false;
+            dgvContacts.AllowUserToDeleteRows = false;
+            dgvContacts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvContacts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvContacts.Columns.AddRange(new DataGridViewColumn[] { FullName });
+            tableLayoutPanel1.SetColumnSpan(dgvContacts, 2);
+            dgvContacts.Dock = DockStyle.Fill;
+            dgvContacts.Location = new Point(3, 3);
+            dgvContacts.MultiSelect = false;
+            dgvContacts.Name = "dgvContacts";
+            dgvContacts.ReadOnly = true;
+            dgvContacts.RowTemplate.Height = 25;
+            dgvContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvContacts.Size = new Size(252, 428);
+            dgvContacts.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -407,7 +408,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(button4, 0, 1);
-            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 0);
+            tableLayoutPanel1.Controls.Add(dgvContacts, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -464,6 +465,13 @@
             splitContainer1.SplitterDistance = 258;
             splitContainer1.TabIndex = 1;
             // 
+            // FullName
+            // 
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
+            // 
             // ucManageContacts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -477,7 +485,7 @@
             SelectedContactTable.ResumeLayout(false);
             SelectedContactTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvContacts).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
@@ -520,7 +528,8 @@
         private BindingSource bindingSource1;
         private Button button4;
         private TableLayoutPanel tableLayoutPanel1;
-        private DataGridView dataGridView1;
+        private DataGridView dgvContacts;
         private SplitContainer splitContainer1;
+        private DataGridViewTextBoxColumn FullName;
     }
 }

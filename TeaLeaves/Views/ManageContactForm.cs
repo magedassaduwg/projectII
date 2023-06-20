@@ -25,6 +25,7 @@ namespace TeaLeaves.Views
 
         private void ManageContactForm_Load(object sender, EventArgs e)
         {
+            contactDataGridView.AutoGenerateColumns = false;
             this.refreshContactList();
         }
 
@@ -72,6 +73,7 @@ namespace TeaLeaves.Views
             this.usersBindingSource.DataSource = this._contactList;
             if (this._contactList.Any())
             {
+                contactDataGridView.DataSource = this._contactList;
                 this.selectedContact = this._contactList[0];
             }
         }
