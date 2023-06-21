@@ -25,6 +25,7 @@ namespace TeaLeaves.Views
 
         private void ManageContactForm_Load(object sender, EventArgs e)
         {
+            contactDataGridView.AutoGenerateColumns = false;
             this.refreshContactList();
         }
 
