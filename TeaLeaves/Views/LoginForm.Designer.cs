@@ -31,6 +31,7 @@
             panelImg=new Panel();
             pictureBoxLogo=new PictureBox();
             panelLogin=new Panel();
+            rememberMe=new CheckBox();
             buttonRegister=new Button();
             lblError=new Label();
             buttonLogin=new Button();
@@ -41,7 +42,6 @@
             pictureBoxUser=new PictureBox();
             textBoxUsername=new TextBox();
             labelLogin=new Label();
-            rememberMe=new CheckBox();
             panelImg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             panelLogin.SuspendLayout();
@@ -86,6 +86,19 @@
             panelLogin.Name="panelLogin";
             panelLogin.Size=new Size(491, 450);
             panelLogin.TabIndex=1;
+            // 
+            // rememberMe
+            // 
+            rememberMe.AutoSize=true;
+            rememberMe.Font=new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
+            rememberMe.ForeColor=Color.MidnightBlue;
+            rememberMe.Location=new Point(35, 301);
+            rememberMe.Name="rememberMe";
+            rememberMe.Size=new Size(127, 24);
+            rememberMe.TabIndex=2;
+            rememberMe.Text="Remember Me";
+            rememberMe.UseVisualStyleBackColor=true;
+            rememberMe.CheckedChanged+=rememberMe_CheckedChanged;
             // 
             // buttonRegister
             // 
@@ -192,18 +205,6 @@
             labelLogin.Text="Login to your account";
             labelLogin.TextAlign=ContentAlignment.TopCenter;
             // 
-            // rememberMe
-            // 
-            rememberMe.AutoSize=true;
-            rememberMe.Font=new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
-            rememberMe.ForeColor=Color.MidnightBlue;
-            rememberMe.Location=new Point(35, 301);
-            rememberMe.Name="rememberMe";
-            rememberMe.Size=new Size(127, 24);
-            rememberMe.TabIndex=2;
-            rememberMe.Text="Remember Me";
-            rememberMe.UseVisualStyleBackColor=true;
-            // 
             // LoginForm
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
@@ -215,6 +216,7 @@
             StartPosition=FormStartPosition.CenterScreen;
             Text="Login-TeaLeaves";
             FormClosing+=LoginForm_FormClosing;
+            Load+=LoginForm_Load;
             panelImg.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             panelLogin.ResumeLayout(false);

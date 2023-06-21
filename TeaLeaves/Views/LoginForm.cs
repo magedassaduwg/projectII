@@ -12,6 +12,8 @@ namespace TeaLeaves
     {
         private UsersController _userController;
         private User _userLogin;
+        private bool _rememberMe;
+
 
         /// <summary>
         /// Initializes a new instance of the LoginForm.
@@ -21,6 +23,7 @@ namespace TeaLeaves
             InitializeComponent();
             _userController = new UsersController();
             _userLogin = new User();
+            _rememberMe = false;
         }
 
 
@@ -42,6 +45,11 @@ namespace TeaLeaves
             try
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
+                _userLogin.Password = textBoxPassword.Text;
+                if (_rememberMe)
+                {
+                    LoginHelper.SaveCredentials(_userLogin.Username, _userLogin.Password);
+                }
 
                 _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
 
@@ -60,6 +68,12 @@ namespace TeaLeaves
 
                     textBoxPassword.Text = string.Empty;
                     Show();
+                    if (_rememberMe)
+                    {
+                        (string username, string password) = LoginHelper.LoadCredentials();
+                        textBoxUsername.Text = username;
+                        textBoxPassword.Text = password;
+                    }
                 }
                 else
                 {
@@ -94,6 +108,17 @@ namespace TeaLeaves
             {
                 registerForm.ShowDialog();
             }
+        }
+
+        private void rememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+            _rememberMe = rememberMe.Checked;
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            rememberMe.Checked = _rememberMe;
+           
         }
     }
 }
