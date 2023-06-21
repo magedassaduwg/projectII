@@ -12,6 +12,7 @@ namespace TeaLeaves
     {
         private UsersController _userController;
         private User _userLogin;
+
         /// <summary>
         /// Initializes a new instance of the LoginForm.
         /// </summary>
@@ -22,13 +23,7 @@ namespace TeaLeaves
             _userLogin = new User();
         }
 
-        protected override void OnShown(EventArgs e)
-        {
-            textBoxUsername.Focus();
-            textBoxUsername.Text = "johndoe";
-            textBoxPassword.Text = "password123";
-            base.OnShown(e);
-        }
+
 
         private void textBoxUsername_TextChanged(object sender, EventArgs e)
         {

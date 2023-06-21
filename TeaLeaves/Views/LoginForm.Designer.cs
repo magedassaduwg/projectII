@@ -41,6 +41,7 @@
             pictureBoxUser=new PictureBox();
             textBoxUsername=new TextBox();
             labelLogin=new Label();
+            rememberMe=new CheckBox();
             panelImg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             panelLogin.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // panelLogin
             // 
+            panelLogin.Controls.Add(rememberMe);
             panelLogin.Controls.Add(buttonRegister);
             panelLogin.Controls.Add(lblError);
             panelLogin.Controls.Add(buttonLogin);
@@ -93,7 +95,7 @@
             buttonRegister.Location=new Point(128, 347);
             buttonRegister.Name="buttonRegister";
             buttonRegister.Size=new Size(203, 47);
-            buttonRegister.TabIndex=3;
+            buttonRegister.TabIndex=4;
             buttonRegister.Text="Create an account";
             buttonRegister.UseVisualStyleBackColor=false;
             buttonRegister.Click+=buttonRegister_Click;
@@ -116,7 +118,7 @@
             buttonLogin.Location=new Point(169, 283);
             buttonLogin.Name="buttonLogin";
             buttonLogin.Size=new Size(111, 47);
-            buttonLogin.TabIndex=2;
+            buttonLogin.TabIndex=3;
             buttonLogin.Text="Login";
             buttonLogin.UseVisualStyleBackColor=false;
             buttonLogin.Click+=buttonLogin_Click;
@@ -190,6 +192,18 @@
             labelLogin.Text="Login to your account";
             labelLogin.TextAlign=ContentAlignment.TopCenter;
             // 
+            // rememberMe
+            // 
+            rememberMe.AutoSize=true;
+            rememberMe.Font=new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
+            rememberMe.ForeColor=Color.MidnightBlue;
+            rememberMe.Location=new Point(35, 301);
+            rememberMe.Name="rememberMe";
+            rememberMe.Size=new Size(127, 24);
+            rememberMe.TabIndex=2;
+            rememberMe.Text="Remember Me";
+            rememberMe.UseVisualStyleBackColor=true;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
@@ -229,5 +243,6 @@
         private Button buttonLogin;
         private Label lblError;
         private Button buttonRegister;
+        private CheckBox rememberMe;
     }
 }
