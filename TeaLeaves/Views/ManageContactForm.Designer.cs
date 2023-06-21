@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components=new System.ComponentModel.Container();
-            splitContainer1=new SplitContainer();
-            contactLayoutPanel=new TableLayoutPanel();
-            addButton=new Button();
-            contactDataGridView=new DataGridView();
-            usersBindingSource=new BindingSource(components);
-            SelectedContactTable=new TableLayoutPanel();
-            firstNameLabel=new Label();
-            lastNameLabel=new Label();
-            emailLabel=new Label();
-            usernameLabel=new Label();
-            firstNameText=new TextBox();
-            lastNameText=new TextBox();
-            emailText=new TextBox();
-            usernameText=new TextBox();
-            closeButton=new Button();
-            viewProfileButton=new Button();
-            deleteButton=new Button();
+            components = new System.ComponentModel.Container();
+            splitContainer1 = new SplitContainer();
+            contactLayoutPanel = new TableLayoutPanel();
+            addButton = new Button();
+            contactDataGridView = new DataGridView();
+            usersBindingSource = new BindingSource(components);
+            SelectedContactTable = new TableLayoutPanel();
+            firstNameLabel = new Label();
+            lastNameLabel = new Label();
+            emailLabel = new Label();
+            usernameLabel = new Label();
+            firstNameText = new TextBox();
+            lastNameText = new TextBox();
+            emailText = new TextBox();
+            usernameText = new TextBox();
+            closeButton = new Button();
+            viewProfileButton = new Button();
+            deleteButton = new Button();
+            FullName = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -58,9 +59,9 @@
             // 
             // splitContainer1
             // 
-            splitContainer1.Dock=DockStyle.Fill;
-            splitContainer1.Location=new Point(0, 0);
-            splitContainer1.Name="splitContainer1";
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
@@ -69,63 +70,65 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(SelectedContactTable);
-            splitContainer1.Size=new Size(800, 450);
-            splitContainer1.SplitterDistance=266;
-            splitContainer1.TabIndex=0;
+            splitContainer1.Size = new Size(800, 450);
+            splitContainer1.SplitterDistance = 266;
+            splitContainer1.TabIndex = 0;
             // 
             // contactLayoutPanel
             // 
-            contactLayoutPanel.ColumnCount=2;
+            contactLayoutPanel.ColumnCount = 2;
             contactLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             contactLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             contactLayoutPanel.Controls.Add(addButton, 0, 1);
             contactLayoutPanel.Controls.Add(contactDataGridView, 0, 0);
-            contactLayoutPanel.Dock=DockStyle.Fill;
-            contactLayoutPanel.Location=new Point(0, 0);
-            contactLayoutPanel.Name="contactLayoutPanel";
-            contactLayoutPanel.RowCount=2;
+            contactLayoutPanel.Dock = DockStyle.Fill;
+            contactLayoutPanel.Location = new Point(0, 0);
+            contactLayoutPanel.Name = "contactLayoutPanel";
+            contactLayoutPanel.RowCount = 2;
             contactLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 87.77778F));
             contactLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.2222223F));
-            contactLayoutPanel.Size=new Size(266, 450);
-            contactLayoutPanel.TabIndex=1;
+            contactLayoutPanel.Size = new Size(266, 450);
+            contactLayoutPanel.TabIndex = 1;
             // 
             // addButton
             // 
-            addButton.Anchor=AnchorStyles.None;
-            addButton.BackColor=Color.Orange;
+            addButton.Anchor = AnchorStyles.None;
+            addButton.BackColor = Color.Orange;
             contactLayoutPanel.SetColumnSpan(addButton, 2);
-            addButton.Font=new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
-            addButton.ForeColor=Color.DarkGreen;
-            addButton.Location=new Point(87, 406);
-            addButton.Name="addButton";
-            addButton.Size=new Size(92, 33);
-            addButton.TabIndex=8;
-            addButton.Text="Add";
-            addButton.UseVisualStyleBackColor=false;
-            addButton.Click+=addButton_Click;
+            addButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            addButton.ForeColor = Color.DarkGreen;
+            addButton.Location = new Point(87, 406);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(92, 33);
+            addButton.TabIndex = 8;
+            addButton.Text = "Add";
+            addButton.UseVisualStyleBackColor = false;
+            addButton.Click += addButton_Click;
             // 
             // contactDataGridView
             // 
-            contactDataGridView.AllowUserToAddRows=false;
-            contactDataGridView.AllowUserToDeleteRows=false;
-            contactDataGridView.AutoGenerateColumns=false;
-            contactDataGridView.ColumnHeadersHeightSizeMode=DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            contactDataGridView.AllowUserToAddRows = false;
+            contactDataGridView.AllowUserToDeleteRows = false;
+            contactDataGridView.AutoGenerateColumns = false;
+            contactDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            contactDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            contactDataGridView.Columns.AddRange(new DataGridViewColumn[] { FullName });
             contactLayoutPanel.SetColumnSpan(contactDataGridView, 2);
-            contactDataGridView.DataSource=usersBindingSource;
-            contactDataGridView.Dock=DockStyle.Fill;
-            contactDataGridView.Location=new Point(3, 3);
-            contactDataGridView.MultiSelect=false;
-            contactDataGridView.Name="contactDataGridView";
-            contactDataGridView.ReadOnly=true;
-            contactDataGridView.RowTemplate.Height=25;
-            contactDataGridView.SelectionMode=DataGridViewSelectionMode.FullRowSelect;
-            contactDataGridView.Size=new Size(260, 389);
-            contactDataGridView.TabIndex=0;
-            contactDataGridView.RowEnter+=contactDataGridView_RowEnter;
+            contactDataGridView.DataSource = usersBindingSource;
+            contactDataGridView.Dock = DockStyle.Fill;
+            contactDataGridView.Location = new Point(3, 3);
+            contactDataGridView.MultiSelect = false;
+            contactDataGridView.Name = "contactDataGridView";
+            contactDataGridView.ReadOnly = true;
+            contactDataGridView.RowTemplate.Height = 25;
+            contactDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            contactDataGridView.Size = new Size(260, 389);
+            contactDataGridView.TabIndex = 0;
+            contactDataGridView.RowEnter += contactDataGridView_RowEnter;
             // 
             // SelectedContactTable
             // 
-            SelectedContactTable.ColumnCount=4;
+            SelectedContactTable.ColumnCount = 4;
             SelectedContactTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18.524334F));
             SelectedContactTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.158556F));
             SelectedContactTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.158556F));
@@ -141,155 +144,162 @@
             SelectedContactTable.Controls.Add(closeButton, 3, 4);
             SelectedContactTable.Controls.Add(viewProfileButton, 1, 4);
             SelectedContactTable.Controls.Add(deleteButton, 2, 4);
-            SelectedContactTable.Dock=DockStyle.Fill;
-            SelectedContactTable.Location=new Point(0, 0);
-            SelectedContactTable.Name="SelectedContactTable";
-            SelectedContactTable.RowCount=5;
+            SelectedContactTable.Dock = DockStyle.Fill;
+            SelectedContactTable.Location = new Point(0, 0);
+            SelectedContactTable.Name = "SelectedContactTable";
+            SelectedContactTable.RowCount = 5;
             SelectedContactTable.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             SelectedContactTable.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             SelectedContactTable.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             SelectedContactTable.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             SelectedContactTable.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            SelectedContactTable.Size=new Size(530, 450);
-            SelectedContactTable.TabIndex=0;
+            SelectedContactTable.Size = new Size(530, 450);
+            SelectedContactTable.TabIndex = 0;
             // 
             // firstNameLabel
             // 
-            firstNameLabel.Anchor=AnchorStyles.Right;
-            firstNameLabel.AutoSize=true;
-            firstNameLabel.Font=new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            firstNameLabel.Location=new Point(3, 34);
-            firstNameLabel.Name="firstNameLabel";
-            firstNameLabel.Size=new Size(92, 21);
-            firstNameLabel.TabIndex=0;
-            firstNameLabel.Text="First Name:";
+            firstNameLabel.Anchor = AnchorStyles.Right;
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            firstNameLabel.Location = new Point(3, 34);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new Size(92, 21);
+            firstNameLabel.TabIndex = 0;
+            firstNameLabel.Text = "First Name:";
             // 
             // lastNameLabel
             // 
-            lastNameLabel.Anchor=AnchorStyles.Right;
-            lastNameLabel.AutoSize=true;
-            lastNameLabel.Font=new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lastNameLabel.Location=new Point(5, 124);
-            lastNameLabel.Name="lastNameLabel";
-            lastNameLabel.Size=new Size(90, 21);
-            lastNameLabel.TabIndex=1;
-            lastNameLabel.Text="Last Name:";
+            lastNameLabel.Anchor = AnchorStyles.Right;
+            lastNameLabel.AutoSize = true;
+            lastNameLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lastNameLabel.Location = new Point(5, 124);
+            lastNameLabel.Name = "lastNameLabel";
+            lastNameLabel.Size = new Size(90, 21);
+            lastNameLabel.TabIndex = 1;
+            lastNameLabel.Text = "Last Name:";
             // 
             // emailLabel
             // 
-            emailLabel.Anchor=AnchorStyles.Right;
-            emailLabel.AutoSize=true;
-            emailLabel.Font=new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            emailLabel.Location=new Point(43, 214);
-            emailLabel.Name="emailLabel";
-            emailLabel.Size=new Size(52, 21);
-            emailLabel.TabIndex=6;
-            emailLabel.Text="Email:";
+            emailLabel.Anchor = AnchorStyles.Right;
+            emailLabel.AutoSize = true;
+            emailLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            emailLabel.Location = new Point(43, 214);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new Size(52, 21);
+            emailLabel.TabIndex = 6;
+            emailLabel.Text = "Email:";
             // 
             // usernameLabel
             // 
-            usernameLabel.Anchor=AnchorStyles.Right;
-            usernameLabel.AutoSize=true;
-            usernameLabel.Font=new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            usernameLabel.Location=new Point(8, 304);
-            usernameLabel.Name="usernameLabel";
-            usernameLabel.Size=new Size(87, 21);
-            usernameLabel.TabIndex=3;
-            usernameLabel.Text="Username:";
+            usernameLabel.Anchor = AnchorStyles.Right;
+            usernameLabel.AutoSize = true;
+            usernameLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            usernameLabel.Location = new Point(8, 304);
+            usernameLabel.Name = "usernameLabel";
+            usernameLabel.Size = new Size(87, 21);
+            usernameLabel.TabIndex = 3;
+            usernameLabel.Text = "Username:";
             // 
             // firstNameText
             // 
-            firstNameText.Anchor=AnchorStyles.Left;
+            firstNameText.Anchor = AnchorStyles.Left;
             SelectedContactTable.SetColumnSpan(firstNameText, 2);
-            firstNameText.Location=new Point(101, 33);
-            firstNameText.Name="firstNameText";
-            firstNameText.ReadOnly=true;
-            firstNameText.Size=new Size(210, 23);
-            firstNameText.TabIndex=10;
+            firstNameText.Location = new Point(101, 33);
+            firstNameText.Name = "firstNameText";
+            firstNameText.ReadOnly = true;
+            firstNameText.Size = new Size(210, 23);
+            firstNameText.TabIndex = 10;
             // 
             // lastNameText
             // 
-            lastNameText.Anchor=AnchorStyles.Left;
+            lastNameText.Anchor = AnchorStyles.Left;
             SelectedContactTable.SetColumnSpan(lastNameText, 2);
-            lastNameText.Location=new Point(101, 123);
-            lastNameText.Name="lastNameText";
-            lastNameText.ReadOnly=true;
-            lastNameText.Size=new Size(210, 23);
-            lastNameText.TabIndex=11;
+            lastNameText.Location = new Point(101, 123);
+            lastNameText.Name = "lastNameText";
+            lastNameText.ReadOnly = true;
+            lastNameText.Size = new Size(210, 23);
+            lastNameText.TabIndex = 11;
             // 
             // emailText
             // 
-            emailText.Anchor=AnchorStyles.Left;
+            emailText.Anchor = AnchorStyles.Left;
             SelectedContactTable.SetColumnSpan(emailText, 2);
-            emailText.Location=new Point(101, 213);
-            emailText.Name="emailText";
-            emailText.ReadOnly=true;
-            emailText.Size=new Size(210, 23);
-            emailText.TabIndex=12;
+            emailText.Location = new Point(101, 213);
+            emailText.Name = "emailText";
+            emailText.ReadOnly = true;
+            emailText.Size = new Size(210, 23);
+            emailText.TabIndex = 12;
             // 
             // usernameText
             // 
-            usernameText.Anchor=AnchorStyles.Left;
+            usernameText.Anchor = AnchorStyles.Left;
             SelectedContactTable.SetColumnSpan(usernameText, 2);
-            usernameText.Location=new Point(101, 303);
-            usernameText.Name="usernameText";
-            usernameText.ReadOnly=true;
-            usernameText.Size=new Size(210, 23);
-            usernameText.TabIndex=13;
+            usernameText.Location = new Point(101, 303);
+            usernameText.Name = "usernameText";
+            usernameText.ReadOnly = true;
+            usernameText.Size = new Size(210, 23);
+            usernameText.TabIndex = 13;
             // 
             // closeButton
             // 
-            closeButton.Anchor=AnchorStyles.None;
-            closeButton.BackColor=Color.YellowGreen;
-            closeButton.Font=new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
-            closeButton.ForeColor=Color.DarkGreen;
-            closeButton.Location=new Point(410, 388);
-            closeButton.Name="closeButton";
-            closeButton.Size=new Size(94, 33);
-            closeButton.TabIndex=9;
-            closeButton.Text="Close";
-            closeButton.UseVisualStyleBackColor=false;
-            closeButton.Click+=closeButton_Click;
+            closeButton.Anchor = AnchorStyles.None;
+            closeButton.BackColor = Color.YellowGreen;
+            closeButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            closeButton.ForeColor = Color.DarkGreen;
+            closeButton.Location = new Point(410, 388);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(94, 33);
+            closeButton.TabIndex = 9;
+            closeButton.Text = "Close";
+            closeButton.UseVisualStyleBackColor = false;
+            closeButton.Click += closeButton_Click;
             // 
             // viewProfileButton
             // 
-            viewProfileButton.Anchor=AnchorStyles.None;
-            viewProfileButton.BackColor=Color.YellowGreen;
-            viewProfileButton.Font=new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
-            viewProfileButton.ForeColor=Color.DarkGreen;
-            viewProfileButton.Location=new Point(122, 388);
-            viewProfileButton.Name="viewProfileButton";
-            viewProfileButton.Size=new Size(94, 33);
-            viewProfileButton.TabIndex=15;
-            viewProfileButton.Text="Profile";
-            viewProfileButton.UseVisualStyleBackColor=false;
-            viewProfileButton.Click+=viewProfileButton_Click;
+            viewProfileButton.Anchor = AnchorStyles.None;
+            viewProfileButton.BackColor = Color.YellowGreen;
+            viewProfileButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            viewProfileButton.ForeColor = Color.DarkGreen;
+            viewProfileButton.Location = new Point(122, 388);
+            viewProfileButton.Name = "viewProfileButton";
+            viewProfileButton.Size = new Size(94, 33);
+            viewProfileButton.TabIndex = 15;
+            viewProfileButton.Text = "Profile";
+            viewProfileButton.UseVisualStyleBackColor = false;
+            viewProfileButton.Click += viewProfileButton_Click;
             // 
             // deleteButton
             // 
-            deleteButton.Anchor=AnchorStyles.None;
-            deleteButton.BackColor=Color.YellowGreen;
-            deleteButton.Enabled=false;
-            deleteButton.Font=new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
-            deleteButton.ForeColor=Color.DarkGreen;
-            deleteButton.Location=new Point(265, 388);
-            deleteButton.Name="deleteButton";
-            deleteButton.Size=new Size(94, 33);
-            deleteButton.TabIndex=14;
-            deleteButton.Text="Delete";
-            deleteButton.UseVisualStyleBackColor=false;
-            deleteButton.Click+=deleteButton_Click;
+            deleteButton.Anchor = AnchorStyles.None;
+            deleteButton.BackColor = Color.YellowGreen;
+            deleteButton.Enabled = false;
+            deleteButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            deleteButton.ForeColor = Color.DarkGreen;
+            deleteButton.Location = new Point(265, 388);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Size = new Size(94, 33);
+            deleteButton.TabIndex = 14;
+            deleteButton.Text = "Delete";
+            deleteButton.UseVisualStyleBackColor = false;
+            deleteButton.Click += deleteButton_Click;
+            // 
+            // FullName
+            // 
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
             // 
             // ManageContactForm
             // 
-            AutoScaleDimensions=new SizeF(7F, 15F);
-            AutoScaleMode=AutoScaleMode.Font;
-            ClientSize=new Size(800, 450);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
             Controls.Add(splitContainer1);
-            Name="ManageContactForm";
-            StartPosition=FormStartPosition.CenterScreen;
-            Text="Your Contacts";
-            Load+=ManageContactForm_Load;
+            Name = "ManageContactForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Your Contacts";
+            Load += ManageContactForm_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -323,5 +333,6 @@
         private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private Button viewProfileButton;
+        private DataGridViewTextBoxColumn FullName;
     }
 }

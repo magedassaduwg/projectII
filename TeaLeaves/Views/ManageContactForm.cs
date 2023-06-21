@@ -72,6 +72,7 @@ namespace TeaLeaves.Views
             this.usersBindingSource.DataSource = this._contactList;
             if (this._contactList.Any())
             {
+                contactDataGridView.DataSource = this._contactList;
                 this.selectedContact = this._contactList[0];
             }
         }

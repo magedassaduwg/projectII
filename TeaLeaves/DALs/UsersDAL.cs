@@ -1,4 +1,8 @@
 ﻿using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Reflection.Metadata;
+using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
 {
@@ -19,6 +23,7 @@ namespace TeaLeaves.DALs
 
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
+
                 if (reader.Read())
                 {
                     user.UserId = Convert.ToInt32(reader["UserId"]);
@@ -55,6 +60,40 @@ namespace TeaLeaves.DALs
         }
 
         /// <summary>
+        /// Returns a user with the given userId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public User GetUserById(int userId)
+        {
+            User user = new User();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = "Select FirstName, LastName, Username, Email, Blurb From Users Where UserId = @userId";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    user.UserId = userId;
+                    user.FirstName = reader["FirstName"].ToString();
+                    user.LastName = reader["LastName"].ToString();
+                    user.Email = reader["Email"].ToString();
+                    user.Username = reader["Username"].ToString();
+                    user.Blurb = reader["Blurb"].ToString();
+
+                    return user;
+                }
+
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Removes the given user from the database
         /// </summary>
         /// <param name="userId"></param>
@@ -85,11 +124,11 @@ namespace TeaLeaves.DALs
         public Image GetUserProfilePicture(int userId)
         {
             MemoryStream userImage = new MemoryStream();
-            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection()) 
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 SqlCommand command = new SqlCommand("Select ProfilePicture FROM Users WHERE UserId = @UserId;", connection);
                 command.Parameters.AddWithValue("@UserId", userId);
-                
+
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -101,9 +140,10 @@ namespace TeaLeaves.DALs
                         userImage.Write(bytes);
                         Image loadedImage = Image.FromStream(userImage);
                         return loadedImage;
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
-                        
+
                     }
                 }
                 Image defaultImage = Image.FromFile("Resources\\user.png");
@@ -133,7 +173,8 @@ namespace TeaLeaves.DALs
                     try
                     {
                         userBlurb = reader["Blurb"].ToString();
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         userBlurb = "";
                     }
@@ -181,7 +222,8 @@ namespace TeaLeaves.DALs
                 if (command.ExecuteNonQuery() == 1)
                 {
                     return true;
-                } else
+                }
+                else
                 {
                     return false;
                 }

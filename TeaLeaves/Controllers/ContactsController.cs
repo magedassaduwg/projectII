@@ -30,6 +30,16 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Returns a users contacts sorted by last message recevied from the contact
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public List<User> GetMessageContacts(User user)
+        {
+            return this._contactsDAL.GetMessageContacts(user);
+        }
+
+        /// <summary>
         /// Returns the users who have been invited to an event
         /// </summary>
         /// <param name="user"></param>

@@ -16,7 +16,7 @@ namespace TeaLeaves.DALs
         public List<User> GetUsersContacts(User user)
         {
             List<int> contactUserIDs = this.GetContactUserIDs(user);
-        
+
             List<User> contacts = new List<User>();
 
             foreach (int userId in contactUserIDs)
@@ -47,6 +47,41 @@ namespace TeaLeaves.DALs
             return contacts;
         }
 
+        public List<User> GetMessageContacts(User user)
+        {
+            List<User> contacts = new List<User>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = "select u.UserId, u.FirstName, u.LastName, u.Username, u.Email, " +
+                    "(select top 1 timestamp from Messages where ReceiverId = c.UserId2 or SenderId = c.UserId2 order by TimeStamp desc) TimeStamp " +
+                    "from Contacts c " +
+                    "inner join users u on c.UserId2 = u.UserId " +
+                    "where c.UserId1 = @userId " +
+                    "order by TimeStamp";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User contact = new User
+                    {
+                        UserId = Convert.ToInt32(reader["UserId"]),
+                        FirstName = reader["FirstName"].ToString(),
+                        LastName = reader["LastName"].ToString(),
+                        Username = reader["Username"].ToString(),
+                        Email = reader["Email"].ToString()
+                    };
+                    contacts.Add(contact);
+                }
+            }
+
+            return contacts;
+        }
+
         /// <summary>
         /// method to retrieve a list of a user's contacts represented by a list of Users objects for a given event
         /// </summary>
@@ -58,8 +93,8 @@ namespace TeaLeaves.DALs
 
             //foreach (int userId in contactUserIDs)
             //{
-                using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
-                {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
                 //string query = "SELECT UserId, FirstName, LastName, Username, Email FROM Users u " +
                 //    "JOIN EventResponses er ON u.UserId = er.EventReceiverId WHERE UserId = @UserId AND er.EventId = @EventId;";
                 string query = "SELECT DISTINCT UserId, FirstName, LastName, Username, Email " +
@@ -68,23 +103,23 @@ namespace TeaLeaves.DALs
                     "WHERE UserId = c.UserId2 AND UserId = er.EventReceiverId";
 
                 SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserId", user.UserId);
-                    command.Parameters.AddWithValue("@EventId", @event.Id);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+                command.Parameters.AddWithValue("@EventId", @event.Id);
 
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User contact = new User
                     {
-                        User contact = new User
-                        {
-                            UserId = Convert.ToInt32(reader["UserId"]),
-                            FirstName = reader["FirstName"].ToString(),
-                            LastName = reader["LastName"].ToString(),
-                            Username = reader["Username"].ToString(),
-                            Email = reader["Email"].ToString()
-                        };
-                        contacts.Add(contact);
-                    }
+                        UserId = Convert.ToInt32(reader["UserId"]),
+                        FirstName = reader["FirstName"].ToString(),
+                        LastName = reader["LastName"].ToString(),
+                        Username = reader["Username"].ToString(),
+                        Email = reader["Email"].ToString()
+                    };
+                    contacts.Add(contact);
+                }
                 //}
             }
             return contacts;
@@ -243,11 +278,12 @@ namespace TeaLeaves.DALs
                 command.Parameters.AddWithValue("@email", email);
 
                 connection.Open();
-                
+
                 if (command.ExecuteScalar() == null)
                 {
                     return false;
-                } else
+                }
+                else
                 {
                     return true;
                 }

@@ -26,6 +26,16 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Gets a user by id provided
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public User GetUserById(int userId)
+        {
+            return _userDAL.GetUserById(userId);
+        }
+
+        /// <summary>
         /// Adds a user to the database
         /// </summary>
         /// <param name="user"></param>

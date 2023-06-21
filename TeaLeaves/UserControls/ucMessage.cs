@@ -9,6 +9,7 @@ namespace TeaLeaves.UserControls
     public partial class ucMessage : UserControl
     {
         private MessageController _messageController;
+        private UsersController _usersController;
         private ContactsController _contactsController;
         private User _selectedUser;
         private List<User> _contactList;
@@ -19,10 +20,11 @@ namespace TeaLeaves.UserControls
 
             _messageController = new MessageController();
             _contactsController = new ContactsController();
+            _usersController = new UsersController();
 
             LoadContacts();
 
-            if(!IsHandleCreated)
+            if (!IsHandleCreated)
             {
                 Thread.Sleep(500);
             }
@@ -31,7 +33,7 @@ namespace TeaLeaves.UserControls
 
         private void LoadContacts()
         {
-            _contactList = _contactsController.GetUsersContacts(CurrentUserStore.User);
+            _contactList = _contactsController.GetMessageContacts(CurrentUserStore.User);
 
             lstContacts.Items.Clear();
 
@@ -78,6 +80,17 @@ namespace TeaLeaves.UserControls
                     lstContacts.SelectedIndex = senderIndex;
                 }
             }
+            else
+            {
+                User newUser = _usersController.GetUserById(senderId);
+
+                if (newUser != null)
+                {
+                    newUser.IsContainUnread = isUnread;
+                    _contactList.Insert(0, newUser);
+                    lstContacts.Items.Insert(0, newUser);
+                }
+            }
         }
 
         private void AddMessageToScreen(IUserMessage message)
@@ -85,26 +98,20 @@ namespace TeaLeaves.UserControls
             if (message.Text?.Trim().Length > 0)
             {
                 Label lblMessage = new Label();
-                lblMessage.Text = message.Text;
-                lblMessage.AutoSize = true;
+                lblMessage.Text = message.Text.Replace("\n", Environment.NewLine);
                 lblMessage.BorderStyle = BorderStyle.FixedSingle;
                 lblMessage.Padding = new Padding(5, 5, 5, 5);
                 lblMessage.Margin = new Padding(0, 0, 20, 0);
                 lblMessage.BackColor = Color.White;
+                lblMessage.AutoSize = true;
+                lblMessage.UseMnemonic = false;
+
                 new ToolTip().SetToolTip(lblMessage, message.TimeStamp.ToString());
 
-                int row = tblMessages.RowCount - 1;
+                tblMessages.RowCount++;
+                tblMessages.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
-                if (tblMessages.RowCount == 1 && tblMessages.GetControlFromPosition(0, 0) == null
-                    && tblMessages.GetControlFromPosition(1, 0) == null)
-                {
-                    row = 0;
-                }
-                else
-                {
-                    tblMessages.RowCount = tblMessages.RowCount + 1;
-                    tblMessages.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-                }
+                int row = tblMessages.RowCount - 1;
 
                 if (CurrentUserStore.User.UserId == message.SenderId)
                 {
@@ -176,6 +183,7 @@ namespace TeaLeaves.UserControls
             try
             {
                 tblMessages.Controls.Clear();
+                tblMessages.RowCount = 0;
 
                 List<IUserMessage> userMessages = _messageController.GetMessagesByUserId(CurrentUserStore.User.UserId, contactId);
 

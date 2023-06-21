@@ -25,6 +25,8 @@ namespace TeaLeaves
         protected override void OnShown(EventArgs e)
         {
             textBoxUsername.Focus();
+            textBoxUsername.Text = "johndoe";
+            textBoxPassword.Text = "password123";
             base.OnShown(e);
         }
 
