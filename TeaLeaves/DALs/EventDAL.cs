@@ -17,12 +17,12 @@ namespace TeaLeaves.DALs
         public int SaveEvent(Event @event)
         {
             string query = @event.Id <= 0 ?
-                @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
-                VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)
+                @"INSERT INTO Events (Description, Name, Category, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
+                VALUES (@Description, @Name, @Category, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)
                 select scope_identity()"
                 :
                 @"UPDATE Events 
-                SET Name = @Name, StreetNumber = @StreetNumber, State = @State, City = @City, Zipcode = @Zipcode, EventDateTime = @EventDateTime, Description = @Description 
+                SET Name = @Name, Category = @Category, StreetNumber = @StreetNumber, State = @State, City = @City, Zipcode = @Zipcode, EventDateTime = @EventDateTime, Description = @Description 
                 WHERE eventId = @eventId
 
                 select @eventId";
@@ -37,6 +37,7 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@Description", @event.Description);
                     saveCommand.Parameters.AddWithValue("@State", @event.State);
                     saveCommand.Parameters.AddWithValue("@City", @event.City);
+                    saveCommand.Parameters.AddWithValue("@Category", @event.Category);
                     if (@event.Zipcode != 0)
                     {
                         saveCommand.Parameters.AddWithValue("@Zipcode", @event.Zipcode.ToString().TrimStart('0'));
@@ -90,7 +91,7 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description " +
+                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description " +
                     "FROM Events e " +
                     "JOIN EventResponses er " +
                     "ON e.EventID = er.EventID " +
@@ -113,6 +114,7 @@ namespace TeaLeaves.DALs
                         StreetNumber = reader["StreetNumber"].ToString(),
                         Zipcode = Convert.ToInt32(reader["Zipcode"]),
                         EventName = reader["Name"].ToString(),
+                        Category = reader["Category"].ToString(),   
                         Description = reader["Description"].ToString(),
                     };
                     userEvents.Add(userEvent);
@@ -132,7 +134,7 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description " +
+                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description " +
                     "FROM Events e " +
                     "JOIN EventResponses er " +
                     "ON e.EventID = er.EventID " +
@@ -155,6 +157,7 @@ namespace TeaLeaves.DALs
                         StreetNumber = reader["StreetNumber"].ToString(),
                         Zipcode = Convert.ToInt32(reader["Zipcode"]),
                         EventName = reader["Name"].ToString(),
+                        Category = reader["Category"].ToString(),
                         Description = reader["Description"].ToString(),
                     };
                     userEvents.Add(userEvent);
@@ -172,7 +175,7 @@ namespace TeaLeaves.DALs
         {
             List<Event> events = new List<Event>();
 
-            string query = @"SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description
+            string query = @"SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Category, Description
                      FROM Events
                      WHERE CreatorId = @UserId";
 
@@ -197,6 +200,7 @@ namespace TeaLeaves.DALs
                                 StreetNumber = reader["StreetNumber"].ToString(),
                                 Zipcode = Convert.ToInt32(reader["Zipcode"]),
                                 EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
                                 Description = reader["Description"].ToString(),
                             };
 
@@ -217,7 +221,7 @@ namespace TeaLeaves.DALs
         {
             Event @event = null;
 
-            string selectStatement = @"SELECT [EventId],[Name],[StreetNumber],[City] ,[State], [Zipcode] , [EventDateTime], [Description],[CreatorId] " +
+            string selectStatement = @"SELECT [EventId],[Name],[Category],[StreetNumber],[City] ,[State], [Zipcode] , [EventDateTime], [Description],[CreatorId] " +
                 "FROM [Events]  " +
                 "Where EventId = @EventId";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
@@ -242,6 +246,7 @@ namespace TeaLeaves.DALs
                                 StreetNumber = reader["StreetNumber"].ToString(),
                                 Zipcode = Convert.ToInt32(reader["Zipcode"]),
                                 EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
                                 Description = reader["Description"].ToString(),
                             };
 

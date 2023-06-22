@@ -346,7 +346,7 @@
             comboBoxCategory.Name="comboBoxCategory";
             comboBoxCategory.Size=new Size(221, 23);
             comboBoxCategory.TabIndex=19;
-            comboBoxCategory.SelectedIndexChanged+=comboBoxCategory_SelectedIndexChanged;
+          
             // 
             // AddEventForm
             // 

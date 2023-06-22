@@ -33,18 +33,19 @@
             panelHeader=new Panel();
             labelHeader=new Label();
             dgEvents=new DataGridView();
+            eventBindingSource=new BindingSource(components);
+            buttonAdd=new Button();
+            btnEdit=new Button();
+            btnDelete=new Button();
+            btnInvites=new Button();
             EventName=new DataGridViewTextBoxColumn();
+            Category=new DataGridViewTextBoxColumn();
             EventDateTime=new DataGridViewTextBoxColumn();
             Description=new DataGridViewTextBoxColumn();
             StreetNumber=new DataGridViewTextBoxColumn();
             City=new DataGridViewTextBoxColumn();
             State=new DataGridViewTextBoxColumn();
             Zipcode=new DataGridViewTextBoxColumn();
-            eventBindingSource=new BindingSource(components);
-            buttonAdd=new Button();
-            btnEdit=new Button();
-            btnDelete=new Button();
-            btnInvites=new Button();
             tableLayoutPanelEvent.SuspendLayout();
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgEvents).BeginInit();
@@ -109,7 +110,7 @@
             dgEvents.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
             dgEvents.BackgroundColor=Color.PapayaWhip;
             dgEvents.ColumnHeadersHeightSizeMode=DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgEvents.Columns.AddRange(new DataGridViewColumn[] { EventName, EventDateTime, Description, StreetNumber, City, State, Zipcode });
+            dgEvents.Columns.AddRange(new DataGridViewColumn[] { EventName, Category, EventDateTime, Description, StreetNumber, City, State, Zipcode });
             tableLayoutPanelEvent.SetColumnSpan(dgEvents, 5);
             dgEvents.DataSource=eventBindingSource;
             dgEvents.Dock=DockStyle.Fill;
@@ -121,55 +122,6 @@
             dgEvents.SelectionMode=DataGridViewSelectionMode.FullRowSelect;
             dgEvents.Size=new Size(856, 219);
             dgEvents.TabIndex=1;
-            // 
-            // EventName
-            // 
-            EventName.DataPropertyName="EventName";
-            EventName.HeaderText="Event Name";
-            EventName.Name="EventName";
-            EventName.ReadOnly=true;
-            // 
-            // EventDateTime
-            // 
-            EventDateTime.DataPropertyName="EventDateTime";
-            EventDateTime.HeaderText="Date";
-            EventDateTime.Name="EventDateTime";
-            EventDateTime.ReadOnly=true;
-            // 
-            // Description
-            // 
-            Description.DataPropertyName="Description";
-            Description.HeaderText="Description";
-            Description.Name="Description";
-            Description.ReadOnly=true;
-            // 
-            // StreetNumber
-            // 
-            StreetNumber.DataPropertyName="StreetNumber";
-            StreetNumber.HeaderText="Street Number";
-            StreetNumber.Name="StreetNumber";
-            StreetNumber.ReadOnly=true;
-            // 
-            // City
-            // 
-            City.DataPropertyName="City";
-            City.HeaderText="City";
-            City.Name="City";
-            City.ReadOnly=true;
-            // 
-            // State
-            // 
-            State.DataPropertyName="State";
-            State.HeaderText="State";
-            State.Name="State";
-            State.ReadOnly=true;
-            // 
-            // Zipcode
-            // 
-            Zipcode.DataPropertyName="Zipcode";
-            Zipcode.HeaderText="Zipcode";
-            Zipcode.Name="Zipcode";
-            Zipcode.ReadOnly=true;
             // 
             // buttonAdd
             // 
@@ -227,6 +179,62 @@
             btnInvites.UseVisualStyleBackColor=false;
             btnInvites.Click+=btnInvites_Click;
             // 
+            // EventName
+            // 
+            EventName.DataPropertyName="EventName";
+            EventName.HeaderText="Event Name";
+            EventName.Name="EventName";
+            EventName.ReadOnly=true;
+            // 
+            // Category
+            // 
+            Category.DataPropertyName="Category";
+            Category.HeaderText="Category";
+            Category.Name="Category";
+            Category.ReadOnly=true;
+            // 
+            // EventDateTime
+            // 
+            EventDateTime.DataPropertyName="EventDateTime";
+            EventDateTime.HeaderText="Date";
+            EventDateTime.Name="EventDateTime";
+            EventDateTime.ReadOnly=true;
+            // 
+            // Description
+            // 
+            Description.DataPropertyName="Description";
+            Description.HeaderText="Description";
+            Description.Name="Description";
+            Description.ReadOnly=true;
+            // 
+            // StreetNumber
+            // 
+            StreetNumber.DataPropertyName="StreetNumber";
+            StreetNumber.HeaderText="Street Number";
+            StreetNumber.Name="StreetNumber";
+            StreetNumber.ReadOnly=true;
+            // 
+            // City
+            // 
+            City.DataPropertyName="City";
+            City.HeaderText="City";
+            City.Name="City";
+            City.ReadOnly=true;
+            // 
+            // State
+            // 
+            State.DataPropertyName="State";
+            State.HeaderText="State";
+            State.Name="State";
+            State.ReadOnly=true;
+            // 
+            // Zipcode
+            // 
+            Zipcode.DataPropertyName="Zipcode";
+            Zipcode.HeaderText="Zipcode";
+            Zipcode.Name="Zipcode";
+            Zipcode.ReadOnly=true;
+            // 
             // ucEventPlanner
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
@@ -259,13 +267,14 @@
         private DataGridViewTextBoxColumn streetNumberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private Button btnInvites;
         private DataGridViewTextBoxColumn EventName;
+        private DataGridViewTextBoxColumn Category;
         private DataGridViewTextBoxColumn EventDateTime;
         private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn StreetNumber;
         private DataGridViewTextBoxColumn City;
         private DataGridViewTextBoxColumn State;
         private DataGridViewTextBoxColumn Zipcode;
-        private Button btnInvites;
     }
 }

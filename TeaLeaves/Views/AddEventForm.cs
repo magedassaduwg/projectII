@@ -31,6 +31,7 @@ namespace TeaLeaves.Views
             textBoxStreetName.Text=_event.StreetNumber;
             textBoxCity.Text = _event.City;
             comboBoxState.Text = _event.State;
+            comboBoxCategory.Text = _event.Category;
             textBoxZip.Text = string.Empty;
             richTextBoxDescription.Text = _event.Description;
             if (_event.Id > 0)
@@ -99,6 +100,7 @@ namespace TeaLeaves.Views
                 _event.EventName = textBoxEName.Text.Trim();
                 _event.StreetNumber = textBoxStreetName.Text.Trim();
                 _event.State = comboBoxState.SelectedItem.ToString();
+                _event.Category = comboBoxCategory.SelectedItem.ToString();
                 _event.City = textBoxCity.Text.Trim();
                 _event.Description = richTextBoxDescription.Text.Trim();
                 _event.Zipcode = 0;
@@ -177,9 +179,6 @@ namespace TeaLeaves.Views
             comboBoxCategory.SelectedIndex = 0;
 
         }
-        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
