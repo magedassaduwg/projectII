@@ -10,6 +10,7 @@
         int ReceiverId { get; set; }
         string? Text { get; set; }
         int? MediaId { get; set; }
+        int? GroupId { get; set; }
         DateTime TimeStamp { get; set; }
     }
 }

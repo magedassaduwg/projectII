@@ -107,6 +107,7 @@
             dgEvents.AllowUserToDeleteRows = false;
             dgEvents.AutoGenerateColumns = false;
             dgEvents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgEvents.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgEvents.BackgroundColor = Color.PapayaWhip;
             dgEvents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgEvents.Columns.AddRange(new DataGridViewColumn[] { EventName, EventDateTime, Description, StreetNumber, City, State, Zipcode });

@@ -33,6 +33,9 @@
     <None Update="Resources\lock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\tealeaves-icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

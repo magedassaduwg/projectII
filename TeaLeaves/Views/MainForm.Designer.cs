@@ -31,20 +31,22 @@ namespace TeaLeaves.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             tableLayoutPanel2 = new TableLayoutPanel();
             tabControlMain = new TabControl();
             tabPageMessage = new TabPage();
+            ucMessages1 = new ucMessage();
             tabPageEvent = new TabPage();
             ucEventPlanners = new ucEventPlanner();
             tabPageInvites = new TabPage();
             ucEventInvites1 = new ucEventInvites();
-            ucMessages1 = new ucMessage();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblGreeting = new Label();
             buttonLogout = new Button();
             viewProfileButton = new Button();
             tableLayoutPanel2.SuspendLayout();
             tabControlMain.SuspendLayout();
+            tabPageMessage.SuspendLayout();
             tabPageEvent.SuspendLayout();
             tabPageInvites.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -191,14 +193,16 @@ namespace TeaLeaves.Views
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1300, 600);
             Controls.Add(tableLayoutPanel2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1200, 500);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainForm";
+            Text = "TeaLeaves";
             FormClosing += MainForm_FormClosing;
             Load += MainForm_Load;
             tableLayoutPanel2.ResumeLayout(false);
             tabControlMain.ResumeLayout(false);
+            tabPageMessage.ResumeLayout(false);
             tabPageEvent.ResumeLayout(false);
             tabPageInvites.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);

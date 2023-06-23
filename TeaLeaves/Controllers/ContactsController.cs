@@ -36,7 +36,7 @@ namespace TeaLeaves.Controllers
         /// <returns></returns>
         public List<User> GetMessageContacts(User user)
         {
-            return this._contactsDAL.GetMessageContacts(user);
+            return _contactsDAL.GetMessageContacts(user);
         }
 
         /// <summary>

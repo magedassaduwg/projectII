@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Security.Cryptography.X509Certificates;
 using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
@@ -9,16 +10,20 @@ namespace TeaLeaves.UserControls
     public partial class ucMessage : UserControl
     {
         private MessageController _messageController;
+        private GroupMemberController _groupMemberController;
         private UsersController _usersController;
         private ContactsController _contactsController;
-        private User _selectedUser;
-        private List<User> _contactList;
+        private object _selectedUser;
+        //private List<User> _contactList;
+        //private List<GroupMember> _groupList;
+        private List<object> _allContacts;
 
         public ucMessage()
         {
             InitializeComponent();
 
             _messageController = new MessageController();
+            _groupMemberController = new GroupMemberController();
             _contactsController = new ContactsController();
             _usersController = new UsersController();
 
@@ -33,18 +38,37 @@ namespace TeaLeaves.UserControls
 
         private void LoadContacts()
         {
-            _contactList = _contactsController.GetMessageContacts(CurrentUserStore.User);
-
-            lstContacts.Items.Clear();
-
-            if (_contactList != null && _contactList.Count > 0)
+            try
             {
-                lstContacts.Items.AddRange(_contactList.ToArray());
-                lstContacts.DisplayMember = "FullName";
+                _allContacts = new List<object>();
+                List<User> contactList = _contactsController.GetMessageContacts(CurrentUserStore.User);
+                List<GroupMember> groupList = _groupMemberController.GetMyGroupContact(CurrentUserStore.User.UserId);
+                _allContacts.AddRange(contactList);
+                _allContacts.AddRange(groupList);
+
+                _allContacts = _allContacts.OrderByDescending(c => ((dynamic)c).TimeStamp).ToList();
+                lstContacts.Items.Clear();
+
+                //if (_groupList != null && _groupList.Count > 0)
+                //{
+                //    lstContacts.Items.AddRange(_groupList.ToArray());
+                //}
+
+                //if (_contactList != null && _contactList.Count > 0)
+                //{
+                //    lstContacts.Items.AddRange(_contactList.ToArray());
+                //}
+
+                lstContacts.Items.AddRange(_allContacts.ToArray());
+
+                if (_allContacts?.Count == 0)
+                {
+                    lstContacts.Items.Add("No contacts");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lstContacts.Items.Add("No contacts");
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
 
@@ -52,28 +76,31 @@ namespace TeaLeaves.UserControls
         {
             Invoke((MethodInvoker)delegate
             {
-                if (_selectedUser != null && _selectedUser.UserId == e.SenderId)
+                if (_selectedUser != null && ((_selectedUser.GetType() == typeof(User) && ((User)_selectedUser).UserId == e.SenderId) ||
+                                             (_selectedUser.GetType() == typeof(GroupMember) && ((GroupMember)_selectedUser).GroupId == e.GroupId)))
                 {
                     AddMessageToScreen(e);
                 }
                 else
                 {
-                    UpdateContactUnreadStatus(e.SenderId, true);
+                    UpdateContactUnreadStatus(e, true);
                 }
             });
         }
 
-        private void UpdateContactUnreadStatus(int senderId, bool isUnread)
+        private void UpdateContactUnreadStatus(IUserMessage message, bool isUnread)
         {
-            int senderIndex = _contactList.FindIndex(c => c.UserId == senderId);
+            //int senderIndex = _contactList.FindIndex(c => c.UserId == senderId);
+            int senderIndex = _allContacts.FindIndex(c => (c.GetType() == typeof(User) && ((User)c).UserId == message.SenderId) ||
+                                                          (c.GetType() == typeof(GroupMember) &&((GroupMember)c).GroupId == message.GroupId));
 
             if (senderIndex > -1)
             {
-                User sender = _contactList[senderIndex];
+                dynamic sender = _allContacts[senderIndex].GetType() == typeof(User) ? (User)_allContacts[senderIndex] : (GroupMember)_allContacts[senderIndex];
                 sender.IsContainUnread = isUnread;
 
+                lstContacts.Items.RemoveAt(senderIndex);
                 lstContacts.Items.Insert(senderIndex, sender);
-                lstContacts.Items.RemoveAt(senderIndex + 1);
 
                 if (isUnread == false)
                 {
@@ -82,13 +109,27 @@ namespace TeaLeaves.UserControls
             }
             else
             {
-                User newUser = _usersController.GetUserById(senderId);
-
-                if (newUser != null)
+                if (message.GroupId.HasValue)
                 {
-                    newUser.IsContainUnread = isUnread;
-                    _contactList.Insert(0, newUser);
-                    lstContacts.Items.Insert(0, newUser);
+                    GroupMember groupInfo = _groupMemberController.GetGroupById(message.GroupId.Value);
+
+                    if (groupInfo != null)
+                    {
+                        groupInfo.IsContainUnread = isUnread;
+                        _allContacts.Insert(0, groupInfo);
+                        lstContacts.Items.Insert(0, groupInfo);
+                    }
+                }
+                else
+                {
+                    User newUser = _usersController.GetUserById(message.SenderId);
+
+                    if (newUser != null)
+                    {
+                        newUser.IsContainUnread = isUnread;
+                        _allContacts.Insert(0, newUser);
+                        lstContacts.Items.Insert(0, newUser);
+                    }
                 }
             }
         }
@@ -124,7 +165,15 @@ namespace TeaLeaves.UserControls
                     tblMessages.Controls.Add(lblMessage, 0, row);
                 }
 
-                tblMessages.ScrollControlIntoView(lblMessage);
+                if (tblMessages.Controls.Count > 10)
+                {
+                    tblMessages.AutoScroll = true;
+                    tblMessages.ScrollControlIntoView(lblMessage);
+                }
+                else
+                {
+                    tblMessages.AutoScroll = false;
+                }
             }
         }
 
@@ -139,10 +188,11 @@ namespace TeaLeaves.UserControls
             {
                 IUserMessage newMessage = new UserMessage
                 {
-                    ReceiverId = _selectedUser.UserId,
+                    ReceiverId = _selectedUser.GetType() == typeof(User) ? ((User)_selectedUser).UserId : ((GroupMember)_selectedUser).GroupId,
                     SenderId = CurrentUserStore.User.UserId,
                     Text = txtMessage.Text,
                     MediaId = null,
+                    GroupId = _selectedUser.GetType() == typeof(GroupMember) ? ((GroupMember)_selectedUser).GroupId : null,
                     TimeStamp = DateTime.Now
                 };
 
@@ -151,7 +201,24 @@ namespace TeaLeaves.UserControls
                     _messageController.SaveMessageToDatabase(newMessage);
                     AddMessageToScreen(newMessage);
                     txtMessage.Clear();
-                    RabbitBusController.SendMessage(_selectedUser.Username, newMessage);
+
+                    if (_selectedUser.GetType() == typeof(User))
+                    {
+                        RabbitBusController.SendMessage(((User)_selectedUser).Username, newMessage);
+                    }
+                    else
+                    {
+                        GroupMember groupMember = (GroupMember)_selectedUser;
+                        foreach (int userId in groupMember.UserIds)
+                        {
+                            User user = _usersController.GetUserById(userId);
+
+                            if (user != null && user.UserId != CurrentUserStore.User.UserId)
+                            {
+                                RabbitBusController.SendMessage(user.Username, newMessage);
+                            }
+                        }
+                    }
                 }
                 catch (SqlException ex)
                 {
@@ -201,6 +268,29 @@ namespace TeaLeaves.UserControls
             }
         }
 
+        private void LoadMessagesFromGroup(int groupId)
+        {
+            try
+            {
+                tblMessages.Controls.Clear();
+                tblMessages.RowCount = 0;
+
+                List<IUserMessage> userMessages = _messageController.GetMessagesByGroupId(groupId);
+
+                if (userMessages != null && userMessages.Count > 0)
+                {
+                    foreach (IUserMessage message in userMessages)
+                    {
+                        AddMessageToScreen(message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
         private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedItem = lstContacts.SelectedItem;
@@ -208,14 +298,42 @@ namespace TeaLeaves.UserControls
             if (lstContacts.SelectedIndex > -1 && selectedItem.GetType() == typeof(User))
             {
                 _selectedUser = (User)selectedItem;
-                lblSelectedContact.Text = _selectedUser.FullName;
+                User currentUser = (User)selectedItem;
+                lblSelectedContact.Text = currentUser.FullName;
 
-                if (_selectedUser.IsContainUnread)
+                if (currentUser.IsContainUnread)
                 {
-                    UpdateContactUnreadStatus(_selectedUser.UserId, false);
+                    IUserMessage message = new UserMessage
+                    {
+                        GroupId = null,
+                        MediaId = null,
+                        SenderId = currentUser.UserId
+                    };
+
+                    UpdateContactUnreadStatus(message, false);
                 }
 
-                LoadMessagesFromUser(_selectedUser.UserId);
+                LoadMessagesFromUser(currentUser.UserId);
+            }
+            else if (lstContacts.SelectedIndex > -1 && selectedItem.GetType() == typeof(GroupMember))
+            {
+                _selectedUser = (GroupMember)selectedItem;
+                GroupMember currentMember = (GroupMember)selectedItem;
+                lblSelectedContact.Text = currentMember.GroupName;
+
+                if (currentMember.IsContainUnread)
+                {
+                    IUserMessage message = new UserMessage
+                    {
+                        GroupId = currentMember.GroupId,
+                        MediaId = null,
+                        SenderId = currentMember.GroupId
+                    };
+
+                    UpdateContactUnreadStatus(message, false);
+                }
+
+                LoadMessagesFromGroup(currentMember.GroupId);
             }
         }
 
@@ -237,12 +355,39 @@ namespace TeaLeaves.UserControls
                     e.Graphics.DrawString(contact.FullName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
                 }
             }
+            else if (dataItem.GetType() == typeof(GroupMember))
+            {
+                GroupMember contact = (GroupMember)dataItem;
+
+                if (contact.IsContainUnread)
+                {
+                    e.Graphics.DrawString($"Group - {contact.GroupName}", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.DrawString($"Group - {contact.GroupName}", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
+                }
+
+            }
             else if (dataItem.GetType() == typeof(string))
             {
                 e.Graphics.DrawString(dataItem.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
             }
 
             e.DrawFocusRectangle();
+        }
+
+        private void btnCreateGroup_Click(object sender, EventArgs e)
+        {
+            List<User> usersOnly = _allContacts.Where(x => x.GetType() == typeof(User)).OfType<User>().ToList();
+
+            using frmCreateGroup createGroup = new frmCreateGroup(usersOnly);
+            var result = createGroup.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                LoadContacts();
+            }
         }
     }
 }

@@ -10,6 +10,7 @@
         public int ReceiverId {get; set; }
         public string? Text {get; set; }
         public int? MediaId {get; set; }
+        public int? GroupId { get; set; }
         public DateTime TimeStamp {get; set; }
     }
 }
