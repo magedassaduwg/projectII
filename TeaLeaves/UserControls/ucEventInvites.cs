@@ -91,7 +91,8 @@ namespace TeaLeaves.UserControls
                 {
                     dgvEventInvites.Rows[0].Selected = true;
                 }
-            } else
+            }
+            else
             {
                 return;
             }
