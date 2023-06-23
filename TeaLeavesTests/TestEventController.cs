@@ -45,6 +45,7 @@ namespace TeaLeavesTests
                 City = "test",
                 Zipcode = 12345,
                 StreetNumber = "test",
+                Category = "test",
             };
 
             try
