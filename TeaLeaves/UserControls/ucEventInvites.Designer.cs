@@ -48,6 +48,8 @@
             tbDate = new TextBox();
             lblFilterByCategory = new Label();
             lblFilterByDateTime = new Label();
+            lblCategoryError = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             ((System.ComponentModel.ISupportInitialize)eventBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
@@ -219,7 +221,7 @@
             // 
             // tbCategory
             // 
-            tbCategory.Location = new Point(962, 339);
+            tbCategory.Location = new Point(962, 304);
             tbCategory.Name = "tbCategory";
             tbCategory.PlaceholderText = "Category Name";
             tbCategory.Size = new Size(169, 23);
@@ -227,7 +229,7 @@
             // 
             // tbDate
             // 
-            tbDate.Location = new Point(962, 408);
+            tbDate.Location = new Point(962, 387);
             tbDate.Name = "tbDate";
             tbDate.PlaceholderText = "YYYY-MM-DD HH-MM-SS";
             tbDate.Size = new Size(169, 23);
@@ -237,7 +239,7 @@
             // 
             lblFilterByCategory.AutoSize = true;
             lblFilterByCategory.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblFilterByCategory.Location = new Point(983, 315);
+            lblFilterByCategory.Location = new Point(983, 280);
             lblFilterByCategory.Name = "lblFilterByCategory";
             lblFilterByCategory.Size = new Size(133, 21);
             lblFilterByCategory.TabIndex = 10;
@@ -247,16 +249,37 @@
             // 
             lblFilterByDateTime.AutoSize = true;
             lblFilterByDateTime.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblFilterByDateTime.Location = new Point(962, 384);
+            lblFilterByDateTime.Location = new Point(962, 363);
             lblFilterByDateTime.Name = "lblFilterByDateTime";
             lblFilterByDateTime.Size = new Size(172, 21);
             lblFilterByDateTime.TabIndex = 11;
             lblFilterByDateTime.Text = "Filter By Date And Time";
             // 
+            // lblCategoryError
+            // 
+            lblCategoryError.AutoSize = true;
+            lblCategoryError.BackColor = SystemColors.Control;
+            lblCategoryError.Location = new Point(1026, 339);
+            lblCategoryError.Name = "lblCategoryError";
+            lblCategoryError.Size = new Size(38, 15);
+            lblCategoryError.TabIndex = 12;
+            lblCategoryError.Text = "label1";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(1026, 422);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 13;
+            label2.Text = "label2";
+            // 
             // ucEventInvites
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label2);
+            Controls.Add(lblCategoryError);
             Controls.Add(lblFilterByDateTime);
             Controls.Add(lblFilterByCategory);
             Controls.Add(tbDate);
@@ -300,5 +323,7 @@
         private TextBox tbDate;
         private Label lblFilterByCategory;
         private Label lblFilterByDateTime;
+        private Label lblCategoryError;
+        private Label label2;
     }
 }
