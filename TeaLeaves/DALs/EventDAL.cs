@@ -258,6 +258,90 @@ namespace TeaLeaves.DALs
             return @event;
         }
 
+        public List<Event> GetEventByCategory(string category)
+        {
+            List<Event> events = new List<Event>();
+
+            string query = @"SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Category, Description
+                     FROM Events
+                     WHERE Category = @Category";
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Category", category);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Event @event = new Event
+                            {
+                                Id = Convert.ToInt32(reader["EventId"]),
+                                EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                                State = reader["State"].ToString(),
+                                City = reader["City"].ToString(),
+                                StreetNumber = reader["StreetNumber"].ToString(),
+                                Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                                EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                            };
+
+                            events.Add(@event);
+                        }
+                    }
+                }
+            }
+
+            return events;
+        }
+
+        public List<Event> GetEventByDate(DateTime eventDate)
+        {
+            List<Event> events = new List<Event>();
+
+            string query = @"SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Category, Description
+                     FROM Events
+                     WHERE EventDateTime = @EventDate";
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@EventDate", eventDate);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Event @event = new Event
+                            {
+                                Id = Convert.ToInt32(reader["EventId"]),
+                                EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                                State = reader["State"].ToString(),
+                                City = reader["City"].ToString(),
+                                StreetNumber = reader["StreetNumber"].ToString(),
+                                Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                                EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                            };
+
+                            events.Add(@event);
+                        }
+                    }
+                }
+            }
+
+            return events;
+        }
+
     }
 
 }

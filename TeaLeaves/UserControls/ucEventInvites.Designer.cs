@@ -276,6 +276,7 @@
             buttonSearch.TabIndex=15;
             buttonSearch.Text="Search";
             buttonSearch.UseVisualStyleBackColor=false;
+            buttonSearch.Click+=buttonSearch_Click;
             // 
             // radioButtonDate
             // 
