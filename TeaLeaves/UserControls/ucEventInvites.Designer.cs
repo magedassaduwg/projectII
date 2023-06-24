@@ -51,7 +51,7 @@
             dateTimePickerFilter = new DateTimePicker();
             buttonSearch = new Button();
             radioButtonDate = new RadioButton();
-            dataGridView1 = new DataGridView();
+            dgvDeclinedInvites = new DataGridView();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
@@ -60,7 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             ((System.ComponentModel.ISupportInitialize)eventBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDeclinedInvites).BeginInit();
             SuspendLayout();
             // 
             // dgvEventInvites
@@ -300,23 +300,23 @@
             radioButtonDate.UseVisualStyleBackColor = true;
             radioButtonDate.CheckedChanged += radioButtonDate_CheckedChanged;
             // 
-            // dataGridView1
+            // dgvDeclinedInvites
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.BackgroundColor = Color.PapayaWhip;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
-            dataGridView1.DataSource = eventBindingSource;
-            dataGridView1.Location = new Point(3, 446);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.ScrollBars = ScrollBars.Vertical;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(902, 160);
-            dataGridView1.TabIndex = 17;
+            dgvDeclinedInvites.AllowUserToAddRows = false;
+            dgvDeclinedInvites.AllowUserToDeleteRows = false;
+            dgvDeclinedInvites.AutoGenerateColumns = false;
+            dgvDeclinedInvites.BackgroundColor = Color.PapayaWhip;
+            dgvDeclinedInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDeclinedInvites.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
+            dgvDeclinedInvites.DataSource = eventBindingSource;
+            dgvDeclinedInvites.Location = new Point(3, 446);
+            dgvDeclinedInvites.Name = "dgvDeclinedInvites";
+            dgvDeclinedInvites.ReadOnly = true;
+            dgvDeclinedInvites.RowTemplate.Height = 25;
+            dgvDeclinedInvites.ScrollBars = ScrollBars.Vertical;
+            dgvDeclinedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDeclinedInvites.Size = new Size(902, 160);
+            dgvDeclinedInvites.TabIndex = 17;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -366,7 +366,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(lblDeclinedInvites);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvDeclinedInvites);
             Controls.Add(radioButtonDate);
             Controls.Add(buttonSearch);
             Controls.Add(dateTimePickerFilter);
@@ -386,7 +386,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).EndInit();
             ((System.ComponentModel.ISupportInitialize)eventBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDeclinedInvites).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -415,7 +415,7 @@
         private DateTimePicker dateTimePickerFilter;
         private Button buttonSearch;
         private RadioButton radioButtonDate;
-        private DataGridView dataGridView1;
+        private DataGridView dgvDeclinedInvites;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;

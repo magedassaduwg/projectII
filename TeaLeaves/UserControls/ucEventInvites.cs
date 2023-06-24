@@ -12,6 +12,8 @@ namespace TeaLeaves.UserControls
         EventResponseController _eventResponseController;
         List<Event> _events;
         List<Event> _eventsAccepted;
+        List<Event> _eventsDeclined;
+
 
         public ucEventInvites()
         {
@@ -20,8 +22,10 @@ namespace TeaLeaves.UserControls
             _eventResponseController = new EventResponseController();
             _events = new List<Event>();
             _eventsAccepted = new List<Event>();
+            _eventsDeclined = new List<Event>();
             dgvEventInvites.AutoGenerateColumns = false;
             dgvAcceptedInvites.AutoGenerateColumns = false;
+            dgvDeclinedInvites.AutoGenerateColumns = false;
         }
 
         private void GetUserEvents()
@@ -35,6 +39,10 @@ namespace TeaLeaves.UserControls
                 _eventsAccepted = _eventController.GetAcceptedEventsReceivedByUserId(CurrentUserStore.User.UserId);
 
                 dgvAcceptedInvites.DataSource = _eventsAccepted;
+
+                _eventsDeclined = _eventController.GetDeclinedEventsReceivedByUserId(CurrentUserStore.User.UserId);
+
+                dgvDeclinedInvites.DataSource = _eventsDeclined;
 
                 if (dgvEventInvites.Rows.Count > 0)
                 {
@@ -85,7 +93,7 @@ namespace TeaLeaves.UserControls
                 if (dgvEventInvites.SelectedRows.Count > 0)
                 {
                     Event selectedEvent = (Event)dgvEventInvites.SelectedRows[0].DataBoundItem;
-                    _eventResponseController.DeleteEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
+                    _eventResponseController.DeclineEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
                     GetUserEvents();
                 }
                 if (dgvEventInvites.SelectedRows.Count > 0)

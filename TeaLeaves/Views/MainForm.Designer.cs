@@ -38,7 +38,6 @@ namespace TeaLeaves.Views
             ucEventPlanners = new ucEventPlanner();
             tabPageInvites = new TabPage();
             ucEventInvites1 = new ucEventInvites();
-            ucMessages1 = new ucMessage();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblGreeting = new Label();
             buttonLogout = new Button();
@@ -63,7 +62,7 @@ namespace TeaLeaves.Views
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
-            tableLayoutPanel2.Size = new Size(1300, 600);
+            tableLayoutPanel2.Size = new Size(1300, 735);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // tabControlMain
@@ -72,30 +71,21 @@ namespace TeaLeaves.Views
             tabControlMain.Controls.Add(tabPageEvent);
             tabControlMain.Controls.Add(tabPageInvites);
             tabControlMain.Dock = DockStyle.Fill;
-            tabControlMain.Location = new Point(3, 63);
+            tabControlMain.Location = new Point(3, 76);
             tabControlMain.Name = "tabControlMain";
             tabControlMain.SelectedIndex = 0;
-            tabControlMain.Size = new Size(1294, 534);
+            tabControlMain.Size = new Size(1294, 656);
             tabControlMain.TabIndex = 1;
             // 
             // tabPageMessage
             // 
-            tabPageMessage.Controls.Add(ucMessages1);
             tabPageMessage.Location = new Point(4, 24);
             tabPageMessage.Name = "tabPageMessage";
             tabPageMessage.Padding = new Padding(3);
-            tabPageMessage.Size = new Size(1286, 506);
+            tabPageMessage.Size = new Size(1286, 628);
             tabPageMessage.TabIndex = 0;
             tabPageMessage.Text = "Message";
             tabPageMessage.UseVisualStyleBackColor = true;
-            // 
-            // ucMessages1
-            // 
-            ucMessages1.Dock = DockStyle.Fill;
-            ucMessages1.Location = new Point(3, 3);
-            ucMessages1.Name = "ucMessages1";
-            ucMessages1.Size = new Size(1280, 500);
-            ucMessages1.TabIndex = 0;
             // 
             // tabPageEvent
             // 
@@ -103,7 +93,7 @@ namespace TeaLeaves.Views
             tabPageEvent.Location = new Point(4, 24);
             tabPageEvent.Name = "tabPageEvent";
             tabPageEvent.Padding = new Padding(3);
-            tabPageEvent.Size = new Size(1286, 506);
+            tabPageEvent.Size = new Size(1286, 628);
             tabPageEvent.TabIndex = 1;
             tabPageEvent.Text = "Event Planner";
             tabPageEvent.UseVisualStyleBackColor = true;
@@ -113,7 +103,7 @@ namespace TeaLeaves.Views
             ucEventPlanners.Dock = DockStyle.Fill;
             ucEventPlanners.Location = new Point(3, 3);
             ucEventPlanners.Name = "ucEventPlanners";
-            ucEventPlanners.Size = new Size(1280, 500);
+            ucEventPlanners.Size = new Size(1280, 622);
             ucEventPlanners.TabIndex = 0;
             // 
             // tabPageInvites
@@ -122,7 +112,7 @@ namespace TeaLeaves.Views
             tabPageInvites.Location = new Point(4, 24);
             tabPageInvites.Name = "tabPageInvites";
             tabPageInvites.Padding = new Padding(3);
-            tabPageInvites.Size = new Size(1286, 506);
+            tabPageInvites.Size = new Size(1286, 628);
             tabPageInvites.TabIndex = 2;
             tabPageInvites.Text = "Event Invite";
             tabPageInvites.UseVisualStyleBackColor = true;
@@ -132,7 +122,7 @@ namespace TeaLeaves.Views
             ucEventInvites1.Dock = DockStyle.Fill;
             ucEventInvites1.Location = new Point(3, 3);
             ucEventInvites1.Name = "ucEventInvites1";
-            ucEventInvites1.Size = new Size(1280, 500);
+            ucEventInvites1.Size = new Size(1280, 622);
             ucEventInvites1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -143,7 +133,7 @@ namespace TeaLeaves.Views
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1294, 54);
+            flowLayoutPanel1.Size = new Size(1294, 67);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // lblGreeting
@@ -189,7 +179,7 @@ namespace TeaLeaves.Views
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1300, 600);
+            ClientSize = new Size(1300, 735);
             Controls.Add(tableLayoutPanel2);
             MinimumSize = new Size(1200, 500);
             Name = "MainForm";

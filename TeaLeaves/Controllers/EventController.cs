@@ -60,6 +60,16 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Returns all the events the given user has declined
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Event> GetDeclinedEventsReceivedByUserId(int userId)
+        {
+            return _eventDAL.GetDeclinedEventsReceivedByUserId(userId);
+        }
+
+        /// <summary>
         /// Returns all the events in the database with the given creatorId
         /// </summary>
         /// <param name="userId"></param>
