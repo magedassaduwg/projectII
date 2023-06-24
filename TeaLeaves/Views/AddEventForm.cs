@@ -28,7 +28,7 @@ namespace TeaLeaves.Views
         {
 
             textBoxEName.Text = _event.EventName;
-            textBoxStreetName.Text=_event.StreetNumber;
+            textBoxStreetName.Text = _event.StreetNumber;
             textBoxCity.Text = _event.City;
             comboBoxState.Text = _event.State;
             comboBoxCategory.Text = _event.Category;
@@ -179,6 +179,6 @@ namespace TeaLeaves.Views
             comboBoxCategory.SelectedIndex = 0;
 
         }
-      
+
     }
 }

@@ -56,14 +56,17 @@ namespace TeaLeaves.Views
 
         private void btnInvite_Click(object sender, EventArgs e)
         {
-            User selectedUser = (User)dgvUninvitedContacts.SelectedRows[0].DataBoundItem;
-            EventResponse eventResponse = new EventResponse();
-            eventResponse.InviterId = CurrentUserStore.User.UserId;
-            eventResponse.ReceiverId = selectedUser.UserId;
-            eventResponse.Accepted = false;
-            eventResponse.EventId = _event.Id;
-            _eventResponseController.AddEventResponse(eventResponse);
-            GetUserEvents();
+            if (dgvUninvitedContacts.Rows.Count > 0)
+            {
+                User selectedUser = (User)dgvUninvitedContacts.SelectedRows[0].DataBoundItem;
+                EventResponse eventResponse = new EventResponse();
+                eventResponse.InviterId = CurrentUserStore.User.UserId;
+                eventResponse.ReceiverId = selectedUser.UserId;
+                eventResponse.Accepted = false;
+                eventResponse.EventId = _event.Id;
+                _eventResponseController.AddEventResponse(eventResponse);
+                GetUserEvents();
+            }           
         }
     }
 }
