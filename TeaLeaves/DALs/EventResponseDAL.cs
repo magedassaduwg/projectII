@@ -98,8 +98,8 @@ namespace TeaLeaves.DALs
         public int AddEventResponse(EventResponse @eventResponse)
         {
 
-            string query = @"INSERT INTO EventResponses (EventInviterId, EventReceiverId, EventId, Accepted) 
-                             VALUES (@InvitedId, @ReceivedId, @EventId, @Accepted)
+            string query = @"INSERT INTO EventResponses (EventInviterId, EventReceiverId, EventId, Accepted, Declined) 
+                             VALUES (@InvitedId, @ReceivedId, @EventId, @Accepted, @Declined)
                              select scope_identity()";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -111,6 +111,7 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@ReceivedId", @eventResponse.ReceiverId);
                     saveCommand.Parameters.AddWithValue("@EventId", @eventResponse.EventId);
                     saveCommand.Parameters.AddWithValue("@Accepted", @eventResponse.Accepted);
+                    saveCommand.Parameters.AddWithValue("@Declined", @eventResponse.Declined);
                     return Convert.ToInt32(saveCommand.ExecuteScalar());
                 }
             }
