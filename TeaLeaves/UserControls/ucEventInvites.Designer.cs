@@ -54,7 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             ((System.ComponentModel.ISupportInitialize)eventBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDeclines).BeginInit();
             SuspendLayout();
             // 
             // dgvEventInvites
@@ -293,24 +292,6 @@
             radioButtonDate.UseVisualStyleBackColor=true;
             radioButtonDate.CheckedChanged+=radioButtonDate_CheckedChanged;
             // 
-            // dgvDeclines
-            // 
-            dgvDeclines.AllowUserToAddRows = false;
-            dgvDeclines.AllowUserToDeleteRows = false;
-            dgvDeclines.AutoGenerateColumns = false;
-            dgvDeclines.BackgroundColor = Color.PapayaWhip;
-            dgvDeclines.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDeclines.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
-            dgvDeclines.DataSource = eventBindingSource;
-            dgvDeclines.Location = new Point(3, 442);
-            dgvDeclines.Name = "dgvDeclines";
-            dgvDeclines.ReadOnly = true;
-            dgvDeclines.RowTemplate.Height = 25;
-            dgvDeclines.ScrollBars = ScrollBars.Vertical;
-            dgvDeclines.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDeclines.Size = new Size(953, 140);
-            dgvDeclines.TabIndex = 14;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             dataGridViewTextBoxColumn1.DataPropertyName = "EventName";
@@ -318,34 +299,6 @@
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             dataGridViewTextBoxColumn1.ReadOnly = true;
             dataGridViewTextBoxColumn1.Width = 240;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "EventDateTime";
-            dataGridViewTextBoxColumn2.HeaderText = "EventDateTime";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 240;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "Description";
-            dataGridViewTextBoxColumn3.HeaderText = "Description";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 430;
-            // 
-            // lblDeclineInvites
-            // 
-            lblDeclineInvites.AutoSize = true;
-            lblDeclineInvites.BackColor = SystemColors.Control;
-            lblDeclineInvites.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDeclineInvites.ForeColor = Color.DarkOrange;
-            lblDeclineInvites.Location = new Point(354, 404);
-            lblDeclineInvites.Name = "lblDeclineInvites";
-            lblDeclineInvites.Size = new Size(133, 21);
-            lblDeclineInvites.TabIndex = 15;
-            lblDeclineInvites.Text = "Declined Invites";
             // 
             // ucEventInvites
             // 
@@ -370,7 +323,6 @@
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).EndInit();
             ((System.ComponentModel.ISupportInitialize)eventBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDeclines).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
