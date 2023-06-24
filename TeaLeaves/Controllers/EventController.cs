@@ -78,5 +78,25 @@ namespace TeaLeaves.Controllers
         {
             return _eventDAL.GetEventById(selectedEventId);
         }
+        /// <summary>
+        /// Get event by category name
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public List<Event> GetEventByCategory(string category)
+        {
+            return _eventDAL.GetEventByCategory(category);
+        }
+        /// <summary>
+        /// Get event by date
+        /// </summary>
+        /// <param name="eventDate"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public List<Event> GetEventByDate(DateTime eventDate)
+        {
+            return _eventDAL.GetEventByDate(eventDate);
+        }
     }
 }

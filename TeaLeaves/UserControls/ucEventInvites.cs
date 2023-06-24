@@ -1,4 +1,5 @@
-﻿using TeaLeaves.Controllers;
+﻿using System.Windows.Forms;
+using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 using TeaLeaves.Views;
@@ -107,6 +108,72 @@ namespace TeaLeaves.UserControls
                 {
                     viewEventForm.ShowDialog();
                 }
+            }
+        }
+
+        private void radioButtonFilterByCategory_CheckedChanged(object sender, EventArgs e)
+        {
+            dateTimePickerFilter.Enabled = false;
+            tbCategory.Enabled = true;
+           // dgvAcceptedInvites.DataSource= null;
+        }
+
+        private void radioButtonDate_CheckedChanged(object sender, EventArgs e)
+        {
+            tbCategory.Enabled = false;
+            dateTimePickerFilter.Enabled = true;
+          //  dgvAcceptedInvites.DataSource= null;
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string category = tbCategory.Text;
+
+            try
+            {
+                if (radioButtonFilterByCategory.Checked)
+                {
+                    if (string.IsNullOrEmpty(category))
+                    {
+                        MessageBox.Show("Please enter category name", "Category name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    _events = _eventController.GetEventByCategory(category);
+                    if (_events.Count == 0)
+                    {
+                        MessageBox.Show("No event found with that category");
+                    }
+
+                    dgvAcceptedInvites.DataSource = _events;
+                }
+                
+                else if (radioButtonDate.Checked)
+                {
+                    DateTime eventDate = Convert.ToDateTime(dateTimePickerFilter.Value).Date;
+                    _events = _eventController.GetEventByDate(eventDate);
+
+                    if (_events.Count == 0)
+                    {
+                        MessageBox.Show("No event found with the date");
+                    }
+                    dgvAcceptedInvites.DataSource = _events;
+                }
+
+                eventName();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void eventName()
+        {
+            dgvAcceptedInvites.DataSource = _events;
+
+            if (dgvAcceptedInvites.Rows.Count > 0)
+            {
+                dgvAcceptedInvites.Rows[0].Selected = true;
             }
         }
     }
