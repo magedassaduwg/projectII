@@ -110,19 +110,16 @@ namespace TeaLeaves.UserControls
             }
         }
 
-        private void lblFilterByDateTime_Click(object sender, EventArgs e)
+        private void radioButtonFilterByCategory_CheckedChanged(object sender, EventArgs e)
         {
-
+            dateTimePickerFilter.Enabled = false;
+            tbCategory.Enabled = true;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonDate_CheckedChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void tbDate_TextChanged(object sender, EventArgs e)
-        {
-
+            tbCategory.Enabled = false;
+            dateTimePickerFilter.Enabled = true;
         }
     }
 }

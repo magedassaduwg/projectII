@@ -48,8 +48,9 @@
             lblAcceptedInvites=new Label();
             tbCategory=new TextBox();
             radioButtonFilterByCategory=new RadioButton();
-            radioButtonByDate=new RadioButton();
-            dateTimePicker1=new DateTimePicker();
+            dateTimePickerFilter=new DateTimePicker();
+            buttonSearch=new Button();
+            radioButtonDate=new RadioButton();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             ((System.ComponentModel.ISupportInitialize)eventBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
@@ -235,6 +236,7 @@
             // 
             // tbCategory
             // 
+            tbCategory.Enabled=false;
             tbCategory.Location=new Point(930, 313);
             tbCategory.Name="tbCategory";
             tbCategory.PlaceholderText="Category Name";
@@ -253,35 +255,49 @@
             radioButtonFilterByCategory.TabStop=true;
             radioButtonFilterByCategory.Text="Filter By Category";
             radioButtonFilterByCategory.UseVisualStyleBackColor=true;
-            radioButtonFilterByCategory.CheckedChanged+=radioButton1_CheckedChanged;
+            radioButtonFilterByCategory.CheckedChanged+=radioButtonFilterByCategory_CheckedChanged;
             // 
-            // radioButtonByDate
+            // dateTimePickerFilter
             // 
-            radioButtonByDate.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            radioButtonByDate.AutoSize=true;
-            radioButtonByDate.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            radioButtonByDate.ForeColor=SystemColors.HotTrack;
-            radioButtonByDate.Location=new Point(945, 362);
-            radioButtonByDate.Name="radioButtonByDate";
-            radioButtonByDate.Size=new Size(95, 19);
-            radioButtonByDate.TabIndex=13;
-            radioButtonByDate.TabStop=true;
-            radioButtonByDate.Text="Filter By Date";
-            radioButtonByDate.UseVisualStyleBackColor=true;
+            dateTimePickerFilter.Enabled=false;
+            dateTimePickerFilter.Location=new Point(930, 367);
+            dateTimePickerFilter.Name="dateTimePickerFilter";
+            dateTimePickerFilter.Size=new Size(194, 23);
+            dateTimePickerFilter.TabIndex=14;
             // 
-            // dateTimePicker1
+            // buttonSearch
             // 
-            dateTimePicker1.Location=new Point(930, 387);
-            dateTimePicker1.Name="dateTimePicker1";
-            dateTimePicker1.Size=new Size(194, 23);
-            dateTimePicker1.TabIndex=14;
+            buttonSearch.BackColor=Color.YellowGreen;
+            buttonSearch.Font=new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSearch.ForeColor=Color.DarkGreen;
+            buttonSearch.Location=new Point(983, 405);
+            buttonSearch.Name="buttonSearch";
+            buttonSearch.Size=new Size(75, 30);
+            buttonSearch.TabIndex=15;
+            buttonSearch.Text="Search";
+            buttonSearch.UseVisualStyleBackColor=false;
+            // 
+            // radioButtonDate
+            // 
+            radioButtonDate.AutoSize=true;
+            radioButtonDate.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            radioButtonDate.ForeColor=SystemColors.HotTrack;
+            radioButtonDate.Location=new Point(945, 342);
+            radioButtonDate.Name="radioButtonDate";
+            radioButtonDate.Size=new Size(95, 19);
+            radioButtonDate.TabIndex=16;
+            radioButtonDate.TabStop=true;
+            radioButtonDate.Text="Filter By Date";
+            radioButtonDate.UseVisualStyleBackColor=true;
+            radioButtonDate.CheckedChanged+=radioButtonDate_CheckedChanged;
             // 
             // ucEventInvites
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
-            Controls.Add(dateTimePicker1);
-            Controls.Add(radioButtonByDate);
+            Controls.Add(radioButtonDate);
+            Controls.Add(buttonSearch);
+            Controls.Add(dateTimePickerFilter);
             Controls.Add(radioButtonFilterByCategory);
             Controls.Add(tbCategory);
             Controls.Add(lblAcceptedInvites);
@@ -323,7 +339,8 @@
         private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
         private RadioButton radioButtonFilterByCategory;
-        private RadioButton radioButtonByDate;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePickerFilter;
+        private Button buttonSearch;
+        private RadioButton radioButtonDate;
     }
 }
