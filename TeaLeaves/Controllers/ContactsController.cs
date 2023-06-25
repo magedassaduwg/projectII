@@ -63,6 +63,28 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Returns the users who have been invited to an event and have accepted
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="event"></param>
+        /// <returns></returns>
+        public List<User> GetAcceptedUsersContactsByEvent(Models.User user, Event @event)
+        {
+            return _contactsDAL.GetAcceptedUsersContactsByEvent(user, @event);
+        }
+
+        /// <summary>
+        /// Returns the users who have been invited to an event and have declined
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="event"></param>
+        /// <returns></returns>
+        public List<User> GetDeclinedUsersContactsByEvent(Models.User user, Event @event)
+        {
+            return _contactsDAL.GetDeclinedUsersContactsByEvent(user, @event);
+        }
+
+        /// <summary>
         /// method deleting a contact from a User's contact list in the database
         /// </summary>
         /// <param name="user"></param>

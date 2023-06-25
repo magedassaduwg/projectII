@@ -6,6 +6,7 @@
     public class Event 
     {
         public string? EventName { get; set; }
+        public string? Category { get; set; }
         public DateTime EventDateTime { get; set; }
         public string? Description { get; set; }
         public int CreatorId { get; set; }

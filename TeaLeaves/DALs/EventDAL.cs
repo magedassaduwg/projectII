@@ -17,12 +17,12 @@ namespace TeaLeaves.DALs
         public int SaveEvent(Event @event)
         {
             string query = @event.Id <= 0 ?
-                @"INSERT INTO Events (Description, Name, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
-                VALUES (@Description, @Name, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)
+                @"INSERT INTO Events (Description, Name, Category, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
+                VALUES (@Description, @Name, @Category, @State, @City, @StreetNumber, @Zipcode, @EventDateTime, @CreatorId)
                 select scope_identity()"
                 :
                 @"UPDATE Events 
-                SET Name = @Name, StreetNumber = @StreetNumber, State = @State, City = @City, Zipcode = @Zipcode, EventDateTime = @EventDateTime, Description = @Description 
+                SET Name = @Name, Category = @Category, StreetNumber = @StreetNumber, State = @State, City = @City, Zipcode = @Zipcode, EventDateTime = @EventDateTime, Description = @Description 
                 WHERE eventId = @eventId
 
                 select @eventId";
@@ -37,6 +37,7 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@Description", @event.Description);
                     saveCommand.Parameters.AddWithValue("@State", @event.State);
                     saveCommand.Parameters.AddWithValue("@City", @event.City);
+                    saveCommand.Parameters.AddWithValue("@Category", @event.Category);
                     if (@event.Zipcode != 0)
                     {
                         saveCommand.Parameters.AddWithValue("@Zipcode", @event.Zipcode.ToString().TrimStart('0'));
@@ -90,11 +91,11 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description " +
-                    "FROM Events e " +
-                    "JOIN EventResponses er " +
-                    "ON e.EventID = er.EventID " +
-                    "WHERE er.EventReceiverId = @UserId AND er.Accepted = 1;";
+                string query = @"SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description
+                    FROM Events e
+                    JOIN EventResponses er
+                    ON e.EventID = er.EventID
+                    WHERE er.EventReceiverId = @UserId AND er.Accepted = 1;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);
@@ -113,6 +114,50 @@ namespace TeaLeaves.DALs
                         StreetNumber = reader["StreetNumber"].ToString(),
                         Zipcode = Convert.ToInt32(reader["Zipcode"]),
                         EventName = reader["Name"].ToString(),
+                        Category = reader["Category"].ToString(),
+                        Description = reader["Description"].ToString(),
+                    };
+                    userEvents.Add(userEvent);
+                }
+            }
+            return userEvents;
+        }
+
+        /// <summary>
+        /// Returns all Events which the given user by userId has been invited to and has declined
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Event> GetDeclinedEventsReceivedByUserId(int userId)
+        {
+            List<Event> userEvents = new List<Event>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description " +
+                    "FROM Events e " +
+                    "JOIN EventResponses er " +
+                    "ON e.EventID = er.EventID " +
+                    "WHERE er.EventReceiverId = @UserId AND er.Declined = 1;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Event userEvent = new Event
+                    {
+                        Id = Convert.ToInt32(reader["UserEventId"]),
+                        CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                        State = reader["State"].ToString(),
+                        City = reader["City"].ToString(),
+                        StreetNumber = reader["StreetNumber"].ToString(),
+                        Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                        EventName = reader["Name"].ToString(),
+                        Category = reader["Category"].ToString(),
                         Description = reader["Description"].ToString(),
                     };
                     userEvents.Add(userEvent);
@@ -132,11 +177,11 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description " +
+                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description " +
                     "FROM Events e " +
                     "JOIN EventResponses er " +
                     "ON e.EventID = er.EventID " +
-                    "WHERE er.EventReceiverId = @UserId AND er.Accepted = 0;";
+                    "WHERE er.EventReceiverId = @UserId AND er.Accepted = 0 AND er.Declined = 0;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);
@@ -155,6 +200,7 @@ namespace TeaLeaves.DALs
                         StreetNumber = reader["StreetNumber"].ToString(),
                         Zipcode = Convert.ToInt32(reader["Zipcode"]),
                         EventName = reader["Name"].ToString(),
+                        Category = reader["Category"].ToString(),
                         Description = reader["Description"].ToString(),
                     };
                     userEvents.Add(userEvent);
@@ -172,7 +218,7 @@ namespace TeaLeaves.DALs
         {
             List<Event> events = new List<Event>();
 
-            string query = @"SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Description
+            string query = @"SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Category, Description
                      FROM Events
                      WHERE CreatorId = @UserId";
 
@@ -197,6 +243,7 @@ namespace TeaLeaves.DALs
                                 StreetNumber = reader["StreetNumber"].ToString(),
                                 Zipcode = Convert.ToInt32(reader["Zipcode"]),
                                 EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
                                 Description = reader["Description"].ToString(),
                             };
 
@@ -217,7 +264,7 @@ namespace TeaLeaves.DALs
         {
             Event @event = null;
 
-            string selectStatement = @"SELECT [EventId],[Name],[StreetNumber],[City] ,[State], [Zipcode] , [EventDateTime], [Description],[CreatorId] " +
+            string selectStatement = @"SELECT [EventId],[Name],[Category],[StreetNumber],[City] ,[State], [Zipcode] , [EventDateTime], [Description],[CreatorId] " +
                 "FROM [Events]  " +
                 "Where EventId = @EventId";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
@@ -242,6 +289,7 @@ namespace TeaLeaves.DALs
                                 StreetNumber = reader["StreetNumber"].ToString(),
                                 Zipcode = Convert.ToInt32(reader["Zipcode"]),
                                 EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
                                 Description = reader["Description"].ToString(),
                             };
 
@@ -253,7 +301,137 @@ namespace TeaLeaves.DALs
             return @event;
         }
 
+        public List<Event> GetEventByCategory(string category)
+        {
+            List<Event> events = new List<Event>();
+
+            string query = @"SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Category, Description
+                     FROM Events
+                     WHERE Category = @Category";
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Category", category);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Event @event = new Event
+                            {
+                                Id = Convert.ToInt32(reader["EventId"]),
+                                EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                                State = reader["State"].ToString(),
+                                City = reader["City"].ToString(),
+                                StreetNumber = reader["StreetNumber"].ToString(),
+                                Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                                EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                            };
+
+                            events.Add(@event);
+                        }
+                    }
+                }
+            }
+
+            return events;
+        }
+
+        public List<Event> GetEventByDate(DateTime eventDate)
+        {
+            List<Event> events = new List<Event>();
+
+            string query = @"SELECT EventId, EventDateTime, State, City, StreetNumber, Zipcode, Name, Category, Description
+                     FROM Events
+                     WHERE EventDateTime = @EventDate";
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@EventDate", eventDate);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Event @event = new Event
+                            {
+                                Id = Convert.ToInt32(reader["EventId"]),
+                                EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                                State = reader["State"].ToString(),
+                                City = reader["City"].ToString(),
+                                StreetNumber = reader["StreetNumber"].ToString(),
+                                Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                                EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                            };
+
+                            events.Add(@event);
+                        }
+                    }
+                }
+            }
+
+            return events;
+        }
+
+        public List<Event> GetEventsReceivedByUserIdWithCategory(int userId, string category)
+        {
+            List<Event> userEvents = new List<Event>();
+
+                string query = "SELECT e.EventId as UserEventId, e.CreatorId, e.EventDateTime, e.Category, e.State, e.City, e.StreetNumber, e.Zipcode, e.Name, e.Description " +
+                    "FROM Events e " +
+                    "JOIN EventResponses er " +
+                    "ON e.EventID = er.EventID " +
+                    "WHERE er.EventReceiverId = @UserId AND e.Category = @Category;";
+
+                using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@Category", category);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Event userEvent = new Event
+                            {
+                                Id = Convert.ToInt32(reader["UserEventId"]),
+                                CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                                EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                                State = reader["State"].ToString(),
+                                City = reader["City"].ToString(),
+                                StreetNumber = reader["StreetNumber"].ToString(),
+                                Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                                EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                            };
+                            userEvents.Add(userEvent);
+                        }
+                    }
+
+                    }
+                }
+
+                return userEvents;
+            }
+        }
+
     }
 
-}
 

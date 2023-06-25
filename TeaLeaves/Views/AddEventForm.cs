@@ -28,9 +28,10 @@ namespace TeaLeaves.Views
         {
 
             textBoxEName.Text = _event.EventName;
-            textBoxStreetName.Text=_event.StreetNumber;
+            textBoxStreetName.Text = _event.StreetNumber;
             textBoxCity.Text = _event.City;
             comboBoxState.Text = _event.State;
+            comboBoxCategory.Text = _event.Category;
             textBoxZip.Text = string.Empty;
             richTextBoxDescription.Text = _event.Description;
             if (_event.Id > 0)
@@ -50,7 +51,7 @@ namespace TeaLeaves.Views
                 numericUpDownMinute.Value = DateTime.Now.Minute;
             }
 
-
+            BindCategory();
             BindState();
         }
 
@@ -99,9 +100,10 @@ namespace TeaLeaves.Views
                 _event.EventName = textBoxEName.Text.Trim();
                 _event.StreetNumber = textBoxStreetName.Text.Trim();
                 _event.State = comboBoxState.SelectedItem.ToString();
+                _event.Category = comboBoxCategory.SelectedItem.ToString();
                 _event.City = textBoxCity.Text.Trim();
                 _event.Description = richTextBoxDescription.Text.Trim();
-                _event.Zipcode = 0; 
+                _event.Zipcode = 0;
 
                 if (!string.IsNullOrEmpty(textBoxZip.Text.Trim()) && int.TryParse(textBoxZip.Text.Trim(), out int zipcodeValue))
                 {
@@ -119,7 +121,7 @@ namespace TeaLeaves.Views
                     _eventController.SaveEvent(_event);
                     MessageBox.Show("Event has been saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -151,7 +153,7 @@ namespace TeaLeaves.Views
         private void textBoxZip_TextChanged(object sender, EventArgs e)
         {
             labelError.Text = string.Empty;
-           
+
         }
 
         private void textBoxEName_TextChanged(object sender, EventArgs e)
@@ -164,10 +166,19 @@ namespace TeaLeaves.Views
             labelError.Text = string.Empty;
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
         }
+        private void BindCategory()
+        {
+            string[] category = {
+                "Personal", "Friends", "Family", "Office", "Business", "Others"
+            };
+            comboBoxCategory.Items.Clear();
+            comboBoxCategory.Items.AddRange(category);
+            comboBoxCategory.SelectedIndex = 0;
 
+        }
 
     }
 }

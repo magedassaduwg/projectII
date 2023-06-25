@@ -51,6 +51,17 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Sets an EventResponse decline column to true for the given event response
+        /// </summary>
+        /// <param name="eventReceiverId"></param>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public int DeclineEventResponse(int eventReceiverId, int eventId)
+        {
+            return _eventResponseDAL.DeclineEventResponse(eventReceiverId, eventId);
+        }
+
+        /// <summary>
         /// Returns all EventResponses with matching receivingId
         /// </summary>
         /// <param name="receivingId"></param>

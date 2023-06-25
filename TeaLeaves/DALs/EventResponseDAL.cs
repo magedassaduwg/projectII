@@ -74,7 +74,31 @@ namespace TeaLeaves.DALs
         public int AcceptEventResponse(int receiverId, int eventId)
         {
             string query = @"UPDATE EventResponses
-                            SET Accepted = 1
+                            SET Accepted = 1, Declined = 0
+                            WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId
+                            select EventResponseId FROM EventResponses WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@EventReceiverId", receiverId);
+                    saveCommand.Parameters.AddWithValue("@EventId", eventId);
+                    return Convert.ToInt32(saveCommand.ExecuteScalar());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the given response to declined
+        /// </summary>
+        /// <param name="eventResponseId"></param>
+        /// <returns></returns>
+        public int DeclineEventResponse(int receiverId, int eventId)
+        {
+            string query = @"UPDATE EventResponses
+                            SET Declined = 1, Accepted = 0
                             WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId
                             select EventResponseId FROM EventResponses WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
@@ -98,8 +122,8 @@ namespace TeaLeaves.DALs
         public int AddEventResponse(EventResponse @eventResponse)
         {
 
-            string query = @"INSERT INTO EventResponses (EventInviterId, EventReceiverId, EventId, Accepted) 
-                             VALUES (@InvitedId, @ReceivedId, @EventId, @Accepted)
+            string query = @"INSERT INTO EventResponses (EventInviterId, EventReceiverId, EventId, Accepted, Declined) 
+                             VALUES (@InvitedId, @ReceivedId, @EventId, @Accepted, @Declined)
                              select scope_identity()";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -111,6 +135,7 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@ReceivedId", @eventResponse.ReceiverId);
                     saveCommand.Parameters.AddWithValue("@EventId", @eventResponse.EventId);
                     saveCommand.Parameters.AddWithValue("@Accepted", @eventResponse.Accepted);
+                    saveCommand.Parameters.AddWithValue("@Declined", @eventResponse.Declined);
                     return Convert.ToInt32(saveCommand.ExecuteScalar());
                 }
             }

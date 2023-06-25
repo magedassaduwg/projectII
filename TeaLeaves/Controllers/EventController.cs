@@ -48,6 +48,10 @@ namespace TeaLeaves.Controllers
         {
             return _eventDAL.GetEventsReceivedByUserId(userId);
         }
+        public List<Event> GetEventsReceivedByUserIdWithCategory(int userId, string category)
+        {
+            return _eventDAL.GetEventsReceivedByUserIdWithCategory(userId, category);
+        }
 
         /// <summary>
         /// Returns all the events the given user has accepted
@@ -57,6 +61,16 @@ namespace TeaLeaves.Controllers
         public List<Event> GetAcceptedEventsReceivedByUserId(int userId)
         {
             return _eventDAL.GetAcceptedEventsReceivedByUserId(userId);
+        }
+
+        /// <summary>
+        /// Returns all the events the given user has declined
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Event> GetDeclinedEventsReceivedByUserId(int userId)
+        {
+            return _eventDAL.GetDeclinedEventsReceivedByUserId(userId);
         }
 
         /// <summary>
@@ -77,6 +91,31 @@ namespace TeaLeaves.Controllers
         public Event GetEventById(int selectedEventId)
         {
             return _eventDAL.GetEventById(selectedEventId);
+        }
+        /// <summary>
+        /// Get event by category name
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public List<Event> GetEventByCategory(string category)
+        {
+            return _eventDAL.GetEventByCategory(category);
+        }
+        /// <summary>
+        /// Get event by date
+        /// </summary>
+        /// <param name="eventDate"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public List<Event> GetEventByDate(DateTime eventDate)
+        {
+            return _eventDAL.GetEventByDate(eventDate);
+        }
+
+        internal List<Event> GetEventsReceivedByUserIdWithDate(int userId, DateTimePicker dateTimePickerFilter)
+        {
+            throw new NotImplementedException();
         }
     }
 }
