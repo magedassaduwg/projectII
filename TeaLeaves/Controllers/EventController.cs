@@ -48,6 +48,10 @@ namespace TeaLeaves.Controllers
         {
             return _eventDAL.GetEventsReceivedByUserId(userId);
         }
+        public List<Event> GetEventsReceivedByUserIdWithCategory(int userId, string category)
+        {
+            return _eventDAL.GetEventsReceivedByUserIdWithCategory(userId, category);
+        }
 
         /// <summary>
         /// Returns all the events the given user has accepted
@@ -107,6 +111,11 @@ namespace TeaLeaves.Controllers
         public List<Event> GetEventByDate(DateTime eventDate)
         {
             return _eventDAL.GetEventByDate(eventDate);
+        }
+
+        internal List<Event> GetEventsReceivedByUserIdWithDate(int userId, DateTimePicker dateTimePickerFilter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

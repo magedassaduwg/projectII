@@ -114,7 +114,7 @@ namespace TeaLeaves.DALs
                         StreetNumber = reader["StreetNumber"].ToString(),
                         Zipcode = Convert.ToInt32(reader["Zipcode"]),
                         EventName = reader["Name"].ToString(),
-                        Category = reader["Category"].ToString(),   
+                        Category = reader["Category"].ToString(),
                         Description = reader["Description"].ToString(),
                     };
                     userEvents.Add(userEvent);
@@ -385,7 +385,53 @@ namespace TeaLeaves.DALs
             return events;
         }
 
+        public List<Event> GetEventsReceivedByUserIdWithCategory(int userId, string category)
+        {
+            List<Event> userEvents = new List<Event>();
+
+                string query = "SELECT e.EventId as UserEventId, e.CreatorId, e.EventDateTime, e.Category, e.State, e.City, e.StreetNumber, e.Zipcode, e.Name, e.Description " +
+                    "FROM Events e " +
+                    "JOIN EventResponses er " +
+                    "ON e.EventID = er.EventID " +
+                    "WHERE er.EventReceiverId = @UserId AND e.Category = @Category;";
+
+                using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@Category", category);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Event userEvent = new Event
+                            {
+                                Id = Convert.ToInt32(reader["UserEventId"]),
+                                CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                                EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                                State = reader["State"].ToString(),
+                                City = reader["City"].ToString(),
+                                StreetNumber = reader["StreetNumber"].ToString(),
+                                Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                                EventName = reader["Name"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                            };
+                            userEvents.Add(userEvent);
+                        }
+                    }
+
+                    }
+                }
+
+                return userEvents;
+            }
+        }
+
     }
 
-}
 

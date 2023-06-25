@@ -154,25 +154,25 @@ namespace TeaLeaves.UserControls
                         MessageBox.Show("Please enter category name", "Category name", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    _events = _eventController.GetEventByCategory(category);
+                    _events = _eventController.GetEventsReceivedByUserIdWithCategory(CurrentUserStore.User.UserId,category);
+
                     if (_events.Count == 0)
                     {
                         MessageBox.Show("No event found with that category");
                     }
-
-                    dgvAcceptedInvites.DataSource = _events;
+                    dgvEventInvites.DataSource = _events;
                 }
 
                 else if (radioButtonDate.Checked)
                 {
                     DateTime eventDate = Convert.ToDateTime(dateTimePickerFilter.Value).Date;
-                    _events = _eventController.GetEventByDate(eventDate);
+                    _events = _eventController.GetEventsReceivedByUserIdWithDate(CurrentUserStore.User.UserId, dateTimePickerFilter);
 
                     if (_events.Count == 0)
                     {
-                        MessageBox.Show("No event found with the date");
+                        MessageBox.Show("No event found with that date");
                     }
-                    dgvAcceptedInvites.DataSource = _events;
+                    dgvEventInvites.DataSource = _events;
                 }
 
                 eventName();
