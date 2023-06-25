@@ -63,8 +63,18 @@ namespace TeaLeaves.UserControls
         private void ucEventInvites_Load(object sender, EventArgs e)
         {
             GetUserEvents();
+            BindCategory();
         }
+        private void BindCategory()
+        {
+            string[] category = {
+                "Personal", "Friends", "Family", "Office", "Business", "Others"
+            };
+            tbCategory.Items.Clear();
+            tbCategory.Items.AddRange(category);
+            tbCategory.SelectedIndex = 0;
 
+        }
         private void btnAccept_Click(object sender, EventArgs e)
         {
             if (dgvEventInvites.SelectedRows.Count > 0)
