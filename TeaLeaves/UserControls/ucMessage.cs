@@ -1,5 +1,4 @@
 ﻿using System.Data.SqlClient;
-using System.Security.Cryptography.X509Certificates;
 using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
@@ -7,6 +6,9 @@ using TeaLeaves.Views;
 
 namespace TeaLeaves.UserControls
 {
+    /// <summary>
+    /// user control for the message feature
+    /// </summary>
     public partial class ucMessage : UserControl
     {
         private MessageController _messageController;
@@ -14,10 +16,11 @@ namespace TeaLeaves.UserControls
         private UsersController _usersController;
         private ContactsController _contactsController;
         private object _selectedUser;
-        //private List<User> _contactList;
-        //private List<GroupMember> _groupList;
         private List<object> _allContacts;
 
+        /// <summary>
+        /// constructor to initialize components, controllers, and then load contacts
+        /// </summary>
         public ucMessage()
         {
             InitializeComponent();
@@ -43,21 +46,12 @@ namespace TeaLeaves.UserControls
                 _allContacts = new List<object>();
                 List<User> contactList = _contactsController.GetMessageContacts(CurrentUserStore.User);
                 List<GroupMember> groupList = _groupMemberController.GetMyGroupContact(CurrentUserStore.User.UserId);
+
                 _allContacts.AddRange(contactList);
                 _allContacts.AddRange(groupList);
 
                 _allContacts = _allContacts.OrderByDescending(c => ((dynamic)c).TimeStamp).ToList();
                 lstContacts.Items.Clear();
-
-                //if (_groupList != null && _groupList.Count > 0)
-                //{
-                //    lstContacts.Items.AddRange(_groupList.ToArray());
-                //}
-
-                //if (_contactList != null && _contactList.Count > 0)
-                //{
-                //    lstContacts.Items.AddRange(_contactList.ToArray());
-                //}
 
                 lstContacts.Items.AddRange(_allContacts.ToArray());
 
@@ -90,9 +84,8 @@ namespace TeaLeaves.UserControls
 
         private void UpdateContactUnreadStatus(IUserMessage message, bool isUnread)
         {
-            //int senderIndex = _contactList.FindIndex(c => c.UserId == senderId);
             int senderIndex = _allContacts.FindIndex(c => (c.GetType() == typeof(User) && ((User)c).UserId == message.SenderId) ||
-                                                          (c.GetType() == typeof(GroupMember) &&((GroupMember)c).GroupId == message.GroupId));
+                                                          (c.GetType() == typeof(GroupMember) && ((GroupMember)c).GroupId == message.GroupId));
 
             if (senderIndex > -1)
             {
@@ -109,29 +102,48 @@ namespace TeaLeaves.UserControls
             }
             else
             {
-                if (message.GroupId.HasValue)
+                try
                 {
-                    GroupMember groupInfo = _groupMemberController.GetGroupById(message.GroupId.Value);
-
-                    if (groupInfo != null)
+                    if (message.GroupId.HasValue)
                     {
-                        groupInfo.IsContainUnread = isUnread;
-                        _allContacts.Insert(0, groupInfo);
-                        lstContacts.Items.Insert(0, groupInfo);
+                        GroupMember groupInfo = _groupMemberController.GetGroupById(message.GroupId.Value);
+
+                        if (groupInfo != null)
+                        {
+                            groupInfo.IsContainUnread = isUnread;
+                            _allContacts.Insert(0, groupInfo);
+                            lstContacts.Items.Insert(0, groupInfo);
+                        }
+                    }
+                    else
+                    {
+                        User newUser = _usersController.GetUserById(message.SenderId);
+
+                        if (newUser != null)
+                        {
+                            newUser.IsContainUnread = isUnread;
+                            _allContacts.Insert(0, newUser);
+                            lstContacts.Items.Insert(0, newUser);
+                        }
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    User newUser = _usersController.GetUserById(message.SenderId);
-
-                    if (newUser != null)
-                    {
-                        newUser.IsContainUnread = isUnread;
-                        _allContacts.Insert(0, newUser);
-                        lstContacts.Items.Insert(0, newUser);
-                    }
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
+        }
+
+        private string GetUserNameById(int userId)
+        {
+            var user = _allContacts.Find(u => u.GetType() == typeof(User) && ((User)u).UserId == userId);
+
+            if (user == null)
+            {
+                user = _usersController.GetUserById(userId);
+            }
+
+            return ((User)user).FullName;
         }
 
         private void AddMessageToScreen(IUserMessage message)
@@ -139,7 +151,7 @@ namespace TeaLeaves.UserControls
             if (message.Text?.Trim().Length > 0)
             {
                 Label lblMessage = new Label();
-                lblMessage.Text = message.Text.Replace("\n", Environment.NewLine);
+                lblMessage.Text = message.GroupId.HasValue ? $"{GetUserNameById(message.SenderId)}:{Environment.NewLine}{message.Text.Replace("\n", Environment.NewLine)}" : message.Text.Replace("\n", Environment.NewLine);
                 lblMessage.BorderStyle = BorderStyle.FixedSingle;
                 lblMessage.Padding = new Padding(5, 5, 5, 5);
                 lblMessage.Margin = new Padding(0, 0, 20, 0);
@@ -270,11 +282,11 @@ namespace TeaLeaves.UserControls
 
         private void LoadMessagesFromGroup(int groupId)
         {
+            tblMessages.Controls.Clear();
+            tblMessages.RowCount = 0;
+
             try
             {
-                tblMessages.Controls.Clear();
-                tblMessages.RowCount = 0;
-
                 List<IUserMessage> userMessages = _messageController.GetMessagesByGroupId(groupId);
 
                 if (userMessages != null && userMessages.Count > 0)

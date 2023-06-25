@@ -30,6 +30,11 @@ namespace TeaLeaves.DALs
             }
         }
 
+        /// <summary>
+        /// Gets a list of members in a group for the user id
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public List<GroupMember> GetMyGroupContact(int userId)
         {
             List<GroupMember> myGroups = new List<GroupMember>();

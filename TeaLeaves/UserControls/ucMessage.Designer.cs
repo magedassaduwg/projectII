@@ -57,7 +57,7 @@
             tblMessages.Name = "tblMessages";
             tblMessages.RowCount = 1;
             tblMessages.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblMessages.Size = new Size(607, 0);
+            tblMessages.Size = new Size(811, 0);
             tblMessages.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -73,7 +73,7 @@
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(807, 77);
+            tableLayoutPanel3.Size = new Size(819, 77);
             tableLayoutPanel3.TabIndex = 5;
             // 
             // btnSend
@@ -82,9 +82,9 @@
             btnSend.Dock = DockStyle.Fill;
             btnSend.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnSend.ForeColor = Color.DarkGreen;
-            btnSend.Location = new Point(608, 3);
+            btnSend.Location = new Point(617, 3);
             btnSend.Name = "btnSend";
-            btnSend.Size = new Size(196, 71);
+            btnSend.Size = new Size(199, 71);
             btnSend.TabIndex = 6;
             btnSend.Text = "Send";
             btnSend.UseVisualStyleBackColor = false;
@@ -97,7 +97,7 @@
             txtMessage.Location = new Point(3, 3);
             txtMessage.MaxLength = 500;
             txtMessage.Name = "txtMessage";
-            txtMessage.Size = new Size(599, 71);
+            txtMessage.Size = new Size(608, 71);
             txtMessage.TabIndex = 4;
             txtMessage.Text = "";
             // 
@@ -109,9 +109,9 @@
             lstContacts.FormattingEnabled = true;
             lstContacts.ItemHeight = 20;
             lstContacts.Items.AddRange(new object[] { "No Contacts" });
-            lstContacts.Location = new Point(816, 3);
+            lstContacts.Location = new Point(828, 3);
             lstContacts.Name = "lstContacts";
-            lstContacts.Size = new Size(265, 462);
+            lstContacts.Size = new Size(269, 462);
             lstContacts.TabIndex = 1;
             lstContacts.DrawItem += lstContacts_DrawItem;
             lstContacts.SelectedIndexChanged += lstContacts_SelectedIndexChanged;
@@ -132,7 +132,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1084, 551);
+            tableLayoutPanel1.Size = new Size(1100, 551);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -148,7 +148,7 @@
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
-            tableLayoutPanel4.Size = new Size(807, 462);
+            tableLayoutPanel4.Size = new Size(819, 462);
             tableLayoutPanel4.TabIndex = 6;
             // 
             // lblSelectedContact
@@ -170,12 +170,12 @@
             tableLayoutPanel2.Controls.Add(btnCreateGroup, 0, 0);
             tableLayoutPanel2.Controls.Add(btnManageContacts, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(816, 471);
+            tableLayoutPanel2.Location = new Point(828, 471);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(265, 77);
+            tableLayoutPanel2.Size = new Size(269, 77);
             tableLayoutPanel2.TabIndex = 7;
             // 
             // btnCreateGroup
@@ -184,9 +184,9 @@
             btnCreateGroup.Dock = DockStyle.Fill;
             btnCreateGroup.Font = new Font("Segoe UI Semibold", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnCreateGroup.ForeColor = Color.DarkGreen;
-            btnCreateGroup.Location = new Point(135, 3);
+            btnCreateGroup.Location = new Point(137, 3);
             btnCreateGroup.Name = "btnCreateGroup";
-            btnCreateGroup.Size = new Size(127, 71);
+            btnCreateGroup.Size = new Size(129, 71);
             btnCreateGroup.TabIndex = 4;
             btnCreateGroup.Text = "Create Group";
             btnCreateGroup.UseVisualStyleBackColor = false;
@@ -200,7 +200,7 @@
             btnManageContacts.ForeColor = Color.DarkGreen;
             btnManageContacts.Location = new Point(3, 3);
             btnManageContacts.Name = "btnManageContacts";
-            btnManageContacts.Size = new Size(126, 71);
+            btnManageContacts.Size = new Size(128, 71);
             btnManageContacts.TabIndex = 3;
             btnManageContacts.Text = "Manage Contacts";
             btnManageContacts.UseVisualStyleBackColor = false;
@@ -212,7 +212,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel1);
             Name = "ucMessage";
-            Size = new Size(1084, 551);
+            Size = new Size(1100, 551);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);

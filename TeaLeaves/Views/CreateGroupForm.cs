@@ -35,6 +35,7 @@ namespace TeaLeaves.Views
             if (txtGroupName.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Group name is empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtGroupName.Focus();
                 DialogResult = DialogResult.None;
                 return;
             }
