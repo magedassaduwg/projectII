@@ -53,7 +53,7 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "select u.UserId, u.FirstName, u.LastName, u.Username, u.Email, " +
+                string query = "select distinct u.UserId, u.FirstName, u.LastName, u.Username, u.Email, " +
                     "(select top 1 timestamp from Messages where ReceiverId = c.UserId2 or SenderId = c.UserId2 order by TimeStamp desc) TimeStamp " +
                     "from Contacts c " +
                     "inner join users u on c.UserId2 = u.UserId " +
@@ -75,6 +75,12 @@ namespace TeaLeaves.DALs
                         Username = reader["Username"].ToString(),
                         Email = reader["Email"].ToString()
                     };
+
+                    if (reader["TimeStamp"] != DBNull.Value)
+                    {
+                        contact.TimeStamp = Convert.ToDateTime(reader["TimeStamp"]);
+                    }
+
                     contacts.Add(contact);
                 }
             }

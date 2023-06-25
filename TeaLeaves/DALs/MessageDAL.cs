@@ -6,7 +6,7 @@ namespace TeaLeaves.DALs
     /// <summary>
     /// Data access layer for the messages table
     /// </summary>
-    public class MessagessDAL
+    public class MessageDAL
     {
         /// <summary>
         /// Gets message history between two users with paging
@@ -19,8 +19,8 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                SqlCommand command = new SqlCommand("select top 50 MessageId, SenderId, ReceiverId, Text, MediaId, TimeStamp " +
-                    "from dbo.Messages where (SenderId = @senderId and ReceiverId = @receiverId) or (SenderId = @receiverId and ReceiverId = @senderId)" +
+                SqlCommand command = new SqlCommand("select top 50 MessageId, SenderId, ReceiverId, Text, MediaId, GroupId, TimeStamp " +
+                    "from dbo.Messages where (SenderId = @senderId and ReceiverId = @receiverId) or (SenderId = @receiverId and ReceiverId = @senderId) and GroupId is null " +
                     "order by TimeStamp Desc", connection);
 
                 command.Parameters.AddWithValue("@receiverId", userId);
@@ -45,6 +45,58 @@ namespace TeaLeaves.DALs
                     {
                         message.MediaId = Convert.ToInt32(reader["MediaId"]);
                     }
+                    if (reader["GroupId"] != DBNull.Value)
+                    {
+                        message.GroupId = Convert.ToInt32(reader["GroupId"]);
+                    }
+
+                    messages.Add(message);
+                }
+            }
+
+            messages.Reverse();
+
+            return messages;
+        }
+        /// <summary>
+        /// Gets message history for a group
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="contactId"></param>
+        public List<IUserMessage> GetMessagesByGroupId(int groupId)
+        {
+            List<IUserMessage> messages = new List<IUserMessage>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("select top 50 MessageId, SenderId, ReceiverId, Text, MediaId, GroupId, TimeStamp " +
+                    "from dbo.Messages where GroupId = @groupId order by TimeStamp Desc", connection);
+
+                command.Parameters.AddWithValue("@groupId", groupId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    IUserMessage message = new UserMessage
+                    {
+
+                        Text = reader["Text"].ToString(),
+                        MessageId = Convert.ToInt32(reader["MessageId"]),
+                        ReceiverId = Convert.ToInt32(reader["ReceiverId"]),
+                        SenderId = Convert.ToInt32(reader["SenderId"]),
+                        TimeStamp = Convert.ToDateTime(reader["TimeStamp"])
+                    };
+
+                    if (reader["MediaId"] != DBNull.Value)
+                    {
+                        message.MediaId = Convert.ToInt32(reader["MediaId"]);
+                    }
+                    if (reader["GroupId"] != DBNull.Value)
+                    {
+                        message.GroupId = Convert.ToInt32(reader["GroupId"]);
+                    }
 
                     messages.Add(message);
                 }
@@ -63,8 +115,8 @@ namespace TeaLeaves.DALs
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                SqlCommand command = new SqlCommand("Insert into Messages(SenderId, ReceiverId, Text, MediaId, Timestamp) " +
-                                                "Values(@senderId, @receiverId, @text, @mediaId, @timestamp) " +
+                SqlCommand command = new SqlCommand("Insert into Messages(SenderId, ReceiverId, Text, MediaId, GroupId, Timestamp) " +
+                                                "Values(@senderId, @receiverId, @text, @mediaId,@groupId, @timestamp) " +
                                                 "select scope_identity()", connection);
 
                 command.Parameters.AddWithValue("@senderId", message.SenderId);
@@ -79,6 +131,16 @@ namespace TeaLeaves.DALs
                 {
                     command.Parameters.AddWithValue("@mediaId", DBNull.Value);
                 }
+
+                if (message.GroupId != null)
+                {
+                    command.Parameters.AddWithValue("@groupId", message.GroupId);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@groupId", DBNull.Value);
+                }
+
                 command.Parameters.AddWithValue("@timestamp", message.TimeStamp);
 
                 connection.Open();
@@ -92,7 +154,7 @@ namespace TeaLeaves.DALs
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 SqlCommand command = new SqlCommand("Delete From Messages where MessageId = @messageId", connection);
-                
+
                 command.Parameters.AddWithValue("@messageId", messageId);
                 connection.Open();
                 command.ExecuteScalar();

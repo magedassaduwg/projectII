@@ -91,8 +91,8 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewTextBoxColumn1.DataPropertyName="EventName";
-            dataGridViewTextBoxColumn1.HeaderText="EventName";
+            dataGridViewTextBoxColumn1.DataPropertyName="Category";
+            dataGridViewTextBoxColumn1.HeaderText="Category";
             dataGridViewTextBoxColumn1.Name="dataGridViewTextBoxColumn1";
             dataGridViewTextBoxColumn1.ReadOnly=true;
             dataGridViewTextBoxColumn1.Width=240;
@@ -152,7 +152,7 @@
             btnRefresh.Name="btnRefresh";
             btnRefresh.Size=new Size(126, 57);
             btnRefresh.TabIndex=3;
-            btnRefresh.Text="Refresh";
+            btnRefresh.Text="Clear";
             btnRefresh.UseVisualStyleBackColor=false;
             btnRefresh.Click+=btnRefresh_Click;
             // 
@@ -402,10 +402,6 @@
         private Label lblInvites;
         private Label lblAcceptedInvites;
         private BindingSource eventBindingSource;
-        private DataGridViewTextBoxColumn eventNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn eventNameDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Category;
         private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn1;
@@ -421,5 +417,9 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private Label lblDeclinedInvites;
         private ComboBox tbCategory;
+        private DataGridViewTextBoxColumn eventNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }

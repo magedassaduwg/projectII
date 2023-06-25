@@ -20,5 +20,6 @@
 
         public Image ProfilePicture { get; set; }
         public string Blurb { get; set; }
+        public DateTime? TimeStamp { get; set; }
     }
 }

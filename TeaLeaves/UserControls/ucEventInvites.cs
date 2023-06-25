@@ -144,6 +144,7 @@ namespace TeaLeaves.UserControls
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             string category = tbCategory.Text;
+            
 
             try
             {
@@ -154,7 +155,7 @@ namespace TeaLeaves.UserControls
                         MessageBox.Show("Please enter category name", "Category name", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    _events = _eventController.GetEventsReceivedByUserIdWithCategory(CurrentUserStore.User.UserId,category);
+                    _events = _eventController.GetEventsReceivedByUserIdWithCategory(CurrentUserStore.User.UserId, category);
 
                     if (_events.Count == 0)
                     {
@@ -166,7 +167,7 @@ namespace TeaLeaves.UserControls
                 else if (radioButtonDate.Checked)
                 {
                     DateTime eventDate = Convert.ToDateTime(dateTimePickerFilter.Value).Date;
-                    _events = _eventController.GetEventsReceivedByUserIdWithDate(CurrentUserStore.User.UserId, dateTimePickerFilter);
+                    _events = _eventController.GetEventsReceivedByUserIdWithDate(CurrentUserStore.User.UserId, eventDate);
 
                     if (_events.Count == 0)
                     {
@@ -185,11 +186,11 @@ namespace TeaLeaves.UserControls
 
         private void eventName()
         {
-            dgvAcceptedInvites.DataSource = _events;
+            dgvEventInvites.DataSource = _events;
 
-            if (dgvAcceptedInvites.Rows.Count > 0)
+            if (dgvEventInvites.Rows.Count > 0)
             {
-                dgvAcceptedInvites.Rows[0].Selected = true;
+                dgvEventInvites.Rows[0].Selected = true;
             }
         }
     }

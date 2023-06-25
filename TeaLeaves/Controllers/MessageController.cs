@@ -8,14 +8,14 @@ namespace TeaLeaves.Controllers
     /// </summary>
     public class MessageController
     {
-        private MessagessDAL _messagesDAL;
+        private MessageDAL _messagesDAL;
 
         /// <summary>
         /// Constructor to initialize the DAL
         /// </summary>
         public MessageController()
         {
-            _messagesDAL = new MessagessDAL();
+            _messagesDAL = new MessageDAL();
         }
 
         /// <summary>
@@ -27,6 +27,17 @@ namespace TeaLeaves.Controllers
         public List<IUserMessage> GetMessagesByUserId(int userId, int contactId)
         {
             return _messagesDAL.GetMessagesByUserId(userId, contactId);
+        }
+
+        /// <summary>
+        /// Gets a chat history for a group
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="contactId"></param>
+        /// <returns></returns>
+        public List<IUserMessage> GetMessagesByGroupId(int groupId)
+        {
+            return _messagesDAL.GetMessagesByGroupId(groupId);
         }
 
         /// <summary>
