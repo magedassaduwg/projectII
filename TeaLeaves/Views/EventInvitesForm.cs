@@ -13,7 +13,10 @@ namespace TeaLeaves.Views
         EventResponseController _eventResponseController;
         List<User> _invitedUsers;
         List<User> _uninvitedUsers;
+        List<User> _acceptedUsers;
+        List<User> _declinedUsers;
         Event _event;
+
         /// <summary>
         /// Initializes a new instance of the EventInvitesForm
         /// </summary>
@@ -43,6 +46,14 @@ namespace TeaLeaves.Views
 
                 dgvUninvitedContacts.DataSource = _uninvitedUsers;
 
+                _acceptedUsers = _contactsController.GetAcceptedUsersContactsByEvent(CurrentUserStore.User, _event);
+
+                dgvAcceptedContacts.DataSource = _acceptedUsers;
+
+                _declinedUsers = _contactsController.GetDeclinedUsersContactsByEvent(CurrentUserStore.User, _event);
+
+                dgvDeclinedContacts.DataSource = _declinedUsers;
+
                 if (dgvUninvitedContacts.Rows.Count > 0)
                 {
                     dgvUninvitedContacts.Rows[0].Selected = true;
@@ -66,7 +77,7 @@ namespace TeaLeaves.Views
                 eventResponse.EventId = _event.Id;
                 _eventResponseController.AddEventResponse(eventResponse);
                 GetUserEvents();
-            }           
+            }
         }
     }
 }

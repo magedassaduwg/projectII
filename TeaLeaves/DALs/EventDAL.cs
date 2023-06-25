@@ -91,11 +91,11 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description " +
-                    "FROM Events e " +
-                    "JOIN EventResponses er " +
-                    "ON e.EventID = er.EventID " +
-                    "WHERE er.EventReceiverId = @UserId AND er.Accepted = 1;";
+                string query = @"SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description
+                    FROM Events e
+                    JOIN EventResponses er
+                    ON e.EventID = er.EventID
+                    WHERE er.EventReceiverId = @UserId AND er.Accepted = 1;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);

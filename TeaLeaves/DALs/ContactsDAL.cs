@@ -91,16 +91,12 @@ namespace TeaLeaves.DALs
         {
             List<User> contacts = new List<User>();
 
-            //foreach (int userId in contactUserIDs)
-            //{
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                //string query = "SELECT UserId, FirstName, LastName, Username, Email FROM Users u " +
-                //    "JOIN EventResponses er ON u.UserId = er.EventReceiverId WHERE UserId = @UserId AND er.EventId = @EventId;";
-                string query = "SELECT DISTINCT UserId, FirstName, LastName, Username, Email " +
-                    "FROM Contacts c JOIN EventResponses er ON er.EventId = @EventId AND er.EventInviterId = @UserId " +
-                    "JOIN Users u ON c.UserId1 = @UserId  AND UserId = er.EventReceiverId " +
-                    "WHERE UserId = c.UserId2 AND UserId = er.EventReceiverId";
+                string query = @"SELECT DISTINCT UserId, FirstName, LastName, Username, Email
+                    FROM Contacts c JOIN EventResponses er ON er.EventId = @EventId AND er.EventInviterId = @UserId AND er.Accepted = 0 AND er.Declined = 0
+                    JOIN Users u ON c.UserId1 = @UserId AND UserId = er.EventReceiverId
+                    WHERE UserId = c.UserId2 AND UserId = er.EventReceiverId; ";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", user.UserId);
@@ -120,7 +116,82 @@ namespace TeaLeaves.DALs
                     };
                     contacts.Add(contact);
                 }
-                //}
+            }
+            return contacts;
+        }
+
+        /// <summary>
+        /// method to retrieve a list of a user's contacts represented by a list of Users objects for a given event who have accepted their invite
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public List<User> GetAcceptedUsersContactsByEvent(User user, Event @event)
+        {
+            List<User> contacts = new List<User>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = @"SELECT DISTINCT UserId, FirstName, LastName, Username, Email
+                    FROM Contacts c JOIN EventResponses er ON er.EventId = @EventId AND er.EventInviterId = @UserId AND er.Accepted = 1 AND er.Declined = 0
+                    JOIN Users u ON c.UserId1 = @UserId AND UserId = er.EventReceiverId
+                    WHERE UserId = c.UserId2 AND UserId = er.EventReceiverId";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+                command.Parameters.AddWithValue("@EventId", @event.Id);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User contact = new User
+                    {
+                        UserId = Convert.ToInt32(reader["UserId"]),
+                        FirstName = reader["FirstName"].ToString(),
+                        LastName = reader["LastName"].ToString(),
+                        Username = reader["Username"].ToString(),
+                        Email = reader["Email"].ToString()
+                    };
+                    contacts.Add(contact);
+                }
+            }
+            return contacts;
+        }
+
+        /// <summary>
+        /// method to retrieve a list of a user's contacts represented by a list of Users objects for a given event who have declined their invite
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public List<User> GetDeclinedUsersContactsByEvent(User user, Event @event)
+        {
+            List<User> contacts = new List<User>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = @"SELECT DISTINCT UserId, FirstName, LastName, Username, Email
+                    FROM Contacts c JOIN EventResponses er ON er.EventId = @EventId AND er.EventInviterId = @UserId AND er.Accepted = 0 AND er.Declined = 1
+                    JOIN Users u ON c.UserId1 = @UserId AND UserId = er.EventReceiverId
+                    WHERE UserId = c.UserId2 AND UserId = er.EventReceiverId";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+                command.Parameters.AddWithValue("@EventId", @event.Id);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User contact = new User
+                    {
+                        UserId = Convert.ToInt32(reader["UserId"]),
+                        FirstName = reader["FirstName"].ToString(),
+                        LastName = reader["LastName"].ToString(),
+                        Username = reader["Username"].ToString(),
+                        Email = reader["Email"].ToString()
+                    };
+                    contacts.Add(contact);
+                }
             }
             return contacts;
         }

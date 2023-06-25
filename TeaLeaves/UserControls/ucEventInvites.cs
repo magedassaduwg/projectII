@@ -123,14 +123,12 @@ namespace TeaLeaves.UserControls
         {
             dateTimePickerFilter.Enabled = false;
             tbCategory.Enabled = true;
-            // dgvAcceptedInvites.DataSource= null;
         }
 
         private void radioButtonDate_CheckedChanged(object sender, EventArgs e)
         {
             tbCategory.Enabled = false;
             dateTimePickerFilter.Enabled = true;
-            //  dgvAcceptedInvites.DataSource= null;
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
