@@ -48,6 +48,12 @@ namespace TeaLeaves.Controllers
         {
             return _eventDAL.GetEventsReceivedByUserId(userId);
         }
+        /// <summary>
+        /// Get event by category
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public List<Event> GetEventsReceivedByUserIdWithCategory(int userId, string category)
         {
             return _eventDAL.GetEventsReceivedByUserIdWithCategory(userId, category);
@@ -92,30 +98,16 @@ namespace TeaLeaves.Controllers
         {
             return _eventDAL.GetEventById(selectedEventId);
         }
-        /// <summary>
-        /// Get event by category name
-        /// </summary>
-        /// <param name="category"></param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public List<Event> GetEventByCategory(string category)
-        {
-            return _eventDAL.GetEventByCategory(category);
-        }
+  
         /// <summary>
         /// Get event by date
         /// </summary>
+        /// <param name="userId"></param>
         /// <param name="eventDate"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public List<Event> GetEventByDate(DateTime eventDate)
+        public List<Event> GetEventsReceivedByUserIdWithDate(int userId, DateTime eventDate)
         {
-            return _eventDAL.GetEventByDate(eventDate);
-        }
-
-        internal List<Event> GetEventsReceivedByUserIdWithDate(int userId, DateTimePicker dateTimePickerFilter)
-        {
-            throw new NotImplementedException();
+            return _eventDAL.GetEventsReceivedByUserIdWithDate(userId, eventDate);
         }
     }
 }
