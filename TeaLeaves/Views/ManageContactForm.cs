@@ -31,13 +31,17 @@ namespace TeaLeaves.Views
 
         private void contactDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            User selectedContact = this._contactList[e.RowIndex];
+            if (this._contactList.Any())
+            {
+                User selectedContact = this._contactList[e.RowIndex];
 
-            this.firstNameText.Text = selectedContact.FirstName;
-            this.lastNameText.Text = selectedContact.LastName;
-            this.usernameText.Text = selectedContact.Username;
-            this.emailText.Text = selectedContact.Email;
-            this.deleteButton.Enabled = true;
+                this.firstNameText.Text = selectedContact.FirstName;
+                this.lastNameText.Text = selectedContact.LastName;
+                this.usernameText.Text = selectedContact.Username;
+                this.emailText.Text = selectedContact.Email;
+                this.deleteButton.Enabled = true;
+                this.viewProfileButton.Enabled = true;
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -55,7 +59,7 @@ namespace TeaLeaves.Views
                 this.usernameText.Text = String.Empty;
                 this.emailText.Text = String.Empty;
             }
-
+            this.refreshContactList();
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -75,6 +79,10 @@ namespace TeaLeaves.Views
             {
                 contactDataGridView.DataSource = this._contactList;
                 this.selectedContact = this._contactList[0];
+            } else
+            {
+                this.deleteButton.Enabled = false;
+                this.viewProfileButton.Enabled = false;
             }
         }
 
