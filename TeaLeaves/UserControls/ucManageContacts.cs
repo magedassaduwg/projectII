@@ -59,7 +59,7 @@ namespace TeaLeaves.UserControls
         }
         private void addButton_Click(object sender, EventArgs e)
         {
-            using (AddContactForm contactForm = new AddContactForm())
+            using (AddContactForm contactForm = new AddContactForm(this._contactList))
             {
                 contactForm.ShowDialog();
                 this.refreshContactList();

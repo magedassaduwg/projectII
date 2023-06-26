@@ -9,21 +9,31 @@ namespace TeaLeaves.Views
     public partial class AddContactForm : Form
     {
         private ContactsController _contactsController;
-
+        private List<Models.User> _contacts;
         /// <summary>
         /// constructor
         /// </summary>
-        public AddContactForm()
+        public AddContactForm(List<Models.User> listOfContacts)
         {
             this._contactsController = new ContactsController();
+            this._contacts = listOfContacts;
             InitializeComponent();
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            string contactUsername = this.contactTextBox.Text.Trim();
+            string contactEmail = this.contactTextBox.Text.Trim();
+            foreach (Models.User contact in this._contacts)
+            {
+                if (contact.Email == contactEmail)
+                {
+                    MessageBox.Show("You already have that user as a contact!", "Duplicate Contact", MessageBoxButtons.OK);
+                    return;
+                }
+            }
 
-            if (!this._contactsController.AddContact(CurrentUserStore.User, contactUsername))
+
+            if (!this._contactsController.AddContact(CurrentUserStore.User, contactEmail))
             {
                 MessageBox.Show("We're sorry, but a user with that email doesn't exist.", "User Not Found", MessageBoxButtons.OK);
             }
