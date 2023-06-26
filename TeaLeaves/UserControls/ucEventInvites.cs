@@ -83,6 +83,10 @@ namespace TeaLeaves.UserControls
                 _eventResponseController.AcceptEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
                 GetUserEvents();
             }
+            else
+            {
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             if (dgvEventInvites.SelectedRows.Count > 0)
             {
                 dgvEventInvites.Rows[0].Selected = true;
@@ -98,10 +102,11 @@ namespace TeaLeaves.UserControls
 
         private void btnDecline_Click(object sender, EventArgs e)
         {
-            if (ShouldDecline())
+
+            if (dgvEventInvites.SelectedRows.Count > 0)
             {
-                if (dgvEventInvites.SelectedRows.Count > 0)
-                {
+                    if (ShouldDecline())
+                    {
                     Event selectedEvent = (Event)dgvEventInvites.SelectedRows[0].DataBoundItem;
                     _eventResponseController.DeclineEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
                     GetUserEvents();
@@ -113,7 +118,7 @@ namespace TeaLeaves.UserControls
             }
             else
             {
-                return;
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -127,6 +132,11 @@ namespace TeaLeaves.UserControls
                     viewEventForm.ShowDialog();
                 }
             }
+            else
+            {
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void radioButtonFilterByCategory_CheckedChanged(object sender, EventArgs e)
