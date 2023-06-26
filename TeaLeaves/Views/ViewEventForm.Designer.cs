@@ -41,7 +41,15 @@
             tbTime = new TextBox();
             labelError = new Label();
             btnBack = new Button();
+            lblEventResponsibilities = new Label();
+            dgvMyResponsibilities = new DataGridView();
+            dgvUnassignedResponsibilities = new DataGridView();
+            lblMyResponsibilities = new Label();
+            lblUnassignedResponsibilities = new Label();
+            btnAcceptResponsibility = new Button();
             tableLayoutPanelAddEvent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMyResponsibilities).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanelAddEvent
@@ -64,19 +72,27 @@
             tableLayoutPanelAddEvent.Controls.Add(tbDescription, 1, 4);
             tableLayoutPanelAddEvent.Controls.Add(tbDate, 1, 2);
             tableLayoutPanelAddEvent.Controls.Add(tbTime, 1, 3);
-            tableLayoutPanelAddEvent.Controls.Add(labelError, 2, 5);
-            tableLayoutPanelAddEvent.Controls.Add(btnBack, 0, 5);
+            tableLayoutPanelAddEvent.Controls.Add(labelError, 2, 7);
+            tableLayoutPanelAddEvent.Controls.Add(btnBack, 0, 7);
+            tableLayoutPanelAddEvent.Controls.Add(lblEventResponsibilities, 0, 6);
+            tableLayoutPanelAddEvent.Controls.Add(dgvMyResponsibilities, 1, 6);
+            tableLayoutPanelAddEvent.Controls.Add(dgvUnassignedResponsibilities, 4, 6);
+            tableLayoutPanelAddEvent.Controls.Add(lblMyResponsibilities, 1, 5);
+            tableLayoutPanelAddEvent.Controls.Add(lblUnassignedResponsibilities, 4, 5);
+            tableLayoutPanelAddEvent.Controls.Add(btnAcceptResponsibility, 3, 6);
             tableLayoutPanelAddEvent.Dock = DockStyle.Fill;
             tableLayoutPanelAddEvent.Location = new Point(0, 0);
             tableLayoutPanelAddEvent.Name = "tableLayoutPanelAddEvent";
-            tableLayoutPanelAddEvent.RowCount = 6;
-            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanelAddEvent.Size = new Size(800, 450);
+            tableLayoutPanelAddEvent.RowCount = 8;
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132179F));
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 18.3553581F));
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 8.2232F));
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 18.3553581F));
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
+            tableLayoutPanelAddEvent.Size = new Size(894, 450);
             tableLayoutPanelAddEvent.TabIndex = 1;
             // 
             // labelName
@@ -85,9 +101,9 @@
             labelName.AutoSize = true;
             labelName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelName.ForeColor = Color.DarkGreen;
-            labelName.Location = new Point(3, 23);
+            labelName.Location = new Point(3, 14);
             labelName.Name = "labelName";
-            labelName.Size = new Size(191, 21);
+            labelName.Size = new Size(214, 21);
             labelName.TabIndex = 0;
             labelName.Text = "Event Name:";
             // 
@@ -97,9 +113,9 @@
             labelEVenue.AutoSize = true;
             labelEVenue.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelEVenue.ForeColor = Color.DarkGreen;
-            labelEVenue.Location = new Point(3, 90);
+            labelEVenue.Location = new Point(3, 63);
             labelEVenue.Name = "labelEVenue";
-            labelEVenue.Size = new Size(191, 21);
+            labelEVenue.Size = new Size(214, 21);
             labelEVenue.TabIndex = 1;
             labelEVenue.Text = "Event Venue:";
             // 
@@ -109,9 +125,9 @@
             labelEDate.AutoSize = true;
             labelEDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelEDate.ForeColor = Color.DarkGreen;
-            labelEDate.Location = new Point(3, 157);
+            labelEDate.Location = new Point(3, 112);
             labelEDate.Name = "labelEDate";
-            labelEDate.Size = new Size(191, 21);
+            labelEDate.Size = new Size(214, 21);
             labelEDate.TabIndex = 2;
             labelEDate.Text = "Event Date:";
             // 
@@ -121,9 +137,9 @@
             labelETime.AutoSize = true;
             labelETime.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelETime.ForeColor = Color.DarkGreen;
-            labelETime.Location = new Point(3, 224);
+            labelETime.Location = new Point(3, 161);
             labelETime.Name = "labelETime";
-            labelETime.Size = new Size(191, 21);
+            labelETime.Size = new Size(214, 21);
             labelETime.TabIndex = 3;
             labelETime.Text = "Event Time:";
             // 
@@ -133,9 +149,9 @@
             labelEDescription.AutoSize = true;
             labelEDescription.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelEDescription.ForeColor = Color.DarkGreen;
-            labelEDescription.Location = new Point(3, 313);
+            labelEDescription.Location = new Point(3, 226);
             labelEDescription.Name = "labelEDescription";
-            labelEDescription.Size = new Size(191, 21);
+            labelEDescription.Size = new Size(214, 21);
             labelEDescription.TabIndex = 4;
             labelEDescription.Text = "Event Description:";
             // 
@@ -143,33 +159,33 @@
             // 
             tbName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbName, 4);
-            tbName.Location = new Point(200, 22);
+            tbName.Location = new Point(223, 13);
             tbName.MaxLength = 100;
             tbName.Name = "tbName";
             tbName.ReadOnly = true;
-            tbName.Size = new Size(485, 23);
+            tbName.Size = new Size(541, 23);
             tbName.TabIndex = 1;
             // 
             // tbAddress
             // 
             tbAddress.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbAddress, 4);
-            tbAddress.Location = new Point(200, 89);
+            tbAddress.Location = new Point(223, 62);
             tbAddress.MaxLength = 50;
             tbAddress.Name = "tbAddress";
             tbAddress.ReadOnly = true;
-            tbAddress.Size = new Size(485, 23);
+            tbAddress.Size = new Size(541, 23);
             tbAddress.TabIndex = 2;
             // 
             // tbDescription
             // 
             tbDescription.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbDescription, 4);
-            tbDescription.Location = new Point(200, 271);
+            tbDescription.Location = new Point(223, 200);
             tbDescription.MaxLength = 250;
             tbDescription.Name = "tbDescription";
             tbDescription.ReadOnly = true;
-            tbDescription.Size = new Size(485, 106);
+            tbDescription.Size = new Size(541, 74);
             tbDescription.TabIndex = 9;
             tbDescription.Text = "";
             // 
@@ -177,22 +193,22 @@
             // 
             tbDate.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbDate, 2);
-            tbDate.Location = new Point(200, 156);
+            tbDate.Location = new Point(223, 111);
             tbDate.MaxLength = 50;
             tbDate.Name = "tbDate";
             tbDate.ReadOnly = true;
-            tbDate.Size = new Size(249, 23);
+            tbDate.Size = new Size(278, 23);
             tbDate.TabIndex = 18;
             // 
             // tbTime
             // 
             tbTime.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbTime, 2);
-            tbTime.Location = new Point(200, 223);
+            tbTime.Location = new Point(223, 160);
             tbTime.MaxLength = 25;
             tbTime.Name = "tbTime";
             tbTime.ReadOnly = true;
-            tbTime.Size = new Size(249, 23);
+            tbTime.Size = new Size(278, 23);
             tbTime.TabIndex = 19;
             // 
             // labelError
@@ -201,9 +217,9 @@
             labelError.AutoSize = true;
             tableLayoutPanelAddEvent.SetColumnSpan(labelError, 2);
             labelError.ForeColor = Color.Red;
-            labelError.Location = new Point(329, 407);
+            labelError.Location = new Point(367, 416);
             labelError.Name = "labelError";
-            labelError.Size = new Size(241, 15);
+            labelError.Size = new Size(269, 15);
             labelError.TabIndex = 17;
             // 
             // btnBack
@@ -211,7 +227,7 @@
             btnBack.BackColor = Color.Orange;
             btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnBack.ForeColor = Color.DarkGreen;
-            btnBack.Location = new Point(20, 383);
+            btnBack.Location = new Point(20, 400);
             btnBack.Margin = new Padding(20, 3, 3, 3);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(150, 39);
@@ -220,11 +236,79 @@
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
+            // lblEventResponsibilities
+            // 
+            lblEventResponsibilities.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lblEventResponsibilities.AutoSize = true;
+            lblEventResponsibilities.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblEventResponsibilities.ForeColor = Color.DarkGreen;
+            lblEventResponsibilities.Location = new Point(3, 345);
+            lblEventResponsibilities.Name = "lblEventResponsibilities";
+            lblEventResponsibilities.Size = new Size(214, 21);
+            lblEventResponsibilities.TabIndex = 21;
+            lblEventResponsibilities.Text = "Event Responsibilities:";
+            // 
+            // dgvMyResponsibilities
+            // 
+            dgvMyResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tableLayoutPanelAddEvent.SetColumnSpan(dgvMyResponsibilities, 2);
+            dgvMyResponsibilities.Location = new Point(223, 318);
+            dgvMyResponsibilities.Name = "dgvMyResponsibilities";
+            dgvMyResponsibilities.RowTemplate.Height = 25;
+            dgvMyResponsibilities.Size = new Size(249, 74);
+            dgvMyResponsibilities.TabIndex = 22;
+            // 
+            // dgvUnassignedResponsibilities
+            // 
+            dgvUnassignedResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tableLayoutPanelAddEvent.SetColumnSpan(dgvUnassignedResponsibilities, 2);
+            dgvUnassignedResponsibilities.Location = new Point(642, 318);
+            dgvUnassignedResponsibilities.Name = "dgvUnassignedResponsibilities";
+            dgvUnassignedResponsibilities.RowTemplate.Height = 25;
+            dgvUnassignedResponsibilities.Size = new Size(249, 74);
+            dgvUnassignedResponsibilities.TabIndex = 23;
+            // 
+            // lblMyResponsibilities
+            // 
+            lblMyResponsibilities.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lblMyResponsibilities.AutoSize = true;
+            tableLayoutPanelAddEvent.SetColumnSpan(lblMyResponsibilities, 2);
+            lblMyResponsibilities.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Italic, GraphicsUnit.Point);
+            lblMyResponsibilities.ForeColor = Color.DarkGreen;
+            lblMyResponsibilities.Location = new Point(223, 286);
+            lblMyResponsibilities.Name = "lblMyResponsibilities";
+            lblMyResponsibilities.Size = new Size(278, 21);
+            lblMyResponsibilities.TabIndex = 24;
+            lblMyResponsibilities.Text = "My Responsibilities";
+            // 
+            // lblUnassignedResponsibilities
+            // 
+            lblUnassignedResponsibilities.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lblUnassignedResponsibilities.AutoSize = true;
+            tableLayoutPanelAddEvent.SetColumnSpan(lblUnassignedResponsibilities, 2);
+            lblUnassignedResponsibilities.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Italic, GraphicsUnit.Point);
+            lblUnassignedResponsibilities.ForeColor = Color.DarkGreen;
+            lblUnassignedResponsibilities.Location = new Point(642, 286);
+            lblUnassignedResponsibilities.Name = "lblUnassignedResponsibilities";
+            lblUnassignedResponsibilities.Size = new Size(249, 21);
+            lblUnassignedResponsibilities.TabIndex = 25;
+            lblUnassignedResponsibilities.Text = "Unassigned Responsibilities";
+            // 
+            // btnAcceptResponsibility
+            // 
+            btnAcceptResponsibility.Location = new Point(550, 364);
+            btnAcceptResponsibility.Margin = new Padding(46, 49, 3, 3);
+            btnAcceptResponsibility.Name = "btnAcceptResponsibility";
+            btnAcceptResponsibility.Size = new Size(86, 30);
+            btnAcceptResponsibility.TabIndex = 26;
+            btnAcceptResponsibility.Text = "Accept";
+            btnAcceptResponsibility.UseVisualStyleBackColor = true;
+            // 
             // ViewEventForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(894, 450);
             Controls.Add(tableLayoutPanelAddEvent);
             Name = "ViewEventForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -232,6 +316,8 @@
             Load += ViewEventForm_Load;
             tableLayoutPanelAddEvent.ResumeLayout(false);
             tableLayoutPanelAddEvent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMyResponsibilities).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).EndInit();
             ResumeLayout(false);
         }
 
@@ -250,5 +336,11 @@
         private TextBox tbDate;
         private TextBox tbTime;
         private Button btnBack;
+        private Label lblEventResponsibilities;
+        private DataGridView dgvMyResponsibilities;
+        private DataGridView dgvUnassignedResponsibilities;
+        private Label lblMyResponsibilities;
+        private Label lblUnassignedResponsibilities;
+        private Button btnAcceptResponsibility;
     }
 }
