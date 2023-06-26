@@ -8,10 +8,32 @@ namespace TeaLeaves.DALs
     /// </summary>
     public class EventResponsibilityDAL
     {
+
+        /// <summary>
+        /// Deletes an EventResponsibility from the database
+        /// </summary>
+        /// <param name="eventResponsibilityId"></param>
+        /// <returns></returns>
+        public bool DeleteEventResponsibility(int eventResponsibilityId)
+        {
+            string query = @"DELETE FROM EventResponsbilities
+                             WHERE EventResponsbilityId = @EventResponsbilityId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@EventResponsbilityId", eventResponsibilityId);
+                    return saveCommand.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
         /// <summary>
         /// Inserts a new EventResponsibility row into the database
         /// </summary>
-        /// <param name="eventResponse"></param>
+        /// <param name="eventResponsibility"></param>
         /// <returns></returns>
         public int AddEventResponsibility(EventResponsibility @eventResponsibility)
         {
@@ -30,6 +52,41 @@ namespace TeaLeaves.DALs
                     return Convert.ToInt32(saveCommand.ExecuteScalar());
                 }
             }
+        }
+
+        /// <summary>
+        /// method to retrieve a list of EventResponsibilities with the given UserId and EventId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public List<EventResponsibility> GetEventResponsibilitiesByUserIdAndEventId(int userId, int eventId)
+        {
+            List<EventResponsibility> userEventResponses = new List<EventResponsibility>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = @"SELECT EventId, FirstName, LastName, Name
+                                 FROM EventResponsibilities er JOIN Users u 
+                                 ON u.UserId = er.UserId WHERE er.UserId = @userId And er.EventId = @eventId;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
+                command.Parameters.AddWithValue("@eventId", eventId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    EventResponsibility userEventResponse = new EventResponsibility
+                    {
+                        Id = Convert.ToInt32(reader["EventResponseId"]),
+                        EventId = Convert.ToInt32(reader["EventId"]),
+                    };
+                    userEventResponses.Add(userEventResponse);
+                }
+            }
+            return userEventResponses;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using TeaLeaves.DALs;
+using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
 {
@@ -15,6 +16,37 @@ namespace TeaLeaves.Controllers
         public EventResponsibilityController()
         {
             _eventResponsibilityDAL = new EventResponsibilityDAL();
+        }
+
+        /// <summary>
+        /// Deletes the given eventResponsibility from the database
+        /// </summary>
+        /// <param name="eventResponsibilityId"></param>
+        /// <returns></returns>
+        public bool DeleteEventResponsibility(int eventResponsibilityId)
+        {
+            return _eventResponsibilityDAL.DeleteEventResponsibility(eventResponsibilityId);
+        }
+
+        /// <summary>
+        /// Adds a new EventResponsibility to the database and returns the Id
+        /// </summary>
+        /// <param name="eventResponsibility"></param>
+        /// <returns></returns>
+        public int AddEventResponsibility(EventResponsibility eventResponsibility)
+        {
+            return _eventResponsibilityDAL.AddEventResponsibility(eventResponsibility);
+        }
+
+        /// <summary>
+        /// Returns a list of EventResponsibilities from the database based on the given userId and eventId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public List<EventResponsibility> GetEventResponsibilitiesByUserIdAndEventId(int userId, int eventId)
+        {
+            return _eventResponsibilityDAL.GetEventResponsibilitiesByUserIdAndEventId(userId, eventId);
         }
     }
 }
