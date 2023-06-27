@@ -48,5 +48,25 @@ namespace TeaLeaves.Controllers
         {
             return _eventResponsibilityDAL.GetEventResponsibilitiesByUserIdAndEventId(userId, eventId);
         }
+
+        /// <summary>
+        /// Returns a list of EventResponsibilities from the database based on the given eventId
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public List<EventResponsibility> GetEventResponsibilitiesByEventId(int eventId)
+        {
+            return _eventResponsibilityDAL.GetEventResponsibilitiesByEventId(eventId);
+        }
+
+        /// <summary>
+        /// Returns a list of EventResponsibilities from the database based on the given eventId which have not been assigned
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public List<EventResponsibility> GetUnassignedEventResponsibilitiesByEventId(int eventId)
+        {
+            return _eventResponsibilityDAL.GetUnassignedEventResponsibilitiesByEventId(eventId);
+        }
     }
 }

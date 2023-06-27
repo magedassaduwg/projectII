@@ -1,4 +1,5 @@
 ﻿using TeaLeaves.Controllers;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
@@ -32,7 +33,13 @@ namespace TeaLeaves.Views
         {
             try
             {
-                
+                _unacceptedEventResponsibilities = _eventResponsibilityController.GetEventResponsibilitiesByEventId(_event.Id);
+
+                dgvUnassignedResponsibilities.DataSource = _unacceptedEventResponsibilities;
+
+                _myEventResponsibilities = _eventResponsibilityController.GetEventResponsibilitiesByUserIdAndEventId(CurrentUserStore.User.UserId, _event.Id);
+
+                dgvMyResponsibilities.DataSource = _myEventResponsibilities;
 
                 if (dgvUnassignedResponsibilities.Rows.Count > 0)
                 {
@@ -56,6 +63,8 @@ namespace TeaLeaves.Views
             tbDate.Text = dateAndTimeStrings[0];
             tbTime.Text = dateAndTimeStrings[1];
             tbDescription.Text = _event.Description;
+
+            GetEventResponsibilities();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
