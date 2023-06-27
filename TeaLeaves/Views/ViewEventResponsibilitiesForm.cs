@@ -4,25 +4,25 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
-    /// <summary>
-    /// Form for viewing the details of a given event from the user's event invite list
-    /// </summary>
-    public partial class ViewEventForm : Form
+    public partial class ViewEventResponsibilitiesForm : Form
     {
         Event _event;
         EventResponsibilityController _eventResponsibilityController;
+        List<EventResponsibility> _myEventResponsibilities;
         List<EventResponsibility> _unacceptedEventResponsibilities;
 
         /// <summary>
-        /// The constructor for the ViewEventForm class
+        /// The constructor for the ViewEventResponsibilitiesForm class
         /// </summary>
         /// <param name="event"></param>
-        public ViewEventForm(Event @event)
+        public ViewEventResponsibilitiesForm(Event @event)
         {
             InitializeComponent();
             _event = @event;
             _eventResponsibilityController = new EventResponsibilityController();
+            _myEventResponsibilities = new List<EventResponsibility>();
             _unacceptedEventResponsibilities = new List<EventResponsibility>();
+            dgvMyResponsibilities.AutoGenerateColumns = false;
             dgvUnassignedResponsibilities.AutoGenerateColumns = false;
         }
 
@@ -33,6 +33,10 @@ namespace TeaLeaves.Views
                 _unacceptedEventResponsibilities = _eventResponsibilityController.GetEventResponsibilitiesByEventId(_event.Id);
 
                 dgvUnassignedResponsibilities.DataSource = _unacceptedEventResponsibilities;
+
+                _myEventResponsibilities = _eventResponsibilityController.GetEventResponsibilitiesByUserIdAndEventId(CurrentUserStore.User.UserId, _event.Id);
+
+                dgvMyResponsibilities.DataSource = _myEventResponsibilities;
 
                 if (dgvUnassignedResponsibilities.Rows.Count > 0)
                 {
@@ -63,6 +67,11 @@ namespace TeaLeaves.Views
         private void btnBack_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnAcceptResponsibility_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

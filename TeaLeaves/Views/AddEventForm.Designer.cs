@@ -53,10 +53,10 @@
             lblEventResponsibilities = new Label();
             tbResponsibilityName = new TextBox();
             dgvResponsibilities = new DataGridView();
-            btnAddResponsibility = new Button();
-            lblResponsibilityName = new Label();
             ResponsibilityName = new DataGridViewTextBoxColumn();
             User = new DataGridViewTextBoxColumn();
+            btnAddResponsibility = new Button();
+            lblResponsibilityName = new Label();
             lblResponsibilities = new Label();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownHour).BeginInit();
@@ -396,28 +396,6 @@
             dgvResponsibilities.Size = new Size(303, 112);
             dgvResponsibilities.TabIndex = 21;
             // 
-            // btnAddResponsibility
-            // 
-            btnAddResponsibility.Location = new Point(504, 482);
-            btnAddResponsibility.Margin = new Padding(3, 55, 3, 3);
-            btnAddResponsibility.Name = "btnAddResponsibility";
-            btnAddResponsibility.Size = new Size(137, 23);
-            btnAddResponsibility.TabIndex = 23;
-            btnAddResponsibility.Text = "Add";
-            btnAddResponsibility.UseVisualStyleBackColor = true;
-            // 
-            // lblResponsibilityName
-            // 
-            lblResponsibilityName.AutoSize = true;
-            lblResponsibilityName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblResponsibilityName.ForeColor = Color.DarkGreen;
-            lblResponsibilityName.Location = new Point(184, 406);
-            lblResponsibilityName.Margin = new Padding(3, 8, 3, 0);
-            lblResponsibilityName.Name = "lblResponsibilityName";
-            lblResponsibilityName.Size = new Size(119, 15);
-            lblResponsibilityName.TabIndex = 24;
-            lblResponsibilityName.Text = "Responsibility Name";
-            // 
             // ResponsibilityName
             // 
             ResponsibilityName.DataPropertyName = "Name";
@@ -430,6 +408,29 @@
             User.HeaderText = "User";
             User.Name = "User";
             User.Width = 130;
+            // 
+            // btnAddResponsibility
+            // 
+            btnAddResponsibility.Location = new Point(504, 482);
+            btnAddResponsibility.Margin = new Padding(3, 55, 3, 3);
+            btnAddResponsibility.Name = "btnAddResponsibility";
+            btnAddResponsibility.Size = new Size(137, 23);
+            btnAddResponsibility.TabIndex = 23;
+            btnAddResponsibility.Text = "Add";
+            btnAddResponsibility.UseVisualStyleBackColor = true;
+            btnAddResponsibility.Click += btnAddResponsibility_Click;
+            // 
+            // lblResponsibilityName
+            // 
+            lblResponsibilityName.AutoSize = true;
+            lblResponsibilityName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblResponsibilityName.ForeColor = Color.DarkGreen;
+            lblResponsibilityName.Location = new Point(184, 406);
+            lblResponsibilityName.Margin = new Padding(3, 8, 3, 0);
+            lblResponsibilityName.Name = "lblResponsibilityName";
+            lblResponsibilityName.Size = new Size(119, 15);
+            lblResponsibilityName.TabIndex = 24;
+            lblResponsibilityName.Text = "Responsibility Name";
             // 
             // lblResponsibilities
             // 

@@ -105,8 +105,8 @@ namespace TeaLeaves.UserControls
 
             if (dgvEventInvites.SelectedRows.Count > 0)
             {
-                    if (ShouldDecline())
-                    {
+                if (ShouldDecline())
+                {
                     Event selectedEvent = (Event)dgvEventInvites.SelectedRows[0].DataBoundItem;
                     _eventResponseController.DeclineEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
                     GetUserEvents();
@@ -154,7 +154,7 @@ namespace TeaLeaves.UserControls
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             string category = tbCategory.Text;
-            
+
 
             try
             {
@@ -201,6 +201,22 @@ namespace TeaLeaves.UserControls
             if (dgvEventInvites.Rows.Count > 0)
             {
                 dgvEventInvites.Rows[0].Selected = true;
+            }
+        }
+
+        private void btnResponsibilities_Click(object sender, EventArgs e)
+        {
+            if (dgvAcceptedInvites.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgvAcceptedInvites.SelectedRows[0].DataBoundItem;
+                using (ViewEventForm viewEventForm = new ViewEventForm(selectedEvent))
+                {
+                    viewEventForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace TeaLeaves.Views
 {
-    partial class ViewEventForm
+    partial class ViewEventResponsibilitiesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,9 +42,13 @@
             labelError = new Label();
             btnBack = new Button();
             lblEventResponsibilities = new Label();
+            dgvMyResponsibilities = new DataGridView();
             dgvUnassignedResponsibilities = new DataGridView();
+            lblMyResponsibilities = new Label();
             lblUnassignedResponsibilities = new Label();
+            btnAcceptResponsibility = new Button();
             tableLayoutPanelAddEvent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMyResponsibilities).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).BeginInit();
             SuspendLayout();
             // 
@@ -71,8 +75,11 @@
             tableLayoutPanelAddEvent.Controls.Add(labelError, 2, 7);
             tableLayoutPanelAddEvent.Controls.Add(btnBack, 0, 7);
             tableLayoutPanelAddEvent.Controls.Add(lblEventResponsibilities, 0, 6);
-            tableLayoutPanelAddEvent.Controls.Add(dgvUnassignedResponsibilities, 1, 6);
-            tableLayoutPanelAddEvent.Controls.Add(lblUnassignedResponsibilities, 1, 5);
+            tableLayoutPanelAddEvent.Controls.Add(dgvMyResponsibilities, 1, 6);
+            tableLayoutPanelAddEvent.Controls.Add(dgvUnassignedResponsibilities, 4, 6);
+            tableLayoutPanelAddEvent.Controls.Add(lblMyResponsibilities, 1, 5);
+            tableLayoutPanelAddEvent.Controls.Add(lblUnassignedResponsibilities, 4, 5);
+            tableLayoutPanelAddEvent.Controls.Add(btnAcceptResponsibility, 3, 6);
             tableLayoutPanelAddEvent.Dock = DockStyle.Fill;
             tableLayoutPanelAddEvent.Location = new Point(0, 0);
             tableLayoutPanelAddEvent.Name = "tableLayoutPanelAddEvent";
@@ -86,7 +93,7 @@
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 18.3553581F));
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
             tableLayoutPanelAddEvent.Size = new Size(894, 450);
-            tableLayoutPanelAddEvent.TabIndex = 1;
+            tableLayoutPanelAddEvent.TabIndex = 2;
             // 
             // labelName
             // 
@@ -227,7 +234,6 @@
             btnBack.TabIndex = 20;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
             // 
             // lblEventResponsibilities
             // 
@@ -241,15 +247,38 @@
             lblEventResponsibilities.TabIndex = 21;
             lblEventResponsibilities.Text = "Event Responsibilities:";
             // 
+            // dgvMyResponsibilities
+            // 
+            dgvMyResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tableLayoutPanelAddEvent.SetColumnSpan(dgvMyResponsibilities, 2);
+            dgvMyResponsibilities.Location = new Point(223, 318);
+            dgvMyResponsibilities.Name = "dgvMyResponsibilities";
+            dgvMyResponsibilities.RowTemplate.Height = 25;
+            dgvMyResponsibilities.Size = new Size(249, 74);
+            dgvMyResponsibilities.TabIndex = 22;
+            // 
             // dgvUnassignedResponsibilities
             // 
             dgvUnassignedResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tableLayoutPanelAddEvent.SetColumnSpan(dgvUnassignedResponsibilities, 4);
-            dgvUnassignedResponsibilities.Location = new Point(223, 318);
+            tableLayoutPanelAddEvent.SetColumnSpan(dgvUnassignedResponsibilities, 2);
+            dgvUnassignedResponsibilities.Location = new Point(642, 318);
             dgvUnassignedResponsibilities.Name = "dgvUnassignedResponsibilities";
             dgvUnassignedResponsibilities.RowTemplate.Height = 25;
-            dgvUnassignedResponsibilities.Size = new Size(278, 74);
+            dgvUnassignedResponsibilities.Size = new Size(249, 74);
             dgvUnassignedResponsibilities.TabIndex = 23;
+            // 
+            // lblMyResponsibilities
+            // 
+            lblMyResponsibilities.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lblMyResponsibilities.AutoSize = true;
+            tableLayoutPanelAddEvent.SetColumnSpan(lblMyResponsibilities, 2);
+            lblMyResponsibilities.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Italic, GraphicsUnit.Point);
+            lblMyResponsibilities.ForeColor = Color.DarkGreen;
+            lblMyResponsibilities.Location = new Point(223, 286);
+            lblMyResponsibilities.Name = "lblMyResponsibilities";
+            lblMyResponsibilities.Size = new Size(278, 21);
+            lblMyResponsibilities.TabIndex = 24;
+            lblMyResponsibilities.Text = "My Responsibilities";
             // 
             // lblUnassignedResponsibilities
             // 
@@ -258,24 +287,34 @@
             tableLayoutPanelAddEvent.SetColumnSpan(lblUnassignedResponsibilities, 2);
             lblUnassignedResponsibilities.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Italic, GraphicsUnit.Point);
             lblUnassignedResponsibilities.ForeColor = Color.DarkGreen;
-            lblUnassignedResponsibilities.Location = new Point(223, 286);
+            lblUnassignedResponsibilities.Location = new Point(642, 286);
             lblUnassignedResponsibilities.Name = "lblUnassignedResponsibilities";
-            lblUnassignedResponsibilities.Size = new Size(278, 21);
+            lblUnassignedResponsibilities.Size = new Size(249, 21);
             lblUnassignedResponsibilities.TabIndex = 25;
             lblUnassignedResponsibilities.Text = "Unassigned Responsibilities";
             // 
-            // ViewEventForm
+            // btnAcceptResponsibility
+            // 
+            btnAcceptResponsibility.Location = new Point(550, 364);
+            btnAcceptResponsibility.Margin = new Padding(46, 49, 3, 3);
+            btnAcceptResponsibility.Name = "btnAcceptResponsibility";
+            btnAcceptResponsibility.Size = new Size(83, 30);
+            btnAcceptResponsibility.TabIndex = 26;
+            btnAcceptResponsibility.Text = "Accept";
+            btnAcceptResponsibility.UseVisualStyleBackColor = true;
+            btnAcceptResponsibility.Click += btnAcceptResponsibility_Click;
+            // 
+            // ViewEventResponsibilitiesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(894, 450);
             Controls.Add(tableLayoutPanelAddEvent);
-            Name = "ViewEventForm";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "ViewEventForm";
-            Load += ViewEventForm_Load;
+            Name = "ViewEventResponsibilitiesForm";
+            Text = "ViewEventResponsibilitiesForm";
             tableLayoutPanelAddEvent.ResumeLayout(false);
             tableLayoutPanelAddEvent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMyResponsibilities).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).EndInit();
             ResumeLayout(false);
         }
@@ -291,12 +330,15 @@
         private TextBox tbName;
         private TextBox tbAddress;
         private RichTextBox tbDescription;
-        private Label labelError;
         private TextBox tbDate;
         private TextBox tbTime;
+        private Label labelError;
         private Button btnBack;
         private Label lblEventResponsibilities;
+        private DataGridView dgvMyResponsibilities;
         private DataGridView dgvUnassignedResponsibilities;
+        private Label lblMyResponsibilities;
         private Label lblUnassignedResponsibilities;
+        private Button btnAcceptResponsibility;
     }
 }
