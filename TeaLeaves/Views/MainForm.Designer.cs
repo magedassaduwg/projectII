@@ -35,7 +35,6 @@ namespace TeaLeaves.Views
             tableLayoutPanel2 = new TableLayoutPanel();
             tabControlMain = new TabControl();
             tabPageMessage = new TabPage();
-            ucMessages1 = new ucMessage();
             tabPageEvent = new TabPage();
             ucEventPlanners = new ucEventPlanner();
             tabPageInvites = new TabPage();
@@ -44,9 +43,10 @@ namespace TeaLeaves.Views
             lblGreeting = new Label();
             buttonLogout = new Button();
             viewProfileButton = new Button();
+            ucMessages1 = new ucMessage();
+            button2 = new Button();
             tableLayoutPanel2.SuspendLayout();
             tabControlMain.SuspendLayout();
-            tabPageMessage.SuspendLayout();
             tabPageEvent.SuspendLayout();
             tabPageInvites.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -133,6 +133,7 @@ namespace TeaLeaves.Views
             flowLayoutPanel1.Controls.Add(lblGreeting);
             flowLayoutPanel1.Controls.Add(buttonLogout);
             flowLayoutPanel1.Controls.Add(viewProfileButton);
+            flowLayoutPanel1.Controls.Add(button2);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -178,6 +179,27 @@ namespace TeaLeaves.Views
             viewProfileButton.UseVisualStyleBackColor = false;
             viewProfileButton.Click += viewProfileButton_Click;
             // 
+            // ucMessages1
+            // 
+            ucMessages1.Location = new Point(0, 0);
+            ucMessages1.Name = "ucMessages1";
+            ucMessages1.Size = new Size(1100, 551);
+            ucMessages1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button2.BackColor = Color.YellowGreen;
+            button2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = Color.DarkOrange;
+            button2.Location = new Point(220, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(196, 35);
+            button2.TabIndex = 4;
+            button2.Text = "temp ManageContact Button";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -193,7 +215,6 @@ namespace TeaLeaves.Views
             Load += MainForm_Load;
             tableLayoutPanel2.ResumeLayout(false);
             tabControlMain.ResumeLayout(false);
-            tabPageMessage.ResumeLayout(false);
             tabPageEvent.ResumeLayout(false);
             tabPageInvites.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
@@ -217,5 +238,6 @@ namespace TeaLeaves.Views
         private Button button1;
         private Button yourProfileButton;
         private Button viewProfileButton;
+        private Button button2;
     }
 }

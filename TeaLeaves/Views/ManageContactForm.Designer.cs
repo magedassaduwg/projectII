@@ -33,6 +33,7 @@
             contactLayoutPanel = new TableLayoutPanel();
             addButton = new Button();
             contactDataGridView = new DataGridView();
+            FullName = new DataGridViewTextBoxColumn();
             usersBindingSource = new BindingSource(components);
             SelectedContactTable = new TableLayoutPanel();
             firstNameLabel = new Label();
@@ -46,7 +47,6 @@
             closeButton = new Button();
             viewProfileButton = new Button();
             deleteButton = new Button();
-            FullName = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -125,6 +125,13 @@
             contactDataGridView.Size = new Size(260, 389);
             contactDataGridView.TabIndex = 0;
             contactDataGridView.RowEnter += contactDataGridView_RowEnter;
+            // 
+            // FullName
+            // 
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
             // 
             // SelectedContactTable
             // 
@@ -258,6 +265,7 @@
             // 
             viewProfileButton.Anchor = AnchorStyles.None;
             viewProfileButton.BackColor = Color.YellowGreen;
+            viewProfileButton.Enabled = false;
             viewProfileButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             viewProfileButton.ForeColor = Color.DarkGreen;
             viewProfileButton.Location = new Point(122, 388);
@@ -282,13 +290,6 @@
             deleteButton.Text = "Delete";
             deleteButton.UseVisualStyleBackColor = false;
             deleteButton.Click += deleteButton_Click;
-            // 
-            // FullName
-            // 
-            FullName.DataPropertyName = "FullName";
-            FullName.HeaderText = "Name";
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
             // 
             // ManageContactForm
             // 
