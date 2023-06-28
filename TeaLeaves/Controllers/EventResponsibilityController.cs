@@ -39,6 +39,18 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Assigns a user to an EventResponsibility
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="eventId"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public int assignEventResponsibility(User user, int eventId, string name)
+        {
+            return _eventResponsibilityDAL.AssignEventResponsibility(user, eventId, name);
+        }
+
+        /// <summary>
         /// Returns a list of EventResponsibilities from the database based on the given userId and eventId
         /// </summary>
         /// <param name="userId"></param>

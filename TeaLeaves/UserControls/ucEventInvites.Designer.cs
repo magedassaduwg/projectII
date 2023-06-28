@@ -57,7 +57,7 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             lblDeclinedInvites = new Label();
             tbCategory = new ComboBox();
-            btnResponsibilities = new Button();
+            btnViewAccepted = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             ((System.ComponentModel.ISupportInitialize)eventBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
@@ -362,24 +362,24 @@
             tbCategory.Size = new Size(194, 23);
             tbCategory.TabIndex = 19;
             // 
-            // btnResponsibilities
+            // btnViewAccepted
             // 
-            btnResponsibilities.BackColor = Color.Orange;
-            btnResponsibilities.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btnResponsibilities.ForeColor = Color.DarkGreen;
-            btnResponsibilities.Location = new Point(983, 211);
-            btnResponsibilities.Name = "btnResponsibilities";
-            btnResponsibilities.Size = new Size(126, 57);
-            btnResponsibilities.TabIndex = 20;
-            btnResponsibilities.Text = "View Responsibilities";
-            btnResponsibilities.UseVisualStyleBackColor = false;
-            btnResponsibilities.Click += btnResponsibilities_Click;
+            btnViewAccepted.BackColor = Color.Orange;
+            btnViewAccepted.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            btnViewAccepted.ForeColor = Color.DarkGreen;
+            btnViewAccepted.Location = new Point(983, 211);
+            btnViewAccepted.Name = "btnViewAccepted";
+            btnViewAccepted.Size = new Size(126, 57);
+            btnViewAccepted.TabIndex = 20;
+            btnViewAccepted.Text = "View Accepted";
+            btnViewAccepted.UseVisualStyleBackColor = false;
+            btnViewAccepted.Click += btnResponsibilities_Click;
             // 
             // ucEventInvites
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(btnResponsibilities);
+            Controls.Add(btnViewAccepted);
             Controls.Add(tbCategory);
             Controls.Add(lblDeclinedInvites);
             Controls.Add(dgvDeclinedInvites);
@@ -436,6 +436,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn eventDateTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private Button btnResponsibilities;
+        private Button btnViewAccepted;
     }
 }

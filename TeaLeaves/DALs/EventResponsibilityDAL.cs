@@ -53,20 +53,28 @@ namespace TeaLeaves.DALs
             }
         }
 
-        
-        public int AssignEventResponsibility(User user)
+        /// <summary>
+        /// Assigns a user to an EventResponsibility
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="eventId"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public int AssignEventResponsibility(User user, int eventId, string name)
         {
             string query = @"UPDATE EventResponsibilities
-                            SET Name = @userId
-                            WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId
-                            select EventResponseId FROM EventResponses WHERE EventReceiverId = @EventReceiverId AND EventId = @EventId";
+                            SET UserId = @userId
+                            WHERE eventId = @eventId AND Name = @name
+                            select EventResponsibilityId FROM EventResponsibilities WHERE eventId = @eventId AND Name = @name";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
 
                 using (SqlCommand saveCommand = new SqlCommand(query, connection))
                 {
-                    saveCommand.Parameters.AddWithValue("@userId", user.Username);
+                    saveCommand.Parameters.AddWithValue("@userId", user.UserId);
+                    saveCommand.Parameters.AddWithValue("@eventId", eventId);
+                    saveCommand.Parameters.AddWithValue("@name", name);
                     return Convert.ToInt32(saveCommand.ExecuteScalar());
                 }
             }
@@ -153,9 +161,8 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = @"SELECT EventId, Username, Name
-                                 FROM EventResponsibilities er JOIN Users u 
-                                 ON u.UserId = er.UserId WHERE er.UserId IS NULL And er.EventId = @eventId;";
+                string query = @"SELECT EventId, Name
+                                 FROM EventResponsibilities er WHERE er.UserId IS NULL And er.EventId = @eventId;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@eventId", eventId);
@@ -168,7 +175,6 @@ namespace TeaLeaves.DALs
                     {
                         Id = Convert.ToInt32(reader["EventId"]),
                         Name = reader["Name"].ToString(),
-                        Username = reader["Username"].ToString(),
                     };
                     userEventResponsibilities.Add(userEventResponsibilty);
                 }

@@ -39,11 +39,11 @@
             tbDescription = new RichTextBox();
             tbDate = new TextBox();
             tbTime = new TextBox();
-            labelError = new Label();
             btnBack = new Button();
             lblEventResponsibilities = new Label();
             dgvUnassignedResponsibilities = new DataGridView();
             lblUnassignedResponsibilities = new Label();
+            ResponsibilityName = new DataGridViewTextBoxColumn();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).BeginInit();
             SuspendLayout();
@@ -68,7 +68,6 @@
             tableLayoutPanelAddEvent.Controls.Add(tbDescription, 1, 4);
             tableLayoutPanelAddEvent.Controls.Add(tbDate, 1, 2);
             tableLayoutPanelAddEvent.Controls.Add(tbTime, 1, 3);
-            tableLayoutPanelAddEvent.Controls.Add(labelError, 2, 7);
             tableLayoutPanelAddEvent.Controls.Add(btnBack, 0, 7);
             tableLayoutPanelAddEvent.Controls.Add(lblEventResponsibilities, 0, 6);
             tableLayoutPanelAddEvent.Controls.Add(dgvUnassignedResponsibilities, 1, 6);
@@ -76,16 +75,17 @@
             tableLayoutPanelAddEvent.Dock = DockStyle.Fill;
             tableLayoutPanelAddEvent.Location = new Point(0, 0);
             tableLayoutPanelAddEvent.Name = "tableLayoutPanelAddEvent";
-            tableLayoutPanelAddEvent.RowCount = 8;
-            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132179F));
+            tableLayoutPanelAddEvent.RowCount = 7;
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.01322F));
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 18.3553581F));
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 8.2232F));
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 18.3553581F));
-            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
-            tableLayoutPanelAddEvent.Size = new Size(894, 450);
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.01321F));
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanelAddEvent.Size = new Size(879, 450);
             tableLayoutPanelAddEvent.TabIndex = 1;
             // 
             // labelName
@@ -96,7 +96,7 @@
             labelName.ForeColor = Color.DarkGreen;
             labelName.Location = new Point(3, 14);
             labelName.Name = "labelName";
-            labelName.Size = new Size(214, 21);
+            labelName.Size = new Size(210, 21);
             labelName.TabIndex = 0;
             labelName.Text = "Event Name:";
             // 
@@ -108,7 +108,7 @@
             labelEVenue.ForeColor = Color.DarkGreen;
             labelEVenue.Location = new Point(3, 63);
             labelEVenue.Name = "labelEVenue";
-            labelEVenue.Size = new Size(214, 21);
+            labelEVenue.Size = new Size(210, 21);
             labelEVenue.TabIndex = 1;
             labelEVenue.Text = "Event Venue:";
             // 
@@ -120,7 +120,7 @@
             labelEDate.ForeColor = Color.DarkGreen;
             labelEDate.Location = new Point(3, 112);
             labelEDate.Name = "labelEDate";
-            labelEDate.Size = new Size(214, 21);
+            labelEDate.Size = new Size(210, 21);
             labelEDate.TabIndex = 2;
             labelEDate.Text = "Event Date:";
             // 
@@ -132,7 +132,7 @@
             labelETime.ForeColor = Color.DarkGreen;
             labelETime.Location = new Point(3, 161);
             labelETime.Name = "labelETime";
-            labelETime.Size = new Size(214, 21);
+            labelETime.Size = new Size(210, 21);
             labelETime.TabIndex = 3;
             labelETime.Text = "Event Time:";
             // 
@@ -144,7 +144,7 @@
             labelEDescription.ForeColor = Color.DarkGreen;
             labelEDescription.Location = new Point(3, 226);
             labelEDescription.Name = "labelEDescription";
-            labelEDescription.Size = new Size(214, 21);
+            labelEDescription.Size = new Size(210, 21);
             labelEDescription.TabIndex = 4;
             labelEDescription.Text = "Event Description:";
             // 
@@ -152,33 +152,33 @@
             // 
             tbName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbName, 4);
-            tbName.Location = new Point(223, 13);
+            tbName.Location = new Point(219, 13);
             tbName.MaxLength = 100;
             tbName.Name = "tbName";
             tbName.ReadOnly = true;
-            tbName.Size = new Size(541, 23);
+            tbName.Size = new Size(531, 23);
             tbName.TabIndex = 1;
             // 
             // tbAddress
             // 
             tbAddress.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbAddress, 4);
-            tbAddress.Location = new Point(223, 62);
+            tbAddress.Location = new Point(219, 62);
             tbAddress.MaxLength = 50;
             tbAddress.Name = "tbAddress";
             tbAddress.ReadOnly = true;
-            tbAddress.Size = new Size(541, 23);
+            tbAddress.Size = new Size(531, 23);
             tbAddress.TabIndex = 2;
             // 
             // tbDescription
             // 
             tbDescription.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbDescription, 4);
-            tbDescription.Location = new Point(223, 200);
+            tbDescription.Location = new Point(219, 200);
             tbDescription.MaxLength = 250;
             tbDescription.Name = "tbDescription";
             tbDescription.ReadOnly = true;
-            tbDescription.Size = new Size(541, 74);
+            tbDescription.Size = new Size(531, 74);
             tbDescription.TabIndex = 9;
             tbDescription.Text = "";
             // 
@@ -186,34 +186,23 @@
             // 
             tbDate.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbDate, 2);
-            tbDate.Location = new Point(223, 111);
+            tbDate.Location = new Point(219, 111);
             tbDate.MaxLength = 50;
             tbDate.Name = "tbDate";
             tbDate.ReadOnly = true;
-            tbDate.Size = new Size(278, 23);
+            tbDate.Size = new Size(273, 23);
             tbDate.TabIndex = 18;
             // 
             // tbTime
             // 
             tbTime.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelAddEvent.SetColumnSpan(tbTime, 2);
-            tbTime.Location = new Point(223, 160);
+            tbTime.Location = new Point(219, 160);
             tbTime.MaxLength = 25;
             tbTime.Name = "tbTime";
             tbTime.ReadOnly = true;
-            tbTime.Size = new Size(278, 23);
+            tbTime.Size = new Size(273, 23);
             tbTime.TabIndex = 19;
-            // 
-            // labelError
-            // 
-            labelError.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            labelError.AutoSize = true;
-            tableLayoutPanelAddEvent.SetColumnSpan(labelError, 2);
-            labelError.ForeColor = Color.Red;
-            labelError.Location = new Point(367, 416);
-            labelError.Name = "labelError";
-            labelError.Size = new Size(269, 15);
-            labelError.TabIndex = 17;
             // 
             // btnBack
             // 
@@ -237,18 +226,20 @@
             lblEventResponsibilities.ForeColor = Color.DarkGreen;
             lblEventResponsibilities.Location = new Point(3, 345);
             lblEventResponsibilities.Name = "lblEventResponsibilities";
-            lblEventResponsibilities.Size = new Size(214, 21);
+            lblEventResponsibilities.Size = new Size(210, 21);
             lblEventResponsibilities.TabIndex = 21;
             lblEventResponsibilities.Text = "Event Responsibilities:";
             // 
             // dgvUnassignedResponsibilities
             // 
             dgvUnassignedResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUnassignedResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName });
             tableLayoutPanelAddEvent.SetColumnSpan(dgvUnassignedResponsibilities, 4);
-            dgvUnassignedResponsibilities.Location = new Point(223, 318);
+            dgvUnassignedResponsibilities.Location = new Point(219, 318);
             dgvUnassignedResponsibilities.Name = "dgvUnassignedResponsibilities";
+            tableLayoutPanelAddEvent.SetRowSpan(dgvUnassignedResponsibilities, 2);
             dgvUnassignedResponsibilities.RowTemplate.Height = 25;
-            dgvUnassignedResponsibilities.Size = new Size(278, 74);
+            dgvUnassignedResponsibilities.Size = new Size(303, 129);
             dgvUnassignedResponsibilities.TabIndex = 23;
             // 
             // lblUnassignedResponsibilities
@@ -258,17 +249,24 @@
             tableLayoutPanelAddEvent.SetColumnSpan(lblUnassignedResponsibilities, 2);
             lblUnassignedResponsibilities.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Italic, GraphicsUnit.Point);
             lblUnassignedResponsibilities.ForeColor = Color.DarkGreen;
-            lblUnassignedResponsibilities.Location = new Point(223, 286);
+            lblUnassignedResponsibilities.Location = new Point(219, 286);
             lblUnassignedResponsibilities.Name = "lblUnassignedResponsibilities";
-            lblUnassignedResponsibilities.Size = new Size(278, 21);
+            lblUnassignedResponsibilities.Size = new Size(273, 21);
             lblUnassignedResponsibilities.TabIndex = 25;
             lblUnassignedResponsibilities.Text = "Unassigned Responsibilities";
+            // 
+            // ResponsibilityName
+            // 
+            ResponsibilityName.DataPropertyName = "Name";
+            ResponsibilityName.HeaderText = "Name";
+            ResponsibilityName.Name = "ResponsibilityName";
+            ResponsibilityName.Width = 130;
             // 
             // ViewEventForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(894, 450);
+            ClientSize = new Size(879, 450);
             Controls.Add(tableLayoutPanelAddEvent);
             Name = "ViewEventForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -291,12 +289,12 @@
         private TextBox tbName;
         private TextBox tbAddress;
         private RichTextBox tbDescription;
-        private Label labelError;
         private TextBox tbDate;
         private TextBox tbTime;
         private Button btnBack;
         private Label lblEventResponsibilities;
         private DataGridView dgvUnassignedResponsibilities;
         private Label lblUnassignedResponsibilities;
+        private DataGridViewTextBoxColumn ResponsibilityName;
     }
 }

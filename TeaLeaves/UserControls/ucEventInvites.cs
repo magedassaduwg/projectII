@@ -209,7 +209,7 @@ namespace TeaLeaves.UserControls
             if (dgvAcceptedInvites.SelectedRows.Count > 0)
             {
                 Event selectedEvent = (Event)dgvAcceptedInvites.SelectedRows[0].DataBoundItem;
-                using (ViewEventForm viewEventForm = new ViewEventForm(selectedEvent))
+                using (ViewEventResponsibilitiesForm viewEventForm = new ViewEventResponsibilitiesForm(selectedEvent))
                 {
                     viewEventForm.ShowDialog();
                 }
