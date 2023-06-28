@@ -1,4 +1,5 @@
-﻿using TeaLeaves.Controllers;
+﻿using System;
+using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
@@ -13,6 +14,7 @@ namespace TeaLeaves.Views
         private UserControl _userControl;
         private ContactsController _contactsController;
         private User selectedContact;
+        private bool hasBeenSorted;
 
         /// <summary>
         /// constructor for the ManageContactForm
@@ -20,6 +22,7 @@ namespace TeaLeaves.Views
         public ManageContactForm()
         {
             this._contactsController = new ContactsController();
+            this.hasBeenSorted = false;
             InitializeComponent();
         }
 
@@ -79,7 +82,8 @@ namespace TeaLeaves.Views
             {
                 contactDataGridView.DataSource = this._contactList;
                 this.selectedContact = this._contactList[0];
-            } else
+            }
+            else
             {
                 this.deleteButton.Enabled = false;
                 this.viewProfileButton.Enabled = false;
@@ -99,6 +103,26 @@ namespace TeaLeaves.Views
             {
                 profileForm.ShowDialog();
             }
+        }
+
+        private void sortButton_Click(object sender, EventArgs e)
+        {
+            if (this._contactList.Any() && this.hasBeenSorted == false)
+            {
+                IEnumerable<User> orderedByFirstName = this._contactList.OrderBy(user => user.LastName);
+                this._contactList = orderedByFirstName.ToList();
+                this.contactDataGridView.DataSource = this._contactList;
+                this.selectedContact = this._contactList[0];
+                this.hasBeenSorted = true;
+            } else if (this._contactList.Any() && this.hasBeenSorted == true)
+            {
+                this._contactList.Reverse();
+                this.contactDataGridView.DataSource = this._contactList;
+                this.selectedContact = this._contactList[0];
+                this.contactDataGridView.Refresh();
+                this.hasBeenSorted = false;
+            }
+
         }
     }
 }
