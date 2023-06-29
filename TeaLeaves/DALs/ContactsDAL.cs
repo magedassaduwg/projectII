@@ -299,14 +299,8 @@ namespace TeaLeaves.DALs
                 command.Parameters.AddWithValue("@UserId2", contact.UserId);
 
                 connection.Open();
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;
             }
         }
 

@@ -234,12 +234,12 @@
             // 
             dgvUnassignedResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUnassignedResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName });
-            tableLayoutPanelAddEvent.SetColumnSpan(dgvUnassignedResponsibilities, 4);
+            tableLayoutPanelAddEvent.SetColumnSpan(dgvUnassignedResponsibilities, 2);
             dgvUnassignedResponsibilities.Location = new Point(219, 318);
             dgvUnassignedResponsibilities.Name = "dgvUnassignedResponsibilities";
             tableLayoutPanelAddEvent.SetRowSpan(dgvUnassignedResponsibilities, 2);
             dgvUnassignedResponsibilities.RowTemplate.Height = 25;
-            dgvUnassignedResponsibilities.Size = new Size(303, 129);
+            dgvUnassignedResponsibilities.Size = new Size(273, 129);
             dgvUnassignedResponsibilities.TabIndex = 23;
             // 
             // lblUnassignedResponsibilities
@@ -260,7 +260,7 @@
             ResponsibilityName.DataPropertyName = "Name";
             ResponsibilityName.HeaderText = "Name";
             ResponsibilityName.Name = "ResponsibilityName";
-            ResponsibilityName.Width = 130;
+            ResponsibilityName.Width = 230;
             // 
             // ViewEventForm
             // 

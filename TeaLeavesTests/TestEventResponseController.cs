@@ -21,7 +21,7 @@ namespace TeaLeavesTests
             {
                 InviterId = 24,
                 ReceiverId = 25,
-                EventId = 81,
+                EventId = 180,
                 Accepted = false,
             };
 
@@ -30,7 +30,7 @@ namespace TeaLeavesTests
                 int eventResponseId = controller.AddEventResponse(userEventResponse);
                 Assert.AreNotEqual(eventResponseId, 0);
 
-                controller.DeleteEventResponse(25, 81);
+                controller.DeleteEventResponse(25, 180);
                 Assert.IsTrue(true);
             }
             catch (Exception)
@@ -52,8 +52,8 @@ namespace TeaLeavesTests
             {
                 userEventResponses = controller.GetEventResponses(25);
 
-                Assert.AreEqual(userEventResponses[0].Id, 19);
-                Assert.AreEqual(userEventResponses[1].Id, 21);
+                Assert.AreEqual(userEventResponses[0].Id, 85);
+                Assert.AreEqual(userEventResponses[1].Id, 86);
             }
             catch (Exception)
             {
@@ -73,7 +73,7 @@ namespace TeaLeavesTests
             {
                 InviterId = 24,
                 ReceiverId = 25,
-                EventId = 81,
+                EventId = 157,
                 Accepted = false,
             };
 
@@ -82,12 +82,12 @@ namespace TeaLeavesTests
                 int eventResponseId = controller.AddEventResponse(userEventResponse);
                 Assert.AreNotEqual(eventResponseId, 0);
 
-                controller.AcceptEventResponse(25, 81);
+                controller.AcceptEventResponse(25, 157);
 
                 userEventResponses = controller.GetEventResponses(25);
                 Assert.AreEqual(userEventResponses[3].Accepted, true);
 
-                controller.DeleteEventResponse(25, 81);
+                controller.DeleteEventResponse(25, 157);
                 Assert.IsTrue(true);
             }
             catch (Exception)

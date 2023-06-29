@@ -273,7 +273,7 @@
             dgvUnassignedResponsibilities.Name = "dgvUnassignedResponsibilities";
             tableLayoutPanelAddEvent.SetRowSpan(dgvUnassignedResponsibilities, 2);
             dgvUnassignedResponsibilities.RowTemplate.Height = 25;
-            dgvUnassignedResponsibilities.Size = new Size(303, 160);
+            dgvUnassignedResponsibilities.Size = new Size(273, 160);
             dgvUnassignedResponsibilities.TabIndex = 23;
             // 
             // lblMyResponsibilities
@@ -318,7 +318,7 @@
             ResponsibilityName1.DataPropertyName = "Name";
             ResponsibilityName1.HeaderText = "Name";
             ResponsibilityName1.Name = "ResponsibilityName1";
-            ResponsibilityName1.Width = 130;
+            ResponsibilityName1.Width = 230;
             // 
             // ViewEventResponsibilitiesForm
             // 
