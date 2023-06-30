@@ -36,14 +36,14 @@ namespace TeaLeaves.Views
             textBoxCity.Text = _event.City;
             comboBoxState.Text = _event.State;
             comboBoxCategory.Text = _event.Category;
-            textBoxZip.Text = string.Empty;
+            textBoxZip.Text = _event.Zipcode != 0 ? _event.Zipcode.ToString() : string.Empty;
             richTextBoxDescription.Text = _event.Description;
             if (_event.Id > 0)
             {
                 dateTimePickerEvent.Value = _event.EventDateTime;
                 numericUpDownHour.Value = _event.EventDateTime.Hour;
                 numericUpDownMinute.Value = _event.EventDateTime.Minute;
-                textBoxZip.Text = _event.Zipcode.ToString();
+                
             }
         }
         private void EventsForm_Load(object sender, EventArgs e)
