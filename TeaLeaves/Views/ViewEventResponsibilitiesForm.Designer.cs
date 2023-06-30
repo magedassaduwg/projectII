@@ -45,10 +45,10 @@
             ResponsibilityName = new DataGridViewTextBoxColumn();
             Username = new DataGridViewTextBoxColumn();
             dgvUnassignedResponsibilities = new DataGridView();
+            ResponsibilityName1 = new DataGridViewTextBoxColumn();
             lblMyResponsibilities = new Label();
             lblUnassignedResponsibilities = new Label();
             btnAcceptResponsibility = new Button();
-            ResponsibilityName1 = new DataGridViewTextBoxColumn();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMyResponsibilities).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).BeginInit();
@@ -240,11 +240,13 @@
             // 
             // dgvMyResponsibilities
             // 
+            dgvMyResponsibilities.BackgroundColor = Color.PapayaWhip;
             dgvMyResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMyResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName, Username });
             tableLayoutPanelAddEvent.SetColumnSpan(dgvMyResponsibilities, 2);
             dgvMyResponsibilities.Location = new Point(270, 394);
             dgvMyResponsibilities.Name = "dgvMyResponsibilities";
+            dgvMyResponsibilities.ReadOnly = true;
             tableLayoutPanelAddEvent.SetRowSpan(dgvMyResponsibilities, 2);
             dgvMyResponsibilities.RowTemplate.Height = 25;
             dgvMyResponsibilities.Size = new Size(303, 160);
@@ -255,6 +257,7 @@
             ResponsibilityName.DataPropertyName = "Name";
             ResponsibilityName.HeaderText = "Name";
             ResponsibilityName.Name = "ResponsibilityName";
+            ResponsibilityName.ReadOnly = true;
             ResponsibilityName.Width = 130;
             // 
             // Username
@@ -262,19 +265,31 @@
             Username.DataPropertyName = "Username";
             Username.HeaderText = "Username";
             Username.Name = "Username";
+            Username.ReadOnly = true;
             Username.Width = 130;
             // 
             // dgvUnassignedResponsibilities
             // 
+            dgvUnassignedResponsibilities.BackgroundColor = Color.PapayaWhip;
             dgvUnassignedResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUnassignedResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName1 });
             tableLayoutPanelAddEvent.SetColumnSpan(dgvUnassignedResponsibilities, 2);
             dgvUnassignedResponsibilities.Location = new Point(778, 394);
             dgvUnassignedResponsibilities.Name = "dgvUnassignedResponsibilities";
+            dgvUnassignedResponsibilities.ReadOnly = true;
             tableLayoutPanelAddEvent.SetRowSpan(dgvUnassignedResponsibilities, 2);
             dgvUnassignedResponsibilities.RowTemplate.Height = 25;
-            dgvUnassignedResponsibilities.Size = new Size(303, 160);
+            dgvUnassignedResponsibilities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUnassignedResponsibilities.Size = new Size(273, 160);
             dgvUnassignedResponsibilities.TabIndex = 23;
+            // 
+            // ResponsibilityName1
+            // 
+            ResponsibilityName1.DataPropertyName = "Name";
+            ResponsibilityName1.HeaderText = "Name";
+            ResponsibilityName1.Name = "ResponsibilityName1";
+            ResponsibilityName1.ReadOnly = true;
+            ResponsibilityName1.Width = 230;
             // 
             // lblMyResponsibilities
             // 
@@ -312,13 +327,6 @@
             btnAcceptResponsibility.Text = "Accept";
             btnAcceptResponsibility.UseVisualStyleBackColor = true;
             btnAcceptResponsibility.Click += btnAcceptResponsibility_Click;
-            // 
-            // ResponsibilityName1
-            // 
-            ResponsibilityName1.DataPropertyName = "Name";
-            ResponsibilityName1.HeaderText = "Name";
-            ResponsibilityName1.Name = "ResponsibilityName1";
-            ResponsibilityName1.Width = 130;
             // 
             // ViewEventResponsibilitiesForm
             // 

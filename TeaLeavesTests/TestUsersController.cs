@@ -117,11 +117,11 @@ namespace TeaLeavesTests
             UsersController controller = new UsersController();
             User user = new User
             {
-                Username = "test3",
+                Username = "test5",
                 Password = EncryptionHelper.EncryptString("test"),
                 FirstName = "test",
                 LastName = "test",
-                Email = "test3",
+                Email = "test5",
             };
 
             try

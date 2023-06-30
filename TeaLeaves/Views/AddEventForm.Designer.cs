@@ -53,11 +53,11 @@
             lblEventResponsibilities = new Label();
             tbResponsibilityName = new TextBox();
             dgvResponsibilities = new DataGridView();
-            ResponsibilityName = new DataGridViewTextBoxColumn();
-            User = new DataGridViewTextBoxColumn();
             btnAddResponsibility = new Button();
             lblResponsibilityName = new Label();
             lblResponsibilities = new Label();
+            ResponsibilityName = new DataGridViewTextBoxColumn();
+            User = new DataGridViewTextBoxColumn();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownHour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownMinute).BeginInit();
@@ -387,6 +387,7 @@
             // 
             // dgvResponsibilities
             // 
+            dgvResponsibilities.BackgroundColor = Color.PapayaWhip;
             dgvResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName, User });
             tableLayoutPanelAddEvent.SetColumnSpan(dgvResponsibilities, 2);
@@ -395,19 +396,6 @@
             dgvResponsibilities.RowTemplate.Height = 25;
             dgvResponsibilities.Size = new Size(303, 112);
             dgvResponsibilities.TabIndex = 21;
-            // 
-            // ResponsibilityName
-            // 
-            ResponsibilityName.DataPropertyName = "Name";
-            ResponsibilityName.HeaderText = "Name";
-            ResponsibilityName.Name = "ResponsibilityName";
-            ResponsibilityName.Width = 130;
-            // 
-            // User
-            // 
-            User.HeaderText = "User";
-            User.Name = "User";
-            User.Width = 130;
             // 
             // btnAddResponsibility
             // 
@@ -443,6 +431,20 @@
             lblResponsibilities.Size = new Size(92, 15);
             lblResponsibilities.TabIndex = 25;
             lblResponsibilities.Text = "Responsibilities";
+            // 
+            // ResponsibilityName
+            // 
+            ResponsibilityName.DataPropertyName = "Name";
+            ResponsibilityName.HeaderText = "Name";
+            ResponsibilityName.Name = "ResponsibilityName";
+            ResponsibilityName.Width = 130;
+            // 
+            // User
+            // 
+            User.DataPropertyName = "Username";
+            User.HeaderText = "User";
+            User.Name = "User";
+            User.Width = 130;
             // 
             // AddEventForm
             // 
@@ -491,8 +493,8 @@
         private TextBox tbResponsibilityName;
         private Button btnAddResponsibility;
         private Label lblResponsibilityName;
+        private Label lblResponsibilities;
         private DataGridViewTextBoxColumn ResponsibilityName;
         private DataGridViewTextBoxColumn User;
-        private Label lblResponsibilities;
     }
 }

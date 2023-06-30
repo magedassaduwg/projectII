@@ -42,8 +42,8 @@
             btnBack = new Button();
             lblEventResponsibilities = new Label();
             dgvUnassignedResponsibilities = new DataGridView();
-            lblUnassignedResponsibilities = new Label();
             ResponsibilityName = new DataGridViewTextBoxColumn();
+            lblUnassignedResponsibilities = new Label();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).BeginInit();
             SuspendLayout();
@@ -232,15 +232,25 @@
             // 
             // dgvUnassignedResponsibilities
             // 
+            dgvUnassignedResponsibilities.BackgroundColor = Color.PapayaWhip;
             dgvUnassignedResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUnassignedResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName });
-            tableLayoutPanelAddEvent.SetColumnSpan(dgvUnassignedResponsibilities, 4);
+            tableLayoutPanelAddEvent.SetColumnSpan(dgvUnassignedResponsibilities, 2);
             dgvUnassignedResponsibilities.Location = new Point(219, 318);
             dgvUnassignedResponsibilities.Name = "dgvUnassignedResponsibilities";
+            dgvUnassignedResponsibilities.ReadOnly = true;
             tableLayoutPanelAddEvent.SetRowSpan(dgvUnassignedResponsibilities, 2);
             dgvUnassignedResponsibilities.RowTemplate.Height = 25;
-            dgvUnassignedResponsibilities.Size = new Size(303, 129);
+            dgvUnassignedResponsibilities.Size = new Size(273, 129);
             dgvUnassignedResponsibilities.TabIndex = 23;
+            // 
+            // ResponsibilityName
+            // 
+            ResponsibilityName.DataPropertyName = "Name";
+            ResponsibilityName.HeaderText = "Name";
+            ResponsibilityName.Name = "ResponsibilityName";
+            ResponsibilityName.ReadOnly = true;
+            ResponsibilityName.Width = 230;
             // 
             // lblUnassignedResponsibilities
             // 
@@ -254,13 +264,6 @@
             lblUnassignedResponsibilities.Size = new Size(273, 21);
             lblUnassignedResponsibilities.TabIndex = 25;
             lblUnassignedResponsibilities.Text = "Unassigned Responsibilities";
-            // 
-            // ResponsibilityName
-            // 
-            ResponsibilityName.DataPropertyName = "Name";
-            ResponsibilityName.HeaderText = "Name";
-            ResponsibilityName.Name = "ResponsibilityName";
-            ResponsibilityName.Width = 130;
             // 
             // ViewEventForm
             // 

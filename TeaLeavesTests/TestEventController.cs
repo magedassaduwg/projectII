@@ -72,7 +72,7 @@ namespace TeaLeavesTests
             Event userEvent;
             try
             {
-                userEvent = controller.GetEventById(70);
+                userEvent = controller.GetEventById(153);
                 Assert.AreEqual(userEvent.EventName, "test");
             }
             catch (Exception)
@@ -92,9 +92,9 @@ namespace TeaLeavesTests
             try
             {
                 userEvents = controller.GetEventsReceivedByUserId(25);
-                Assert.AreEqual(userEvents[0].Id, 70);
-                Assert.AreEqual(userEvents[1].Id, 71);
-                Assert.AreEqual(userEvents[2].Id, 72);
+                Assert.AreEqual(userEvents[0].Id, 153);
+                Assert.AreEqual(userEvents[1].Id, 156);
+                Assert.AreEqual(userEvents[2].Id, 163);
             }
             catch (Exception)
             {
@@ -113,8 +113,8 @@ namespace TeaLeavesTests
             try
             {
                 userEvents = controller.GetAcceptedEventsReceivedByUserId(25);
-                Assert.AreEqual(userEvents[0].Id, 67);
-                Assert.AreEqual(userEvents[1].Id, 69);
+                Assert.AreEqual(userEvents[0].Id, 155);
+                Assert.AreEqual(userEvents[1].Id, 161);
             }
             catch (Exception)
             {
