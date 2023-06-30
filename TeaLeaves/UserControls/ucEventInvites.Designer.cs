@@ -153,7 +153,7 @@
             btnRefresh.Name="btnRefresh";
             btnRefresh.Size=new Size(126, 57);
             btnRefresh.TabIndex=3;
-            btnRefresh.Text="Clear";
+            btnRefresh.Text="No Filter";
             btnRefresh.UseVisualStyleBackColor=false;
             btnRefresh.Click+=btnRefresh_Click;
             // 

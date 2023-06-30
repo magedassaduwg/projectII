@@ -48,16 +48,7 @@ namespace TeaLeaves.Controllers
         {
             return _eventDAL.GetEventsReceivedByUserId(userId);
         }
-        /// <summary>
-        /// Get event by category
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="category"></param>
-        /// <returns></returns>
-        public List<Event> GetEventsReceivedByUserIdWithCategory(int userId, string category)
-        {
-            return _eventDAL.GetEventsReceivedByUserIdWithCategory(userId, category);
-        }
+       
 
         /// <summary>
         /// Returns all the events the given user has accepted
@@ -99,15 +90,6 @@ namespace TeaLeaves.Controllers
             return _eventDAL.GetEventById(selectedEventId);
         }
   
-        /// <summary>
-        /// Get event by date
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="eventDate"></param>
-        /// <returns></returns>
-        public List<Event> GetEventsReceivedByUserIdWithDate(int userId, DateTime eventDate)
-        {
-            return _eventDAL.GetEventsReceivedByUserIdWithDate(userId, eventDate);
-        }
+       
     }
 }
