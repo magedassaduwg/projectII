@@ -33,6 +33,7 @@
             contactLayoutPanel = new TableLayoutPanel();
             addButton = new Button();
             contactDataGridView = new DataGridView();
+            FullName = new DataGridViewTextBoxColumn();
             usersBindingSource = new BindingSource(components);
             SelectedContactTable = new TableLayoutPanel();
             firstNameLabel = new Label();
@@ -46,7 +47,7 @@
             closeButton = new Button();
             viewProfileButton = new Button();
             deleteButton = new Button();
-            FullName = new DataGridViewTextBoxColumn();
+            sortButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -79,8 +80,9 @@
             contactLayoutPanel.ColumnCount = 2;
             contactLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             contactLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            contactLayoutPanel.Controls.Add(addButton, 0, 1);
+            contactLayoutPanel.Controls.Add(sortButton, 0, 1);
             contactLayoutPanel.Controls.Add(contactDataGridView, 0, 0);
+            contactLayoutPanel.Controls.Add(addButton, 1, 1);
             contactLayoutPanel.Dock = DockStyle.Fill;
             contactLayoutPanel.Location = new Point(0, 0);
             contactLayoutPanel.Name = "contactLayoutPanel";
@@ -94,10 +96,9 @@
             // 
             addButton.Anchor = AnchorStyles.None;
             addButton.BackColor = Color.Orange;
-            contactLayoutPanel.SetColumnSpan(addButton, 2);
             addButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             addButton.ForeColor = Color.DarkGreen;
-            addButton.Location = new Point(87, 406);
+            addButton.Location = new Point(153, 406);
             addButton.Name = "addButton";
             addButton.Size = new Size(92, 33);
             addButton.TabIndex = 8;
@@ -125,6 +126,13 @@
             contactDataGridView.Size = new Size(260, 389);
             contactDataGridView.TabIndex = 0;
             contactDataGridView.RowEnter += contactDataGridView_RowEnter;
+            // 
+            // FullName
+            // 
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
             // 
             // SelectedContactTable
             // 
@@ -258,6 +266,7 @@
             // 
             viewProfileButton.Anchor = AnchorStyles.None;
             viewProfileButton.BackColor = Color.YellowGreen;
+            viewProfileButton.Enabled = false;
             viewProfileButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             viewProfileButton.ForeColor = Color.DarkGreen;
             viewProfileButton.Location = new Point(122, 388);
@@ -283,12 +292,19 @@
             deleteButton.UseVisualStyleBackColor = false;
             deleteButton.Click += deleteButton_Click;
             // 
-            // FullName
+            // sortButton
             // 
-            FullName.DataPropertyName = "FullName";
-            FullName.HeaderText = "Name";
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
+            sortButton.Anchor = AnchorStyles.None;
+            sortButton.BackColor = Color.Orange;
+            sortButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            sortButton.ForeColor = Color.DarkGreen;
+            sortButton.Location = new Point(20, 406);
+            sortButton.Name = "sortButton";
+            sortButton.Size = new Size(92, 33);
+            sortButton.TabIndex = 9;
+            sortButton.Text = "Sort";
+            sortButton.UseVisualStyleBackColor = false;
+            sortButton.Click += sortButton_Click;
             // 
             // ManageContactForm
             // 
@@ -334,5 +350,6 @@
         private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private Button viewProfileButton;
         private DataGridViewTextBoxColumn FullName;
+        private Button sortButton;
     }
 }

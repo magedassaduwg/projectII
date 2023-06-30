@@ -10,6 +10,8 @@ namespace TeaLeaves.Views
     public partial class AddEventForm : Form
     {
         private EventController _eventController;
+        private EventResponsibilityController _eventResponsibilityController;
+        private List<EventResponsibility> _eventResponsibilities;
         private Event _event;
 
         /// <summary>
@@ -20,9 +22,11 @@ namespace TeaLeaves.Views
         {
             InitializeComponent();
             _eventController = new EventController();
+            _eventResponsibilityController = new EventResponsibilityController();
+            _eventResponsibilities = new List<EventResponsibility>();
             _event = selectedEvent ?? new Event();
             BindEventValue();
-
+            dgvResponsibilities.AutoGenerateColumns = false;
         }
         private void BindEventValue()
         {
@@ -53,6 +57,21 @@ namespace TeaLeaves.Views
 
             BindCategory();
             BindState();
+            LoadEventResponsibilities();
+        }
+
+        private void LoadEventResponsibilities()
+        {
+            try
+            {
+                _eventResponsibilities = _eventResponsibilityController.GetEventResponsibilitiesByEventId(_event.Id);
+
+                dgvResponsibilities.DataSource = _eventResponsibilities;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
 
         private void BindState()
@@ -180,5 +199,13 @@ namespace TeaLeaves.Views
 
         }
 
+        private void btnAddResponsibility_Click(object sender, EventArgs e)
+        {
+            EventResponsibility eventResponsibility = new EventResponsibility();
+            eventResponsibility.EventId = _event.Id;
+            eventResponsibility.Name = tbResponsibilityName.Text;
+            _eventResponsibilityController.AddEventResponsibility(eventResponsibility);
+            LoadEventResponsibilities();
+        }
     }
 }

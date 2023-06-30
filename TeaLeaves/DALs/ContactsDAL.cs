@@ -291,19 +291,16 @@ namespace TeaLeaves.DALs
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                SqlCommand command = new SqlCommand("DELETE FROM Contacts WHERE UserId1 = @UserId1 AND UserId2 = @UserId2", connection);
+                SqlCommand command = new SqlCommand("DELETE FROM Contacts WHERE UserId1 = @UserId1 AND UserId2 = @UserId2; " +
+                    "DELETE FROM Contacts WHERE UserId1 = @UserId2 AND UserId2 = @UserId1; " +
+                    "DELETE FROM EventResponses WHERE EventInviterId = @UserId1 AND EventReceiverId = @UserId2; " +
+                    "DELETE FROM EventResponses WHERE EventInviterId = @UserId2 AND EventReceiverId = @UserId1;", connection);
                 command.Parameters.AddWithValue("@UserId1", user.UserId);
                 command.Parameters.AddWithValue("@UserId2", contact.UserId);
 
                 connection.Open();
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;
             }
         }
 

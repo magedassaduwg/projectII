@@ -83,6 +83,10 @@ namespace TeaLeaves.UserControls
                 _eventResponseController.AcceptEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
                 GetUserEvents();
             }
+            else
+            {
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             if (dgvEventInvites.SelectedRows.Count > 0)
             {
                 dgvEventInvites.Rows[0].Selected = true;
@@ -98,9 +102,10 @@ namespace TeaLeaves.UserControls
 
         private void btnDecline_Click(object sender, EventArgs e)
         {
-            if (ShouldDecline())
+
+            if (dgvEventInvites.SelectedRows.Count > 0)
             {
-                if (dgvEventInvites.SelectedRows.Count > 0)
+                if (ShouldDecline())
                 {
                     Event selectedEvent = (Event)dgvEventInvites.SelectedRows[0].DataBoundItem;
                     _eventResponseController.DeclineEventResponse(CurrentUserStore.User.UserId, selectedEvent.Id);
@@ -113,7 +118,7 @@ namespace TeaLeaves.UserControls
             }
             else
             {
-                return;
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -127,6 +132,11 @@ namespace TeaLeaves.UserControls
                     viewEventForm.ShowDialog();
                 }
             }
+            else
+            {
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void radioButtonFilterByCategory_CheckedChanged(object sender, EventArgs e)
@@ -145,6 +155,7 @@ namespace TeaLeaves.UserControls
         {
             string category = tbCategory.Text;
 
+
             try
             {
                 if (radioButtonFilterByCategory.Checked)
@@ -154,7 +165,7 @@ namespace TeaLeaves.UserControls
                         MessageBox.Show("Please enter category name", "Category name", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    _events = _eventController.GetEventsReceivedByUserIdWithCategory(CurrentUserStore.User.UserId,category);
+                    _events = _eventController.GetEventsReceivedByUserIdWithCategory(CurrentUserStore.User.UserId, category);
 
                     if (_events.Count == 0)
                     {
@@ -166,7 +177,7 @@ namespace TeaLeaves.UserControls
                 else if (radioButtonDate.Checked)
                 {
                     DateTime eventDate = Convert.ToDateTime(dateTimePickerFilter.Value).Date;
-                    _events = _eventController.GetEventsReceivedByUserIdWithDate(CurrentUserStore.User.UserId, dateTimePickerFilter);
+                    _events = _eventController.GetEventsReceivedByUserIdWithDate(CurrentUserStore.User.UserId, eventDate);
 
                     if (_events.Count == 0)
                     {
@@ -185,11 +196,27 @@ namespace TeaLeaves.UserControls
 
         private void eventName()
         {
-            dgvAcceptedInvites.DataSource = _events;
+            dgvEventInvites.DataSource = _events;
 
-            if (dgvAcceptedInvites.Rows.Count > 0)
+            if (dgvEventInvites.Rows.Count > 0)
             {
-                dgvAcceptedInvites.Rows[0].Selected = true;
+                dgvEventInvites.Rows[0].Selected = true;
+            }
+        }
+
+        private void btnResponsibilities_Click(object sender, EventArgs e)
+        {
+            if (dgvAcceptedInvites.SelectedRows.Count > 0)
+            {
+                Event selectedEvent = (Event)dgvAcceptedInvites.SelectedRows[0].DataBoundItem;
+                using (ViewEventResponsibilitiesForm viewEventForm = new ViewEventResponsibilitiesForm(selectedEvent))
+                {
+                    viewEventForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

@@ -4,25 +4,25 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
-    /// <summary>
-    /// Form for viewing the details of a given event from the user's event invite list
-    /// </summary>
-    public partial class ViewEventForm : Form
+    public partial class ViewEventResponsibilitiesForm : Form
     {
         Event _event;
         EventResponsibilityController _eventResponsibilityController;
+        List<EventResponsibility> _myEventResponsibilities;
         List<EventResponsibility> _unacceptedEventResponsibilities;
 
         /// <summary>
-        /// The constructor for the ViewEventForm class
+        /// The constructor for the ViewEventResponsibilitiesForm class
         /// </summary>
         /// <param name="event"></param>
-        public ViewEventForm(Event @event)
+        public ViewEventResponsibilitiesForm(Event @event)
         {
             InitializeComponent();
             _event = @event;
             _eventResponsibilityController = new EventResponsibilityController();
+            _myEventResponsibilities = new List<EventResponsibility>();
             _unacceptedEventResponsibilities = new List<EventResponsibility>();
+            dgvMyResponsibilities.AutoGenerateColumns = false;
             dgvUnassignedResponsibilities.AutoGenerateColumns = false;
         }
 
@@ -30,9 +30,13 @@ namespace TeaLeaves.Views
         {
             try
             {
-                _unacceptedEventResponsibilities = _eventResponsibilityController.GetEventResponsibilitiesByEventId(_event.Id);
+                _unacceptedEventResponsibilities = _eventResponsibilityController.GetUnassignedEventResponsibilitiesByEventId(_event.Id);
 
                 dgvUnassignedResponsibilities.DataSource = _unacceptedEventResponsibilities;
+
+                _myEventResponsibilities = _eventResponsibilityController.GetEventResponsibilitiesByUserIdAndEventId(CurrentUserStore.User.UserId, _event.Id);
+
+                dgvMyResponsibilities.DataSource = _myEventResponsibilities;
 
                 if (dgvUnassignedResponsibilities.Rows.Count > 0)
                 {
@@ -45,7 +49,22 @@ namespace TeaLeaves.Views
             }
         }
 
-        private void ViewEventForm_Load(object sender, EventArgs e)
+        private void btnAcceptResponsibility_Click(object sender, EventArgs e)
+        {
+            if (dgvUnassignedResponsibilities.Rows.Count > 0)
+            {
+                EventResponsibility selectedEventResponsibility = (EventResponsibility)dgvUnassignedResponsibilities.SelectedRows[0].DataBoundItem;
+                _eventResponsibilityController.assignEventResponsibility(CurrentUserStore.User, _event.Id, selectedEventResponsibility.Name);
+            }
+            GetEventResponsibilities();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void ViewEventResponsibilitiesForm_Load(object sender, EventArgs e)
         {
             tbName.Text = _event.EventName;
             if (_event.City != "" && _event.StreetNumber != "")
@@ -56,13 +75,7 @@ namespace TeaLeaves.Views
             tbDate.Text = dateAndTimeStrings[0];
             tbTime.Text = dateAndTimeStrings[1];
             tbDescription.Text = _event.Description;
-
             GetEventResponsibilities();
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }
