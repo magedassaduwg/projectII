@@ -174,7 +174,7 @@ namespace TeaLeaves.UserControls
                     dgvDeclinedInvites.DataSource = _eventsDeclined.Where(ev => ev.EventDateTime.Date == selectedDate).ToList();
                 }
 
-                eventName();
+                //eventName();
             }
             catch (Exception ex)
             {
