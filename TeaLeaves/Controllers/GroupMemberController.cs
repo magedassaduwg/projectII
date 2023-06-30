@@ -8,7 +8,6 @@ namespace TeaLeaves.Controllers
     /// </summary>
     public class GroupMemberController
     {
-
         private GroupMemberDAL _groupMemberDAL;
 
         /// <summary>
@@ -25,7 +24,7 @@ namespace TeaLeaves.Controllers
         /// <param name="groupName"></param>
         /// <param name="userIds"></param>
         /// <returns></returns>
-        public bool CreateNewGroup(string groupName, string userIds)
+        public int CreateNewGroup(string groupName, string userIds)
         {
             return _groupMemberDAL.CreateMessageGroup(groupName, userIds);
         }
@@ -46,6 +45,16 @@ namespace TeaLeaves.Controllers
         public GroupMember GetGroupById(int groupId)
         {
             return _groupMemberDAL.GetGroupById(groupId);
+        }
+
+        /// <summary>
+        /// Deletes a group by Id
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <returns></returns>
+        public bool DeleteGroupById(int groupId)
+        {
+            return _groupMemberDAL.DeleteGroupById(groupId);
         }
     }
 }

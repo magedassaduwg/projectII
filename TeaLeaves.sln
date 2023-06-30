@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeaLeaves", "TeaLeaves\TeaLeaves.csproj", "{38EF8975-7C02-43FA-934A-F5B4A86976DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaLeavesTests", "TeaLeavesTests\TeaLeavesTests.csproj", "{6693B763-0432-4718-A0FA-79125301621D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeaLeavesTests", "TeaLeavesTests\TeaLeavesTests.csproj", "{6693B763-0432-4718-A0FA-79125301621D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

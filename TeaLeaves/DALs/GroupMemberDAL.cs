@@ -14,19 +14,19 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="newGroup"></param>
         /// <returns></returns>
-        public bool CreateMessageGroup(string groupName, string userIds)
+        public int CreateMessageGroup(string groupName, string userIds)
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 SqlCommand command = new SqlCommand("CreateNewGroup", connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandType = CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("@groupName", groupName);
                 command.Parameters.AddWithValue("@userIds", userIds);
 
                 connection.Open();
 
-                return Convert.ToInt32(command.ExecuteScalar()) > 0;
+                return Convert.ToInt32(command.ExecuteScalar());
             }
         }
 
@@ -99,6 +99,26 @@ namespace TeaLeaves.DALs
             }
 
             return group;
+        }
+
+        /// <summary>
+        /// Deletes a group and it's members, currently used for test cases only
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <returns></returns>
+        public bool DeleteGroupById(int groupId)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("DeleteGroupById", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@groupId", groupId);
+
+                connection.Open();
+
+                return Convert.ToInt32(command.ExecuteScalar()) > 0;
+            }
         }
     }
 }

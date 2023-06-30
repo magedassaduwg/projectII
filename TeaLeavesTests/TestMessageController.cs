@@ -3,9 +3,15 @@ using TeaLeaves.Models;
 
 namespace TeaLeavesTests
 {
+    /// <summary>
+    /// Test Class for the message controller
+    /// </summary>
     [TestClass]
     public class TestMessageController
     {
+        /// <summary>
+        /// Tests fetching message by a user
+        /// </summary>
         [TestMethod]
         public void TestGetMessages()
         {
@@ -21,6 +27,9 @@ namespace TeaLeavesTests
             }
         }
 
+        /// <summary>
+        /// Tests sending message to a nother user
+        /// </summary>
         [TestMethod]
         public void TestSaveMessage()
         {

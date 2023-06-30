@@ -210,6 +210,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Controls.Add(tableLayoutPanel1);
             Name = "ucMessage";
             Size = new Size(1100, 551);
