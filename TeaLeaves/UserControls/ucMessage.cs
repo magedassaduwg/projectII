@@ -84,7 +84,7 @@ namespace TeaLeaves.UserControls
 
         private void UpdateContactUnreadStatus(IUserMessage message, bool isUnread)
         {
-            int senderIndex = _allContacts.FindIndex(c => (c.GetType() == typeof(User) && ((User)c).UserId == message.SenderId) ||
+            int senderIndex = _allContacts.FindIndex(c => (c.GetType() == typeof(User) && ((User)c).UserId == message.SenderId && !message.GroupId.HasValue) ||
                                                           (c.GetType() == typeof(GroupMember) && ((GroupMember)c).GroupId == message.GroupId));
 
             if (senderIndex > -1)
