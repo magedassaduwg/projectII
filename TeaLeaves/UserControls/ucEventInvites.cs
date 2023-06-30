@@ -160,30 +160,18 @@ namespace TeaLeaves.UserControls
             {
                 if (radioButtonFilterByCategory.Checked)
                 {
-                    if (string.IsNullOrEmpty(category))
-                    {
-                        MessageBox.Show("Please enter category name", "Category name", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    _events = _eventController.GetEventsReceivedByUserIdWithCategory(CurrentUserStore.User.UserId, category);
-
-                    if (_events.Count == 0)
-                    {
-                        MessageBox.Show("No event found with that category");
-                    }
-                    dgvEventInvites.DataSource = _events;
+                    dgvEventInvites.DataSource = _events.Where(ev => ev.Category == category).ToList();
+                    dgvAcceptedInvites.DataSource = _eventsAccepted.Where(ev => ev.Category == category).ToList();
+                    dgvDeclinedInvites.DataSource = _eventsDeclined.Where(ev => ev.Category == category).ToList();
                 }
 
                 else if (radioButtonDate.Checked)
                 {
-                    DateTime eventDate = Convert.ToDateTime(dateTimePickerFilter.Value).Date;
-                    _events = _eventController.GetEventsReceivedByUserIdWithDate(CurrentUserStore.User.UserId, eventDate);
+                    DateTime selectedDate = dateTimePickerFilter.Value.Date;
 
-                    if (_events.Count == 0)
-                    {
-                        MessageBox.Show("No event found with that date");
-                    }
-                    dgvEventInvites.DataSource = _events;
+                    dgvEventInvites.DataSource = _events.Where(ev => ev.EventDateTime.Date == selectedDate).ToList();
+                    dgvAcceptedInvites.DataSource = _eventsAccepted.Where(ev => ev.EventDateTime.Date == selectedDate).ToList();
+                    dgvDeclinedInvites.DataSource = _eventsDeclined.Where(ev => ev.EventDateTime.Date == selectedDate).ToList();
                 }
 
                 eventName();
