@@ -57,7 +57,7 @@ namespace TeaLeaves.Views
             if (dgvUnassignedResponsibilities.Rows.Count > 0)
             {
                 EventResponsibility selectedEventResponsibility = (EventResponsibility)dgvUnassignedResponsibilities.SelectedRows[0].DataBoundItem;
-                _eventResponsibilityController.assignEventResponsibility(CurrentUserStore.User, _event.Id, selectedEventResponsibility.Name);
+                _eventResponsibilityController.AssignEventResponsibility(CurrentUserStore.User, _event.Id, selectedEventResponsibility.Name);
             }
             GetEventResponsibilities();
         }

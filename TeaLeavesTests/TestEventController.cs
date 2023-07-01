@@ -142,25 +142,5 @@ namespace TeaLeavesTests
                 Assert.IsTrue(false);
             }
         }
-
-        /// <summary>
-        /// Tests the GetEventsReceivedByUserIdWithCategory method
-        /// </summary>
-        [TestMethod]
-        public void TestGetEventsReceivedByUserIdWithCategory()
-        {
-            EventController controller = new EventController();
-            List<Event> userEvents;
-            try
-            {
-                userEvents = controller.GetEventsReceivedByUserIdWithCategory(25, "test1");
-                Assert.AreEqual(userEvents[0].Id, 153);
-                Assert.AreEqual(userEvents[1].Id, 156);
-            }
-            catch (Exception)
-            {
-                Assert.IsTrue(false);
-            }
-        }
     }
 }

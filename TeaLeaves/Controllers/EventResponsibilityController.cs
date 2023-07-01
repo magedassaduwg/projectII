@@ -45,7 +45,7 @@ namespace TeaLeaves.Controllers
         /// <param name="eventId"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public int assignEventResponsibility(User user, int eventId, string name)
+        public int AssignEventResponsibility(User user, int eventId, string name)
         {
             return _eventResponsibilityDAL.AssignEventResponsibility(user, eventId, name);
         }

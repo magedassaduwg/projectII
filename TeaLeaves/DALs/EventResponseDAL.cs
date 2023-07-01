@@ -12,7 +12,7 @@ namespace TeaLeaves.DALs
         /// <summary>
         /// method to retrieve a list of EventResponses with the given receiverId
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="receiverId"></param>
         /// <returns></returns>
         public List<EventResponse> GetEventsByReceivingId(int receiverId)
         {
@@ -20,7 +20,7 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT EventResponseId, EventInviterId, EventReceiverId, EventId, Accepted FROM EventResponses WHERE EventReceiverId = @ReceiverId;";
+                string query = "SELECT EventResponseId, EventInviterId, EventReceiverId, EventId, Accepted, Declined FROM EventResponses WHERE EventReceiverId = @ReceiverId;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ReceiverId", receiverId);
@@ -36,6 +36,7 @@ namespace TeaLeaves.DALs
                         ReceiverId = Convert.ToInt32(reader["EventReceiverId"]),
                         EventId = Convert.ToInt32(reader["EventId"]),
                         Accepted = Convert.ToInt32(reader["Accepted"]) > 0,
+                        Declined = Convert.ToInt32(reader["Declined"]) > 0,
                     };
                     userEventResponses.Add(userEventResponse);
                 }
@@ -69,7 +70,8 @@ namespace TeaLeaves.DALs
         /// <summary>
         /// Sets the given response to accepted
         /// </summary>
-        /// <param name="eventResponseId"></param>
+        /// <param name="receiverId"></param>
+        /// <param name="eventId"></param>
         /// <returns></returns>
         public int AcceptEventResponse(int receiverId, int eventId)
         {
@@ -93,7 +95,8 @@ namespace TeaLeaves.DALs
         /// <summary>
         /// Sets the given response to declined
         /// </summary>
-        /// <param name="eventResponseId"></param>
+        /// <param name="receiverId"></param>
+        /// <param name="eventId"></param>
         /// <returns></returns>
         public int DeclineEventResponse(int receiverId, int eventId)
         {

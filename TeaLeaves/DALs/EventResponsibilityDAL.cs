@@ -17,14 +17,14 @@ namespace TeaLeaves.DALs
         public bool DeleteEventResponsibility(int eventResponsibilityId)
         {
             string query = @"DELETE FROM EventResponsibilities
-                             WHERE EventResponsbilityId = @EventResponsbilityId";
+                             WHERE EventResponsibilityId = @EventResponsibilityId";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
 
                 using (SqlCommand saveCommand = new SqlCommand(query, connection))
                 {
-                    saveCommand.Parameters.AddWithValue("@EventResponsbilityId", eventResponsibilityId);
+                    saveCommand.Parameters.AddWithValue("@EventResponsibilityId", eventResponsibilityId);
                     return saveCommand.ExecuteNonQuery() > 0;
                 }
             }
@@ -92,7 +92,7 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = @"SELECT EventId, Username, Name
+                string query = @"SELECT EventResponsibilityId, EventId, Username, Name
                                  FROM EventResponsibilities er JOIN Users u 
                                  ON u.UserId = er.UserId WHERE er.UserId = @userId And er.EventId = @eventId;";
 
@@ -106,7 +106,8 @@ namespace TeaLeaves.DALs
                 {
                     EventResponsibility userEventResponsibilty = new EventResponsibility
                     {
-                        Id = Convert.ToInt32(reader["EventId"]),
+                        Id = Convert.ToInt32(reader["EventResponsibilityId"]),
+                        EventId = Convert.ToInt32(reader["EventId"]),
                         Name = reader["Name"].ToString(),
                         Username = reader["Username"].ToString(),
                     };
@@ -127,7 +128,7 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = @"SELECT EventId, Username, Name
+                string query = @"SELECT EventResponsibilityId, EventId, Username, Name
                                  FROM EventResponsibilities er LEFT JOIN Users u 
                                  ON u.UserId = er.UserId WHERE er.EventId = @eventId;";
 
@@ -140,7 +141,8 @@ namespace TeaLeaves.DALs
                 {
                     EventResponsibility userEventResponsibilty = new EventResponsibility
                     {
-                        Id = Convert.ToInt32(reader["EventId"]),
+                        Id = Convert.ToInt32(reader["EventResponsibilityId"]),
+                        EventId = Convert.ToInt32(reader["EventId"]),
                         Name = reader["Name"].ToString(),
                         Username = reader["Username"].ToString(),
                     };
@@ -161,7 +163,7 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = @"SELECT EventId, Name
+                string query = @"SELECT EventResponsibilityId, EventId, Name
                                  FROM EventResponsibilities er WHERE er.UserId IS NULL And er.EventId = @eventId;";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -173,7 +175,8 @@ namespace TeaLeaves.DALs
                 {
                     EventResponsibility userEventResponsibilty = new EventResponsibility
                     {
-                        Id = Convert.ToInt32(reader["EventId"]),
+                        Id = Convert.ToInt32(reader["EventResponsibilityId"]),
+                        EventId = Convert.ToInt32(reader["EventId"]),
                         Name = reader["Name"].ToString(),
                     };
                     userEventResponsibilities.Add(userEventResponsibilty);
