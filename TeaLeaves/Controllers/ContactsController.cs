@@ -1,5 +1,4 @@
-﻿using System.Data.SqlClient;
-using TeaLeaves.DALs;
+﻿using TeaLeaves.DALs;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers

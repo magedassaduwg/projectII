@@ -1,5 +1,4 @@
 ﻿using System.Data.SqlClient;
-using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -61,7 +60,7 @@ namespace TeaLeaves.DALs
                             SqlCommand insertResponsibilitiesCommand = new SqlCommand("INSERT INTO EventResponsibilities (EventId, Name) " +
                             "Values (@EventId, @Name); ", connection, transaction);
                             insertResponsibilitiesCommand.Parameters.AddWithValue("@Name", eventResponsibility.Name);
-                            insertResponsibilitiesCommand.Parameters.AddWithValue("@EventId", @event.Id);
+                            insertResponsibilitiesCommand.Parameters.AddWithValue("@EventId", lastEvent);
                             insertResponsibilitiesCommand.ExecuteNonQuery();
                         }
                         
