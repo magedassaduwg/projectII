@@ -1,4 +1,4 @@
-﻿using System.Windows.Forms;
+﻿
 using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
@@ -6,6 +6,9 @@ using TeaLeaves.Views;
 
 namespace TeaLeaves.UserControls
 {
+    /// <summary>
+    ///  Represents a user control for event invites.
+    /// </summary>
     public partial class ucEventInvites : UserControl
     {
         EventController _eventController;
@@ -14,7 +17,9 @@ namespace TeaLeaves.UserControls
         List<Event> _eventsAccepted;
         List<Event> _eventsDeclined;
 
-
+        /// <summary>
+        /// Initializes a new instance of the ucEventInvities
+        /// </summary>
         public ucEventInvites()
         {
             InitializeComponent();
@@ -58,6 +63,8 @@ namespace TeaLeaves.UserControls
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             GetUserEvents();
+           
+
         }
 
         private void ucEventInvites_Load(object sender, EventArgs e)
@@ -179,16 +186,6 @@ namespace TeaLeaves.UserControls
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        }
-
-        private void eventName()
-        {
-            dgvEventInvites.DataSource = _events;
-
-            if (dgvEventInvites.Rows.Count > 0)
-            {
-                dgvEventInvites.Rows[0].Selected = true;
             }
         }
 
