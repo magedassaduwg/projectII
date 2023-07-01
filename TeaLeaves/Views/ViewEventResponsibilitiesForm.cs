@@ -4,6 +4,9 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
+    /// <summary>
+    /// The form for viewing and accepting EventResponsibilities
+    /// </summary>
     public partial class ViewEventResponsibilitiesForm : Form
     {
         Event _event;

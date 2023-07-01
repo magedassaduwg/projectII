@@ -47,10 +47,11 @@ namespace TeaLeavesTests
                 StreetNumber = "test",
                 Category = "test",
             };
+            List<EventResponsibility> eventResponsibility = new List<EventResponsibility>();
 
             try
             {
-                int eventId = controller.SaveEvent(userEvent);
+                int eventId = controller.SaveEvent(userEvent, eventResponsibility);
                 Assert.AreNotEqual(eventId, 0);
 
                 controller.DeleteEvent(eventId);
@@ -115,6 +116,46 @@ namespace TeaLeavesTests
                 userEvents = controller.GetAcceptedEventsReceivedByUserId(25);
                 Assert.AreEqual(userEvents[0].Id, 155);
                 Assert.AreEqual(userEvents[1].Id, 161);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        /// <summary>
+        /// Tests the GetDeclinedEventsReceivedByUserId method
+        /// </summary>
+        [TestMethod]
+        public void TestGetDeclinedEventsReceivedByUserId()
+        {
+            EventController controller = new EventController();
+            List<Event> userEvents;
+            try
+            {
+                userEvents = controller.GetDeclinedEventsReceivedByUserId(25);
+                Assert.AreEqual(userEvents[0].Id, 186);
+                Assert.AreEqual(userEvents[1].Id, 187);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        /// <summary>
+        /// Tests the GetEventsReceivedByUserIdWithCategory method
+        /// </summary>
+        [TestMethod]
+        public void TestGetEventsReceivedByUserIdWithCategory()
+        {
+            EventController controller = new EventController();
+            List<Event> userEvents;
+            try
+            {
+                userEvents = controller.GetEventsReceivedByUserIdWithCategory(25, "test1");
+                Assert.AreEqual(userEvents[0].Id, 153);
+                Assert.AreEqual(userEvents[1].Id, 156);
             }
             catch (Exception)
             {

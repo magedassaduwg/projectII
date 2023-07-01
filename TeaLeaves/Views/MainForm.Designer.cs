@@ -35,6 +35,7 @@ namespace TeaLeaves.Views
             tableLayoutPanel2 = new TableLayoutPanel();
             tabControlMain = new TabControl();
             tabPageMessage = new TabPage();
+            ucMessage1 = new ucMessage();
             tabPageEvent = new TabPage();
             ucEventPlanners = new ucEventPlanner();
             tabPageInvites = new TabPage();
@@ -43,7 +44,6 @@ namespace TeaLeaves.Views
             lblGreeting = new Label();
             buttonLogout = new Button();
             viewProfileButton = new Button();
-            ucMessage1 = new ucMessage();
             tableLayoutPanel2.SuspendLayout();
             tabControlMain.SuspendLayout();
             tabPageMessage.SuspendLayout();
@@ -90,6 +90,15 @@ namespace TeaLeaves.Views
             tabPageMessage.TabIndex = 0;
             tabPageMessage.Text = "Message";
             tabPageMessage.UseVisualStyleBackColor = true;
+            // 
+            // ucMessage1
+            // 
+            ucMessage1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ucMessage1.Dock = DockStyle.Fill;
+            ucMessage1.Location = new Point(3, 3);
+            ucMessage1.Name = "ucMessage1";
+            ucMessage1.Size = new Size(1280, 622);
+            ucMessage1.TabIndex = 0;
             // 
             // tabPageEvent
             // 
@@ -178,15 +187,6 @@ namespace TeaLeaves.Views
             viewProfileButton.Text = "Your Profile";
             viewProfileButton.UseVisualStyleBackColor = false;
             viewProfileButton.Click += viewProfileButton_Click;
-            // 
-            // ucMessage1
-            // 
-            ucMessage1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ucMessage1.Dock = DockStyle.Fill;
-            ucMessage1.Location = new Point(3, 3);
-            ucMessage1.Name = "ucMessage1";
-            ucMessage1.Size = new Size(1280, 622);
-            ucMessage1.TabIndex = 0;
             // 
             // MainForm
             // 

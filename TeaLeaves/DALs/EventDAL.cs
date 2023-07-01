@@ -14,7 +14,7 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="event"></param>
         /// <returns></returns>
-        public int SaveEvent(Event @event)
+        public int SaveEvent(Event @event, List<EventResponsibility> eventResponsibilities)
         {
             string query = @event.Id <= 0 ?
                 @"INSERT INTO Events (Description, Name, Category, State, City, StreetNumber, Zipcode, EventDateTime, CreatorId) 
@@ -30,8 +30,9 @@ namespace TeaLeaves.DALs
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
 
-                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                using (SqlCommand saveCommand = new SqlCommand(query, connection, transaction))
                 {
                     saveCommand.Parameters.AddWithValue("@eventId", @event.Id);
                     saveCommand.Parameters.AddWithValue("@Description", @event.Description);
@@ -51,8 +52,29 @@ namespace TeaLeaves.DALs
                     saveCommand.Parameters.AddWithValue("@EventDateTime", @event.EventDateTime);
                     saveCommand.Parameters.AddWithValue("@CreatorId", @event.CreatorId);
 
+                    try
+                    {
+                        int lastEvent = Convert.ToInt32(saveCommand.ExecuteScalar());
 
-                    return Convert.ToInt32(saveCommand.ExecuteScalar());
+                        foreach(EventResponsibility eventResponsibility in eventResponsibilities)
+                        {
+                            SqlCommand insertResponsibilitiesCommand = new SqlCommand("INSERT INTO EventResponsibilities (EventId, Name) " +
+                            "Values (@EventId, @Name); ", connection, transaction);
+                            insertResponsibilitiesCommand.Parameters.AddWithValue("@Name", eventResponsibility.Name);
+                            insertResponsibilitiesCommand.Parameters.AddWithValue("@EventId", @event.Id);
+                            insertResponsibilitiesCommand.ExecuteNonQuery();
+                        }
+                        
+                        transaction.Commit();
+
+                        return lastEvent;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                    
                 }
             }
         }

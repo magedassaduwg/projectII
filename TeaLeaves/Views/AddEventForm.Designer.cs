@@ -51,13 +51,13 @@
             labelCategory = new Label();
             comboBoxCategory = new ComboBox();
             lblEventResponsibilities = new Label();
-            tbResponsibilityName = new TextBox();
             dgvResponsibilities = new DataGridView();
-            btnAddResponsibility = new Button();
-            lblResponsibilityName = new Label();
-            lblResponsibilities = new Label();
             ResponsibilityName = new DataGridViewTextBoxColumn();
             User = new DataGridViewTextBoxColumn();
+            lblResponsibilities = new Label();
+            lblResponsibilityName = new Label();
+            tbResponsibilityName = new TextBox();
+            btnAddResponsibility = new Button();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownHour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownMinute).BeginInit();
@@ -96,11 +96,11 @@
             tableLayoutPanelAddEvent.Controls.Add(labelCategory, 3, 0);
             tableLayoutPanelAddEvent.Controls.Add(comboBoxCategory, 4, 0);
             tableLayoutPanelAddEvent.Controls.Add(lblEventResponsibilities, 0, 6);
-            tableLayoutPanelAddEvent.Controls.Add(tbResponsibilityName, 1, 6);
-            tableLayoutPanelAddEvent.Controls.Add(dgvResponsibilities, 4, 6);
-            tableLayoutPanelAddEvent.Controls.Add(btnAddResponsibility, 3, 6);
+            tableLayoutPanelAddEvent.Controls.Add(dgvResponsibilities, 3, 6);
+            tableLayoutPanelAddEvent.Controls.Add(lblResponsibilities, 3, 5);
             tableLayoutPanelAddEvent.Controls.Add(lblResponsibilityName, 1, 5);
-            tableLayoutPanelAddEvent.Controls.Add(lblResponsibilities, 4, 5);
+            tableLayoutPanelAddEvent.Controls.Add(tbResponsibilityName, 1, 6);
+            tableLayoutPanelAddEvent.Controls.Add(btnAddResponsibility, 2, 6);
             tableLayoutPanelAddEvent.Dock = DockStyle.Fill;
             tableLayoutPanelAddEvent.Location = new Point(0, 0);
             tableLayoutPanelAddEvent.Name = "tableLayoutPanelAddEvent";
@@ -376,37 +376,46 @@
             lblEventResponsibilities.TabIndex = 20;
             lblEventResponsibilities.Text = "Event Responsibilities:";
             // 
-            // tbResponsibilityName
-            // 
-            tableLayoutPanelAddEvent.SetColumnSpan(tbResponsibilityName, 2);
-            tbResponsibilityName.Location = new Point(184, 482);
-            tbResponsibilityName.Margin = new Padding(3, 55, 3, 3);
-            tbResponsibilityName.Name = "tbResponsibilityName";
-            tbResponsibilityName.Size = new Size(211, 23);
-            tbResponsibilityName.TabIndex = 22;
-            // 
             // dgvResponsibilities
             // 
             dgvResponsibilities.BackgroundColor = Color.PapayaWhip;
             dgvResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName, User });
             tableLayoutPanelAddEvent.SetColumnSpan(dgvResponsibilities, 2);
-            dgvResponsibilities.Location = new Point(704, 430);
+            dgvResponsibilities.Location = new Point(504, 430);
             dgvResponsibilities.Name = "dgvResponsibilities";
+            dgvResponsibilities.ReadOnly = true;
             dgvResponsibilities.RowTemplate.Height = 25;
-            dgvResponsibilities.Size = new Size(303, 112);
+            dgvResponsibilities.Size = new Size(304, 112);
             dgvResponsibilities.TabIndex = 21;
             // 
-            // btnAddResponsibility
+            // ResponsibilityName
             // 
-            btnAddResponsibility.Location = new Point(504, 482);
-            btnAddResponsibility.Margin = new Padding(3, 55, 3, 3);
-            btnAddResponsibility.Name = "btnAddResponsibility";
-            btnAddResponsibility.Size = new Size(137, 23);
-            btnAddResponsibility.TabIndex = 23;
-            btnAddResponsibility.Text = "Add";
-            btnAddResponsibility.UseVisualStyleBackColor = true;
-            btnAddResponsibility.Click += btnAddResponsibility_Click;
+            ResponsibilityName.DataPropertyName = "Name";
+            ResponsibilityName.HeaderText = "Name";
+            ResponsibilityName.Name = "ResponsibilityName";
+            ResponsibilityName.ReadOnly = true;
+            ResponsibilityName.Width = 130;
+            // 
+            // User
+            // 
+            User.DataPropertyName = "Username";
+            User.HeaderText = "User";
+            User.Name = "User";
+            User.ReadOnly = true;
+            User.Width = 130;
+            // 
+            // lblResponsibilities
+            // 
+            lblResponsibilities.AutoSize = true;
+            lblResponsibilities.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblResponsibilities.ForeColor = Color.DarkGreen;
+            lblResponsibilities.Location = new Point(504, 406);
+            lblResponsibilities.Margin = new Padding(3, 8, 3, 0);
+            lblResponsibilities.Name = "lblResponsibilities";
+            lblResponsibilities.Size = new Size(92, 15);
+            lblResponsibilities.TabIndex = 25;
+            lblResponsibilities.Text = "Responsibilities";
             // 
             // lblResponsibilityName
             // 
@@ -417,34 +426,27 @@
             lblResponsibilityName.Margin = new Padding(3, 8, 3, 0);
             lblResponsibilityName.Name = "lblResponsibilityName";
             lblResponsibilityName.Size = new Size(119, 15);
-            lblResponsibilityName.TabIndex = 24;
+            lblResponsibilityName.TabIndex = 26;
             lblResponsibilityName.Text = "Responsibility Name";
             // 
-            // lblResponsibilities
+            // tbResponsibilityName
             // 
-            lblResponsibilities.AutoSize = true;
-            lblResponsibilities.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblResponsibilities.ForeColor = Color.DarkGreen;
-            lblResponsibilities.Location = new Point(704, 406);
-            lblResponsibilities.Margin = new Padding(3, 8, 3, 0);
-            lblResponsibilities.Name = "lblResponsibilities";
-            lblResponsibilities.Size = new Size(92, 15);
-            lblResponsibilities.TabIndex = 25;
-            lblResponsibilities.Text = "Responsibilities";
+            tbResponsibilityName.Location = new Point(184, 475);
+            tbResponsibilityName.Margin = new Padding(3, 48, 3, 3);
+            tbResponsibilityName.Name = "tbResponsibilityName";
+            tbResponsibilityName.Size = new Size(163, 23);
+            tbResponsibilityName.TabIndex = 27;
             // 
-            // ResponsibilityName
+            // btnAddResponsibility
             // 
-            ResponsibilityName.DataPropertyName = "Name";
-            ResponsibilityName.HeaderText = "Name";
-            ResponsibilityName.Name = "ResponsibilityName";
-            ResponsibilityName.Width = 130;
-            // 
-            // User
-            // 
-            User.DataPropertyName = "Username";
-            User.HeaderText = "User";
-            User.Name = "User";
-            User.Width = 130;
+            btnAddResponsibility.Location = new Point(353, 475);
+            btnAddResponsibility.Margin = new Padding(3, 48, 3, 3);
+            btnAddResponsibility.Name = "btnAddResponsibility";
+            btnAddResponsibility.Size = new Size(145, 23);
+            btnAddResponsibility.TabIndex = 28;
+            btnAddResponsibility.Text = "add";
+            btnAddResponsibility.UseVisualStyleBackColor = true;
+            btnAddResponsibility.Click += btnAddResponsibility_Click;
             // 
             // AddEventForm
             // 
@@ -490,11 +492,11 @@
         private ComboBox comboBoxCategory;
         private Label lblEventResponsibilities;
         private DataGridView dgvResponsibilities;
-        private TextBox tbResponsibilityName;
-        private Button btnAddResponsibility;
-        private Label lblResponsibilityName;
         private Label lblResponsibilities;
         private DataGridViewTextBoxColumn ResponsibilityName;
         private DataGridViewTextBoxColumn User;
+        private Label lblResponsibilityName;
+        private TextBox tbResponsibilityName;
+        private Button btnAddResponsibility;
     }
 }

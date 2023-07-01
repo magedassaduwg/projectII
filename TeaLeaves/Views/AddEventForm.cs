@@ -12,6 +12,7 @@ namespace TeaLeaves.Views
         private EventController _eventController;
         private EventResponsibilityController _eventResponsibilityController;
         private List<EventResponsibility> _eventResponsibilities;
+        private List<EventResponsibility> _newEventResponsibilities;
         private Event _event;
 
         /// <summary>
@@ -24,6 +25,7 @@ namespace TeaLeaves.Views
             _eventController = new EventController();
             _eventResponsibilityController = new EventResponsibilityController();
             _eventResponsibilities = new List<EventResponsibility>();
+            _newEventResponsibilities = new List<EventResponsibility>();
             _event = selectedEvent ?? new Event();
             BindEventValue();
             dgvResponsibilities.AutoGenerateColumns = false;
@@ -43,7 +45,7 @@ namespace TeaLeaves.Views
                 dateTimePickerEvent.Value = _event.EventDateTime;
                 numericUpDownHour.Value = _event.EventDateTime.Hour;
                 numericUpDownMinute.Value = _event.EventDateTime.Minute;
-                
+
             }
         }
         private void EventsForm_Load(object sender, EventArgs e)
@@ -137,7 +139,7 @@ namespace TeaLeaves.Views
                 _event.EventDateTime = dateTimePickerEvent.Value.Date + new TimeSpan(Convert.ToInt16(numericUpDownHour.Value), Convert.ToInt16(numericUpDownMinute.Value), 0);
                 try
                 {
-                    _eventController.SaveEvent(_event);
+                    _eventController.SaveEvent(_event, _newEventResponsibilities);
                     MessageBox.Show("Event has been saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
 
@@ -172,7 +174,6 @@ namespace TeaLeaves.Views
         private void textBoxZip_TextChanged(object sender, EventArgs e)
         {
             labelError.Text = string.Empty;
-
         }
 
         private void textBoxEName_TextChanged(object sender, EventArgs e)
@@ -188,6 +189,7 @@ namespace TeaLeaves.Views
                 e.Handled = true;
             }
         }
+
         private void BindCategory()
         {
             string[] category = {
@@ -196,16 +198,27 @@ namespace TeaLeaves.Views
             comboBoxCategory.Items.Clear();
             comboBoxCategory.Items.AddRange(category);
             comboBoxCategory.SelectedIndex = 0;
-
         }
 
         private void btnAddResponsibility_Click(object sender, EventArgs e)
         {
-            EventResponsibility eventResponsibility = new EventResponsibility();
-            eventResponsibility.EventId = _event.Id;
-            eventResponsibility.Name = tbResponsibilityName.Text;
-            _eventResponsibilityController.AddEventResponsibility(eventResponsibility);
-            LoadEventResponsibilities();
+            EventResponsibility addedResponsibility = new EventResponsibility
+            {
+                Name = tbResponsibilityName.Text,
+            };
+            _newEventResponsibilities.Add(addedResponsibility);
+
+            List<EventResponsibility> allEventResponsibilities = new List<EventResponsibility>();
+            allEventResponsibilities.AddRange(_eventResponsibilities);
+            allEventResponsibilities.AddRange(_newEventResponsibilities);
+            try
+            {
+                dgvResponsibilities.DataSource = allEventResponsibilities;
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            
         }
     }
 }
