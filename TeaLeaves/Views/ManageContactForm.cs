@@ -11,7 +11,7 @@ namespace TeaLeaves.Views
     public partial class ManageContactForm : Form
     {
         private List<User> _contactList;
-        private UserControl _userControl;
+        private UsersController _userControl;
         private ContactsController _contactsController;
         private User selectedContact;
         private bool hasBeenSorted;
@@ -22,6 +22,7 @@ namespace TeaLeaves.Views
         public ManageContactForm()
         {
             this._contactsController = new ContactsController();
+            this._userControl = new UsersController();
             this.hasBeenSorted = false;
             InitializeComponent();
         }
@@ -42,6 +43,11 @@ namespace TeaLeaves.Views
                 this.lastNameText.Text = selectedContact.LastName;
                 this.usernameText.Text = selectedContact.Username;
                 this.emailText.Text = selectedContact.Email;
+                if (selectedContact != null)
+                {
+                    selectedContact.ProfilePicture = this._userControl.GetUserProfilePicture(selectedContact.UserId);
+                    this.userProfilePictureBox.Image = selectedContact.ProfilePicture;
+                }
                 this.deleteButton.Enabled = true;
                 this.viewProfileButton.Enabled = true;
             }
@@ -114,7 +120,8 @@ namespace TeaLeaves.Views
                 this.contactDataGridView.DataSource = this._contactList;
                 this.selectedContact = this._contactList[0];
                 this.hasBeenSorted = true;
-            } else if (this._contactList.Any() && this.hasBeenSorted == true)
+            }
+            else if (this._contactList.Any() && this.hasBeenSorted == true)
             {
                 this._contactList.Reverse();
                 this.contactDataGridView.DataSource = this._contactList;

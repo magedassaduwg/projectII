@@ -31,10 +31,11 @@
             components = new System.ComponentModel.Container();
             splitContainer1 = new SplitContainer();
             contactLayoutPanel = new TableLayoutPanel();
-            addButton = new Button();
+            sortButton = new Button();
             contactDataGridView = new DataGridView();
             FullName = new DataGridViewTextBoxColumn();
             usersBindingSource = new BindingSource(components);
+            addButton = new Button();
             SelectedContactTable = new TableLayoutPanel();
             firstNameLabel = new Label();
             lastNameLabel = new Label();
@@ -47,7 +48,7 @@
             closeButton = new Button();
             viewProfileButton = new Button();
             deleteButton = new Button();
-            sortButton = new Button();
+            userProfilePictureBox = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -56,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)contactDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usersBindingSource).BeginInit();
             SelectedContactTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)userProfilePictureBox).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
@@ -92,19 +94,19 @@
             contactLayoutPanel.Size = new Size(266, 450);
             contactLayoutPanel.TabIndex = 1;
             // 
-            // addButton
+            // sortButton
             // 
-            addButton.Anchor = AnchorStyles.None;
-            addButton.BackColor = Color.Orange;
-            addButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            addButton.ForeColor = Color.DarkGreen;
-            addButton.Location = new Point(153, 406);
-            addButton.Name = "addButton";
-            addButton.Size = new Size(92, 33);
-            addButton.TabIndex = 8;
-            addButton.Text = "Add";
-            addButton.UseVisualStyleBackColor = false;
-            addButton.Click += addButton_Click;
+            sortButton.Anchor = AnchorStyles.None;
+            sortButton.BackColor = Color.Orange;
+            sortButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            sortButton.ForeColor = Color.DarkGreen;
+            sortButton.Location = new Point(20, 406);
+            sortButton.Name = "sortButton";
+            sortButton.Size = new Size(92, 33);
+            sortButton.TabIndex = 9;
+            sortButton.Text = "Sort";
+            sortButton.UseVisualStyleBackColor = false;
+            sortButton.Click += sortButton_Click;
             // 
             // contactDataGridView
             // 
@@ -134,13 +136,28 @@
             FullName.Name = "FullName";
             FullName.ReadOnly = true;
             // 
+            // addButton
+            // 
+            addButton.Anchor = AnchorStyles.None;
+            addButton.BackColor = Color.Orange;
+            addButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            addButton.ForeColor = Color.DarkGreen;
+            addButton.Location = new Point(153, 406);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(92, 33);
+            addButton.TabIndex = 8;
+            addButton.Text = "Add";
+            addButton.UseVisualStyleBackColor = false;
+            addButton.Click += addButton_Click;
+            // 
             // SelectedContactTable
             // 
             SelectedContactTable.ColumnCount = 4;
             SelectedContactTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18.524334F));
             SelectedContactTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.158556F));
-            SelectedContactTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.158556F));
-            SelectedContactTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.158556F));
+            SelectedContactTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.320755F));
+            SelectedContactTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.396225F));
+            SelectedContactTable.Controls.Add(userProfilePictureBox, 3, 0);
             SelectedContactTable.Controls.Add(firstNameLabel, 0, 0);
             SelectedContactTable.Controls.Add(lastNameLabel, 0, 1);
             SelectedContactTable.Controls.Add(emailLabel, 0, 2);
@@ -169,9 +186,9 @@
             firstNameLabel.Anchor = AnchorStyles.Right;
             firstNameLabel.AutoSize = true;
             firstNameLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            firstNameLabel.Location = new Point(3, 34);
+            firstNameLabel.Location = new Point(37, 24);
             firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new Size(92, 21);
+            firstNameLabel.Size = new Size(57, 42);
             firstNameLabel.TabIndex = 0;
             firstNameLabel.Text = "First Name:";
             // 
@@ -180,7 +197,7 @@
             lastNameLabel.Anchor = AnchorStyles.Right;
             lastNameLabel.AutoSize = true;
             lastNameLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lastNameLabel.Location = new Point(5, 124);
+            lastNameLabel.Location = new Point(4, 124);
             lastNameLabel.Name = "lastNameLabel";
             lastNameLabel.Size = new Size(90, 21);
             lastNameLabel.TabIndex = 1;
@@ -191,7 +208,7 @@
             emailLabel.Anchor = AnchorStyles.Right;
             emailLabel.AutoSize = true;
             emailLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            emailLabel.Location = new Point(43, 214);
+            emailLabel.Location = new Point(42, 214);
             emailLabel.Name = "emailLabel";
             emailLabel.Size = new Size(52, 21);
             emailLabel.TabIndex = 6;
@@ -202,7 +219,7 @@
             usernameLabel.Anchor = AnchorStyles.Right;
             usernameLabel.AutoSize = true;
             usernameLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            usernameLabel.Location = new Point(8, 304);
+            usernameLabel.Location = new Point(7, 304);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new Size(87, 21);
             usernameLabel.TabIndex = 3;
@@ -212,7 +229,7 @@
             // 
             firstNameText.Anchor = AnchorStyles.Left;
             SelectedContactTable.SetColumnSpan(firstNameText, 2);
-            firstNameText.Location = new Point(101, 33);
+            firstNameText.Location = new Point(100, 33);
             firstNameText.Name = "firstNameText";
             firstNameText.ReadOnly = true;
             firstNameText.Size = new Size(210, 23);
@@ -222,7 +239,7 @@
             // 
             lastNameText.Anchor = AnchorStyles.Left;
             SelectedContactTable.SetColumnSpan(lastNameText, 2);
-            lastNameText.Location = new Point(101, 123);
+            lastNameText.Location = new Point(100, 123);
             lastNameText.Name = "lastNameText";
             lastNameText.ReadOnly = true;
             lastNameText.Size = new Size(210, 23);
@@ -232,7 +249,7 @@
             // 
             emailText.Anchor = AnchorStyles.Left;
             SelectedContactTable.SetColumnSpan(emailText, 2);
-            emailText.Location = new Point(101, 213);
+            emailText.Location = new Point(100, 213);
             emailText.Name = "emailText";
             emailText.ReadOnly = true;
             emailText.Size = new Size(210, 23);
@@ -242,7 +259,7 @@
             // 
             usernameText.Anchor = AnchorStyles.Left;
             SelectedContactTable.SetColumnSpan(usernameText, 2);
-            usernameText.Location = new Point(101, 303);
+            usernameText.Location = new Point(100, 303);
             usernameText.Name = "usernameText";
             usernameText.ReadOnly = true;
             usernameText.Size = new Size(210, 23);
@@ -254,7 +271,7 @@
             closeButton.BackColor = Color.YellowGreen;
             closeButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             closeButton.ForeColor = Color.DarkGreen;
-            closeButton.Location = new Point(410, 388);
+            closeButton.Location = new Point(394, 388);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(94, 33);
             closeButton.TabIndex = 9;
@@ -269,7 +286,7 @@
             viewProfileButton.Enabled = false;
             viewProfileButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             viewProfileButton.ForeColor = Color.DarkGreen;
-            viewProfileButton.Location = new Point(122, 388);
+            viewProfileButton.Location = new Point(121, 388);
             viewProfileButton.Name = "viewProfileButton";
             viewProfileButton.Size = new Size(94, 33);
             viewProfileButton.TabIndex = 15;
@@ -284,7 +301,7 @@
             deleteButton.Enabled = false;
             deleteButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             deleteButton.ForeColor = Color.DarkGreen;
-            deleteButton.Location = new Point(265, 388);
+            deleteButton.Location = new Point(249, 388);
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(94, 33);
             deleteButton.TabIndex = 14;
@@ -292,19 +309,17 @@
             deleteButton.UseVisualStyleBackColor = false;
             deleteButton.Click += deleteButton_Click;
             // 
-            // sortButton
+            // userProfilePictureBox
             // 
-            sortButton.Anchor = AnchorStyles.None;
-            sortButton.BackColor = Color.Orange;
-            sortButton.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            sortButton.ForeColor = Color.DarkGreen;
-            sortButton.Location = new Point(20, 406);
-            sortButton.Name = "sortButton";
-            sortButton.Size = new Size(92, 33);
-            sortButton.TabIndex = 9;
-            sortButton.Text = "Sort";
-            sortButton.UseVisualStyleBackColor = false;
-            sortButton.Click += sortButton_Click;
+            userProfilePictureBox.Dock = DockStyle.Fill;
+            userProfilePictureBox.Image = Properties.Resources.tealeaves_logo;
+            userProfilePictureBox.Location = new Point(355, 3);
+            userProfilePictureBox.Name = "userProfilePictureBox";
+            SelectedContactTable.SetRowSpan(userProfilePictureBox, 2);
+            userProfilePictureBox.Size = new Size(172, 174);
+            userProfilePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            userProfilePictureBox.TabIndex = 16;
+            userProfilePictureBox.TabStop = false;
             // 
             // ManageContactForm
             // 
@@ -325,6 +340,7 @@
             ((System.ComponentModel.ISupportInitialize)usersBindingSource).EndInit();
             SelectedContactTable.ResumeLayout(false);
             SelectedContactTable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)userProfilePictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -351,5 +367,6 @@
         private Button viewProfileButton;
         private DataGridViewTextBoxColumn FullName;
         private Button sortButton;
+        private PictureBox userProfilePictureBox;
     }
 }
