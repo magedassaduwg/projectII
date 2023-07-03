@@ -200,7 +200,7 @@ namespace TeaLeaves.UserControls
             {
                 IUserMessage newMessage = new UserMessage
                 {
-                    ReceiverId = _selectedUser.GetType() == typeof(User) ? ((User)_selectedUser).UserId : ((GroupMember)_selectedUser).GroupId,
+                    ReceiverId = _selectedUser.GetType() == typeof(User) ? ((User)_selectedUser).UserId : CurrentUserStore.User.UserId,
                     SenderId = CurrentUserStore.User.UserId,
                     Text = txtMessage.Text,
                     MediaId = null,
