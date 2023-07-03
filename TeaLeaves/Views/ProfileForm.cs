@@ -101,7 +101,7 @@ namespace TeaLeaves.Views
         {
             double[] userStats = this._userController.GetUserStats(this.viewedUser.UserId);
 
-            MessageBox.Show("Out of a total of " + userStats[1].ToString() + " invites, your contacts, on average accept your invites " +
+            MessageBox.Show("Out of a total of " + userStats[1].ToString() + " invites, this user's contacts, on average accept invites " +
                 userStats[0].ToString() +
                 "% of the time.", "User Statistics", MessageBoxButtons.OK);
         }
