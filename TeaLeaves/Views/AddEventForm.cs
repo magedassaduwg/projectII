@@ -218,7 +218,7 @@ namespace TeaLeaves.Views
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-            
+            tbResponsibilityName.Text = "";
         }
     }
 }
