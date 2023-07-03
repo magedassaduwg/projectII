@@ -70,8 +70,8 @@ namespace TeaLeaves.UserControls
         {
             Invoke((MethodInvoker)delegate
             {
-                if (_selectedUser != null && ((_selectedUser.GetType() == typeof(User) && ((User)_selectedUser).UserId == e.SenderId) ||
-                                             (_selectedUser.GetType() == typeof(GroupMember) && ((GroupMember)_selectedUser).GroupId == e.GroupId)))
+                if (_selectedUser != null && ((_selectedUser.GetType() == typeof(User) && e.GroupId == null && ((User)_selectedUser).UserId == e.SenderId) ||
+                                             (_selectedUser.GetType() == typeof(GroupMember) && e.GroupId.HasValue && ((GroupMember)_selectedUser).GroupId == e.GroupId)))
                 {
                     AddMessageToScreen(e);
                 }
