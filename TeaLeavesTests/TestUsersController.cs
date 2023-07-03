@@ -137,5 +137,21 @@ namespace TeaLeavesTests
                 Assert.IsTrue(false);
             }
         }
+
+        [TestMethod]
+        public void TestGetUserStats()
+        {
+            UsersController controller = new UsersController();
+            double[] userStats = controller.GetUserStats(23);
+            try
+            {
+                Assert.IsTrue(userStats[0] == 50);
+                Assert.IsTrue(userStats[1] == 4);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
     }
 }
