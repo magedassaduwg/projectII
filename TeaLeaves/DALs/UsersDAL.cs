@@ -3,6 +3,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Reflection.Metadata;
 using TeaLeaves.Models;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace TeaLeaves.DALs
 {
@@ -67,9 +68,9 @@ namespace TeaLeaves.DALs
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public User GetUserById(int userId)
+        public Models.User GetUserById(int userId)
         {
-            User user = new User();
+            Models.User user = new Models.User();
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
@@ -245,6 +246,39 @@ namespace TeaLeaves.DALs
             }
             return byteArray;
         }
+
+        /// <summary>
+        /// method retrieving the percent of accepted invites for the giver UserID
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public double[] GetUserStats(int userId)
+        {
+            double[] userStats = new double[2];
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("GetPercentAccepted", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@userId", userId);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    try
+                    {
+                        userStats[0] = Math.Round((Convert.ToDouble(reader["AcceptedPercentage"])), 1);
+                        userStats[1] = (Convert.ToInt32(reader["Total"]));
+                    }
+                    catch
+                    {
+                        
+                    }
+                }
+            }
+            return userStats;
+        }
+        
     }
 }
 

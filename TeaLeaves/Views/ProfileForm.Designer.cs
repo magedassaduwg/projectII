@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            statsButton = new Button();
             userProfilePictureBox = new PictureBox();
             userBlurbLabel = new Label();
             userBlurbBox = new TextBox();
@@ -43,9 +44,10 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.666667F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85.3333359F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.0666676F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 82.9333344F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 73F));
+            tableLayoutPanel1.Controls.Add(statsButton, 0, 3);
             tableLayoutPanel1.Controls.Add(userProfilePictureBox, 1, 0);
             tableLayoutPanel1.Controls.Add(userBlurbLabel, 1, 1);
             tableLayoutPanel1.Controls.Add(userBlurbBox, 1, 2);
@@ -64,13 +66,25 @@
             tableLayoutPanel1.Size = new Size(449, 583);
             tableLayoutPanel1.TabIndex = 0;
             // 
+            // statsButton
+            // 
+            statsButton.Anchor = AnchorStyles.None;
+            statsButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            statsButton.Location = new Point(3, 544);
+            statsButton.Name = "statsButton";
+            statsButton.Size = new Size(58, 31);
+            statsButton.TabIndex = 7;
+            statsButton.Text = "Stats";
+            statsButton.UseVisualStyleBackColor = true;
+            statsButton.Click += statsButton_Click;
+            // 
             // userProfilePictureBox
             // 
             userProfilePictureBox.Dock = DockStyle.Fill;
             userProfilePictureBox.Image = Properties.Resources.tealeaves_logo;
-            userProfilePictureBox.Location = new Point(58, 3);
+            userProfilePictureBox.Location = new Point(67, 3);
             userProfilePictureBox.Name = "userProfilePictureBox";
-            userProfilePictureBox.Size = new Size(314, 318);
+            userProfilePictureBox.Size = new Size(305, 318);
             userProfilePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             userProfilePictureBox.TabIndex = 0;
             userProfilePictureBox.TabStop = false;
@@ -80,7 +94,7 @@
             userBlurbLabel.Anchor = AnchorStyles.Left;
             userBlurbLabel.AutoSize = true;
             userBlurbLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            userBlurbLabel.Location = new Point(58, 326);
+            userBlurbLabel.Location = new Point(67, 326);
             userBlurbLabel.Name = "userBlurbLabel";
             userBlurbLabel.Size = new Size(88, 21);
             userBlurbLabel.TabIndex = 1;
@@ -89,18 +103,18 @@
             // userBlurbBox
             // 
             userBlurbBox.Dock = DockStyle.Fill;
-            userBlurbBox.Location = new Point(58, 352);
+            userBlurbBox.Location = new Point(67, 352);
             userBlurbBox.Multiline = true;
             userBlurbBox.Name = "userBlurbBox";
             userBlurbBox.ReadOnly = true;
-            userBlurbBox.Size = new Size(314, 182);
+            userBlurbBox.Size = new Size(305, 182);
             userBlurbBox.TabIndex = 2;
             // 
             // closeButton
             // 
             closeButton.Anchor = AnchorStyles.None;
             closeButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            closeButton.Location = new Point(182, 544);
+            closeButton.Location = new Point(186, 544);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(66, 31);
             closeButton.TabIndex = 3;
@@ -176,5 +190,6 @@
         private Button editButton;
         private Button saveButton;
         private Button uploadButton;
+        private Button statsButton;
     }
 }

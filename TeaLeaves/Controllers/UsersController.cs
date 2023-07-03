@@ -91,5 +91,16 @@ namespace TeaLeaves.Controllers
         {
            return this._userDAL.UploadProfilePicture(user);
         }
+
+
+        /// <summary>
+        /// method retrieving the percent of accepted invites for the giver UserID
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public double[] GetUserStats(int userId)
+        {
+            return this._userDAL.GetUserStats(userId);
+        }
     }
 }

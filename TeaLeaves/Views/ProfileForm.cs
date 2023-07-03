@@ -96,5 +96,14 @@ namespace TeaLeaves.Views
                 this.userProfilePictureBox.Image = viewedUser.ProfilePicture;
             }
         }
+
+        private void statsButton_Click(object sender, EventArgs e)
+        {
+            double[] userStats = this._userController.GetUserStats(this.viewedUser.UserId);
+
+            MessageBox.Show("Out of a total of " + userStats[1].ToString() + " invites, your contacts, on average accept your invites " +
+                userStats[0].ToString() +
+                "% of the time.", "User Statistics", MessageBoxButtons.OK);
+        }
     }
 }
