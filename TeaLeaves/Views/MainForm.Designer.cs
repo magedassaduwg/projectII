@@ -165,7 +165,7 @@ namespace TeaLeaves.Views
             buttonLogout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonLogout.BackColor = Color.YellowGreen;
             buttonLogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonLogout.ForeColor = Color.DarkOrange;
+            buttonLogout.ForeColor = Color.DarkGreen;
             buttonLogout.Location = new Point(9, 3);
             buttonLogout.Name = "buttonLogout";
             buttonLogout.Size = new Size(84, 35);
@@ -179,7 +179,7 @@ namespace TeaLeaves.Views
             viewProfileButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             viewProfileButton.BackColor = Color.YellowGreen;
             viewProfileButton.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            viewProfileButton.ForeColor = Color.DarkOrange;
+            viewProfileButton.ForeColor = Color.DarkGreen;
             viewProfileButton.Location = new Point(99, 3);
             viewProfileButton.Name = "viewProfileButton";
             viewProfileButton.Size = new Size(115, 35);
