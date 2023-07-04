@@ -262,6 +262,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "ucMessage";
             Size = new Size(1100, 551);
+            Resize += ucMessage_Resize;
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);

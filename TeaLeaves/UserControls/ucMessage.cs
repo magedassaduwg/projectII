@@ -1,8 +1,10 @@
-﻿using System.Data.SqlClient;
+﻿using System.ComponentModel;
+using System.Data.SqlClient;
 using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 using TeaLeaves.Views;
+using Tulpep.NotificationWindow;
 
 namespace TeaLeaves.UserControls
 {
@@ -11,6 +13,7 @@ namespace TeaLeaves.UserControls
     /// </summary>
     public partial class ucMessage : UserControl
     {
+        private IContainer _components;
         private MessageController _messageController;
         private GroupMemberController _groupMemberController;
         private UsersController _usersController;
@@ -18,7 +21,7 @@ namespace TeaLeaves.UserControls
         private object _selectedUser;
         private List<object> _allContacts;
         private string _messageImage;
-        
+        private bool _isFormMinimized = false;
 
         /// <summary>
         /// constructor to initialize components, controllers, and then load contacts
@@ -80,6 +83,7 @@ namespace TeaLeaves.UserControls
                 else
                 {
                     UpdateContactUnreadStatus(e, true);
+                    ShowNotification(e);
                 }
             });
         }
@@ -484,6 +488,28 @@ namespace TeaLeaves.UserControls
         private void btnImagePreview_Click(object sender, EventArgs e)
         {
             ResetImagePreview();
+        }
+
+        private void ucMessage_Resize(object sender, EventArgs e)
+        {
+            //_isFormMinimized = ((ucMessage)sender).Size == new Size(0, 0);
+            if (ParentForm != null)
+                _isFormMinimized = ParentForm.WindowState == FormWindowState.Minimized;
+        }
+
+        private void ShowNotification(IUserMessage message)
+        {
+            PopupNotifier popup = new PopupNotifier();
+            popup.TitleText = "Incoming Message";
+            popup.ContentText = message.Text;
+            popup.Click += Popup_Click;
+            popup.Popup();
+        }
+
+        private void Popup_Click(object? sender, EventArgs e)
+        {
+            ParentForm.WindowState = FormWindowState.Normal;
+            ParentForm.Activate();
         }
     }
 }
