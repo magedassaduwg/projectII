@@ -78,7 +78,7 @@ namespace TeaLeaves.Controllers
         /// method setting the blurb of a user in the database.
         /// </summary>
         /// <param name="user"></param>
-        public Boolean SetUserBlurb(Models.User user)
+        public Boolean SetUserBlurb(User user)
         {
             return this._userDAL.SetUserBlurb(user);
         }
@@ -87,7 +87,7 @@ namespace TeaLeaves.Controllers
         /// method uploading a User's ProfilePicture
         /// </summary>
         /// <param name="user"></param>
-        public Boolean UploadProfilePicture(Models.User user)
+        public Boolean UploadProfilePicture(User user)
         {
            return this._userDAL.UploadProfilePicture(user);
         }

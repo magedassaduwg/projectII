@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMessage));
             tblMessages = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
             btnSend = new Button();
+            btnUploadImage = new Button();
             txtMessage = new RichTextBox();
+            btnImagePreview = new Button();
             lstContacts = new ListBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel4 = new TableLayoutPanel();
@@ -39,6 +43,7 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             btnCreateGroup = new Button();
             btnManageContacts = new Button();
+            notification = new NotifyIcon(components);
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -62,17 +67,20 @@
             // 
             // tableLayoutPanel3
             // 
-            tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel3.Controls.Add(btnSend, 0, 0);
+            tableLayoutPanel3.ColumnCount = 4;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel3.Controls.Add(btnSend, 3, 0);
+            tableLayoutPanel3.Controls.Add(btnUploadImage, 0, 0);
             tableLayoutPanel3.Controls.Add(txtMessage, 0, 0);
+            tableLayoutPanel3.Controls.Add(btnImagePreview, 2, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(3, 471);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Size = new Size(819, 77);
             tableLayoutPanel3.TabIndex = 5;
             // 
@@ -82,13 +90,29 @@
             btnSend.Dock = DockStyle.Fill;
             btnSend.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnSend.ForeColor = Color.DarkGreen;
-            btnSend.Location = new Point(617, 3);
+            btnSend.Location = new Point(697, 3);
             btnSend.Name = "btnSend";
-            btnSend.Size = new Size(199, 71);
-            btnSend.TabIndex = 6;
+            btnSend.Size = new Size(119, 71);
+            btnSend.TabIndex = 12;
             btnSend.Text = "Send";
             btnSend.UseVisualStyleBackColor = false;
             btnSend.Click += btnSend_Click;
+            // 
+            // btnUploadImage
+            // 
+            btnUploadImage.BackColor = Color.Orange;
+            btnUploadImage.Dock = DockStyle.Fill;
+            btnUploadImage.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUploadImage.ForeColor = Color.DarkGreen;
+            btnUploadImage.Image = (Image)resources.GetObject("btnUploadImage.Image");
+            btnUploadImage.Location = new Point(412, 3);
+            btnUploadImage.Name = "btnUploadImage";
+            btnUploadImage.Size = new Size(157, 71);
+            btnUploadImage.TabIndex = 10;
+            btnUploadImage.Text = "Upload Image";
+            btnUploadImage.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnUploadImage.UseVisualStyleBackColor = false;
+            btnUploadImage.Click += btnUploadImage_Click;
             // 
             // txtMessage
             // 
@@ -97,9 +121,27 @@
             txtMessage.Location = new Point(3, 3);
             txtMessage.MaxLength = 500;
             txtMessage.Name = "txtMessage";
-            txtMessage.Size = new Size(608, 71);
+            txtMessage.Size = new Size(403, 71);
             txtMessage.TabIndex = 4;
             txtMessage.Text = "";
+            // 
+            // btnImagePreview
+            // 
+            btnImagePreview.BackColor = Color.Orange;
+            btnImagePreview.BackgroundImageLayout = ImageLayout.Stretch;
+            btnImagePreview.Dock = DockStyle.Fill;
+            btnImagePreview.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnImagePreview.ForeColor = Color.DarkGreen;
+            btnImagePreview.ImageAlign = ContentAlignment.MiddleLeft;
+            btnImagePreview.Location = new Point(575, 3);
+            btnImagePreview.Name = "btnImagePreview";
+            btnImagePreview.Size = new Size(116, 71);
+            btnImagePreview.TabIndex = 13;
+            btnImagePreview.Text = "Clear Image";
+            btnImagePreview.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnImagePreview.UseVisualStyleBackColor = false;
+            btnImagePreview.Visible = false;
+            btnImagePreview.Click += btnImagePreview_Click;
             // 
             // lstContacts
             // 
@@ -148,6 +190,7 @@
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel4.Size = new Size(819, 462);
             tableLayoutPanel4.TabIndex = 6;
             // 
@@ -206,6 +249,11 @@
             btnManageContacts.UseVisualStyleBackColor = false;
             btnManageContacts.Click += btnManageContacts_Click;
             // 
+            // notification
+            // 
+            notification.Text = "You received  a message";
+            notification.Visible = true;
+            // 
             // ucMessage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -226,7 +274,6 @@
 
         private TableLayoutPanel tblMessages;
         private TableLayoutPanel tableLayoutPanel3;
-        private Button btnSend;
         private RichTextBox txtMessage;
         private ListBox lstContacts;
         private TableLayoutPanel tableLayoutPanel1;
@@ -235,5 +282,9 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnCreateGroup;
         private Button btnManageContacts;
+        private Button btnUploadImage;
+        private Button btnSend;
+        private Button btnImagePreview;
+        private NotifyIcon notification;
     }
 }

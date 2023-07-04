@@ -17,6 +17,8 @@ namespace TeaLeaves.UserControls
         private ContactsController _contactsController;
         private object _selectedUser;
         private List<object> _allContacts;
+        private string _messageImage;
+        
 
         /// <summary>
         /// constructor to initialize components, controllers, and then load contacts
@@ -148,7 +150,49 @@ namespace TeaLeaves.UserControls
 
         private void AddMessageToScreen(IUserMessage message)
         {
-            if (message.Text?.Trim().Length > 0)
+            int row = tblMessages.RowCount - 1;
+
+            if (message.MediaId.HasValue)
+            {
+                try
+                {
+                    string base64Image = _messageController.GetMediaById(message.MediaId.Value);
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(base64Image)));
+                    pictureBox.Size = new Size(200, 200);
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    tblMessages.RowCount++;
+                    row = tblMessages.RowCount - 1;
+
+                    if (CurrentUserStore.User.UserId == message.SenderId)
+                    {
+                        pictureBox.Dock = DockStyle.Right;
+                        tblMessages.Controls.Add(pictureBox, 1, row);
+                    }
+                    else
+                    {
+                        pictureBox.Dock = DockStyle.Left;
+                        tblMessages.Controls.Add(pictureBox, 0, row);
+                    }
+
+                    if (tblMessages.Controls.Count > 10)
+                    {
+                        tblMessages.AutoScroll = true;
+                        tblMessages.ScrollControlIntoView(pictureBox);
+                    }
+                    else
+                    {
+                        tblMessages.AutoScroll = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
+
+            if (!string.IsNullOrEmpty(message.Text))
             {
                 Label lblMessage = new Label();
                 lblMessage.Text = message.GroupId.HasValue ? $"{GetUserNameById(message.SenderId)}:{Environment.NewLine}{message.Text.Replace("\n", Environment.NewLine)}" : message.Text.Replace("\n", Environment.NewLine);
@@ -159,12 +203,12 @@ namespace TeaLeaves.UserControls
                 lblMessage.AutoSize = true;
                 lblMessage.UseMnemonic = false;
 
-                new ToolTip().SetToolTip(lblMessage, message.TimeStamp.ToString());
+                new ToolTip().SetToolTip(lblMessage, message.TimeStamp.ToLocalTime().ToString());
 
                 tblMessages.RowCount++;
                 tblMessages.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
-                int row = tblMessages.RowCount - 1;
+                row = tblMessages.RowCount - 1;
 
                 if (CurrentUserStore.User.UserId == message.SenderId)
                 {
@@ -189,30 +233,34 @@ namespace TeaLeaves.UserControls
             }
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
+        private async void btnSend_Click(object sender, EventArgs e)
         {
-            if (txtMessage.Text.Trim().Length == 0)
-            {
-                return;
-            }
-
             if (_selectedUser != null)
             {
-                IUserMessage newMessage = new UserMessage
-                {
-                    ReceiverId = _selectedUser.GetType() == typeof(User) ? ((User)_selectedUser).UserId : CurrentUserStore.User.UserId,
-                    SenderId = CurrentUserStore.User.UserId,
-                    Text = txtMessage.Text,
-                    MediaId = null,
-                    GroupId = _selectedUser.GetType() == typeof(GroupMember) ? ((GroupMember)_selectedUser).GroupId : null,
-                    TimeStamp = DateTime.Now
-                };
-
                 try
                 {
+                    int mediaId = 0;
+
+                    if (!string.IsNullOrEmpty(_messageImage))
+                    {
+                        mediaId = _messageController.SaveImageToDatabase(_messageImage);
+                    }
+
+                    IUserMessage newMessage = new UserMessage
+                    {
+                        ReceiverId = _selectedUser.GetType() == typeof(User) ? ((User)_selectedUser).UserId : CurrentUserStore.User.UserId,
+                        SenderId = CurrentUserStore.User.UserId,
+                        Text = txtMessage.Text,
+                        MediaId = mediaId > 0 ? mediaId : null,
+                        GroupId = _selectedUser.GetType() == typeof(GroupMember) ? ((GroupMember)_selectedUser).GroupId : null,
+                        TimeStamp = DateTime.Now.ToUniversalTime(),
+                    };
+
                     _messageController.SaveMessageToDatabase(newMessage);
                     AddMessageToScreen(newMessage);
                     txtMessage.Clear();
+                    _messageImage = string.Empty;
+                    btnImagePreview.Image = null;
 
                     if (_selectedUser.GetType() == typeof(User))
                     {
@@ -400,6 +448,42 @@ namespace TeaLeaves.UserControls
             {
                 LoadContacts();
             }
+        }
+
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileOpener = new OpenFileDialog();
+            fileOpener.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+
+            if (fileOpener.ShowDialog() == DialogResult.OK)
+            {
+                FileInfo info = new FileInfo(fileOpener.FileName);
+
+                if (info.Length > 3000000)
+                {
+                    MessageBox.Show("File size is too large", "Max file size is 3MB", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ResetImagePreview();
+                }
+                else
+                {
+                    byte[] imageArray = File.ReadAllBytes(fileOpener.FileName);
+                    _messageImage = Convert.ToBase64String(imageArray);
+                    btnImagePreview.BackgroundImage = Image.FromStream(new MemoryStream(Convert.FromBase64String(_messageImage)));
+                    btnImagePreview.Visible = true;
+                }
+            }
+        }
+
+        private void ResetImagePreview()
+        {
+            _messageImage = string.Empty;
+            btnImagePreview.BackgroundImage = null;
+            btnImagePreview.Visible = false;
+        }
+
+        private void btnImagePreview_Click(object sender, EventArgs e)
+        {
+            ResetImagePreview();
         }
     }
 }
