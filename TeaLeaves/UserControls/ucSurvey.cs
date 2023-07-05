@@ -25,10 +25,7 @@ namespace TeaLeaves.UserControls
             dataGridViewSurvey.AutoGenerateColumns = false;
         }
 
-        private void usSurvey_Load(object sender, EventArgs e)
-        {
-            InitializeSurvey();
-        }
+
 
         private void InitializeSurvey()
         {
@@ -47,6 +44,11 @@ namespace TeaLeaves.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void ucSurvey_Load(object sender, EventArgs e)
+        {
+            InitializeSurvey();
         }
     }
 }

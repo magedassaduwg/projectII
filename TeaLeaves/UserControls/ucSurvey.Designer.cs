@@ -34,10 +34,10 @@
             btnEdit=new Button();
             buttonAdd=new Button();
             dataGridViewSurvey=new DataGridView();
-            SurveyName=new DataGridViewTextBoxColumn();
-            Date=new DataGridViewTextBoxColumn();
             panelSurveyHeader=new Panel();
             label1=new Label();
+            Name=new DataGridViewTextBoxColumn();
+            Date=new DataGridViewTextBoxColumn();
             tableLayoutPanelSurvey.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).BeginInit();
             panelSurveyHeader.SuspendLayout();
@@ -126,7 +126,7 @@
             dataGridViewSurvey.AllowUserToDeleteRows=false;
             dataGridViewSurvey.BackgroundColor=Color.PapayaWhip;
             dataGridViewSurvey.ColumnHeadersHeightSizeMode=DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewSurvey.Columns.AddRange(new DataGridViewColumn[] { SurveyName, Date });
+            dataGridViewSurvey.Columns.AddRange(new DataGridViewColumn[] { Name, Date });
             dataGridViewSurvey.Dock=DockStyle.Fill;
             dataGridViewSurvey.Location=new Point(3, 47);
             dataGridViewSurvey.Name="dataGridViewSurvey";
@@ -135,20 +135,6 @@
             dataGridViewSurvey.RowTemplate.Height=25;
             dataGridViewSurvey.Size=new Size(445, 346);
             dataGridViewSurvey.TabIndex=0;
-            // 
-            // SurveyName
-            // 
-            SurveyName.DataPropertyName="Name";
-            SurveyName.HeaderText="Name";
-            SurveyName.Name="SurveyName";
-            SurveyName.ReadOnly=true;
-            // 
-            // Date
-            // 
-            Date.DataPropertyName="SurveyDateTime";
-            Date.HeaderText="Date";
-            Date.Name="Date";
-            Date.ReadOnly=true;
             // 
             // panelSurveyHeader
             // 
@@ -171,13 +157,28 @@
             label1.TabIndex=0;
             label1.Text="My Survey";
             // 
-            // usSurvey
+            // Name
+            // 
+            Name.DataPropertyName="SurveyName";
+            Name.HeaderText="Name";
+            Name.Name="Name";
+            Name.ReadOnly=true;
+            // 
+            // Date
+            // 
+            Date.DataPropertyName="SurveyDateTime";
+            Date.HeaderText="Date";
+            Date.Name="Date";
+            Date.ReadOnly=true;
+            // 
+            // ucSurvey
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             Controls.Add(tableLayoutPanelSurvey);
-            Name="usSurvey";
+            
             Size=new Size(694, 442);
+            Load+=ucSurvey_Load;
             tableLayoutPanelSurvey.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).EndInit();
             panelSurveyHeader.ResumeLayout(false);
@@ -195,7 +196,7 @@
         private Button btnEdit;
         private Button btnDelete;
         private Button btnInvites;
-        private DataGridViewTextBoxColumn SurveyName;
+        private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn Date;
     }
 }

@@ -70,7 +70,7 @@ namespace TeaLeaves.DALs
         {
             List<Survey> survey = new List<Survey>();
             string query = @"SELECT SurveyId, SurveyDateTime, Name
-                     FROM Survey
+                     FROM Surveys
                      WHERE CreatorId = @UserId";
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
