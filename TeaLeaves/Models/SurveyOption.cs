@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TeaLeaves.Models
+﻿namespace TeaLeaves.Models
 {
-    internal class SurveyOption
+    /// <summary>
+    /// The model object for the SurveyOption table
+    /// </summary>
+    public class SurveyOption
     {
+        public string? Name { get; set; }
+        public int Votes { get; set; }
+        public int Id { get; set; }
+        public int SurveyId { get; set; }
     }
 }
