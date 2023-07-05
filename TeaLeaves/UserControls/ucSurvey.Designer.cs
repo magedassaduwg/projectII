@@ -1,6 +1,6 @@
 ﻿namespace TeaLeaves.UserControls
 {
-    partial class usSurvey
+    partial class ucSurvey
     {
         /// <summary> 
         /// Required designer variable.

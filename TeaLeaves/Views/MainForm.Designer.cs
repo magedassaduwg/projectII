@@ -47,7 +47,7 @@ namespace TeaLeaves.Views
             lblGreeting=new Label();
             buttonLogout=new Button();
             viewProfileButton=new Button();
-            usSurvey1=new usSurvey();
+            usSurvey1=new ucSurvey();
             tableLayoutPanel2.SuspendLayout();
             tabControlMain.SuspendLayout();
             tabPageMessage.SuspendLayout();
@@ -278,6 +278,6 @@ namespace TeaLeaves.Views
         private TabPage tabPageMySurvey;
         private TabPage tabPageSurveyInvite;
         private ucSurveyInvites ucSurveyInvites1;
-        private usSurvey usSurvey1;
+        private ucSurvey usSurvey1;
     }
 }

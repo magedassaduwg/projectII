@@ -3,10 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeaLeaves.DALs;
+using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
 {
-    internal class SurveyController
+    public class SurveyController
     {
+        private SurveyDAL _surveyDAL;
+
+        /// <summary>
+        /// Constructor to initialize the DAL access
+        /// </summary>
+        public SurveyController()
+        {
+            _surveyDAL = new SurveyDAL();
+        }
+        public List<Survey> GetSurveyByUserId(int userId)
+        {
+            return _surveyDAL.GetSurveyByUserId(userId);
+        }
+
     }
 }

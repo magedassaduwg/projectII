@@ -65,5 +65,40 @@ namespace TeaLeaves.DALs
                 }
             }
         }
+
+        public List<Survey> GetSurveyByUserId(int userId)
+        {
+            List<Survey> survey = new List<Survey>();
+            string query = @"SELECT SurveyId, SurveyDateTime, Name
+                     FROM Survey
+                     WHERE CreatorId = @UserId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Survey @surveys = new Survey
+                            {
+                                Id = Convert.ToInt32(reader["SurveyId"]),
+                                SurveyDateTime = Convert.ToDateTime(reader["SurveyDateTime"]),
+                                SurveyName = reader["Name"].ToString(),
+
+                            };
+
+                            survey.Add(surveys);
+                        }
+                    }
+                }
+            }
+
+            return survey;
+        }
     }
 }
