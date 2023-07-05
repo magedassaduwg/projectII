@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
+using TeaLeaves.Views;
 
 namespace TeaLeaves.UserControls
 {
@@ -49,6 +50,18 @@ namespace TeaLeaves.UserControls
         private void ucSurvey_Load(object sender, EventArgs e)
         {
             InitializeSurvey();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            Survey newSurvey = new Survey();
+            using (AddSurveyForm surveyForm = new AddSurveyForm(newSurvey))
+            {
+                surveyForm.ShowDialog();
+
+                InitializeSurvey();
+
+            }
         }
     }
 }

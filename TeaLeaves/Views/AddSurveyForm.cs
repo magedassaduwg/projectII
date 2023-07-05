@@ -7,19 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
     public partial class AddSurveyForm : Form
     {
-        public AddSurveyForm()
+        public AddSurveyForm(Survey selectedSurvey)
         {
             InitializeComponent();
         }
 
-        private void tableLayoutPanelAddSurvey_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
     }
 }

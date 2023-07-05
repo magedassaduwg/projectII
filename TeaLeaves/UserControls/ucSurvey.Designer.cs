@@ -119,6 +119,7 @@
             buttonAdd.TabIndex=0;
             buttonAdd.Text="Add";
             buttonAdd.UseVisualStyleBackColor=false;
+            buttonAdd.Click+=buttonAdd_Click;
             // 
             // dataGridViewSurvey
             // 
@@ -176,7 +177,7 @@
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             Controls.Add(tableLayoutPanelSurvey);
-            Name="ucSurvey";
+          
             Size=new Size(694, 442);
             Load+=ucSurvey_Load;
             tableLayoutPanelSurvey.ResumeLayout(false);
