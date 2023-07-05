@@ -34,10 +34,10 @@
             btnEdit=new Button();
             buttonAdd=new Button();
             dataGridViewSurvey=new DataGridView();
-            panelSurveyHeader=new Panel();
-            label1=new Label();
             Name=new DataGridViewTextBoxColumn();
             Date=new DataGridViewTextBoxColumn();
+            panelSurveyHeader=new Panel();
+            label1=new Label();
             tableLayoutPanelSurvey.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).BeginInit();
             panelSurveyHeader.SuspendLayout();
@@ -77,7 +77,7 @@
             btnInvites.Location=new Point(454, 329);
             btnInvites.Name="btnInvites";
             btnInvites.Size=new Size(132, 46);
-            btnInvites.TabIndex=5;
+            btnInvites.TabIndex=3;
             btnInvites.Text="Invites";
             btnInvites.UseVisualStyleBackColor=false;
             // 
@@ -90,7 +90,7 @@
             btnDelete.Location=new Point(454, 241);
             btnDelete.Name="btnDelete";
             btnDelete.Size=new Size(132, 46);
-            btnDelete.TabIndex=4;
+            btnDelete.TabIndex=2;
             btnDelete.Text="Delete";
             btnDelete.UseVisualStyleBackColor=false;
             // 
@@ -103,7 +103,7 @@
             btnEdit.Location=new Point(454, 153);
             btnEdit.Name="btnEdit";
             btnEdit.Size=new Size(132, 46);
-            btnEdit.TabIndex=3;
+            btnEdit.TabIndex=1;
             btnEdit.Text="Edit";
             btnEdit.UseVisualStyleBackColor=false;
             // 
@@ -116,7 +116,7 @@
             buttonAdd.Location=new Point(454, 66);
             buttonAdd.Name="buttonAdd";
             buttonAdd.Size=new Size(132, 43);
-            buttonAdd.TabIndex=2;
+            buttonAdd.TabIndex=0;
             buttonAdd.Text="Add";
             buttonAdd.UseVisualStyleBackColor=false;
             // 
@@ -135,6 +135,20 @@
             dataGridViewSurvey.RowTemplate.Height=25;
             dataGridViewSurvey.Size=new Size(445, 346);
             dataGridViewSurvey.TabIndex=0;
+            // 
+            // Name
+            // 
+            Name.DataPropertyName="SurveyName";
+            Name.HeaderText="Name";
+            Name.Name="Name";
+            Name.ReadOnly=true;
+            // 
+            // Date
+            // 
+            Date.DataPropertyName="SurveyDateTime";
+            Date.HeaderText="Date";
+            Date.Name="Date";
+            Date.ReadOnly=true;
             // 
             // panelSurveyHeader
             // 
@@ -157,26 +171,12 @@
             label1.TabIndex=0;
             label1.Text="My Survey";
             // 
-            // Name
-            // 
-            Name.DataPropertyName="SurveyName";
-            Name.HeaderText="Name";
-            Name.Name="Name";
-            Name.ReadOnly=true;
-            // 
-            // Date
-            // 
-            Date.DataPropertyName="SurveyDateTime";
-            Date.HeaderText="Date";
-            Date.Name="Date";
-            Date.ReadOnly=true;
-            // 
             // ucSurvey
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             Controls.Add(tableLayoutPanelSurvey);
-            
+            Name="ucSurvey";
             Size=new Size(694, 442);
             Load+=ucSurvey_Load;
             tableLayoutPanelSurvey.ResumeLayout(false);
