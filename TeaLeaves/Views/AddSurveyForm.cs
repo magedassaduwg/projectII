@@ -85,6 +85,7 @@ namespace TeaLeaves.Views
             {
                 _survey.CreatorId = CurrentUserStore.User.UserId;
                 _survey.SurveyDateTime = DateTime.Now;
+                _survey.SurveyName = richTextBoxDescription.Text;
                 try
                 {
                     _surveyController.SaveSurvey(_survey, _newSurveyOption);
