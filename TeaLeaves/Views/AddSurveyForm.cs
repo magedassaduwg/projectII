@@ -83,6 +83,7 @@ namespace TeaLeaves.Views
             {
                 _survey.CreatorId = CurrentUserStore.User.UserId;
                 _survey.SurveyDateTime = DateTime.Now;
+                _survey.SurveyName = richTextBoxDescription.Text;
                 try
                 {
                     _surveyController.SaveSurvey(_survey, _newSurveyOption);
@@ -105,6 +106,28 @@ namespace TeaLeaves.Views
                 return false;
             }
             return true;
+        }
+
+        private void buttonAdd_Click_1(object sender, EventArgs e)
+        {
+            SurveyOption addedOption = new SurveyOption
+            {
+                Name = surveyOption.Text,
+            };
+            _newSurveyOption.Add(addedOption);
+
+            List<SurveyOption> allSurveyOption = new List<SurveyOption>();
+            allSurveyOption.AddRange(_surveyOption);
+            allSurveyOption.AddRange(_newSurveyOption);
+            try
+            {
+                dataGridViewSurvey.DataSource = allSurveyOption;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            surveyOption.Text = "";
         }
     }
 }
