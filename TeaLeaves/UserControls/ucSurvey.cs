@@ -55,7 +55,7 @@ namespace TeaLeaves.UserControls
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             Survey newSurvey = new Survey();
-            using (AddSurveyForm surveyForm = new AddSurveyForm(newSurvey))
+            using (addSurveyForm surveyForm = new addSurveyForm(newSurvey))
             {
                 surveyForm.ShowDialog();
 

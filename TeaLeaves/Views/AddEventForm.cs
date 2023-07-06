@@ -214,11 +214,17 @@ namespace TeaLeaves.Views
             try
             {
                 dgvResponsibilities.DataSource = allEventResponsibilities;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
             tbResponsibilityName.Text = "";
+        }
+
+        private void tbResponsibilityName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

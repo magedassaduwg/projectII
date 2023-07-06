@@ -1,6 +1,6 @@
 ﻿namespace TeaLeaves.Views
 {
-    partial class AddSurveyForm
+    partial class addSurveyForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,16 +31,16 @@
             tableLayoutPanelAddSurvey=new TableLayoutPanel();
             labelSurveyDescription=new Label();
             richTextBoxDescription=new RichTextBox();
-            textBox5=new TextBox();
+            surveyOption=new TextBox();
             labelOption1=new Label();
             labelOption=new Label();
-            buttonAdd=new Button();
-            buttonClose=new Button();
             labelError=new Label();
             dataGridViewSurvey=new DataGridView();
+            buttonAdd=new Button();
+            buttonClose=new Button();
+            buttonSave=new Button();
             Option=new DataGridViewTextBoxColumn();
             Votes=new DataGridViewTextBoxColumn();
-            buttonSave=new Button();
             tableLayoutPanelAddSurvey.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).BeginInit();
             SuspendLayout();
@@ -55,7 +55,7 @@
             tableLayoutPanelAddSurvey.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.875F));
             tableLayoutPanelAddSurvey.Controls.Add(labelSurveyDescription, 1, 1);
             tableLayoutPanelAddSurvey.Controls.Add(richTextBoxDescription, 2, 1);
-            tableLayoutPanelAddSurvey.Controls.Add(textBox5, 2, 3);
+            tableLayoutPanelAddSurvey.Controls.Add(surveyOption, 2, 3);
             tableLayoutPanelAddSurvey.Controls.Add(labelOption1, 1, 2);
             tableLayoutPanelAddSurvey.Controls.Add(labelOption, 1, 3);
             tableLayoutPanelAddSurvey.Controls.Add(labelError, 2, 5);
@@ -97,13 +97,13 @@
             richTextBoxDescription.TabIndex=0;
             richTextBoxDescription.Text="";
             // 
-            // textBox5
+            // surveyOption
             // 
-            textBox5.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            textBox5.Location=new Point(163, 325);
-            textBox5.Name="textBox5";
-            textBox5.Size=new Size(378, 23);
-            textBox5.TabIndex=1;
+            surveyOption.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            surveyOption.Location=new Point(163, 325);
+            surveyOption.Name="surveyOption";
+            surveyOption.Size=new Size(378, 23);
+            surveyOption.TabIndex=1;
             // 
             // labelOption1
             // 
@@ -123,26 +123,6 @@
             labelOption.Size=new Size(114, 15);
             labelOption.TabIndex=11;
             labelOption.Text="Option ";
-            // 
-            // buttonAdd
-            // 
-            buttonAdd.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            buttonAdd.Location=new Point(547, 325);
-            buttonAdd.Name="buttonAdd";
-            buttonAdd.Size=new Size(123, 23);
-            buttonAdd.TabIndex=2;
-            buttonAdd.Text="Add";
-            buttonAdd.UseVisualStyleBackColor=true;
-            // 
-            // buttonClose
-            // 
-            buttonClose.Anchor=AnchorStyles.Left|AnchorStyles.Right;
-            buttonClose.Location=new Point(676, 370);
-            buttonClose.Name="buttonClose";
-            buttonClose.Size=new Size(121, 23);
-            buttonClose.TabIndex=4;
-            buttonClose.Text="Close";
-            buttonClose.UseVisualStyleBackColor=true;
             // 
             // labelError
             // 
@@ -167,19 +147,26 @@
             dataGridViewSurvey.Size=new Size(507, 196);
             dataGridViewSurvey.TabIndex=10;
             // 
-            // Option
+            // buttonAdd
             // 
-            Option.DataPropertyName="Option";
-            Option.HeaderText="Option";
-            Option.Name="Option";
-            Option.ReadOnly=true;
+            buttonAdd.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            buttonAdd.Location=new Point(547, 325);
+            buttonAdd.Name="buttonAdd";
+            buttonAdd.Size=new Size(123, 23);
+            buttonAdd.TabIndex=2;
+            buttonAdd.Text="Add";
+            buttonAdd.UseVisualStyleBackColor=true;
+            buttonAdd.Click+=buttonAdd_Click;
             // 
-            // Votes
+            // buttonClose
             // 
-            Votes.DataPropertyName="Votes";
-            Votes.HeaderText="Votes";
-            Votes.Name="Votes";
-            Votes.ReadOnly=true;
+            buttonClose.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            buttonClose.Location=new Point(676, 370);
+            buttonClose.Name="buttonClose";
+            buttonClose.Size=new Size(121, 23);
+            buttonClose.TabIndex=4;
+            buttonClose.Text="Close";
+            buttonClose.UseVisualStyleBackColor=true;
             // 
             // buttonSave
             // 
@@ -191,14 +178,29 @@
             buttonSave.Text="Save";
             buttonSave.UseVisualStyleBackColor=true;
             // 
-            // AddSurveyForm
+            // Option
+            // 
+            Option.DataPropertyName="Name";
+            Option.HeaderText="Option";
+            Option.Name="Option";
+            Option.ReadOnly=true;
+            // 
+            // Votes
+            // 
+            Votes.DataPropertyName="Votes";
+            Votes.HeaderText="Votes";
+            Votes.Name="Votes";
+            Votes.ReadOnly=true;
+            // 
+            // addSurveyForm
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             ClientSize=new Size(800, 450);
             Controls.Add(tableLayoutPanelAddSurvey);
-            Name="AddSurveyForm";
+            Name="addSurveyForm";
             Text="AddSurveyForm";
+            Load+=addSurveyForm_Load;
             tableLayoutPanelAddSurvey.ResumeLayout(false);
             tableLayoutPanelAddSurvey.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).EndInit();
@@ -210,15 +212,15 @@
         private TableLayoutPanel tableLayoutPanelAddSurvey;
         private Label labelSurveyDescription;
         private RichTextBox richTextBoxDescription;
-        private TextBox textBox5;
+        private TextBox surveyOption;
         private Label labelOption1;
         private Label labelOption;
         private Button buttonAdd;
         private Button buttonClose;
         private Label labelError;
         private DataGridView dataGridViewSurvey;
+        private Button buttonSave;
         private DataGridViewTextBoxColumn Option;
         private DataGridViewTextBoxColumn Votes;
-        private Button buttonSave;
     }
 }
