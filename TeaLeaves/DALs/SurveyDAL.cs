@@ -21,7 +21,7 @@ namespace TeaLeaves.DALs
                 select scope_identity()"
                 :
                 @"UPDATE Surveys 
-                SET Name = @Name, SurveyDateTime = @SurveyDateTime, CreatorId = @CreatorId 
+                SET Name = @Name, SurveyDateTime = @SurveyDateTime
                 WHERE SurveyId = @surveyId
 
                 select @SurveyId";
@@ -34,8 +34,8 @@ namespace TeaLeaves.DALs
                 using (SqlCommand saveCommand = new SqlCommand(query, connection, transaction))
                 {
                     saveCommand.Parameters.AddWithValue("@surveyId", survey.Id);
-                    saveCommand.Parameters.AddWithValue("@Name", survey.SurveyName);
                     saveCommand.Parameters.AddWithValue("@CreatorId", survey.CreatorId);
+                    saveCommand.Parameters.AddWithValue("@Name", survey.SurveyName);
                     saveCommand.Parameters.AddWithValue("@SurveyDateTime", survey.SurveyDateTime);
 
                     try
