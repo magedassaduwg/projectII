@@ -1,4 +1,5 @@
-﻿using TeaLeaves.Controllers;
+﻿using MassTransit;
+using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
@@ -28,6 +29,12 @@ namespace TeaLeaves.Views
             _surveyController = new SurveyController();
             _surveyOptionController = new SurveyOptionController();
             dataGridViewSurvey.AutoGenerateColumns = false;
+            BindEventValue();
+        }
+
+        private void BindEventValue()
+        {
+            richTextBoxDescription.Text = _survey.SurveyName;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
