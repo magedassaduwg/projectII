@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MassTransit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,9 @@ namespace TeaLeaves.Controllers
             return _surveyDAL.GetSurveyByUserId(userId);
         }
 
+        public int SaveSurvey(Survey @survey, List<SurveyOption> surveyOption)
+        {
+            return _surveyDAL.SaveSurvey(@survey, surveyOption);
+        }
     }
 }

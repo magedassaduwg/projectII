@@ -36,11 +36,11 @@
             labelOption=new Label();
             labelError=new Label();
             dataGridViewSurvey=new DataGridView();
+            Option=new DataGridViewTextBoxColumn();
+            Votes=new DataGridViewTextBoxColumn();
             buttonAdd=new Button();
             buttonClose=new Button();
             buttonSave=new Button();
-            Option=new DataGridViewTextBoxColumn();
-            Votes=new DataGridViewTextBoxColumn();
             tableLayoutPanelAddSurvey.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).BeginInit();
             SuspendLayout();
@@ -147,6 +147,20 @@
             dataGridViewSurvey.Size=new Size(507, 196);
             dataGridViewSurvey.TabIndex=10;
             // 
+            // Option
+            // 
+            Option.DataPropertyName="Name";
+            Option.HeaderText="Option";
+            Option.Name="Option";
+            Option.ReadOnly=true;
+            // 
+            // Votes
+            // 
+            Votes.DataPropertyName="Votes";
+            Votes.HeaderText="Votes";
+            Votes.Name="Votes";
+            Votes.ReadOnly=true;
+            // 
             // buttonAdd
             // 
             buttonAdd.Anchor=AnchorStyles.Left|AnchorStyles.Right;
@@ -167,6 +181,7 @@
             buttonClose.TabIndex=4;
             buttonClose.Text="Close";
             buttonClose.UseVisualStyleBackColor=true;
+            buttonClose.Click+=buttonClose_Click;
             // 
             // buttonSave
             // 
@@ -177,20 +192,7 @@
             buttonSave.TabIndex=3;
             buttonSave.Text="Save";
             buttonSave.UseVisualStyleBackColor=true;
-            // 
-            // Option
-            // 
-            Option.DataPropertyName="Name";
-            Option.HeaderText="Option";
-            Option.Name="Option";
-            Option.ReadOnly=true;
-            // 
-            // Votes
-            // 
-            Votes.DataPropertyName="Votes";
-            Votes.HeaderText="Votes";
-            Votes.Name="Votes";
-            Votes.ReadOnly=true;
+            buttonSave.Click+=buttonSave_Click;
             // 
             // addSurveyForm
             // 

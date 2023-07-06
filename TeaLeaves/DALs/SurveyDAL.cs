@@ -16,11 +16,11 @@ namespace TeaLeaves.DALs
         public int SaveSurvey(Survey survey, List<SurveyOption> surveyOptions)
         {
             string query = survey.Id <= 0 ?
-                @"INSERT INTO Events (Name, CreatorId, SurveyDateTime) 
+                @"INSERT INTO Surveys (Name, CreatorId, SurveyDateTime) 
                 VALUES (@Name, @CreatorId, @SurveyDateTime)
                 select scope_identity()"
                 :
-                @"UPDATE Events 
+                @"UPDATE Surveys 
                 SET Name = @Name, SurveyDateTime = @SurveyDateTime, CreatorId = @CreatorId 
                 WHERE SurveyId = @surveyId
 
@@ -44,12 +44,12 @@ namespace TeaLeaves.DALs
 
                         foreach (SurveyOption surveyOption in surveyOptions)
                         {
-                            SqlCommand insertResponsibilitiesCommand = new SqlCommand("INSERT INTO SurveyOptions (SurveyId, Name, Votes) " +
+                            SqlCommand insertSurvey = new SqlCommand("INSERT INTO SurveyOptions (SurveyId, Name, Votes) " +
                             "Values (@SurveyId, @Name, @Votes); ", connection, transaction);
-                            insertResponsibilitiesCommand.Parameters.AddWithValue("@Name", surveyOption.Name);
-                            insertResponsibilitiesCommand.Parameters.AddWithValue("@Votes", surveyOption.Votes);
-                            insertResponsibilitiesCommand.Parameters.AddWithValue("@SurveyId", lastSurvey);
-                            insertResponsibilitiesCommand.ExecuteNonQuery();
+                            insertSurvey.Parameters.AddWithValue("@Name", surveyOption.Name);
+                            insertSurvey.Parameters.AddWithValue("@Votes", surveyOption.Votes);
+                            insertSurvey.Parameters.AddWithValue("@SurveyId", lastSurvey);
+                            insertSurvey.ExecuteNonQuery();
                         }
 
                         transaction.Commit();

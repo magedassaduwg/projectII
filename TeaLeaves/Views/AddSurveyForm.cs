@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeaLeaves.Controllers;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
@@ -70,6 +71,42 @@ namespace TeaLeaves.Views
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            labelError.Text = string.Empty;
+            if (IsFormValid())
+            {
+                _survey.CreatorId = CurrentUserStore.User.UserId;
+                _survey.SurveyDateTime = DateTime.Now;
+                try
+                {
+                    _surveyController.SaveSurvey(_survey, _newSurveyOption);
+                    MessageBox.Show("Survey has been saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
+        }
+
+        private bool IsFormValid()
+        {
+            if (richTextBoxDescription.Text.Trim().Length == 0)
+            {
+                labelError.Text = "Please enter the survey description/question";
+                return false;
+            }
+            return true;
         }
     }
 }
