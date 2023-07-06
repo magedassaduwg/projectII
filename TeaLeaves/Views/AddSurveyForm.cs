@@ -32,25 +32,31 @@ namespace TeaLeaves.Views
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            SurveyOption addedOption = new SurveyOption
+            if (!string.IsNullOrWhiteSpace(surveyOption.Text))
             {
-                Name = surveyOption.Text,
-            };
-            _newSurveyOption.Add(addedOption);
+                SurveyOption addedOption = new SurveyOption
+                {
+                    Name = surveyOption.Text
+                };
+                _newSurveyOption.Add(addedOption);
 
-            List<SurveyOption> allSurveyOption = new List<SurveyOption>();
-            allSurveyOption.AddRange(_surveyOption);
-            allSurveyOption.AddRange(_newSurveyOption);
-            try
-            {
-                dataGridViewSurvey.DataSource = allSurveyOption;
+                try
+                {
+                    dataGridViewSurvey.DataSource = null;
+                    dataGridViewSurvey.DataSource = _newSurveyOption;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+                surveyOption.Text = "";
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                labelError.Text = "Please add the option";
             }
-            surveyOption.Text = "";
         }
+
 
         private void addSurveyForm_Load(object sender, EventArgs e)
         {
@@ -105,9 +111,22 @@ namespace TeaLeaves.Views
                 labelError.Text = "Please enter the survey description/question";
                 return false;
             }
+            if (dataGridViewSurvey.Rows.Count < 3)
+            {
+                labelError.Text = "Please add at least three survey options";
+                return false;
+            }
             return true;
         }
 
-    
+        private void surveyOption_TextChanged(object sender, EventArgs e)
+        {
+            labelError.Text="";
+        }
+
+        private void richTextBoxDescription_TextChanged(object sender, EventArgs e)
+        {
+            labelError.Text="";
+        }
     }
 }

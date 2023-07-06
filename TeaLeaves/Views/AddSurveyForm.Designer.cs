@@ -96,6 +96,7 @@
             richTextBoxDescription.Size=new Size(507, 61);
             richTextBoxDescription.TabIndex=0;
             richTextBoxDescription.Text="";
+            richTextBoxDescription.TextChanged+=richTextBoxDescription_TextChanged;
             // 
             // surveyOption
             // 
@@ -104,6 +105,7 @@
             surveyOption.Name="surveyOption";
             surveyOption.Size=new Size(378, 23);
             surveyOption.TabIndex=1;
+            surveyOption.TextChanged+=surveyOption_TextChanged;
             // 
             // labelOption1
             // 
@@ -127,11 +129,12 @@
             // labelError
             // 
             labelError.AutoSize=true;
+            labelError.Font=new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
+            labelError.ForeColor=Color.Red;
             labelError.Location=new Point(163, 404);
             labelError.Name="labelError";
-            labelError.Size=new Size(57, 15);
+            labelError.Size=new Size(0, 17);
             labelError.TabIndex=12;
-            labelError.Text="labelerror";
             // 
             // dataGridViewSurvey
             // 
