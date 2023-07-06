@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tableLayoutPanelAddSurvey = new TableLayoutPanel();
-            labelSurveyDescription = new Label();
-            richTextBoxDescription = new RichTextBox();
-            surveyOption = new TextBox();
-            labelOption1 = new Label();
-            labelOption = new Label();
-            labelError = new Label();
-            dataGridViewSurvey = new DataGridView();
-            Option = new DataGridViewTextBoxColumn();
-            Votes = new DataGridViewTextBoxColumn();
-            buttonAdd = new Button();
-            buttonClose = new Button();
-            buttonSave = new Button();
+            tableLayoutPanelAddSurvey=new TableLayoutPanel();
+            labelSurveyDescription=new Label();
+            richTextBoxDescription=new RichTextBox();
+            surveyOption=new TextBox();
+            labelOption1=new Label();
+            labelOption=new Label();
+            labelError=new Label();
+            dataGridViewSurvey=new DataGridView();
+            Option=new DataGridViewTextBoxColumn();
+            Votes=new DataGridViewTextBoxColumn();
+            buttonAdd=new Button();
+            buttonClose=new Button();
+            buttonSave=new Button();
             tableLayoutPanelAddSurvey.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).BeginInit();
             SuspendLayout();
@@ -149,6 +149,20 @@
             // 
             // Option
             // 
+            Option.DataPropertyName="Name";
+            Option.HeaderText="Option";
+            Option.Name="Option";
+            Option.ReadOnly=true;
+            // 
+            // Votes
+            // 
+            Votes.DataPropertyName="Votes";
+            Votes.HeaderText="Votes";
+            Votes.Name="Votes";
+            Votes.ReadOnly=true;
+            // 
+            // buttonAdd
+            // 
             Option.DataPropertyName = "Name";
             Option.HeaderText = "Option";
             Option.Name = "Option";
@@ -156,41 +170,25 @@
             // 
             // Votes
             // 
-            Votes.DataPropertyName = "Votes";
-            Votes.HeaderText = "Votes";
-            Votes.Name = "Votes";
-            Votes.ReadOnly = true;
+            buttonClose.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            buttonClose.Location=new Point(676, 370);
+            buttonClose.Name="buttonClose";
+            buttonClose.Size=new Size(121, 23);
+            buttonClose.TabIndex=4;
+            buttonClose.Text="Close";
+            buttonClose.UseVisualStyleBackColor=true;
+            buttonClose.Click+=buttonClose_Click;
             // 
             // buttonAdd
             // 
-            buttonAdd.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            buttonAdd.Location = new Point(547, 325);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(123, 23);
-            buttonAdd.TabIndex = 2;
-            buttonAdd.Text = "Add";
-            buttonAdd.UseVisualStyleBackColor = true;
-            buttonAdd.Click += buttonAdd_Click;
-            // 
-            // buttonClose
-            // 
-            buttonClose.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            buttonClose.Location = new Point(676, 370);
-            buttonClose.Name = "buttonClose";
-            buttonClose.Size = new Size(121, 23);
-            buttonClose.TabIndex = 4;
-            buttonClose.Text = "Close";
-            buttonClose.UseVisualStyleBackColor = true;
-            // 
-            // buttonSave
-            // 
-            buttonSave.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            buttonSave.Location = new Point(547, 370);
-            buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(123, 23);
-            buttonSave.TabIndex = 3;
-            buttonSave.Text = "Save";
-            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            buttonSave.Location=new Point(547, 370);
+            buttonSave.Name="buttonSave";
+            buttonSave.Size=new Size(123, 23);
+            buttonSave.TabIndex=3;
+            buttonSave.Text="Save";
+            buttonSave.UseVisualStyleBackColor=true;
+            buttonSave.Click+=buttonSave_Click;
             // 
             // addSurveyForm
             // 
