@@ -202,29 +202,36 @@ namespace TeaLeaves.Views
 
         private void btnAddResponsibility_Click(object sender, EventArgs e)
         {
-            EventResponsibility addedResponsibility = new EventResponsibility
+            if (tbResponsibilityName.Text != "")
             {
-                Name = tbResponsibilityName.Text,
-            };
-            _newEventResponsibilities.Add(addedResponsibility);
+                EventResponsibility addedResponsibility = new EventResponsibility
+                {
+                    Name = tbResponsibilityName.Text,
+                };
+                _newEventResponsibilities.Add(addedResponsibility);
 
-            List<EventResponsibility> allEventResponsibilities = new List<EventResponsibility>();
-            allEventResponsibilities.AddRange(_eventResponsibilities);
-            allEventResponsibilities.AddRange(_newEventResponsibilities);
-            try
+                List<EventResponsibility> allEventResponsibilities = new List<EventResponsibility>();
+                allEventResponsibilities.AddRange(_eventResponsibilities);
+                allEventResponsibilities.AddRange(_newEventResponsibilities);
+                try
+                {
+                    dgvResponsibilities.DataSource = allEventResponsibilities;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+                tbResponsibilityName.Text = "";
+            } else
             {
-                dgvResponsibilities.DataSource = allEventResponsibilities;
+                labelError.Text = "Responsibility name cannot be blank";
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-            tbResponsibilityName.Text = "";
+            
         }
 
         private void tbResponsibilityName_TextChanged(object sender, EventArgs e)
         {
-
+            labelError.Text = "";
         }
     }
 }

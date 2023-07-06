@@ -1,10 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeaLeaves.DALs;
+﻿using TeaLeaves.DALs;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
@@ -20,6 +14,12 @@ namespace TeaLeaves.Controllers
         {
             _surveyOptionDAL = new SurveyOptionDAL();
         }
+
+        /// <summary>
+        /// Returns a list of survey options for the given surveyId
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public List<SurveyOption> GetSurveyOptionByEventId(int Id)
         {
             return _surveyOptionDAL.GetSurveyOptionByEventId(Id);

@@ -1,19 +1,12 @@
-﻿using MassTransit;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
+    /// <summary>
+    /// The form for adding a new survey
+    /// </summary>
     public partial class addSurveyForm : Form
     {
         private SurveyController _surveyController;
@@ -21,6 +14,11 @@ namespace TeaLeaves.Views
         private List<SurveyOption> _newSurveyOption;
         private SurveyOptionController _surveyOptionController;
         private Survey _survey;
+
+        /// <summary>
+        /// The constructor for the addSurveyForm class
+        /// </summary>
+        /// <param name="selectedSurvey"></param>
         public addSurveyForm(Survey selectedSurvey)
         {
             InitializeComponent();

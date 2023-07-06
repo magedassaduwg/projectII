@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using TeaLeaves.Controllers;
 
 namespace TeaLeaves.UserControls
 {
+    /// <summary>
+    /// The user control for viewing, and voting on, invited surveys
+    /// </summary>
     public partial class ucSurveyInvites : UserControl
     {
+        SurveyController surveyController = new SurveyController();
+
         public ucSurveyInvites()
         {
             InitializeComponent();

@@ -36,7 +36,11 @@
             btnRefresh = new Button();
             btnViewAnswered = new Button();
             SurveyName = new DataGridViewTextBoxColumn();
+            SurveyDateTime = new DataGridViewTextBoxColumn();
+            SurveyCreator = new DataGridViewTextBoxColumn();
             SurveyName1 = new DataGridViewTextBoxColumn();
+            DateTime1 = new DataGridViewTextBoxColumn();
+            SurveyCreator1 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             SuspendLayout();
@@ -47,7 +51,7 @@
             lblAcceptedInvites.BackColor = SystemColors.Control;
             lblAcceptedInvites.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblAcceptedInvites.ForeColor = Color.DarkOrange;
-            lblAcceptedInvites.Location = new Point(328, 309);
+            lblAcceptedInvites.Location = new Point(345, 318);
             lblAcceptedInvites.Name = "lblAcceptedInvites";
             lblAcceptedInvites.Size = new Size(149, 21);
             lblAcceptedInvites.TabIndex = 28;
@@ -59,7 +63,7 @@
             lblSurveys.BackColor = SystemColors.Control;
             lblSurveys.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblSurveys.ForeColor = Color.DarkOrange;
-            lblSurveys.Location = new Point(314, 20);
+            lblSurveys.Location = new Point(314, 41);
             lblSurveys.Name = "lblSurveys";
             lblSurveys.Size = new Size(203, 21);
             lblSurveys.TabIndex = 27;
@@ -71,14 +75,14 @@
             dgvAcceptedInvites.AllowUserToDeleteRows = false;
             dgvAcceptedInvites.BackgroundColor = Color.PapayaWhip;
             dgvAcceptedInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAcceptedInvites.Columns.AddRange(new DataGridViewColumn[] { SurveyName1 });
-            dgvAcceptedInvites.Location = new Point(112, 355);
+            dgvAcceptedInvites.Columns.AddRange(new DataGridViewColumn[] { SurveyName1, DateTime1, SurveyCreator1 });
+            dgvAcceptedInvites.Location = new Point(54, 342);
             dgvAcceptedInvites.Name = "dgvAcceptedInvites";
             dgvAcceptedInvites.ReadOnly = true;
             dgvAcceptedInvites.RowTemplate.Height = 25;
             dgvAcceptedInvites.ScrollBars = ScrollBars.Vertical;
             dgvAcceptedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAcceptedInvites.Size = new Size(613, 160);
+            dgvAcceptedInvites.Size = new Size(701, 160);
             dgvAcceptedInvites.TabIndex = 26;
             // 
             // btnViewSurvey
@@ -99,14 +103,14 @@
             dgvEventInvites.AllowUserToDeleteRows = false;
             dgvEventInvites.BackgroundColor = Color.PapayaWhip;
             dgvEventInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { SurveyName });
-            dgvEventInvites.Location = new Point(112, 65);
+            dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { SurveyName, SurveyDateTime, SurveyCreator });
+            dgvEventInvites.Location = new Point(54, 65);
             dgvEventInvites.Name = "dgvEventInvites";
             dgvEventInvites.ReadOnly = true;
             dgvEventInvites.RowTemplate.Height = 25;
             dgvEventInvites.ScrollBars = ScrollBars.Vertical;
             dgvEventInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEventInvites.Size = new Size(613, 160);
+            dgvEventInvites.Size = new Size(701, 160);
             dgvEventInvites.TabIndex = 21;
             // 
             // btnRefresh
@@ -114,7 +118,7 @@
             btnRefresh.BackColor = Color.Orange;
             btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnRefresh.ForeColor = Color.DarkGreen;
-            btnRefresh.Location = new Point(764, 273);
+            btnRefresh.Location = new Point(764, 191);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(126, 57);
             btnRefresh.TabIndex = 24;
@@ -126,7 +130,7 @@
             btnViewAnswered.BackColor = Color.Orange;
             btnViewAnswered.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             btnViewAnswered.ForeColor = Color.DarkGreen;
-            btnViewAnswered.Location = new Point(764, 168);
+            btnViewAnswered.Location = new Point(764, 128);
             btnViewAnswered.Name = "btnViewAnswered";
             btnViewAnswered.Size = new Size(126, 57);
             btnViewAnswered.TabIndex = 36;
@@ -139,7 +143,23 @@
             SurveyName.HeaderText = "Name";
             SurveyName.Name = "SurveyName";
             SurveyName.ReadOnly = true;
-            SurveyName.Width = 240;
+            SurveyName.Width = 220;
+            // 
+            // SurveyDateTime
+            // 
+            SurveyDateTime.DataPropertyName = "SurveyDateTime";
+            SurveyDateTime.HeaderText = "Date and Time";
+            SurveyDateTime.Name = "SurveyDateTime";
+            SurveyDateTime.ReadOnly = true;
+            SurveyDateTime.Width = 220;
+            // 
+            // SurveyCreator
+            // 
+            SurveyCreator.DataPropertyName = "CreatorName";
+            SurveyCreator.HeaderText = "Survey Creator";
+            SurveyCreator.Name = "SurveyCreator";
+            SurveyCreator.ReadOnly = true;
+            SurveyCreator.Width = 220;
             // 
             // SurveyName1
             // 
@@ -147,7 +167,23 @@
             SurveyName1.HeaderText = "Name";
             SurveyName1.Name = "SurveyName1";
             SurveyName1.ReadOnly = true;
-            SurveyName1.Width = 240;
+            SurveyName1.Width = 220;
+            // 
+            // DateTime1
+            // 
+            DateTime1.DataPropertyName = "SurveyDateTime";
+            DateTime1.HeaderText = "Date And Time";
+            DateTime1.Name = "DateTime1";
+            DateTime1.ReadOnly = true;
+            DateTime1.Width = 220;
+            // 
+            // SurveyCreator1
+            // 
+            SurveyCreator1.DataPropertyName = "SurveyCreator";
+            SurveyCreator1.HeaderText = "Survey Creator";
+            SurveyCreator1.Name = "SurveyCreator1";
+            SurveyCreator1.ReadOnly = true;
+            SurveyCreator1.Width = 220;
             // 
             // ucSurveyInvites
             // 
@@ -180,6 +216,10 @@
         private Button btnRefresh;
         private Button btnViewAnswered;
         private DataGridViewTextBoxColumn SurveyName;
+        private DataGridViewTextBoxColumn SurveyDateTime;
+        private DataGridViewTextBoxColumn SurveyCreator;
         private DataGridViewTextBoxColumn SurveyName1;
+        private DataGridViewTextBoxColumn DateTime1;
+        private DataGridViewTextBoxColumn SurveyCreator1;
     }
 }
