@@ -23,16 +23,17 @@ namespace TeaLeaves.Views
         public addSurveyForm(Survey selectedSurvey)
         {
             InitializeComponent();
-            _surveyOption = new List<SurveyOption>();
-            _newSurveyOption = new List<SurveyOption>();
-            _survey = selectedSurvey ?? new Survey();
             _surveyController = new SurveyController();
             _surveyOptionController = new SurveyOptionController();
+            _surveyOption = new List<SurveyOption>();
+            _newSurveyOption = new List<SurveyOption>();
+            _survey = selectedSurvey;
+            BindSurveyValue();
             dataGridViewSurvey.AutoGenerateColumns = false;
-            BindEventValue();
+            
         }
 
-        private void BindEventValue()
+        private void BindSurveyValue()
         {
             richTextBoxDescription.Text = _survey.SurveyName;
         }
@@ -74,7 +75,7 @@ namespace TeaLeaves.Views
         {
             try
             {
-                _surveyOption = _surveyOptionController.GetSurveyOptionByEventId(_survey.Id);
+                _surveyOption = _surveyOptionController.GetSurveyOptionBySurveyId(_survey.Id);
 
                 dataGridViewSurvey.DataSource = _surveyOption;
             }
