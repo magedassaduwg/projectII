@@ -202,7 +202,7 @@ namespace TeaLeaves.Views
 
         private void btnAddResponsibility_Click(object sender, EventArgs e)
         {
-            if (tbResponsibilityName.Text != "")
+            if (tbResponsibilityName.Text != "" && CheckResponsibilityName(tbResponsibilityName.Text))
             {
                 EventResponsibility addedResponsibility = new EventResponsibility
                 {
@@ -222,11 +222,27 @@ namespace TeaLeaves.Views
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
                 tbResponsibilityName.Text = "";
-            } else
+            } else if (!CheckResponsibilityName(tbResponsibilityName.Text))
             {
+                labelError.Text = "A responsibility with that name already exists";
+            } else {
                 labelError.Text = "Responsibility name cannot be blank";
+            }           
+        }
+
+        private bool CheckResponsibilityName(string name)
+        {
+            foreach (EventResponsibility eventResponsibility in _eventResponsibilities)
+            {
+                if (eventResponsibility.Name == name) { return false; }
             }
-            
+
+            foreach (EventResponsibility eventResponsibility in _newEventResponsibilities)
+            {
+                if (eventResponsibility.Name == name) { return false; }
+            }
+
+            return true;
         }
 
         private void tbResponsibilityName_TextChanged(object sender, EventArgs e)

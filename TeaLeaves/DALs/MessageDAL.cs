@@ -149,6 +149,10 @@ namespace TeaLeaves.DALs
             }
         }
 
+        /// <summary>
+        /// Deletes a message by a given messageId
+        /// </summary>
+        /// <param name="messageId"></param>
         public void DeleteMessageById(int messageId)
         {
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
@@ -158,6 +162,40 @@ namespace TeaLeaves.DALs
                 command.Parameters.AddWithValue("@messageId", messageId);
                 connection.Open();
                 command.ExecuteScalar();
+            }
+        }
+
+        /// <summary>
+        /// Saves an image to the database and returns the mediaId
+        /// </summary>
+        /// <param name="base64Image"></param>
+        /// <returns></returns>
+        public int SaveBase64Image(string base64Image)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("Insert Into Medias(Image) Values(@image); select scope_identity()", connection);
+
+                command.Parameters.AddWithValue("@image", base64Image);
+                connection.Open();
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+        /// <summary>
+        /// Returns the base64 image as a sting
+        /// </summary>
+        /// <param name="mediaId"></param>
+        /// <returns></returns>
+        public string GetBase64Media(int mediaId)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("Select Image From Medias where MediaId = @mediaId", connection);
+
+                command.Parameters.AddWithValue("@mediaId", mediaId);
+                connection.Open();
+                return command.ExecuteScalar()?.ToString();
             }
         }
     }

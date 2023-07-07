@@ -127,6 +127,44 @@ namespace TeaLeaves.DALs
         }
 
         /// <summary>
+        /// method to retrieve a list of a user's contacts represented by a list of Users objects for a given survey
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public List<User> GetUsersContactsBySurvey(User user, Survey survey)
+        {
+            List<User> contacts = new List<User>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = @"SELECT DISTINCT UserId, FirstName, LastName, Username, Email
+                    FROM Contacts c JOIN SurveyInvites si ON si.SurveyId = @SurveyId AND si.EventInviterId = @UserId
+                    JOIN Users u ON c.UserId1 = @UserId AND UserId = si.SurveyReceiverId
+                    WHERE UserId = c.UserId2 AND UserId = si.SurveyReceiverId; ";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+                command.Parameters.AddWithValue("@SurveyId", survey.Id);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User contact = new User
+                    {
+                        UserId = Convert.ToInt32(reader["UserId"]),
+                        FirstName = reader["FirstName"].ToString(),
+                        LastName = reader["LastName"].ToString(),
+                        Username = reader["Username"].ToString(),
+                        Email = reader["Email"].ToString()
+                    };
+                    contacts.Add(contact);
+                }
+            }
+            return contacts;
+        }
+
+        /// <summary>
         /// method to retrieve a list of a user's contacts represented by a list of Users objects for a given event who have accepted their invite
         /// </summary>
         /// <param name="user"></param>
@@ -202,10 +240,59 @@ namespace TeaLeaves.DALs
             return contacts;
         }
 
+        /// <summary>
+        /// Returns all users not yet invited to the given event
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="event"></param>
+        /// <returns></returns>
         public List<User> GetUsersContactsNotInvitedByEvent(User user, Event @event)
         {
             List<int> contactUserIDs = this.GetContactUserIDs(user);
             List<int> contactUserIDsInvited = this.GetContactUserIDsByEvent(user, @event);
+
+            contactUserIDs = contactUserIDs.Except(contactUserIDsInvited).ToList();
+
+            List<User> contacts = new List<User>();
+
+            foreach (int userId in contactUserIDs)
+            {
+                using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+                {
+                    string query = "SELECT UserId, FirstName, LastName, Username, Email FROM Users WHERE UserId = @UserId;";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        User contact = new User
+                        {
+                            UserId = Convert.ToInt32(reader["UserId"]),
+                            FirstName = reader["FirstName"].ToString(),
+                            LastName = reader["LastName"].ToString(),
+                            Username = reader["Username"].ToString(),
+                            Email = reader["Email"].ToString()
+                        };
+                        contacts.Add(contact);
+                    }
+                }
+            }
+            return contacts;
+        }
+
+        /// <summary>
+        /// Returns all users not yet invited to the given survey
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="survey"></param>
+        /// <returns></returns>
+        public List<User> GetUsersContactsNotInvitedBySurvey(User user, Survey survey)
+        {
+            List<int> contactUserIDs = this.GetContactUserIDs(user);
+            List<int> contactUserIDsInvited = this.GetContactUserIDsBySurvey(user, survey);
 
             contactUserIDs = contactUserIDs.Except(contactUserIDsInvited).ToList();
 
@@ -266,11 +353,39 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT DISTINCT UserId, FirstName, LastName, Username, Email FROM Contacts c JOIN EventResponses er ON er.EventId = @EventId AND er.EventInviterId = @UserId JOIN Users u ON c.UserId1 = @UserId WHERE UserId = c.UserId2 AND c.UserId2 = er.EventReceiverId";
+                string query = @"SELECT DISTINCT UserId, FirstName, LastName, Username, Email 
+                                 FROM Contacts c JOIN EventResponses er ON er.EventId = @EventId 
+                                 AND er.EventInviterId = @UserId JOIN Users u ON c.UserId1 = @UserId 
+                                 WHERE UserId = c.UserId2 AND c.UserId2 = er.EventReceiverId";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", user.UserId);
                 command.Parameters.AddWithValue("@EventId", @event.Id);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    contactUserIDs.Add(reader.GetInt32(0));
+                }
+                return contactUserIDs;
+            }
+        }
+
+        private List<int> GetContactUserIDsBySurvey(User user, Survey survey)
+        {
+            List<int> contactUserIDs = new List<int>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = @"SELECT DISTINCT UserId, FirstName, LastName, Username, Email 
+                                 FROM Contacts c JOIN SurveyInvites si ON si.SurveyId = @SurveyId 
+                                 AND si.SurveyInviterId = @UserId JOIN Users u ON c.UserId1 = @UserId 
+                                 WHERE UserId = c.UserId2 AND c.UserId2 = si.SurveyReceiverId";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", user.UserId);
+                command.Parameters.AddWithValue("@SurveyId", survey.Id);
 
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
