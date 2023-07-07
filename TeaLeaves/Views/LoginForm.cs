@@ -23,7 +23,7 @@ namespace TeaLeaves
             InitializeComponent();
             _userController = new UsersController();
             _userLogin = new User();
-            _rememberMe = false;
+            _rememberMe = Properties.Settings.Default.RememberMe;
         }
 
 
@@ -45,8 +45,7 @@ namespace TeaLeaves
             try
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
-                _userLogin.Password = textBoxPassword.Text.Trim();
-
+                _userLogin.Password = textBoxPassword.Text;
                 if (_rememberMe)
                 {
                     LoginHelper.SaveCredentials(_userLogin.Username, _userLogin.Password);
@@ -57,8 +56,6 @@ namespace TeaLeaves
                 User verifiedUser = _userController.VerifyUserCredentials(_userLogin);
                 if (verifiedUser != null)
                 {
-              
-
                     CurrentUserStore.SetCurrentUser(verifiedUser);
 
                     // MainForm mainForm = new MainForm(verifiedUser);
@@ -81,7 +78,6 @@ namespace TeaLeaves
                 else
                 {
                     lblError.Text = "Invalid username/password.Please try again!";
-           
                 }
             }
             catch (Exception ex)
@@ -114,15 +110,29 @@ namespace TeaLeaves
             }
         }
 
-        private void rememberMe_CheckedChanged(object sender, EventArgs e)
-        {
-            _rememberMe = rememberMe.Checked;
-        }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
             rememberMe.Checked = _rememberMe;
-           
+
+            if (_rememberMe)
+            {
+                (string username, string password) = LoginHelper.LoadCredentials();
+                textBoxUsername.Text = username;
+                textBoxPassword.Text = password;
+            }
+
+        }
+        private void SaveRememberMeSetting(bool rememberMe)
+        {
+            Properties.Settings.Default.RememberMe = rememberMe;
+            Properties.Settings.Default.Save();
+        }
+
+        private void rememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+            _rememberMe = rememberMe.Checked;
+            SaveRememberMeSetting(_rememberMe);
         }
     }
 }
