@@ -64,6 +64,31 @@ namespace TeaLeaves.UserControls
             }
         }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSurvey.SelectedRows.Count > 0)
+            {
+                Survey selectedEvent = (Survey)dataGridViewSurvey.SelectedRows[0].DataBoundItem;
+
+                using (addSurveyForm surveyForm = new addSurveyForm(selectedEvent))
+                {
+                    surveyForm.ShowDialog();
+                }
+                InitializeSurvey();
+            }
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInvites_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnInvites_Click(object sender, EventArgs e)
         {
             if (dataGridViewSurvey.SelectedRows.Count > 0)

@@ -70,43 +70,45 @@
             // 
             // btnInvites
             // 
-            btnInvites.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnInvites.BackColor = Color.Orange;
-            btnInvites.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnInvites.ForeColor = Color.DarkGreen;
-            btnInvites.Location = new Point(454, 329);
-            btnInvites.Name = "btnInvites";
-            btnInvites.Size = new Size(132, 46);
-            btnInvites.TabIndex = 3;
-            btnInvites.Text = "Invites";
-            btnInvites.UseVisualStyleBackColor = false;
-            btnInvites.Click += btnInvites_Click;
+            btnInvites.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            btnInvites.BackColor=Color.Orange;
+            btnInvites.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInvites.ForeColor=Color.DarkGreen;
+            btnInvites.Location=new Point(454, 329);
+            btnInvites.Name="btnInvites";
+            btnInvites.Size=new Size(132, 46);
+            btnInvites.TabIndex=3;
+            btnInvites.Text="Invites";
+            btnInvites.UseVisualStyleBackColor=false;
+            btnInvites.Click+=btnInvites_Click;
             // 
             // btnDelete
             // 
-            btnDelete.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnDelete.BackColor = Color.Orange;
-            btnDelete.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDelete.ForeColor = Color.DarkGreen;
-            btnDelete.Location = new Point(454, 241);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(132, 46);
-            btnDelete.TabIndex = 2;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            btnDelete.BackColor=Color.Orange;
+            btnDelete.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDelete.ForeColor=Color.DarkGreen;
+            btnDelete.Location=new Point(454, 241);
+            btnDelete.Name="btnDelete";
+            btnDelete.Size=new Size(132, 46);
+            btnDelete.TabIndex=2;
+            btnDelete.Text="Delete";
+            btnDelete.UseVisualStyleBackColor=false;
+            btnDelete.Click+=btnDelete_Click;
             // 
             // btnEdit
             // 
-            btnEdit.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnEdit.BackColor = Color.Orange;
-            btnEdit.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEdit.ForeColor = Color.DarkGreen;
-            btnEdit.Location = new Point(454, 153);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(132, 46);
-            btnEdit.TabIndex = 1;
-            btnEdit.Text = "Edit";
-            btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            btnEdit.BackColor=Color.Orange;
+            btnEdit.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEdit.ForeColor=Color.DarkGreen;
+            btnEdit.Location=new Point(454, 153);
+            btnEdit.Name="btnEdit";
+            btnEdit.Size=new Size(132, 46);
+            btnEdit.TabIndex=1;
+            btnEdit.Text="Edit";
+            btnEdit.UseVisualStyleBackColor=false;
+            btnEdit.Click+=btnEdit_Click;
             // 
             // buttonAdd
             // 
