@@ -40,6 +40,10 @@ namespace TeaLeaves.Views
             ucEventPlanners = new ucEventPlanner();
             tabPageInvites = new TabPage();
             ucEventInvites1 = new ucEventInvites();
+            tabPageMySurvey = new TabPage();
+            usSurvey1 = new ucSurvey();
+            tabPageSurveyInvite = new TabPage();
+            ucSurveyInvites1 = new ucSurveyInvites();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblGreeting = new Label();
             buttonLogout = new Button();
@@ -49,6 +53,8 @@ namespace TeaLeaves.Views
             tabPageMessage.SuspendLayout();
             tabPageEvent.SuspendLayout();
             tabPageInvites.SuspendLayout();
+            tabPageMySurvey.SuspendLayout();
+            tabPageSurveyInvite.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -73,6 +79,8 @@ namespace TeaLeaves.Views
             tabControlMain.Controls.Add(tabPageMessage);
             tabControlMain.Controls.Add(tabPageEvent);
             tabControlMain.Controls.Add(tabPageInvites);
+            tabControlMain.Controls.Add(tabPageMySurvey);
+            tabControlMain.Controls.Add(tabPageSurveyInvite);
             tabControlMain.Dock = DockStyle.Fill;
             tabControlMain.Location = new Point(3, 76);
             tabControlMain.Name = "tabControlMain";
@@ -138,6 +146,44 @@ namespace TeaLeaves.Views
             ucEventInvites1.Size = new Size(1280, 622);
             ucEventInvites1.TabIndex = 0;
             // 
+            // tabPageMySurvey
+            // 
+            tabPageMySurvey.Controls.Add(usSurvey1);
+            tabPageMySurvey.Location = new Point(4, 24);
+            tabPageMySurvey.Name = "tabPageMySurvey";
+            tabPageMySurvey.Padding = new Padding(3);
+            tabPageMySurvey.Size = new Size(1286, 628);
+            tabPageMySurvey.TabIndex = 3;
+            tabPageMySurvey.Text = "My Surveys";
+            tabPageMySurvey.UseVisualStyleBackColor = true;
+            // 
+            // usSurvey1
+            // 
+            usSurvey1.Dock = DockStyle.Fill;
+            usSurvey1.Location = new Point(3, 3);
+            usSurvey1.Name = "usSurvey1";
+            usSurvey1.Size = new Size(1280, 622);
+            usSurvey1.TabIndex = 0;
+            // 
+            // tabPageSurveyInvite
+            // 
+            tabPageSurveyInvite.Controls.Add(ucSurveyInvites1);
+            tabPageSurveyInvite.Location = new Point(4, 24);
+            tabPageSurveyInvite.Name = "tabPageSurveyInvite";
+            tabPageSurveyInvite.Padding = new Padding(3);
+            tabPageSurveyInvite.Size = new Size(1286, 628);
+            tabPageSurveyInvite.TabIndex = 4;
+            tabPageSurveyInvite.Text = "Survey Invites";
+            tabPageSurveyInvite.UseVisualStyleBackColor = true;
+            // 
+            // ucSurveyInvites1
+            // 
+            ucSurveyInvites1.Dock = DockStyle.Fill;
+            ucSurveyInvites1.Location = new Point(3, 3);
+            ucSurveyInvites1.Name = "ucSurveyInvites1";
+            ucSurveyInvites1.Size = new Size(1280, 622);
+            ucSurveyInvites1.TabIndex = 0;
+            // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(lblGreeting);
@@ -165,7 +211,7 @@ namespace TeaLeaves.Views
             buttonLogout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonLogout.BackColor = Color.YellowGreen;
             buttonLogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonLogout.ForeColor = Color.DarkOrange;
+            buttonLogout.ForeColor = Color.DarkGreen;
             buttonLogout.Location = new Point(9, 3);
             buttonLogout.Name = "buttonLogout";
             buttonLogout.Size = new Size(84, 35);
@@ -179,7 +225,7 @@ namespace TeaLeaves.Views
             viewProfileButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             viewProfileButton.BackColor = Color.YellowGreen;
             viewProfileButton.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            viewProfileButton.ForeColor = Color.DarkOrange;
+            viewProfileButton.ForeColor = Color.DarkGreen;
             viewProfileButton.Location = new Point(99, 3);
             viewProfileButton.Name = "viewProfileButton";
             viewProfileButton.Size = new Size(115, 35);
@@ -206,6 +252,8 @@ namespace TeaLeaves.Views
             tabPageMessage.ResumeLayout(false);
             tabPageEvent.ResumeLayout(false);
             tabPageInvites.ResumeLayout(false);
+            tabPageMySurvey.ResumeLayout(false);
+            tabPageSurveyInvite.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -227,5 +275,9 @@ namespace TeaLeaves.Views
         private Button yourProfileButton;
         private Button viewProfileButton;
         private ucMessage ucMessage1;
+        private TabPage tabPageMySurvey;
+        private TabPage tabPageSurveyInvite;
+        private ucSurveyInvites ucSurveyInvites1;
+        private ucSurvey usSurvey1;
     }
 }

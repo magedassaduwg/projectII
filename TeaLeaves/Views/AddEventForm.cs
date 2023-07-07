@@ -202,23 +202,52 @@ namespace TeaLeaves.Views
 
         private void btnAddResponsibility_Click(object sender, EventArgs e)
         {
-            EventResponsibility addedResponsibility = new EventResponsibility
+            if (tbResponsibilityName.Text != "" && CheckResponsibilityName(tbResponsibilityName.Text))
             {
-                Name = tbResponsibilityName.Text,
-            };
-            _newEventResponsibilities.Add(addedResponsibility);
+                EventResponsibility addedResponsibility = new EventResponsibility
+                {
+                    Name = tbResponsibilityName.Text,
+                };
+                _newEventResponsibilities.Add(addedResponsibility);
 
-            List<EventResponsibility> allEventResponsibilities = new List<EventResponsibility>();
-            allEventResponsibilities.AddRange(_eventResponsibilities);
-            allEventResponsibilities.AddRange(_newEventResponsibilities);
-            try
+                List<EventResponsibility> allEventResponsibilities = new List<EventResponsibility>();
+                allEventResponsibilities.AddRange(_eventResponsibilities);
+                allEventResponsibilities.AddRange(_newEventResponsibilities);
+                try
+                {
+                    dgvResponsibilities.DataSource = allEventResponsibilities;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+                tbResponsibilityName.Text = "";
+            } else if (!CheckResponsibilityName(tbResponsibilityName.Text))
             {
-                dgvResponsibilities.DataSource = allEventResponsibilities;
-            } catch (Exception ex)
+                labelError.Text = "A responsibility with that name already exists";
+            } else {
+                labelError.Text = "Responsibility name cannot be blank";
+            }           
+        }
+
+        private bool CheckResponsibilityName(string name)
+        {
+            foreach (EventResponsibility eventResponsibility in _eventResponsibilities)
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                if (eventResponsibility.Name == name) { return false; }
             }
-            tbResponsibilityName.Text = "";
+
+            foreach (EventResponsibility eventResponsibility in _newEventResponsibilities)
+            {
+                if (eventResponsibility.Name == name) { return false; }
+            }
+
+            return true;
+        }
+
+        private void tbResponsibilityName_TextChanged(object sender, EventArgs e)
+        {
+            labelError.Text = "";
         }
     }
 }

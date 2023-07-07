@@ -49,6 +49,16 @@ namespace TeaLeaves.Controllers
             return _contactsDAL.GetUsersContactsByEvent(user, @event);
         }
 
+        /// <summary>
+        /// Returns the users who have been invited to a survey
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="survey"></param>
+        /// <returns></returns>
+        public List<User> GetUserContactsBySurvey(User user, Models.Survey survey)
+        {
+            return _contactsDAL.GetUsersContactsBySurvey(user, survey);
+        }
 
         /// <summary>
         /// Returns the users who have not been invited to an event
@@ -59,6 +69,17 @@ namespace TeaLeaves.Controllers
         public List<User> GetUsersContactsNotInvitedByEvent(Models.User user, Event @event)
         {
             return _contactsDAL.GetUsersContactsNotInvitedByEvent(user, @event);
+        }
+
+        /// <summary>
+        /// Returns the users who have not been invited to a survey
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="survey"></param>
+        /// <returns></returns>
+        public List<User> GetUsersContactsNotInvitedBySurvey(Models.User user, Survey survey)
+        {
+            return _contactsDAL.GetUsersContactsNotInvitedBySurvey(user, survey);
         }
 
         /// <summary>
