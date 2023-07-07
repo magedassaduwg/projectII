@@ -121,29 +121,31 @@ namespace TeaLeaves.Views
             this.Close();
         }
 
-        /// code attempting to make only the rows of contacts that have not been added by the user BOLD
-/*
+        /// code attempting to make only the rows of contacts that have not been added by the user b
+
         private void contactDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            List<Models.User> usersContactList = this._contactsController.GetUsersContacts(CurrentUserStore.User);
-            
+            /*List<Models.User> usersContactList = this._contactsController.GetUsersContacts(CurrentUserStore.User);
+
             foreach (Models.User contact in this._contactList)
             {
                 try
                 {
                     if (usersContactList.Find(User => User.Email == this.emailText.Text) != null)
                     {
-                        
-                    } else
+
+                    }
+                    else
                     {
                         e.CellStyle.Font = new Font(e.CellStyle.Font, FontStyle.Bold);
                     }
-                } catch (Exception)
+                }
+                catch (Exception)
                 {
 
                 }
-                
-            }
-        }*/
+
+            }*/
+        }
     }
 }

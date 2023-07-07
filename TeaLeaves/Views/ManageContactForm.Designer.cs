@@ -33,10 +33,10 @@
             contactLayoutPanel = new TableLayoutPanel();
             sortButton = new Button();
             contactDataGridView = new DataGridView();
-            FullName = new DataGridViewTextBoxColumn();
             usersBindingSource = new BindingSource(components);
             addButton = new Button();
             SelectedContactTable = new TableLayoutPanel();
+            userProfilePictureBox = new PictureBox();
             firstNameLabel = new Label();
             lastNameLabel = new Label();
             emailLabel = new Label();
@@ -48,7 +48,7 @@
             closeButton = new Button();
             viewProfileButton = new Button();
             deleteButton = new Button();
-            userProfilePictureBox = new PictureBox();
+            FullName = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -129,13 +129,6 @@
             contactDataGridView.TabIndex = 0;
             contactDataGridView.RowEnter += contactDataGridView_RowEnter;
             // 
-            // FullName
-            // 
-            FullName.DataPropertyName = "FullName";
-            FullName.HeaderText = "Name";
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
-            // 
             // addButton
             // 
             addButton.Anchor = AnchorStyles.None;
@@ -180,6 +173,18 @@
             SelectedContactTable.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             SelectedContactTable.Size = new Size(530, 450);
             SelectedContactTable.TabIndex = 0;
+            // 
+            // userProfilePictureBox
+            // 
+            userProfilePictureBox.Dock = DockStyle.Fill;
+            userProfilePictureBox.Image = Properties.Resources.tealeaves_logo;
+            userProfilePictureBox.Location = new Point(355, 3);
+            userProfilePictureBox.Name = "userProfilePictureBox";
+            SelectedContactTable.SetRowSpan(userProfilePictureBox, 2);
+            userProfilePictureBox.Size = new Size(172, 174);
+            userProfilePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            userProfilePictureBox.TabIndex = 16;
+            userProfilePictureBox.TabStop = false;
             // 
             // firstNameLabel
             // 
@@ -309,17 +314,13 @@
             deleteButton.UseVisualStyleBackColor = false;
             deleteButton.Click += deleteButton_Click;
             // 
-            // userProfilePictureBox
+            // FullName
             // 
-            userProfilePictureBox.Dock = DockStyle.Fill;
-            userProfilePictureBox.Image = Properties.Resources.tealeaves_logo;
-            userProfilePictureBox.Location = new Point(355, 3);
-            userProfilePictureBox.Name = "userProfilePictureBox";
-            SelectedContactTable.SetRowSpan(userProfilePictureBox, 2);
-            userProfilePictureBox.Size = new Size(172, 174);
-            userProfilePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            userProfilePictureBox.TabIndex = 16;
-            userProfilePictureBox.TabStop = false;
+            FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
             // 
             // ManageContactForm
             // 
@@ -365,8 +366,8 @@
         private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private Button viewProfileButton;
-        private DataGridViewTextBoxColumn FullName;
         private Button sortButton;
         private PictureBox userProfilePictureBox;
+        private DataGridViewTextBoxColumn FullName;
     }
 }

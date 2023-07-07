@@ -41,13 +41,13 @@
             closeButton = new Button();
             viewProfileButton = new Button();
             usersBindingSource = new BindingSource(components);
-            FullName = new DataGridViewTextBoxColumn();
             sortButton = new Button();
             contactDataGridView = new DataGridView();
             contactLayoutPanel = new TableLayoutPanel();
             SelectedContactTable = new TableLayoutPanel();
             addContactButton = new Button();
             splitContainer1 = new SplitContainer();
+            FullName = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)userProfilePictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usersBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)contactDataGridView).BeginInit();
@@ -184,13 +184,6 @@
             viewProfileButton.UseVisualStyleBackColor = false;
             viewProfileButton.Click += viewProfileButton_Click;
             // 
-            // FullName
-            // 
-            FullName.DataPropertyName = "FullName";
-            FullName.HeaderText = "Name";
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
-            // 
             // sortButton
             // 
             sortButton.Anchor = AnchorStyles.None;
@@ -306,6 +299,14 @@
             splitContainer1.SplitterDistance = 266;
             splitContainer1.TabIndex = 1;
             // 
+            // FullName
+            // 
+            FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
+            // 
             // ProfileContactBookForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -343,11 +344,11 @@
         private Button closeButton;
         private Button viewProfileButton;
         private BindingSource usersBindingSource;
-        private DataGridViewTextBoxColumn FullName;
         private Button sortButton;
         private DataGridView contactDataGridView;
         private TableLayoutPanel contactLayoutPanel;
         private SplitContainer splitContainer1;
         private Button addContactButton;
+        private DataGridViewTextBoxColumn FullName;
     }
 }

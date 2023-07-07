@@ -42,8 +42,8 @@
             btnBack = new Button();
             lblEventResponsibilities = new Label();
             dgvUnassignedResponsibilities = new DataGridView();
-            ResponsibilityName = new DataGridViewTextBoxColumn();
             lblUnassignedResponsibilities = new Label();
+            ResponsibilityName = new DataGridViewTextBoxColumn();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).BeginInit();
             SuspendLayout();
@@ -244,14 +244,6 @@
             dgvUnassignedResponsibilities.Size = new Size(273, 129);
             dgvUnassignedResponsibilities.TabIndex = 23;
             // 
-            // ResponsibilityName
-            // 
-            ResponsibilityName.DataPropertyName = "Name";
-            ResponsibilityName.HeaderText = "Name";
-            ResponsibilityName.Name = "ResponsibilityName";
-            ResponsibilityName.ReadOnly = true;
-            ResponsibilityName.Width = 230;
-            // 
             // lblUnassignedResponsibilities
             // 
             lblUnassignedResponsibilities.Anchor = AnchorStyles.Left | AnchorStyles.Right;
@@ -264,6 +256,14 @@
             lblUnassignedResponsibilities.Size = new Size(273, 21);
             lblUnassignedResponsibilities.TabIndex = 25;
             lblUnassignedResponsibilities.Text = "Unassigned Responsibilities";
+            // 
+            // ResponsibilityName
+            // 
+            ResponsibilityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ResponsibilityName.DataPropertyName = "Name";
+            ResponsibilityName.HeaderText = "Name";
+            ResponsibilityName.Name = "ResponsibilityName";
+            ResponsibilityName.ReadOnly = true;
             // 
             // ViewEventForm
             // 
