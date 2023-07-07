@@ -45,13 +45,15 @@ namespace TeaLeaves
             try
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
-                _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
+                _userLogin.Password = textBoxPassword.Text.Trim();
+
                 if (_rememberMe)
                 {
                     LoginHelper.SaveCredentials(_userLogin.Username, _userLogin.Password);
-                    _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
-
                 }
+
+                _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
+
                 User verifiedUser = _userController.VerifyUserCredentials(_userLogin);
                 if (verifiedUser != null)
                 {
