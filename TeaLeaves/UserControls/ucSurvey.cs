@@ -86,11 +86,6 @@ namespace TeaLeaves.UserControls
 
         private void btnInvites_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnInvites_Click(object sender, EventArgs e)
-        {
             if (dataGridViewSurvey.SelectedRows.Count > 0)
             {
                 Survey selectedSurvey = (Survey)dataGridViewSurvey.SelectedRows[0].DataBoundItem;

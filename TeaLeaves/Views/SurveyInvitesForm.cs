@@ -20,14 +20,14 @@ namespace TeaLeaves.Views
         /// </summary>
         public SurveyInvitesForm(Survey survey)
         {
+            InitializeComponent();
             _survey = survey;
             _contactsController = new ContactsController();
             _surveyInviteController = new SurveyInviteController();
             _invitedUsers = new List<User>();
             _uninvitedUsers = new List<User>();
-            //dgvInvitedContacts.AutoGenerateColumns = false;
-            //dgvUninvitedContacts.AutoGenerateColumns = false;
-            InitializeComponent();
+            dgvInvitedContacts.AutoGenerateColumns = false;
+            dgvUninvitedContacts.AutoGenerateColumns = false;           
         }
 
         private void GetUserSurveys()
