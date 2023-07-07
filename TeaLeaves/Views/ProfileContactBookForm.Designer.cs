@@ -225,6 +225,7 @@
             contactDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             contactDataGridView.Size = new Size(260, 389);
             contactDataGridView.TabIndex = 0;
+            contactDataGridView.CellFormatting += contactDataGridView_CellFormatting;
             contactDataGridView.RowEnter += contactDataGridView_RowEnter;
             // 
             // contactLayoutPanel
@@ -278,7 +279,6 @@
             // 
             addContactButton.Anchor = AnchorStyles.None;
             addContactButton.BackColor = Color.YellowGreen;
-            addContactButton.Enabled = false;
             addContactButton.Font = new Font("Segoe UI Semibold", 13.5F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             addContactButton.ForeColor = Color.DarkGreen;
             addContactButton.Location = new Point(111, 388);
