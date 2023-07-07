@@ -45,7 +45,7 @@ namespace TeaLeaves
             try
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
-                _userLogin.Password = textBoxPassword.Text;
+                _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
                 if (_rememberMe)
                 {
                     LoginHelper.SaveCredentials(_userLogin.Username, _userLogin.Password);
