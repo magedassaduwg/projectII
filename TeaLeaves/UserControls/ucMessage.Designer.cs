@@ -38,7 +38,7 @@
             btnImagePreview = new Button();
             lstContacts = new ListBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            tableLayoutPanel4 = new TableLayoutPanel();
+            tblMessagesWithHeader = new TableLayoutPanel();
             lblSelectedContact = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             btnCreateGroup = new Button();
@@ -46,7 +46,7 @@
             notification = new NotifyIcon(components);
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
+            tblMessagesWithHeader.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -149,7 +149,7 @@
             lstContacts.DrawMode = DrawMode.OwnerDrawFixed;
             lstContacts.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lstContacts.FormattingEnabled = true;
-            lstContacts.ItemHeight = 20;
+            lstContacts.ItemHeight = 23;
             lstContacts.Items.AddRange(new object[] { "No Contacts" });
             lstContacts.Location = new Point(828, 3);
             lstContacts.Name = "lstContacts";
@@ -165,7 +165,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.Controls.Add(lstContacts, 1, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 1);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel4, 0, 0);
+            tableLayoutPanel1.Controls.Add(tblMessagesWithHeader, 0, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
@@ -177,22 +177,22 @@
             tableLayoutPanel1.Size = new Size(1100, 551);
             tableLayoutPanel1.TabIndex = 1;
             // 
-            // tableLayoutPanel4
+            // tblMessagesWithHeader
             // 
-            tableLayoutPanel4.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Controls.Add(lblSelectedContact, 0, 0);
-            tableLayoutPanel4.Controls.Add(tblMessages, 0, 1);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 3);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 2;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new Size(819, 462);
-            tableLayoutPanel4.TabIndex = 6;
+            tblMessagesWithHeader.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            tblMessagesWithHeader.ColumnCount = 1;
+            tblMessagesWithHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblMessagesWithHeader.Controls.Add(lblSelectedContact, 0, 0);
+            tblMessagesWithHeader.Controls.Add(tblMessages, 0, 1);
+            tblMessagesWithHeader.Dock = DockStyle.Fill;
+            tblMessagesWithHeader.Location = new Point(3, 3);
+            tblMessagesWithHeader.Name = "tblMessagesWithHeader";
+            tblMessagesWithHeader.RowCount = 2;
+            tblMessagesWithHeader.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tblMessagesWithHeader.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
+            tblMessagesWithHeader.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblMessagesWithHeader.Size = new Size(819, 462);
+            tblMessagesWithHeader.TabIndex = 6;
             // 
             // lblSelectedContact
             // 
@@ -265,8 +265,8 @@
             Resize += ucMessage_Resize;
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
+            tblMessagesWithHeader.ResumeLayout(false);
+            tblMessagesWithHeader.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -278,7 +278,7 @@
         private RichTextBox txtMessage;
         private ListBox lstContacts;
         private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel4;
+        private TableLayoutPanel tblMessagesWithHeader;
         private Label lblSelectedContact;
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnCreateGroup;

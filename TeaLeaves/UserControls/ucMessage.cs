@@ -377,7 +377,12 @@ namespace TeaLeaves.UserControls
                     UpdateContactUnreadStatus(message, false);
                 }
 
+                Size size = new Size(tblMessagesWithHeader.Width -10, Convert.ToInt32(tblMessagesWithHeader.Height / 1.15));
+                SplashScreen.ShowSplashScreen(tblMessages.PointToScreen(Point.Empty), size);
+
                 LoadMessagesFromUser(currentUser.UserId);
+
+                SplashScreen.CloseForm();
             }
             else if (lstContacts.SelectedIndex > -1 && selectedItem.GetType() == typeof(GroupMember))
             {
@@ -397,7 +402,12 @@ namespace TeaLeaves.UserControls
                     UpdateContactUnreadStatus(message, false);
                 }
 
+                Size size = new Size(tblMessagesWithHeader.Width - 10, Convert.ToInt32(tblMessagesWithHeader.Height / 1.15));
+                SplashScreen.ShowSplashScreen(tblMessages.PointToScreen(Point.Empty), size);
+
                 LoadMessagesFromGroup(currentMember.GroupId);
+
+                SplashScreen.CloseForm();
             }
         }
 
