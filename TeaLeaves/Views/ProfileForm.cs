@@ -105,5 +105,13 @@ namespace TeaLeaves.Views
                 userStats[0].ToString() +
                 "% of the time.", "User Statistics", MessageBoxButtons.OK);
         }
+
+        private void friendListButton_Click(object sender, EventArgs e)
+        {
+            using (ProfileContactBookForm contactBookForm = new ProfileContactBookForm(this.viewedUser))
+            {
+                contactBookForm.ShowDialog();
+            }
+        }
     }
 }
