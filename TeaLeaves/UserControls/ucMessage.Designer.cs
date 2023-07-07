@@ -44,6 +44,7 @@
             btnCreateGroup = new Button();
             btnManageContacts = new Button();
             notification = new NotifyIcon(components);
+            cmsMessage = new ContextMenuStrip(components);
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tblMessagesWithHeader.SuspendLayout();
@@ -254,6 +255,13 @@
             notification.Text = "You received  a message";
             notification.Visible = true;
             // 
+            // cmsMessage
+            // 
+            cmsMessage.Name = "cmsMessage";
+            cmsMessage.RenderMode = ToolStripRenderMode.Professional;
+            cmsMessage.Size = new Size(181, 26);
+            cmsMessage.Opening += cmsMessage_Opening;
+            // 
             // ucMessage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -287,5 +295,6 @@
         private Button btnSend;
         private Button btnImagePreview;
         private NotifyIcon notification;
+        private ContextMenuStrip cmsMessage;
     }
 }

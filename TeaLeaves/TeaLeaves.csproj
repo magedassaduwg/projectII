@@ -43,6 +43,9 @@
     <None Update="Resources\lock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\notification.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\paperclip.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

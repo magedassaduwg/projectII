@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Data.SqlClient;
+using System.Media;
 using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
@@ -83,8 +84,10 @@ namespace TeaLeaves.UserControls
                 else
                 {
                     UpdateContactUnreadStatus(e, true);
-                    ShowNotification(e);
                 }
+                
+                ShowNotification(e);
+                playSimpleSound();
             });
         }
 
@@ -165,6 +168,8 @@ namespace TeaLeaves.UserControls
                     pictureBox.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(base64Image)));
                     pictureBox.Size = new Size(200, 200);
                     pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.ContextMenuStrip = cmsMessage;
+                    pictureBox.Name = message.MessageId.ToString();
 
                     tblMessages.RowCount++;
                     row = tblMessages.RowCount - 1;
@@ -206,6 +211,8 @@ namespace TeaLeaves.UserControls
                 lblMessage.BackColor = Color.White;
                 lblMessage.AutoSize = true;
                 lblMessage.UseMnemonic = false;
+                lblMessage.ContextMenuStrip = cmsMessage;
+                lblMessage.Name = message.MessageId.ToString();
 
                 new ToolTip().SetToolTip(lblMessage, message.TimeStamp.ToLocalTime().ToString());
 
@@ -260,11 +267,11 @@ namespace TeaLeaves.UserControls
                         TimeStamp = DateTime.Now.ToUniversalTime(),
                     };
 
-                    _messageController.SaveMessageToDatabase(newMessage);
+                    newMessage.MessageId = _messageController.SaveMessageToDatabase(newMessage);
                     AddMessageToScreen(newMessage);
+
                     txtMessage.Clear();
-                    _messageImage = string.Empty;
-                    btnImagePreview.Image = null;
+                    ResetImagePreview();
 
                     if (_selectedUser.GetType() == typeof(User))
                     {
@@ -377,7 +384,7 @@ namespace TeaLeaves.UserControls
                     UpdateContactUnreadStatus(message, false);
                 }
 
-                Size size = new Size(tblMessagesWithHeader.Width -10, Convert.ToInt32(tblMessagesWithHeader.Height / 1.15));
+                Size size = new Size(tblMessagesWithHeader.Width - 10, Convert.ToInt32(tblMessagesWithHeader.Height / 1.15));
                 SplashScreen.ShowSplashScreen(tblMessages.PointToScreen(Point.Empty), size);
 
                 LoadMessagesFromUser(currentUser.UserId);
@@ -520,6 +527,77 @@ namespace TeaLeaves.UserControls
         {
             ParentForm.WindowState = FormWindowState.Normal;
             ParentForm.Activate();
+        }
+
+        private void playSimpleSound()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"Resources\\notification.wav");
+            simpleSound.Play();
+        }
+
+        private void cmsMessage_Opening(object sender, CancelEventArgs e)
+        {
+            cmsMessage.Items.Clear();
+
+            ToolStripItem title = new ToolStripMenuItem();
+            title.Text = "Forward Message";
+            title.Enabled = false;
+
+            cmsMessage.Items.Add(title);
+
+            foreach (var contact in _allContacts)
+            {
+                if (contact.GetType() == typeof(User))
+                {
+                    User user = (User)contact;
+                    ToolStripItem tsContact = new ToolStripMenuItem(user.FullName, null, ForwardMessageToUser,
+                        $"{((ContextMenuStrip)sender).SourceControl.Name}:{user.UserId}");
+                    cmsMessage.Items.Add(tsContact);
+                }
+                else
+                {
+                    GroupMember group = (GroupMember)contact;
+                    ToolStripItem tsContact = new ToolStripMenuItem(group.GroupName, null, ForwardMessageToGroup,
+                        $"{((ContextMenuStrip)sender).SourceControl.Name}:{group.GroupId}");
+                    cmsMessage.Items.Add(tsContact);
+                }
+
+            }
+        }
+
+        private void ForwardMessageToUser(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            string[] ids = item.Name.Split(':', StringSplitOptions.RemoveEmptyEntries);
+            int messageId = Convert.ToInt32(ids[0]);
+            int userId = Convert.ToInt32(ids[1]);
+
+            try
+            {
+                _messageController.ForwardMessage(messageId, CurrentUserStore.User.UserId, userId, false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
+        }
+
+        private void ForwardMessageToGroup(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            string[] ids = item.Name.Split(':', StringSplitOptions.RemoveEmptyEntries);
+            int messageId = Convert.ToInt32(ids[0]);
+            int groupId = Convert.ToInt32(ids[1]);
+
+            try
+            {
+                _messageController.ForwardMessage(messageId, CurrentUserStore.User.UserId, groupId, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }

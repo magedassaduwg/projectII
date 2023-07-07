@@ -41,7 +41,7 @@ namespace TeaLeavesTests
                 ReceiverId = 2,
                 SenderId = 1,
                 Text = "Test",
-                TimeStamp = DateTime.Now
+                TimeStamp = DateTime.Now.ToUniversalTime(),
             };
 
             try
