@@ -1,4 +1,5 @@
 ﻿using TeaLeaves.DALs;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
@@ -49,9 +50,44 @@ namespace TeaLeaves.Controllers
             return _messagesDAL.SaveMessage(message);
         }
 
+        /// <summary>
+        /// Delete a messsage from the database
+        /// </summary>
+        /// <param name="messageId"></param>
         public void DeleteMessageFromDatabase(int messageId)
         {
             _messagesDAL.DeleteMessageById(messageId);
+        }
+
+        /// <summary>
+        /// Saves an image to the database
+        /// </summary>
+        /// <param name="base64Image"></param>
+        /// <returns></returns>
+        public int SaveImageToDatabase(string base64Image)
+        {
+            return _messagesDAL.SaveBase64Image(base64Image);
+        }
+
+        /// <summary>
+        /// Gets a media file by media id
+        /// </summary>
+        /// <param name="mediaId"></param>
+        /// <returns></returns>
+        public string GetMediaById(int mediaId)
+        {
+            return _messagesDAL.GetBase64Media(mediaId);
+        }
+
+        /// <summary>
+        /// Forwards a message from one contact to another
+        /// </summary>
+        /// <param name="messageId"></param>
+        /// <param name="destinationId"></param>
+        /// <param name="isGroupMessage"></param>
+        public void ForwardMessage(int messageId, int senderId, int destinationId, bool isGroupMessage)
+        {
+            _messagesDAL.ForwardMessage(messageId, senderId, destinationId, isGroupMessage);
         }
     }
 }

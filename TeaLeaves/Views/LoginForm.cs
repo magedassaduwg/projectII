@@ -49,13 +49,14 @@ namespace TeaLeaves
                 if (_rememberMe)
                 {
                     LoginHelper.SaveCredentials(_userLogin.Username, _userLogin.Password);
+                    _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
+
                 }
-
-                _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
-
                 User verifiedUser = _userController.VerifyUserCredentials(_userLogin);
                 if (verifiedUser != null)
                 {
+              
+
                     CurrentUserStore.SetCurrentUser(verifiedUser);
 
                     // MainForm mainForm = new MainForm(verifiedUser);
@@ -78,6 +79,7 @@ namespace TeaLeaves
                 else
                 {
                     lblError.Text = "Invalid username/password.Please try again!";
+           
                 }
             }
             catch (Exception ex)
