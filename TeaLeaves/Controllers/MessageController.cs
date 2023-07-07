@@ -1,5 +1,5 @@
-﻿using System.Security.Cryptography.Pkcs;
-using TeaLeaves.DALs;
+﻿using TeaLeaves.DALs;
+using TeaLeaves.Helper;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
@@ -77,6 +77,17 @@ namespace TeaLeaves.Controllers
         public string GetMediaById(int mediaId)
         {
             return _messagesDAL.GetBase64Media(mediaId);
+        }
+
+        /// <summary>
+        /// Forwards a message from one contact to another
+        /// </summary>
+        /// <param name="messageId"></param>
+        /// <param name="destinationId"></param>
+        /// <param name="isGroupMessage"></param>
+        public void ForwardMessage(int messageId, int senderId, int destinationId, bool isGroupMessage)
+        {
+            _messagesDAL.ForwardMessage(messageId, senderId, destinationId, isGroupMessage);
         }
     }
 }

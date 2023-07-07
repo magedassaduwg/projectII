@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -33,7 +34,6 @@ namespace TeaLeaves.DALs
                 {
                     IUserMessage message = new UserMessage
                     {
-
                         Text = reader["Text"].ToString(),
                         MessageId = Convert.ToInt32(reader["MessageId"]),
                         ReceiverId = Convert.ToInt32(reader["ReceiverId"]),
@@ -196,6 +196,30 @@ namespace TeaLeaves.DALs
                 command.Parameters.AddWithValue("@mediaId", mediaId);
                 connection.Open();
                 return command.ExecuteScalar()?.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Forwards a message in the database to another contact
+        /// </summary>
+        /// <param name="messageId"></param>
+        /// <param name="destinationId"></param>
+        /// <param name="isGroupId"></param>
+        public void ForwardMessage(int messageId, int senderId, int destinationId, bool isGroupId)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("ForwardMessage", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@messageId", messageId);
+                command.Parameters.AddWithValue("@destinationId", destinationId);
+                command.Parameters.AddWithValue("@senderId", senderId);
+                command.Parameters.AddWithValue("@isGroupId", isGroupId);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
             }
         }
     }
