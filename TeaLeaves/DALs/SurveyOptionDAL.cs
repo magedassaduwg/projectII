@@ -5,17 +5,16 @@ namespace TeaLeaves.DALs
 {
     public class SurveyOptionDAL
     {
-        public List<SurveyOption> GetSurveyOptionByEventId(int id)
+        public List<SurveyOption> GetSurveyOptionBySurveyId(int surveyId)
         {
             List<SurveyOption> surveyOptions = new List<SurveyOption>();
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 string query = @"SELECT SurveyOptionId, SurveyId, Name, Votes, VoterId
-                         FROM SurveyOptions
-                         WHERE SurveyId = @id;";
+                         FROM SurveyOptions WHERE SurveyId = @surveyId;";
 
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", id);
+                command.Parameters.AddWithValue("@surveyId", surveyId);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())

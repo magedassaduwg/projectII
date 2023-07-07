@@ -20,9 +20,9 @@ namespace TeaLeaves.Controllers
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public List<SurveyOption> GetSurveyOptionByEventId(int Id)
+        public List<SurveyOption> GetSurveyOptionBySurveyId(int surevyId)
         {
-            return _surveyOptionDAL.GetSurveyOptionByEventId(Id);
+            return _surveyOptionDAL.GetSurveyOptionBySurveyId(surevyId);
         }
     }
 }
