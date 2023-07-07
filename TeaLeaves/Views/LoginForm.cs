@@ -23,7 +23,7 @@ namespace TeaLeaves
             InitializeComponent();
             _userController = new UsersController();
             _userLogin = new User();
-            _rememberMe = Properties.Settings.Default.RememberMe;
+            _rememberMe = false;
         }
 
 
@@ -45,7 +45,7 @@ namespace TeaLeaves
             try
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
-                _userLogin.Password = textBoxPassword.Text;
+                _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
                 if (_rememberMe)
                 {
                     LoginHelper.SaveCredentials(_userLogin.Username, _userLogin.Password);
@@ -112,29 +112,15 @@ namespace TeaLeaves
             }
         }
 
+        private void rememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+            _rememberMe = rememberMe.Checked;
+        }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
             rememberMe.Checked = _rememberMe;
-
-            if (_rememberMe)
-            {
-                (string username, string password) = LoginHelper.LoadCredentials();
-                textBoxUsername.Text = username;
-                textBoxPassword.Text = password;
-            }
-
-        }
-        private void SaveRememberMeSetting(bool rememberMe)
-        {
-            Properties.Settings.Default.RememberMe = rememberMe;
-            Properties.Settings.Default.Save();
-        }
-
-        private void rememberMe_CheckedChanged(object sender, EventArgs e)
-        {
-            _rememberMe = rememberMe.Checked;
-            SaveRememberMeSetting(_rememberMe);
+           
         }
     }
 }

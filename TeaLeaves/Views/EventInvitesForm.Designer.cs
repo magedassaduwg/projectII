@@ -69,7 +69,7 @@
             dgvInvitedContacts.ReadOnly = true;
             dgvInvitedContacts.RowTemplate.Height = 25;
             dgvInvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvInvitedContacts.Size = new Size(358, 211);
+            dgvInvitedContacts.Size = new Size(380, 231);
             dgvInvitedContacts.TabIndex = 0;
             // 
             // btnInvite
@@ -108,7 +108,7 @@
             dgvUninvitedContacts.ReadOnly = true;
             dgvUninvitedContacts.RowTemplate.Height = 25;
             dgvUninvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUninvitedContacts.Size = new Size(358, 521);
+            dgvUninvitedContacts.Size = new Size(392, 531);
             dgvUninvitedContacts.TabIndex = 3;
             // 
             // lblUninvitedContacts
@@ -116,7 +116,7 @@
             lblUninvitedContacts.AutoSize = true;
             lblUninvitedContacts.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblUninvitedContacts.ForeColor = Color.DarkOrange;
-            lblUninvitedContacts.Location = new Point(505, 21);
+            lblUninvitedContacts.Location = new Point(514, 21);
             lblUninvitedContacts.Name = "lblUninvitedContacts";
             lblUninvitedContacts.Size = new Size(156, 21);
             lblUninvitedContacts.TabIndex = 4;
@@ -136,7 +136,7 @@
             dgvAcceptedContacts.ReadOnly = true;
             dgvAcceptedContacts.RowTemplate.Height = 25;
             dgvAcceptedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAcceptedContacts.Size = new Size(358, 176);
+            dgvAcceptedContacts.Size = new Size(380, 176);
             dgvAcceptedContacts.TabIndex = 5;
             // 
             // dgvDeclinedContacts
@@ -153,7 +153,7 @@
             dgvDeclinedContacts.ReadOnly = true;
             dgvDeclinedContacts.RowTemplate.Height = 25;
             dgvDeclinedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDeclinedContacts.Size = new Size(358, 176);
+            dgvDeclinedContacts.Size = new Size(380, 186);
             dgvDeclinedContacts.TabIndex = 6;
             // 
             // lblAcceptedContacts
@@ -180,6 +180,7 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
+            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn4.DataPropertyName = "FirstName";
             dataGridViewTextBoxColumn4.HeaderText = "First Name";
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -187,6 +188,7 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
+            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn5.DataPropertyName = "LastName";
             dataGridViewTextBoxColumn5.HeaderText = "Last Name";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -194,14 +196,15 @@
             // 
             // dataGridViewTextBoxColumn6
             // 
+            dataGridViewTextBoxColumn6.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn6.DataPropertyName = "Username";
             dataGridViewTextBoxColumn6.HeaderText = "Username";
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             dataGridViewTextBoxColumn6.ReadOnly = true;
-            dataGridViewTextBoxColumn6.Width = 115;
             // 
             // dataGridViewTextBoxColumn1
             // 
+            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn1.DataPropertyName = "FirstName";
             dataGridViewTextBoxColumn1.HeaderText = "First Name";
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -209,6 +212,7 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
+            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn2.DataPropertyName = "LastName";
             dataGridViewTextBoxColumn2.HeaderText = "Last Name";
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -216,14 +220,15 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
+            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn3.DataPropertyName = "Username";
             dataGridViewTextBoxColumn3.HeaderText = "Username";
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 115;
             // 
             // firstName1
             // 
+            firstName1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             firstName1.DataPropertyName = "FirstName";
             firstName1.HeaderText = "First Name";
             firstName1.Name = "firstName1";
@@ -231,6 +236,7 @@
             // 
             // lastName2
             // 
+            lastName2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             lastName2.DataPropertyName = "LastName";
             lastName2.HeaderText = "Last Name";
             lastName2.Name = "lastName2";
@@ -238,14 +244,15 @@
             // 
             // username1
             // 
+            username1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             username1.DataPropertyName = "Username";
             username1.HeaderText = "Username";
             username1.Name = "username1";
             username1.ReadOnly = true;
-            username1.Width = 115;
             // 
             // FirstName
             // 
+            FirstName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             FirstName.DataPropertyName = "FirstName";
             FirstName.HeaderText = "First Name";
             FirstName.Name = "FirstName";
@@ -253,6 +260,7 @@
             // 
             // lastName
             // 
+            lastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             lastName.DataPropertyName = "LastName";
             lastName.HeaderText = "Last Name";
             lastName.Name = "lastName";
@@ -260,11 +268,11 @@
             // 
             // username
             // 
+            username.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             username.DataPropertyName = "Username";
             username.HeaderText = "Username";
             username.Name = "username";
             username.ReadOnly = true;
-            username.Width = 115;
             // 
             // EventInvitesForm
             // 

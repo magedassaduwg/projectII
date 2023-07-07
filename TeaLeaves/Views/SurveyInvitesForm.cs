@@ -27,7 +27,7 @@ namespace TeaLeaves.Views
             _invitedUsers = new List<User>();
             _uninvitedUsers = new List<User>();
             dgvInvitedContacts.AutoGenerateColumns = false;
-            dgvUninvitedContacts.AutoGenerateColumns = false;           
+            dgvUninvitedContacts.AutoGenerateColumns = false;
         }
 
         private void GetUserSurveys()

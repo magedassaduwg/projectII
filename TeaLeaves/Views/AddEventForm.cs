@@ -222,12 +222,15 @@ namespace TeaLeaves.Views
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
                 tbResponsibilityName.Text = "";
-            } else if (!CheckResponsibilityName(tbResponsibilityName.Text))
+            }
+            else if (!CheckResponsibilityName(tbResponsibilityName.Text))
             {
                 labelError.Text = "A responsibility with that name already exists";
-            } else {
+            }
+            else
+            {
                 labelError.Text = "Responsibility name cannot be blank";
-            }           
+            }
         }
 
         private bool CheckResponsibilityName(string name)

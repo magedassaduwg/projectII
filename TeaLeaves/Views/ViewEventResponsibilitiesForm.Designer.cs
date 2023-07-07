@@ -42,13 +42,13 @@
             btnBack = new Button();
             lblEventResponsibilities = new Label();
             dgvMyResponsibilities = new DataGridView();
-            ResponsibilityName = new DataGridViewTextBoxColumn();
-            Username = new DataGridViewTextBoxColumn();
             dgvUnassignedResponsibilities = new DataGridView();
-            ResponsibilityName1 = new DataGridViewTextBoxColumn();
             lblMyResponsibilities = new Label();
             lblUnassignedResponsibilities = new Label();
             btnAcceptResponsibility = new Button();
+            ResponsibilityName = new DataGridViewTextBoxColumn();
+            Username = new DataGridViewTextBoxColumn();
+            ResponsibilityName1 = new DataGridViewTextBoxColumn();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMyResponsibilities).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).BeginInit();
@@ -252,22 +252,6 @@
             dgvMyResponsibilities.Size = new Size(303, 160);
             dgvMyResponsibilities.TabIndex = 22;
             // 
-            // ResponsibilityName
-            // 
-            ResponsibilityName.DataPropertyName = "Name";
-            ResponsibilityName.HeaderText = "Name";
-            ResponsibilityName.Name = "ResponsibilityName";
-            ResponsibilityName.ReadOnly = true;
-            ResponsibilityName.Width = 130;
-            // 
-            // Username
-            // 
-            Username.DataPropertyName = "Username";
-            Username.HeaderText = "Username";
-            Username.Name = "Username";
-            Username.ReadOnly = true;
-            Username.Width = 130;
-            // 
             // dgvUnassignedResponsibilities
             // 
             dgvUnassignedResponsibilities.BackgroundColor = Color.PapayaWhip;
@@ -282,14 +266,6 @@
             dgvUnassignedResponsibilities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUnassignedResponsibilities.Size = new Size(273, 160);
             dgvUnassignedResponsibilities.TabIndex = 23;
-            // 
-            // ResponsibilityName1
-            // 
-            ResponsibilityName1.DataPropertyName = "Name";
-            ResponsibilityName1.HeaderText = "Name";
-            ResponsibilityName1.Name = "ResponsibilityName1";
-            ResponsibilityName1.ReadOnly = true;
-            ResponsibilityName1.Width = 230;
             // 
             // lblMyResponsibilities
             // 
@@ -327,6 +303,30 @@
             btnAcceptResponsibility.Text = "Accept";
             btnAcceptResponsibility.UseVisualStyleBackColor = true;
             btnAcceptResponsibility.Click += btnAcceptResponsibility_Click;
+            // 
+            // ResponsibilityName
+            // 
+            ResponsibilityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ResponsibilityName.DataPropertyName = "Name";
+            ResponsibilityName.HeaderText = "Name";
+            ResponsibilityName.Name = "ResponsibilityName";
+            ResponsibilityName.ReadOnly = true;
+            // 
+            // Username
+            // 
+            Username.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Username.DataPropertyName = "Username";
+            Username.HeaderText = "Username";
+            Username.Name = "Username";
+            Username.ReadOnly = true;
+            // 
+            // ResponsibilityName1
+            // 
+            ResponsibilityName1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ResponsibilityName1.DataPropertyName = "Name";
+            ResponsibilityName1.HeaderText = "Name";
+            ResponsibilityName1.Name = "ResponsibilityName1";
+            ResponsibilityName1.ReadOnly = true;
             // 
             // ViewEventResponsibilitiesForm
             // 
