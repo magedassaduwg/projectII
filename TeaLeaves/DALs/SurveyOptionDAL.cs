@@ -3,14 +3,22 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
 {
+    /// <summary>
+    /// The DAL for the SurveyOptions table
+    /// </summary>
     public class SurveyOptionDAL
     {
+        /// <summary>
+        /// Get survey option by survey id
+        /// </summary>
+        /// <param name="surveyId"></param>
+        /// <returns></returns>
         public List<SurveyOption> GetSurveyOptionBySurveyId(int surveyId)
         {
             List<SurveyOption> surveyOptions = new List<SurveyOption>();
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = @"SELECT SurveyOptionId, SurveyId, Name, Votes, VoterId
+                string query = @"SELECT SurveyOptionId, SurveyId, Name, Votes
                          FROM SurveyOptions WHERE SurveyId = @surveyId;";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -24,8 +32,7 @@ namespace TeaLeaves.DALs
                         SurveyOptionId = Convert.ToInt32(reader["SurveyOptionId"]),
                         SurveyId = Convert.ToInt32(reader["SurveyId"]),
                         Name = reader["Name"].ToString(),
-                        Votes = Convert.ToInt32(reader["Votes"]),
-                        VoterId = Convert.ToInt32(reader["VoterId"])
+                        Votes = Convert.ToInt32(reader["Votes"])
                     };
                     surveyOptions.Add(surveyOption);
                 }

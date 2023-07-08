@@ -3,12 +3,15 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
 {
+    /// <summary>
+    ///  The controller that interacts with the SurveyOptionDAL
+    /// </summary>
     public class SurveyOptionController
     {
         private SurveyOptionDAL _surveyOptionDAL;
 
         /// <summary>
-        /// The constructor for the EventResponsibilityController
+        /// The constructor for the SurveyOptionController
         /// </summary>
         public SurveyOptionController()
         {

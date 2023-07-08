@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿
+using System.Data.SqlClient;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
@@ -65,7 +66,11 @@ namespace TeaLeaves.DALs
                 }
             }
         }
-
+        /// <summary>
+        /// Get survey bu user Id
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public List<Survey> GetSurveyByUserId(int userId)
         {
             List<Survey> survey = new List<Survey>();
@@ -99,6 +104,28 @@ namespace TeaLeaves.DALs
             }
 
             return survey;
+        }
+        /// <summary>
+        /// Delete  the survey
+        /// </summary>
+        /// <param name="surveyId"></param>
+        /// <returns></returns>
+        public bool DeleteSurvey(int surveyId)
+        {
+            string query = @"DELETE Surveys " +
+                            "WHERE SurveyId = @surveyId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@surveyId", surveyId);
+
+                    int rowsAffected = saveCommand.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
         }
     }
 }
