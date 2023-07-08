@@ -80,8 +80,9 @@ namespace TeaLeaves
                 }
                 else
                 {
+                    textBoxPassword.Text = string.Empty;
                     lblError.Text = "Invalid username/password.Please try again!";
-                    //textBoxPassword.Text = string.Empty;
+                    
                 }
             }
             catch (Exception ex)
