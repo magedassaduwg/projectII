@@ -51,7 +51,7 @@
             lblAcceptedInvites.BackColor = SystemColors.Control;
             lblAcceptedInvites.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblAcceptedInvites.ForeColor = Color.DarkOrange;
-            lblAcceptedInvites.Location = new Point(54, 318);
+            lblAcceptedInvites.Location = new Point(54, 270);
             lblAcceptedInvites.Name = "lblAcceptedInvites";
             lblAcceptedInvites.Size = new Size(149, 21);
             lblAcceptedInvites.TabIndex = 28;
@@ -76,13 +76,13 @@
             dgvAcceptedInvites.BackgroundColor = Color.PapayaWhip;
             dgvAcceptedInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAcceptedInvites.Columns.AddRange(new DataGridViewColumn[] { SurveyName1, DateTime1, SurveyCreator1 });
-            dgvAcceptedInvites.Location = new Point(54, 342);
+            dgvAcceptedInvites.Location = new Point(54, 294);
             dgvAcceptedInvites.Name = "dgvAcceptedInvites";
             dgvAcceptedInvites.ReadOnly = true;
             dgvAcceptedInvites.RowTemplate.Height = 25;
             dgvAcceptedInvites.ScrollBars = ScrollBars.Vertical;
             dgvAcceptedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAcceptedInvites.Size = new Size(701, 160);
+            dgvAcceptedInvites.Size = new Size(701, 180);
             dgvAcceptedInvites.TabIndex = 26;
             // 
             // SurveyName1
@@ -120,6 +120,7 @@
             btnViewSurvey.TabIndex = 25;
             btnViewSurvey.Text = "View Survey";
             btnViewSurvey.UseVisualStyleBackColor = false;
+            btnViewSurvey.Click += btnViewSurvey_Click;
             // 
             // dgvEventInvites
             // 
@@ -134,7 +135,7 @@
             dgvEventInvites.RowTemplate.Height = 25;
             dgvEventInvites.ScrollBars = ScrollBars.Vertical;
             dgvEventInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEventInvites.Size = new Size(701, 160);
+            dgvEventInvites.Size = new Size(701, 180);
             dgvEventInvites.TabIndex = 21;
             // 
             // SurveyName

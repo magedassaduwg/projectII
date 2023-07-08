@@ -13,5 +13,10 @@ namespace TeaLeaves.UserControls
         {
             InitializeComponent();
         }
+
+        private void btnViewSurvey_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

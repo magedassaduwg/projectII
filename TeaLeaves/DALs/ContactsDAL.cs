@@ -92,6 +92,7 @@ namespace TeaLeaves.DALs
         /// method to retrieve a list of a user's contacts represented by a list of Users objects for a given event
         /// </summary>
         /// <param name="user"></param>
+        /// <param name="event"></param>
         /// <returns></returns>
         public List<User> GetUsersContactsByEvent(User user, Event @event)
         {
@@ -130,6 +131,7 @@ namespace TeaLeaves.DALs
         /// method to retrieve a list of a user's contacts represented by a list of Users objects for a given survey
         /// </summary>
         /// <param name="user"></param>
+        /// <param name="survey"></param>
         /// <returns></returns>
         public List<User> GetUsersContactsBySurvey(User user, Survey survey)
         {
@@ -138,7 +140,7 @@ namespace TeaLeaves.DALs
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
                 string query = @"SELECT DISTINCT UserId, FirstName, LastName, Username, Email
-                    FROM Contacts c JOIN SurveyInvites si ON si.SurveyId = @SurveyId AND si.EventInviterId = @UserId
+                    FROM Contacts c JOIN SurveyInvites si ON si.SurveyId = @SurveyId AND si.SurveyInviterId = @UserId
                     JOIN Users u ON c.UserId1 = @UserId AND UserId = si.SurveyReceiverId
                     WHERE UserId = c.UserId2 AND UserId = si.SurveyReceiverId; ";
 

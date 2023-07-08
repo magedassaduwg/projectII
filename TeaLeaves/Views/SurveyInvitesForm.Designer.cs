@@ -30,15 +30,15 @@
         {
             lblUninvitedContacts = new Label();
             dgvUninvitedContacts = new DataGridView();
+            FirstName = new DataGridViewTextBoxColumn();
+            lastName = new DataGridViewTextBoxColumn();
+            username = new DataGridViewTextBoxColumn();
             lblInvitedContacts = new Label();
             btnInvite = new Button();
             dgvInvitedContacts = new DataGridView();
             firstName1 = new DataGridViewTextBoxColumn();
             lastName2 = new DataGridViewTextBoxColumn();
             username1 = new DataGridViewTextBoxColumn();
-            FirstName = new DataGridViewTextBoxColumn();
-            lastName = new DataGridViewTextBoxColumn();
-            username = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvUninvitedContacts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvInvitedContacts).BeginInit();
             SuspendLayout();
@@ -71,6 +71,30 @@
             dgvUninvitedContacts.Size = new Size(377, 551);
             dgvUninvitedContacts.TabIndex = 12;
             // 
+            // FirstName
+            // 
+            FirstName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FirstName.DataPropertyName = "FirstName";
+            FirstName.HeaderText = "First Name";
+            FirstName.Name = "FirstName";
+            FirstName.ReadOnly = true;
+            // 
+            // lastName
+            // 
+            lastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            lastName.DataPropertyName = "LastName";
+            lastName.HeaderText = "Last Name";
+            lastName.Name = "lastName";
+            lastName.ReadOnly = true;
+            // 
+            // username
+            // 
+            username.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            username.DataPropertyName = "Username";
+            username.HeaderText = "Username";
+            username.Name = "username";
+            username.ReadOnly = true;
+            // 
             // lblInvitedContacts
             // 
             lblInvitedContacts.AutoSize = true;
@@ -91,6 +115,7 @@
             btnInvite.TabIndex = 10;
             btnInvite.Text = "Invite";
             btnInvite.UseVisualStyleBackColor = true;
+            btnInvite.Click += btnInvite_Click;
             // 
             // dgvInvitedContacts
             // 
@@ -133,30 +158,6 @@
             username1.HeaderText = "Username";
             username1.Name = "username1";
             username1.ReadOnly = true;
-            // 
-            // FirstName
-            // 
-            FirstName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            FirstName.DataPropertyName = "FirstName";
-            FirstName.HeaderText = "First Name";
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
-            // 
-            // lastName
-            // 
-            lastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            lastName.DataPropertyName = "LastName";
-            lastName.HeaderText = "Last Name";
-            lastName.Name = "lastName";
-            lastName.ReadOnly = true;
-            // 
-            // username
-            // 
-            username.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            username.DataPropertyName = "Username";
-            username.HeaderText = "Username";
-            username.Name = "username";
-            username.ReadOnly = true;
             // 
             // SurveyInvitesForm
             // 
