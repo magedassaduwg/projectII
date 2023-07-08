@@ -13,6 +13,7 @@ namespace TeaLeaves
         private UsersController _userController;
         private User _userLogin;
         private bool _rememberMe;
+        private string storedPassword;
 
 
         /// <summary>
@@ -46,16 +47,17 @@ namespace TeaLeaves
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
                 _userLogin.Password = textBoxPassword.Text;
-                if (_rememberMe)
-                {
-                    LoginHelper.SaveCredentials(_userLogin.Username, _userLogin.Password);
-                }
-
+                storedPassword = _userLogin.Password;
                 _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
-
                 User verifiedUser = _userController.VerifyUserCredentials(_userLogin);
+
                 if (verifiedUser != null)
                 {
+                    if (_rememberMe)
+                    {
+                        LoginHelper.SaveCredentials(_userLogin.Username, storedPassword);
+                    }
+
                     CurrentUserStore.SetCurrentUser(verifiedUser);
 
                     // MainForm mainForm = new MainForm(verifiedUser);
@@ -73,11 +75,13 @@ namespace TeaLeaves
                         (string username, string password) = LoginHelper.LoadCredentials();
                         textBoxUsername.Text = username;
                         textBoxPassword.Text = password;
+                        storedPassword = password;
                     }
                 }
                 else
                 {
                     lblError.Text = "Invalid username/password.Please try again!";
+                    //textBoxPassword.Text = string.Empty;
                 }
             }
             catch (Exception ex)
@@ -98,7 +102,7 @@ namespace TeaLeaves
         {
             Show();
             textBoxUsername.Clear();
-            textBoxPassword.Clear();
+            textBoxPassword.Text = storedPassword;
             textBoxPassword.Focus();
         }
 
@@ -120,6 +124,7 @@ namespace TeaLeaves
                 (string username, string password) = LoginHelper.LoadCredentials();
                 textBoxUsername.Text = username;
                 textBoxPassword.Text = password;
+                storedPassword = password;
             }
 
         }
