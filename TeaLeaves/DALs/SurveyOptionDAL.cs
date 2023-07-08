@@ -3,8 +3,16 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.DALs
 {
+    /// <summary>
+    /// The DAL for the SurveyOptions table
+    /// </summary>
     public class SurveyOptionDAL
     {
+        /// <summary>
+        /// Get survey option by survey id
+        /// </summary>
+        /// <param name="surveyId"></param>
+        /// <returns></returns>
         public List<SurveyOption> GetSurveyOptionBySurveyId(int surveyId)
         {
             List<SurveyOption> surveyOptions = new List<SurveyOption>();
