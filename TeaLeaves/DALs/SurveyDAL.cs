@@ -66,6 +66,81 @@ namespace TeaLeaves.DALs
                 }
             }
         }
+
+        /// <summary>
+        /// Returns all Surveys which the given user by userId has been invited to
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Survey> GetSurveysReceivedByUserId(int userId)
+        {
+            List<Survey> userSurveys = new List<Survey>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = @"SELECT s.SurveyId as UserSurveyId, CreatorId, SurveyDateTime, Name
+                                    FROM Surveys s
+                                    JOIN SurveyInvites si
+                                    ON s.SurveyId = si.SurveyId
+                                    WHERE si.SurveyReceiverId = @UserId AND si.Answered = 0;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Survey userSurvey = new Survey
+                    {
+                        Id = Convert.ToInt32(reader["UserSurveyId"]),
+                        CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        SurveyDateTime = Convert.ToDateTime(reader["SurveyDateTime"]),
+                        SurveyName = reader["Name"].ToString(),
+                    };
+                    userSurveys.Add(userSurvey);
+                }
+            }
+            return userSurveys;
+        }
+
+        /// <summary>
+        /// Returns all Surveys which the given user by userId has been invited to
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Survey> GetAnsweredSurveysReceivedByUserId(int userId)
+        {
+            List<Survey> userSurveys = new List<Survey>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = @"SELECT s.SurveyId as UserSurveyId, CreatorId, SurveyDateTime, Name
+                                    FROM Surveys s
+                                    JOIN SurveyInvites si
+                                    ON s.SurveyId = si.SurveyId
+                                    WHERE si.SurveyReceiverId = @UserId AND si.Answered = 1;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Survey userSurvey = new Survey
+                    {
+                        Id = Convert.ToInt32(reader["UserSurveyId"]),
+                        CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        SurveyDateTime = Convert.ToDateTime(reader["SurveyDateTime"]),
+                        SurveyName = reader["Name"].ToString(),
+                    };
+                    userSurveys.Add(userSurvey);
+                }
+            }
+            return userSurveys;
+        }
+
         /// <summary>
         /// Get survey bu user Id
         /// </summary>

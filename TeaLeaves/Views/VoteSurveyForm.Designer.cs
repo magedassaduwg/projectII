@@ -28,12 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "VoteSurveyForm";
+            cbSurveyOptions = new ComboBox();
+            lblSurveyQuestion = new Label();
+            btnVote = new Button();
+            lblSeletedVote = new Label();
+            SuspendLayout();
+            // 
+            // cbSurveyOptions
+            // 
+            cbSurveyOptions.BackColor = Color.PapayaWhip;
+            cbSurveyOptions.FormattingEnabled = true;
+            cbSurveyOptions.Location = new Point(220, 171);
+            cbSurveyOptions.Name = "cbSurveyOptions";
+            cbSurveyOptions.Size = new Size(297, 23);
+            cbSurveyOptions.TabIndex = 0;
+            // 
+            // lblSurveyQuestion
+            // 
+            lblSurveyQuestion.AutoSize = true;
+            lblSurveyQuestion.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSurveyQuestion.ForeColor = Color.DarkGreen;
+            lblSurveyQuestion.Location = new Point(350, 25);
+            lblSurveyQuestion.Name = "lblSurveyQuestion";
+            lblSurveyQuestion.Size = new Size(77, 28);
+            lblSurveyQuestion.TabIndex = 1;
+            lblSurveyQuestion.Text = "Survey";
+            // 
+            // btnVote
+            // 
+            btnVote.Location = new Point(539, 171);
+            btnVote.Name = "btnVote";
+            btnVote.Size = new Size(75, 23);
+            btnVote.TabIndex = 2;
+            btnVote.Text = "Vote";
+            btnVote.UseVisualStyleBackColor = true;
+            // 
+            // lblSeletedVote
+            // 
+            lblSeletedVote.AutoSize = true;
+            lblSeletedVote.BackColor = SystemColors.Control;
+            lblSeletedVote.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSeletedVote.ForeColor = Color.DarkOrange;
+            lblSeletedVote.Location = new Point(364, 136);
+            lblSeletedVote.Name = "lblSeletedVote";
+            lblSeletedVote.Size = new Size(0, 21);
+            lblSeletedVote.TabIndex = 3;
+            // 
+            // VoteSurveyForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(lblSeletedVote);
+            Controls.Add(btnVote);
+            Controls.Add(lblSurveyQuestion);
+            Controls.Add(cbSurveyOptions);
+            Name = "VoteSurveyForm";
+            Text = "VoteSurveyForm";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private ComboBox cbSurveyOptions;
+        private Label lblSurveyQuestion;
+        private Button btnVote;
+        private Label lblSeletedVote;
     }
 }

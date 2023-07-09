@@ -35,14 +35,14 @@
             DateTime1 = new DataGridViewTextBoxColumn();
             SurveyCreator1 = new DataGridViewTextBoxColumn();
             btnViewSurvey = new Button();
-            dgvEventInvites = new DataGridView();
+            dgvSurveyInvites = new DataGridView();
             SurveyName = new DataGridViewTextBoxColumn();
             SurveyDateTime = new DataGridViewTextBoxColumn();
             SurveyCreator = new DataGridViewTextBoxColumn();
             btnRefresh = new Button();
             btnViewAnswered = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSurveyInvites).BeginInit();
             SuspendLayout();
             // 
             // lblAcceptedInvites
@@ -122,21 +122,21 @@
             btnViewSurvey.UseVisualStyleBackColor = false;
             btnViewSurvey.Click += btnViewSurvey_Click;
             // 
-            // dgvEventInvites
+            // dgvSurveyInvites
             // 
-            dgvEventInvites.AllowUserToAddRows = false;
-            dgvEventInvites.AllowUserToDeleteRows = false;
-            dgvEventInvites.BackgroundColor = Color.PapayaWhip;
-            dgvEventInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEventInvites.Columns.AddRange(new DataGridViewColumn[] { SurveyName, SurveyDateTime, SurveyCreator });
-            dgvEventInvites.Location = new Point(54, 65);
-            dgvEventInvites.Name = "dgvEventInvites";
-            dgvEventInvites.ReadOnly = true;
-            dgvEventInvites.RowTemplate.Height = 25;
-            dgvEventInvites.ScrollBars = ScrollBars.Vertical;
-            dgvEventInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEventInvites.Size = new Size(701, 180);
-            dgvEventInvites.TabIndex = 21;
+            dgvSurveyInvites.AllowUserToAddRows = false;
+            dgvSurveyInvites.AllowUserToDeleteRows = false;
+            dgvSurveyInvites.BackgroundColor = Color.PapayaWhip;
+            dgvSurveyInvites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSurveyInvites.Columns.AddRange(new DataGridViewColumn[] { SurveyName, SurveyDateTime, SurveyCreator });
+            dgvSurveyInvites.Location = new Point(54, 65);
+            dgvSurveyInvites.Name = "dgvSurveyInvites";
+            dgvSurveyInvites.ReadOnly = true;
+            dgvSurveyInvites.RowTemplate.Height = 25;
+            dgvSurveyInvites.ScrollBars = ScrollBars.Vertical;
+            dgvSurveyInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSurveyInvites.Size = new Size(701, 180);
+            dgvSurveyInvites.TabIndex = 21;
             // 
             // SurveyName
             // 
@@ -196,11 +196,11 @@
             Controls.Add(dgvAcceptedInvites);
             Controls.Add(btnViewSurvey);
             Controls.Add(btnRefresh);
-            Controls.Add(dgvEventInvites);
+            Controls.Add(dgvSurveyInvites);
             Name = "ucSurveyInvites";
             Size = new Size(988, 549);
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvEventInvites).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSurveyInvites).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -213,7 +213,7 @@
         private Label lblSurveys;
         private DataGridView dgvAcceptedInvites;
         private Button btnViewSurvey;
-        private DataGridView dgvEventInvites;
+        private DataGridView dgvSurveyInvites;
         private Button btnRefresh;
         private Button btnViewAnswered;
         private DataGridViewTextBoxColumn SurveyName;

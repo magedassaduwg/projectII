@@ -1,5 +1,4 @@
-﻿
-using TeaLeaves.DALs;
+﻿using TeaLeaves.DALs;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
@@ -18,6 +17,7 @@ namespace TeaLeaves.Controllers
         {
             _surveyDAL = new SurveyDAL();
         }
+
         /// <summary>
         /// Get survey by user Id
         /// </summary>
@@ -27,6 +27,27 @@ namespace TeaLeaves.Controllers
         {
             return _surveyDAL.GetSurveyByUserId(userId);
         }
+
+        /// <summary>
+        /// Returns all the Surveys the given user has received
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Survey> GetSurveysReceivedByUserId(int userId)
+        {
+            return _surveyDAL.GetSurveysReceivedByUserId(userId);
+        }
+
+        /// <summary>
+        /// Returns all the Surveys the given user has answered
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Survey> GetAnsweredSurveysReceivedByUserId(int userId)
+        {
+            return _surveyDAL.GetAnsweredSurveysReceivedByUserId(userId);
+        }
+
         /// <summary>
         /// Save the survey
         /// </summary>
@@ -37,6 +58,7 @@ namespace TeaLeaves.Controllers
         {
             return _surveyDAL.SaveSurvey(@survey, surveyOption);
         }
+
         /// <summary>
         /// Delete the survey
         /// </summary>
