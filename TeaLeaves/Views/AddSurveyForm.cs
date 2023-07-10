@@ -95,7 +95,7 @@ namespace TeaLeaves.Views
         {
             try
             {
-                _surveyOption = _surveyOptionController.GetSurveyOptionBySurveyId(_survey.Id);
+                _surveyOption = _surveyOptionController.GetSurveyOptionsBySurveyId(_survey.Id);
 
                 dataGridViewSurvey.DataSource = _surveyOption;
             }

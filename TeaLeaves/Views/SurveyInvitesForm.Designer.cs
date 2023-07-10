@@ -66,7 +66,7 @@
             dgvUninvitedContacts.Location = new Point(429, 40);
             dgvUninvitedContacts.Name = "dgvUninvitedContacts";
             dgvUninvitedContacts.ReadOnly = true;
-            dgvUninvitedContacts.RowTemplate.Height = 25;
+            dgvUninvitedContacts.RowTemplate.Height = 40;
             dgvUninvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUninvitedContacts.Size = new Size(377, 551);
             dgvUninvitedContacts.TabIndex = 12;

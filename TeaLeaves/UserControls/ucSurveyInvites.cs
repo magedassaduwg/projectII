@@ -54,7 +54,7 @@ namespace TeaLeaves.UserControls
             if (dgvSurveyInvites.SelectedRows.Count > 0)
             {
                 Survey selectedSurvey = (Survey)dgvSurveyInvites.SelectedRows[0].DataBoundItem;
-                using (VoteSurveyForm viewEventForm = new VoteSurveyForm(selectedSurvey))
+                using (VoteSurveyForm viewEventForm = new VoteSurveyForm(selectedSurvey, true))
                 {
                     viewEventForm.ShowDialog();
                 }

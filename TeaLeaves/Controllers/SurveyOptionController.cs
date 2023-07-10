@@ -21,11 +21,21 @@ namespace TeaLeaves.Controllers
         /// <summary>
         /// Returns a list of survey options for the given surveyId
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="surevyId"></param>
         /// <returns></returns>
-        public List<SurveyOption> GetSurveyOptionBySurveyId(int surevyId)
+        public List<SurveyOption> GetSurveyOptionsBySurveyId(int surevyId)
         {
-            return _surveyOptionDAL.GetSurveyOptionBySurveyId(surevyId);
+            return _surveyOptionDAL.GetSurveyOptionsBySurveyId(surevyId);
+        }
+
+        /// <summary>
+        /// Returns the 
+        /// </summary>
+        /// <param name="surveyId"></param>
+        /// <returns></returns>
+        public SurveyOption GetSurveyOptionBySurveyOptionId(int surveyId)
+        {
+            return _surveyOptionDAL.GetSurveyOptionBySurveyOptionId(surveyId);
         }
     }
 }

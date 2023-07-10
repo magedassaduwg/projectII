@@ -38,7 +38,7 @@
             // 
             cbSurveyOptions.BackColor = Color.PapayaWhip;
             cbSurveyOptions.FormattingEnabled = true;
-            cbSurveyOptions.Location = new Point(220, 171);
+            cbSurveyOptions.Location = new Point(61, 116);
             cbSurveyOptions.Name = "cbSurveyOptions";
             cbSurveyOptions.Size = new Size(297, 23);
             cbSurveyOptions.TabIndex = 0;
@@ -48,7 +48,7 @@
             lblSurveyQuestion.AutoSize = true;
             lblSurveyQuestion.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             lblSurveyQuestion.ForeColor = Color.DarkGreen;
-            lblSurveyQuestion.Location = new Point(350, 25);
+            lblSurveyQuestion.Location = new Point(61, 33);
             lblSurveyQuestion.Name = "lblSurveyQuestion";
             lblSurveyQuestion.Size = new Size(77, 28);
             lblSurveyQuestion.TabIndex = 1;
@@ -56,12 +56,13 @@
             // 
             // btnVote
             // 
-            btnVote.Location = new Point(539, 171);
+            btnVote.Location = new Point(384, 116);
             btnVote.Name = "btnVote";
             btnVote.Size = new Size(75, 23);
             btnVote.TabIndex = 2;
             btnVote.Text = "Vote";
             btnVote.UseVisualStyleBackColor = true;
+            btnVote.Click += btnVote_Click;
             // 
             // lblSeletedVote
             // 
@@ -69,7 +70,7 @@
             lblSeletedVote.BackColor = SystemColors.Control;
             lblSeletedVote.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSeletedVote.ForeColor = Color.DarkOrange;
-            lblSeletedVote.Location = new Point(364, 136);
+            lblSeletedVote.Location = new Point(61, 156);
             lblSeletedVote.Name = "lblSeletedVote";
             lblSeletedVote.Size = new Size(0, 21);
             lblSeletedVote.TabIndex = 3;
@@ -78,13 +79,15 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(537, 286);
             Controls.Add(lblSeletedVote);
             Controls.Add(btnVote);
             Controls.Add(lblSurveyQuestion);
             Controls.Add(cbSurveyOptions);
             Name = "VoteSurveyForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VoteSurveyForm";
+            Load += VoteSurveyForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

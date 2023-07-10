@@ -1,12 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TeaLeaves.DALs;
+using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
 {
-    internal class SurveyVoteController
+    /// <summary>
+    /// The controller for the SurveyVoteDAL
+    /// </summary>
+    public class SurveyVoteController
     {
+        SurveyVoteDAL _surveyVoteDAL;
+
+        /// <summary>
+        /// The constructor for the SurveyVoteController
+        /// </summary>
+        public SurveyVoteController() { 
+            _surveyVoteDAL = new SurveyVoteDAL();
+        }
+
+        /// <summary>
+        /// Saves a new vote or updates an existing vote, and updates the vote amount for the new chosen option and the previous option
+        /// </summary>
+        /// <param name="surveyVote"></param>
+        /// <param name="surveyOptions"></param>
+        /// <returns></returns>
+        public int SaveVote(SurveyVote surveyVote, List<SurveyOption> surveyOptions) {
+            return _surveyVoteDAL.SaveVote(surveyVote, surveyOptions);
+        }
+
+        /// <summary>
+        /// Saves a new vote or updates an existing vote, and updates the vote amount for the new chosen option and the previous option
+        /// </summary>
+        /// <param name="surveyVote"></param>
+        /// <returns></returns>
+        public int SaveVote(SurveyVote surveyVote)
+        {
+            return _surveyVoteDAL.SaveVote(surveyVote);
+        }
     }
 }
