@@ -34,10 +34,10 @@
             btnEdit=new Button();
             buttonAdd=new Button();
             dataGridViewSurvey=new DataGridView();
-            panelSurveyHeader=new Panel();
-            lblMySurveys=new Label();
             SurveyName=new DataGridViewTextBoxColumn();
             Date=new DataGridViewTextBoxColumn();
+            panelSurveyHeader=new Panel();
+            lblMySurveys=new Label();
             tableLayoutPanelSurvey.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).BeginInit();
             panelSurveyHeader.SuspendLayout();
@@ -107,7 +107,7 @@
             btnEdit.Name="btnEdit";
             btnEdit.Size=new Size(132, 46);
             btnEdit.TabIndex=1;
-            btnEdit.Text="Edit";
+            btnEdit.Text="View/Edit";
             btnEdit.UseVisualStyleBackColor=false;
             btnEdit.Click+=btnEdit_Click;
             // 
@@ -142,6 +142,22 @@
             dataGridViewSurvey.Size=new Size(341, 346);
             dataGridViewSurvey.TabIndex=0;
             // 
+            // SurveyName
+            // 
+            SurveyName.DataPropertyName="SurveyName";
+            SurveyName.HeaderText="Name";
+            SurveyName.Name="SurveyName";
+            SurveyName.ReadOnly=true;
+            SurveyName.Width=390;
+            // 
+            // Date
+            // 
+            Date.DataPropertyName="SurveyDateTime";
+            Date.HeaderText="Date";
+            Date.Name="Date";
+            Date.ReadOnly=true;
+            Date.Width=200;
+            // 
             // panelSurveyHeader
             // 
             panelSurveyHeader.BackColor=Color.DarkOrange;
@@ -162,22 +178,6 @@
             lblMySurveys.Size=new Size(134, 32);
             lblMySurveys.TabIndex=0;
             lblMySurveys.Text="My Surveys";
-            // 
-            // SurveyName
-            // 
-            SurveyName.DataPropertyName="SurveyName";
-            SurveyName.HeaderText="Name";
-            SurveyName.Name="SurveyName";
-            SurveyName.ReadOnly=true;
-            SurveyName.Width=390;
-            // 
-            // Date
-            // 
-            Date.DataPropertyName="SurveyDateTime";
-            Date.HeaderText="Date";
-            Date.Name="Date";
-            Date.ReadOnly=true;
-            Date.Width=200;
             // 
             // ucSurvey
             // 
