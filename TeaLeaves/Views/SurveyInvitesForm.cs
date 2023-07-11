@@ -33,6 +33,7 @@ namespace TeaLeaves.Views
 
         private void GetUserSurveys()
         {
+            lblSurveyInvitesDetails.Text = _survey.SurveyName;
             try
             {
                 _invitedUsers = _contactsController.GetUserContactsBySurvey(CurrentUserStore.User, _survey);
