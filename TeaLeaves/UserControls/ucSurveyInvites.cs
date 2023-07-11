@@ -87,6 +87,6 @@ namespace TeaLeaves.UserControls
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             GetUserSurveys();
-        }  
+        }
     }
 }

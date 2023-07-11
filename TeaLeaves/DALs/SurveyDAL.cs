@@ -78,10 +78,12 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = @"SELECT s.SurveyId as UserSurveyId, CreatorId, SurveyDateTime, Name
+                string query = @"SELECT s.SurveyId as UserSurveyId, u.FirstName as UserFirstName, u.LastName as UserLastName, CreatorId, SurveyDateTime, Name
                                     FROM Surveys s
                                     JOIN SurveyInvites si
                                     ON s.SurveyId = si.SurveyId
+                                    JOIN Users u
+                                    ON u.UserId = @UserId
                                     WHERE si.SurveyReceiverId = @UserId AND si.Answered = 0;";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -95,6 +97,7 @@ namespace TeaLeaves.DALs
                     {
                         Id = Convert.ToInt32(reader["UserSurveyId"]),
                         CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        CreatorName = reader["UserFirstName"].ToString() + " " + reader["UserLastName"].ToString(),
                         SurveyDateTime = Convert.ToDateTime(reader["SurveyDateTime"]),
                         SurveyName = reader["Name"].ToString(),
                     };
@@ -115,10 +118,12 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = @"SELECT s.SurveyId as UserSurveyId, CreatorId, SurveyDateTime, Name
+                string query = @"SELECT s.SurveyId as UserSurveyId, u.FirstName as UserFirstName, u.LastName as UserLastName, CreatorId, SurveyDateTime, Name
                                     FROM Surveys s
                                     JOIN SurveyInvites si
                                     ON s.SurveyId = si.SurveyId
+                                    JOIN Users u
+                                    ON u.UserId = @UserId
                                     WHERE si.SurveyReceiverId = @UserId AND si.Answered = 1;";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -132,6 +137,7 @@ namespace TeaLeaves.DALs
                     {
                         Id = Convert.ToInt32(reader["UserSurveyId"]),
                         CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        CreatorName = reader["UserFirstName"].ToString() + " " + reader["UserLastName"].ToString(),
                         SurveyDateTime = Convert.ToDateTime(reader["SurveyDateTime"]),
                         SurveyName = reader["Name"].ToString(),
                     };
@@ -142,7 +148,7 @@ namespace TeaLeaves.DALs
         }
 
         /// <summary>
-        /// Get survey bu user Id
+        /// Get survey by user Id
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>

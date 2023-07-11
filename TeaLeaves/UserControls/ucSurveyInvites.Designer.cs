@@ -31,9 +31,6 @@
             lblAcceptedInvites = new Label();
             lblSurveys = new Label();
             dgvAcceptedInvites = new DataGridView();
-            SurveyName1 = new DataGridViewTextBoxColumn();
-            DateTime1 = new DataGridViewTextBoxColumn();
-            SurveyCreator1 = new DataGridViewTextBoxColumn();
             btnViewSurvey = new Button();
             dgvSurveyInvites = new DataGridView();
             SurveyName = new DataGridViewTextBoxColumn();
@@ -41,6 +38,9 @@
             SurveyCreator = new DataGridViewTextBoxColumn();
             btnRefresh = new Button();
             btnViewAnswered = new Button();
+            SurveyName1 = new DataGridViewTextBoxColumn();
+            DateTime1 = new DataGridViewTextBoxColumn();
+            SurveyCreator1 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvSurveyInvites).BeginInit();
             SuspendLayout();
@@ -85,30 +85,6 @@
             dgvAcceptedInvites.Size = new Size(701, 180);
             dgvAcceptedInvites.TabIndex = 26;
             // 
-            // SurveyName1
-            // 
-            SurveyName1.DataPropertyName = "Name";
-            SurveyName1.HeaderText = "Name";
-            SurveyName1.Name = "SurveyName1";
-            SurveyName1.ReadOnly = true;
-            SurveyName1.Width = 220;
-            // 
-            // DateTime1
-            // 
-            DateTime1.DataPropertyName = "SurveyDateTime";
-            DateTime1.HeaderText = "Date And Time";
-            DateTime1.Name = "DateTime1";
-            DateTime1.ReadOnly = true;
-            DateTime1.Width = 220;
-            // 
-            // SurveyCreator1
-            // 
-            SurveyCreator1.DataPropertyName = "SurveyCreator";
-            SurveyCreator1.HeaderText = "Survey Creator";
-            SurveyCreator1.Name = "SurveyCreator1";
-            SurveyCreator1.ReadOnly = true;
-            SurveyCreator1.Width = 220;
-            // 
             // btnViewSurvey
             // 
             btnViewSurvey.BackColor = Color.Orange;
@@ -140,7 +116,7 @@
             // 
             // SurveyName
             // 
-            SurveyName.DataPropertyName = "Name";
+            SurveyName.DataPropertyName = "SurveyName";
             SurveyName.HeaderText = "Name";
             SurveyName.Name = "SurveyName";
             SurveyName.ReadOnly = true;
@@ -187,6 +163,30 @@
             btnViewAnswered.Text = "View Answered Survey";
             btnViewAnswered.UseVisualStyleBackColor = false;
             btnViewAnswered.Click += btnViewAnswered_Click;
+            // 
+            // SurveyName1
+            // 
+            SurveyName1.DataPropertyName = "SurveyName";
+            SurveyName1.HeaderText = "Name";
+            SurveyName1.Name = "SurveyName1";
+            SurveyName1.ReadOnly = true;
+            SurveyName1.Width = 220;
+            // 
+            // DateTime1
+            // 
+            DateTime1.DataPropertyName = "SurveyDateTime";
+            DateTime1.HeaderText = "Date And Time";
+            DateTime1.Name = "DateTime1";
+            DateTime1.ReadOnly = true;
+            DateTime1.Width = 220;
+            // 
+            // SurveyCreator1
+            // 
+            SurveyCreator1.DataPropertyName = "CreatorName";
+            SurveyCreator1.HeaderText = "Survey Creator";
+            SurveyCreator1.Name = "SurveyCreator1";
+            SurveyCreator1.ReadOnly = true;
+            SurveyCreator1.Width = 220;
             // 
             // ucSurveyInvites
             // 

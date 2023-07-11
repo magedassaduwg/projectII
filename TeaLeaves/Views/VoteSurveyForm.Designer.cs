@@ -37,6 +37,7 @@
             // cbSurveyOptions
             // 
             cbSurveyOptions.BackColor = Color.PapayaWhip;
+            cbSurveyOptions.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSurveyOptions.FormattingEnabled = true;
             cbSurveyOptions.Location = new Point(61, 116);
             cbSurveyOptions.Name = "cbSurveyOptions";
@@ -56,12 +57,15 @@
             // 
             // btnVote
             // 
+            btnVote.BackColor = Color.Orange;
+            btnVote.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVote.ForeColor = Color.DarkGreen;
             btnVote.Location = new Point(384, 116);
             btnVote.Name = "btnVote";
             btnVote.Size = new Size(75, 23);
             btnVote.TabIndex = 2;
             btnVote.Text = "Vote";
-            btnVote.UseVisualStyleBackColor = true;
+            btnVote.UseVisualStyleBackColor = false;
             btnVote.Click += btnVote_Click;
             // 
             // lblSeletedVote

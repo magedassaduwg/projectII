@@ -43,11 +43,19 @@ namespace TeaLeaves.Views
             cbSurveyOptions.DataSource = options;
             cbSurveyOptions.DisplayMember = "Name";
             cbSurveyOptions.ValueMember = "SurveyOptionId";
+
             if (!_newSurveyVote)
             {
+                foreach (SurveyOption option in options)
+                {
+                    if (option.SurveyOptionId == _surveyVoteController.GetSurveyVoteBySurveyIdAndUserId(_survey.Id, CurrentUserStore.User.UserId).SurveyOptionId)
+                    {
+                        cbSurveyOptions.SelectedIndex = options.IndexOf(option);
+                    }
+                }
                 SurveyVote surveyVote = GetSurveyVote();
                 lblSeletedVote.Text = "Selected Option: " + _surveyOptionController.GetSurveyOptionBySurveyOptionId(surveyVote.SurveyOptionId).Name;
-            }          
+            }
         }
 
         private void VoteSurveyForm_Load(object sender, EventArgs e)
@@ -67,6 +75,11 @@ namespace TeaLeaves.Views
 
         private void btnVote_Click(object sender, EventArgs e)
         {
+            if ((int)cbSurveyOptions.SelectedValue == _surveyVoteController.GetSurveyVoteBySurveyIdAndUserId(_survey.Id, CurrentUserStore.User.UserId).SurveyOptionId)
+            {
+                return;
+            }
+
             if (_newSurveyVote)
             {
                 SurveyVote surveyVote = GetSurveyVote();
