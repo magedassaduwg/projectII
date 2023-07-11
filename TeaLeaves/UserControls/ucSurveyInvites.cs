@@ -26,7 +26,10 @@ namespace TeaLeaves.UserControls
             GetUserSurveys();
         }
 
-        private void GetUserSurveys()
+        /// <summary>
+        /// Populates the datagridviews with the correct survey invites
+        /// </summary>
+        public void GetUserSurveys()
         {
             try
             {
@@ -54,7 +57,7 @@ namespace TeaLeaves.UserControls
             if (dgvSurveyInvites.SelectedRows.Count > 0)
             {
                 Survey selectedSurvey = (Survey)dgvSurveyInvites.SelectedRows[0].DataBoundItem;
-                using (VoteSurveyForm viewEventForm = new VoteSurveyForm(selectedSurvey, true))
+                using (VoteSurveyForm viewEventForm = new VoteSurveyForm(selectedSurvey, true, this))
                 {
                     viewEventForm.ShowDialog();
                 }
@@ -64,5 +67,26 @@ namespace TeaLeaves.UserControls
                 MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnViewAnswered_Click(object sender, EventArgs e)
+        {
+            if (dgvAcceptedInvites.SelectedRows.Count > 0)
+            {
+                Survey selectedSurvey = (Survey)dgvAcceptedInvites.SelectedRows[0].DataBoundItem;
+                using (VoteSurveyForm viewEventForm = new VoteSurveyForm(selectedSurvey, false, this))
+                {
+                    viewEventForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            GetUserSurveys();
+        }  
     }
 }

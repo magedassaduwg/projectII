@@ -87,6 +87,7 @@
             Name = "VoteSurveyForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VoteSurveyForm";
+            FormClosed += VoteSurveyForm_FormClosed;
             Load += VoteSurveyForm_Load;
             ResumeLayout(false);
             PerformLayout();

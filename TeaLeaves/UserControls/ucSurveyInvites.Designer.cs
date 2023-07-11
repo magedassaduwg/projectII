@@ -173,6 +173,7 @@
             btnRefresh.TabIndex = 24;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // btnViewAnswered
             // 
@@ -185,6 +186,7 @@
             btnViewAnswered.TabIndex = 36;
             btnViewAnswered.Text = "View Answered Survey";
             btnViewAnswered.UseVisualStyleBackColor = false;
+            btnViewAnswered.Click += btnViewAnswered_Click;
             // 
             // ucSurveyInvites
             // 

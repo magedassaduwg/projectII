@@ -36,5 +36,16 @@ namespace TeaLeaves.Controllers
         {
             return _surveyVoteDAL.SaveVote(surveyVote);
         }
+
+        /// <summary>
+        /// Returns a survey vote with the given userId and surveyId
+        /// </summary>
+        /// <param name="surveyId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public SurveyVote GetSurveyVoteBySurveyIdAndUserId(int surveyId, int userId)
+        {
+            return _surveyVoteDAL.GetSurveyVoteBySurveyIdAndUserId(surveyId, userId);
+        }
     }
 }
