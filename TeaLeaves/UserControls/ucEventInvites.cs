@@ -201,5 +201,13 @@ namespace TeaLeaves.UserControls
                 MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnPassedEvents_Click(object sender, EventArgs e)
+        {
+            using (ViewPassedEventsForm viewEventForm = new ViewPassedEventsForm())
+            {
+                viewEventForm.ShowDialog();
+            }
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace TeaLeaves.Views
             _survey = selectedSurvey ?? new Survey(); ;
             BindSurveyValue();
             dataGridViewSurvey.AutoGenerateColumns = false;
-            
+
         }
 
         private void BindSurveyValue()
@@ -149,12 +149,12 @@ namespace TeaLeaves.Views
 
         private void surveyOption_TextChanged(object sender, EventArgs e)
         {
-            labelError.Text="";
+            labelError.Text = "";
         }
 
         private void richTextBoxDescription_TextChanged(object sender, EventArgs e)
         {
-            labelError.Text="";
+            labelError.Text = "";
         }
     }
 }

@@ -30,12 +30,22 @@
         {
             components = new System.ComponentModel.Container();
             dgvEventInvites = new DataGridView();
+            eventNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            eventDateTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            CreatorName = new DataGridViewTextBoxColumn();
             eventBindingSource = new BindingSource(components);
             btnAccept = new Button();
             btnDecline = new Button();
             btnRefresh = new Button();
             btnView = new Button();
             dgvAcceptedInvites = new DataGridView();
+            eventNameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            Category = new DataGridViewTextBoxColumn();
+            eventDateTimeDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            CreatorName1 = new DataGridViewTextBoxColumn();
             lblInvites = new Label();
             lblAcceptedInvites = new Label();
             radioButtonFilterByCategory = new RadioButton();
@@ -43,24 +53,15 @@
             buttonSearch = new Button();
             radioButtonDate = new RadioButton();
             dgvDeclinedInvites = new DataGridView();
-            lblDeclinedInvites = new Label();
-            tbCategory = new ComboBox();
-            btnViewAccepted = new Button();
-            eventNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            eventDateTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            CreatorName = new DataGridViewTextBoxColumn();
-            eventNameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            Category = new DataGridViewTextBoxColumn();
-            eventDateTimeDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            CreatorName1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             CreatorName2 = new DataGridViewTextBoxColumn();
+            lblDeclinedInvites = new Label();
+            tbCategory = new ComboBox();
+            btnViewAccepted = new Button();
+            btnPassedEvents = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             ((System.ComponentModel.ISupportInitialize)eventBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
@@ -84,6 +85,45 @@
             dgvEventInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEventInvites.Size = new Size(902, 160);
             dgvEventInvites.TabIndex = 0;
+            // 
+            // eventNameDataGridViewTextBoxColumn
+            // 
+            eventNameDataGridViewTextBoxColumn.DataPropertyName = "EventName";
+            eventNameDataGridViewTextBoxColumn.HeaderText = "EventName";
+            eventNameDataGridViewTextBoxColumn.Name = "eventNameDataGridViewTextBoxColumn";
+            eventNameDataGridViewTextBoxColumn.ReadOnly = true;
+            eventNameDataGridViewTextBoxColumn.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.DataPropertyName = "Category";
+            dataGridViewTextBoxColumn1.HeaderText = "Category";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // eventDateTimeDataGridViewTextBoxColumn
+            // 
+            eventDateTimeDataGridViewTextBoxColumn.DataPropertyName = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn.HeaderText = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn.Name = "eventDateTimeDataGridViewTextBoxColumn";
+            eventDateTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            eventDateTimeDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // CreatorName
+            // 
+            CreatorName.DataPropertyName = "CreatorName";
+            CreatorName.HeaderText = "CreatorName";
+            CreatorName.Name = "CreatorName";
+            CreatorName.ReadOnly = true;
+            CreatorName.Width = 180;
             // 
             // eventBindingSource
             // 
@@ -158,6 +198,45 @@
             dgvAcceptedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAcceptedInvites.Size = new Size(902, 160);
             dgvAcceptedInvites.TabIndex = 5;
+            // 
+            // eventNameDataGridViewTextBoxColumn1
+            // 
+            eventNameDataGridViewTextBoxColumn1.DataPropertyName = "EventName";
+            eventNameDataGridViewTextBoxColumn1.HeaderText = "EventName";
+            eventNameDataGridViewTextBoxColumn1.Name = "eventNameDataGridViewTextBoxColumn1";
+            eventNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            eventNameDataGridViewTextBoxColumn1.Width = 180;
+            // 
+            // Category
+            // 
+            Category.DataPropertyName = "Category";
+            Category.HeaderText = "Category";
+            Category.Name = "Category";
+            Category.ReadOnly = true;
+            // 
+            // eventDateTimeDataGridViewTextBoxColumn1
+            // 
+            eventDateTimeDataGridViewTextBoxColumn1.DataPropertyName = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn1.HeaderText = "EventDateTime";
+            eventDateTimeDataGridViewTextBoxColumn1.Name = "eventDateTimeDataGridViewTextBoxColumn1";
+            eventDateTimeDataGridViewTextBoxColumn1.ReadOnly = true;
+            eventDateTimeDataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // descriptionDataGridViewTextBoxColumn1
+            // 
+            descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // CreatorName1
+            // 
+            CreatorName1.DataPropertyName = "CreatorName";
+            CreatorName1.HeaderText = "CreatorName";
+            CreatorName1.Name = "CreatorName1";
+            CreatorName1.ReadOnly = true;
+            CreatorName1.Width = 180;
             // 
             // lblInvites
             // 
@@ -250,118 +329,6 @@
             dgvDeclinedInvites.Size = new Size(902, 160);
             dgvDeclinedInvites.TabIndex = 17;
             // 
-            // lblDeclinedInvites
-            // 
-            lblDeclinedInvites.AutoSize = true;
-            lblDeclinedInvites.BackColor = SystemColors.Control;
-            lblDeclinedInvites.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDeclinedInvites.ForeColor = Color.DarkOrange;
-            lblDeclinedInvites.Location = new Point(354, 414);
-            lblDeclinedInvites.Name = "lblDeclinedInvites";
-            lblDeclinedInvites.Size = new Size(133, 21);
-            lblDeclinedInvites.TabIndex = 18;
-            lblDeclinedInvites.Text = "Declined Invites";
-            // 
-            // tbCategory
-            // 
-            tbCategory.Enabled = false;
-            tbCategory.FormattingEnabled = true;
-            tbCategory.Location = new Point(930, 383);
-            tbCategory.Name = "tbCategory";
-            tbCategory.Size = new Size(194, 23);
-            tbCategory.TabIndex = 19;
-            // 
-            // btnViewAccepted
-            // 
-            btnViewAccepted.BackColor = Color.Orange;
-            btnViewAccepted.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btnViewAccepted.ForeColor = Color.DarkGreen;
-            btnViewAccepted.Location = new Point(983, 211);
-            btnViewAccepted.Name = "btnViewAccepted";
-            btnViewAccepted.Size = new Size(126, 57);
-            btnViewAccepted.TabIndex = 20;
-            btnViewAccepted.Text = "View Accepted";
-            btnViewAccepted.UseVisualStyleBackColor = false;
-            btnViewAccepted.Click += btnResponsibilities_Click;
-            // 
-            // eventNameDataGridViewTextBoxColumn
-            // 
-            eventNameDataGridViewTextBoxColumn.DataPropertyName = "EventName";
-            eventNameDataGridViewTextBoxColumn.HeaderText = "EventName";
-            eventNameDataGridViewTextBoxColumn.Name = "eventNameDataGridViewTextBoxColumn";
-            eventNameDataGridViewTextBoxColumn.ReadOnly = true;
-            eventNameDataGridViewTextBoxColumn.Width = 180;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Category";
-            dataGridViewTextBoxColumn1.HeaderText = "Category";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // eventDateTimeDataGridViewTextBoxColumn
-            // 
-            eventDateTimeDataGridViewTextBoxColumn.DataPropertyName = "EventDateTime";
-            eventDateTimeDataGridViewTextBoxColumn.HeaderText = "EventDateTime";
-            eventDateTimeDataGridViewTextBoxColumn.Name = "eventDateTimeDataGridViewTextBoxColumn";
-            eventDateTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            eventDateTimeDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            descriptionDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // CreatorName
-            // 
-            CreatorName.DataPropertyName = "CreatorName";
-            CreatorName.HeaderText = "CreatorName";
-            CreatorName.Name = "CreatorName";
-            CreatorName.ReadOnly = true;
-            CreatorName.Width = 180;
-            // 
-            // eventNameDataGridViewTextBoxColumn1
-            // 
-            eventNameDataGridViewTextBoxColumn1.DataPropertyName = "EventName";
-            eventNameDataGridViewTextBoxColumn1.HeaderText = "EventName";
-            eventNameDataGridViewTextBoxColumn1.Name = "eventNameDataGridViewTextBoxColumn1";
-            eventNameDataGridViewTextBoxColumn1.ReadOnly = true;
-            eventNameDataGridViewTextBoxColumn1.Width = 180;
-            // 
-            // Category
-            // 
-            Category.DataPropertyName = "Category";
-            Category.HeaderText = "Category";
-            Category.Name = "Category";
-            Category.ReadOnly = true;
-            // 
-            // eventDateTimeDataGridViewTextBoxColumn1
-            // 
-            eventDateTimeDataGridViewTextBoxColumn1.DataPropertyName = "EventDateTime";
-            eventDateTimeDataGridViewTextBoxColumn1.HeaderText = "EventDateTime";
-            eventDateTimeDataGridViewTextBoxColumn1.Name = "eventDateTimeDataGridViewTextBoxColumn1";
-            eventDateTimeDataGridViewTextBoxColumn1.ReadOnly = true;
-            eventDateTimeDataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // descriptionDataGridViewTextBoxColumn1
-            // 
-            descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
-            descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
-            descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
-            descriptionDataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // CreatorName1
-            // 
-            CreatorName1.DataPropertyName = "CreatorName";
-            CreatorName1.HeaderText = "CreatorName";
-            CreatorName1.Name = "CreatorName1";
-            CreatorName1.ReadOnly = true;
-            CreatorName1.Width = 180;
-            // 
             // dataGridViewTextBoxColumn2
             // 
             dataGridViewTextBoxColumn2.DataPropertyName = "EventName";
@@ -401,10 +368,58 @@
             CreatorName2.ReadOnly = true;
             CreatorName2.Width = 180;
             // 
+            // lblDeclinedInvites
+            // 
+            lblDeclinedInvites.AutoSize = true;
+            lblDeclinedInvites.BackColor = SystemColors.Control;
+            lblDeclinedInvites.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDeclinedInvites.ForeColor = Color.DarkOrange;
+            lblDeclinedInvites.Location = new Point(354, 414);
+            lblDeclinedInvites.Name = "lblDeclinedInvites";
+            lblDeclinedInvites.Size = new Size(133, 21);
+            lblDeclinedInvites.TabIndex = 18;
+            lblDeclinedInvites.Text = "Declined Invites";
+            // 
+            // tbCategory
+            // 
+            tbCategory.Enabled = false;
+            tbCategory.FormattingEnabled = true;
+            tbCategory.Location = new Point(930, 383);
+            tbCategory.Name = "tbCategory";
+            tbCategory.Size = new Size(194, 23);
+            tbCategory.TabIndex = 19;
+            // 
+            // btnViewAccepted
+            // 
+            btnViewAccepted.BackColor = Color.Orange;
+            btnViewAccepted.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            btnViewAccepted.ForeColor = Color.DarkGreen;
+            btnViewAccepted.Location = new Point(983, 211);
+            btnViewAccepted.Name = "btnViewAccepted";
+            btnViewAccepted.Size = new Size(126, 57);
+            btnViewAccepted.TabIndex = 20;
+            btnViewAccepted.Text = "View Accepted";
+            btnViewAccepted.UseVisualStyleBackColor = false;
+            btnViewAccepted.Click += btnResponsibilities_Click;
+            // 
+            // btnPassedEvents
+            // 
+            btnPassedEvents.BackColor = Color.YellowGreen;
+            btnPassedEvents.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPassedEvents.ForeColor = Color.DarkGreen;
+            btnPassedEvents.Location = new Point(945, 528);
+            btnPassedEvents.Name = "btnPassedEvents";
+            btnPassedEvents.Size = new Size(151, 30);
+            btnPassedEvents.TabIndex = 21;
+            btnPassedEvents.Text = "View Passed Events";
+            btnPassedEvents.UseVisualStyleBackColor = false;
+            btnPassedEvents.Click += btnPassedEvents_Click;
+            // 
             // ucEventInvites
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnPassedEvents);
             Controls.Add(btnViewAccepted);
             Controls.Add(tbCategory);
             Controls.Add(lblDeclinedInvites);
@@ -466,5 +481,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn CreatorName2;
+        private Button btnPassedEvents;
     }
 }
