@@ -58,10 +58,20 @@ namespace TeaLeaves.UserControls
             }
         }
 
-
+        private bool ShouldDelete()
+        {
+            DialogResult decline = MessageBox.Show("Are you sure you want to delete this event?", "" +
+                "", MessageBoxButtons.YesNo);
+            return DialogResult.Yes == decline;
+        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (!ShouldDelete())
+            {
+                return;
+            }
+
             if (dgEvents.SelectedRows.Count > 0)
             {
                 Event selectedEvent = (Event)dgEvents.SelectedRows[0].DataBoundItem;

@@ -83,7 +83,7 @@ namespace TeaLeaves.DALs
                                     JOIN SurveyInvites si
                                     ON s.SurveyId = si.SurveyId
                                     JOIN Users u
-                                    ON u.UserId = @UserId
+                                    ON u.UserId = s.CreatorId
                                     WHERE si.SurveyReceiverId = @UserId AND si.Answered = 0;";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -123,7 +123,7 @@ namespace TeaLeaves.DALs
                                     JOIN SurveyInvites si
                                     ON s.SurveyId = si.SurveyId
                                     JOIN Users u
-                                    ON u.UserId = @UserId
+                                    ON u.UserId = s.CreatorId
                                     WHERE si.SurveyReceiverId = @UserId AND si.Answered = 1;";
 
                 SqlCommand command = new SqlCommand(query, connection);

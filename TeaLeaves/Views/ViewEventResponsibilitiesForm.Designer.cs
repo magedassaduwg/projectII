@@ -43,12 +43,12 @@
             lblEventResponsibilities = new Label();
             dgvMyResponsibilities = new DataGridView();
             dgvUnassignedResponsibilities = new DataGridView();
+            ResponsibilityName1 = new DataGridViewTextBoxColumn();
             lblMyResponsibilities = new Label();
             lblUnassignedResponsibilities = new Label();
             btnAcceptResponsibility = new Button();
             ResponsibilityName = new DataGridViewTextBoxColumn();
-            Username = new DataGridViewTextBoxColumn();
-            ResponsibilityName1 = new DataGridViewTextBoxColumn();
+            User = new DataGridViewTextBoxColumn();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMyResponsibilities).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).BeginInit();
@@ -242,14 +242,14 @@
             // 
             dgvMyResponsibilities.BackgroundColor = Color.PapayaWhip;
             dgvMyResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMyResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName, Username });
+            dgvMyResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName, User });
             tableLayoutPanelAddEvent.SetColumnSpan(dgvMyResponsibilities, 2);
             dgvMyResponsibilities.Location = new Point(270, 394);
             dgvMyResponsibilities.Name = "dgvMyResponsibilities";
             dgvMyResponsibilities.ReadOnly = true;
             tableLayoutPanelAddEvent.SetRowSpan(dgvMyResponsibilities, 2);
             dgvMyResponsibilities.RowTemplate.Height = 25;
-            dgvMyResponsibilities.Size = new Size(303, 160);
+            dgvMyResponsibilities.Size = new Size(338, 160);
             dgvMyResponsibilities.TabIndex = 22;
             // 
             // dgvUnassignedResponsibilities
@@ -266,6 +266,14 @@
             dgvUnassignedResponsibilities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUnassignedResponsibilities.Size = new Size(273, 160);
             dgvUnassignedResponsibilities.TabIndex = 23;
+            // 
+            // ResponsibilityName1
+            // 
+            ResponsibilityName1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ResponsibilityName1.DataPropertyName = "Name";
+            ResponsibilityName1.HeaderText = "Name";
+            ResponsibilityName1.Name = "ResponsibilityName1";
+            ResponsibilityName1.ReadOnly = true;
             // 
             // lblMyResponsibilities
             // 
@@ -312,21 +320,13 @@
             ResponsibilityName.Name = "ResponsibilityName";
             ResponsibilityName.ReadOnly = true;
             // 
-            // Username
+            // User
             // 
-            Username.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Username.DataPropertyName = "Username";
-            Username.HeaderText = "Username";
-            Username.Name = "Username";
-            Username.ReadOnly = true;
-            // 
-            // ResponsibilityName1
-            // 
-            ResponsibilityName1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ResponsibilityName1.DataPropertyName = "Name";
-            ResponsibilityName1.HeaderText = "Name";
-            ResponsibilityName1.Name = "ResponsibilityName1";
-            ResponsibilityName1.ReadOnly = true;
+            User.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            User.DataPropertyName = "FullName";
+            User.HeaderText = "User";
+            User.Name = "User";
+            User.ReadOnly = true;
             // 
             // ViewEventResponsibilitiesForm
             // 
@@ -365,8 +365,8 @@
         private Label lblMyResponsibilities;
         private Label lblUnassignedResponsibilities;
         private Button btnAcceptResponsibility;
-        private DataGridViewTextBoxColumn ResponsibilityName;
-        private DataGridViewTextBoxColumn Username;
         private DataGridViewTextBoxColumn ResponsibilityName1;
+        private DataGridViewTextBoxColumn ResponsibilityName;
+        private DataGridViewTextBoxColumn User;
     }
 }

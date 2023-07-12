@@ -411,7 +411,9 @@ namespace TeaLeaves.DALs
                 SqlCommand command = new SqlCommand("DELETE FROM Contacts WHERE UserId1 = @UserId1 AND UserId2 = @UserId2; " +
                     "DELETE FROM Contacts WHERE UserId1 = @UserId2 AND UserId2 = @UserId1; " +
                     "DELETE FROM EventResponses WHERE EventInviterId = @UserId1 AND EventReceiverId = @UserId2; " +
-                    "DELETE FROM EventResponses WHERE EventInviterId = @UserId2 AND EventReceiverId = @UserId1;", connection);
+                    "DELETE FROM EventResponses WHERE EventInviterId = @UserId2 AND EventReceiverId = @UserId1; " +
+                    "DELETE FROM SurveyInvites WHERE SurveyInviterId = @UserId1 AND SurveyReceiverId = @UserId2; " +
+                    "DELETE FROM SurveyInvites WHERE SurveyInviterId = @UserId2 AND SurveyReceiverId = @UserId1; ", connection);
                 command.Parameters.AddWithValue("@UserId1", user.UserId);
                 command.Parameters.AddWithValue("@UserId2", contact.UserId);
 
