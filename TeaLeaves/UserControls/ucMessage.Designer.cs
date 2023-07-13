@@ -39,7 +39,11 @@
             lstContacts = new ListBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             tblMessagesWithHeader = new TableLayoutPanel();
+            tblHeader = new TableLayoutPanel();
             lblSelectedContact = new Label();
+            panelSearch = new FlowLayoutPanel();
+            txtSearch = new TextBox();
+            btnSearch = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             btnCreateGroup = new Button();
             btnManageContacts = new Button();
@@ -48,6 +52,8 @@
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tblMessagesWithHeader.SuspendLayout();
+            tblHeader.SuspendLayout();
+            panelSearch.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,7 +65,7 @@
             tblMessages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblMessages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblMessages.Dock = DockStyle.Top;
-            tblMessages.Location = new Point(4, 50);
+            tblMessages.Location = new Point(4, 57);
             tblMessages.Name = "tblMessages";
             tblMessages.RowCount = 1;
             tblMessages.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -183,28 +189,77 @@
             tblMessagesWithHeader.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             tblMessagesWithHeader.ColumnCount = 1;
             tblMessagesWithHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tblMessagesWithHeader.Controls.Add(lblSelectedContact, 0, 0);
             tblMessagesWithHeader.Controls.Add(tblMessages, 0, 1);
+            tblMessagesWithHeader.Controls.Add(tblHeader, 0, 0);
             tblMessagesWithHeader.Dock = DockStyle.Fill;
             tblMessagesWithHeader.Location = new Point(3, 3);
             tblMessagesWithHeader.Name = "tblMessagesWithHeader";
             tblMessagesWithHeader.RowCount = 2;
-            tblMessagesWithHeader.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tblMessagesWithHeader.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
+            tblMessagesWithHeader.RowStyles.Add(new RowStyle(SizeType.Percent, 11.4967461F));
+            tblMessagesWithHeader.RowStyles.Add(new RowStyle(SizeType.Percent, 88.50325F));
             tblMessagesWithHeader.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tblMessagesWithHeader.Size = new Size(819, 462);
             tblMessagesWithHeader.TabIndex = 6;
+            // 
+            // tblHeader
+            // 
+            tblHeader.ColumnCount = 2;
+            tblHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblHeader.Controls.Add(lblSelectedContact, 0, 0);
+            tblHeader.Controls.Add(panelSearch, 1, 0);
+            tblHeader.Dock = DockStyle.Fill;
+            tblHeader.Location = new Point(4, 4);
+            tblHeader.Name = "tblHeader";
+            tblHeader.RowCount = 1;
+            tblHeader.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblHeader.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblHeader.Size = new Size(811, 46);
+            tblHeader.TabIndex = 2;
             // 
             // lblSelectedContact
             // 
             lblSelectedContact.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lblSelectedContact.AutoSize = true;
             lblSelectedContact.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSelectedContact.Location = new Point(4, 1);
+            lblSelectedContact.Location = new Point(3, 0);
             lblSelectedContact.Name = "lblSelectedContact";
-            lblSelectedContact.Size = new Size(0, 45);
-            lblSelectedContact.TabIndex = 0;
+            lblSelectedContact.Size = new Size(0, 46);
+            lblSelectedContact.TabIndex = 1;
             lblSelectedContact.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panelSearch
+            // 
+            panelSearch.Controls.Add(txtSearch);
+            panelSearch.Controls.Add(btnSearch);
+            panelSearch.Dock = DockStyle.Fill;
+            panelSearch.Location = new Point(408, 3);
+            panelSearch.Name = "panelSearch";
+            panelSearch.Size = new Size(400, 40);
+            panelSearch.TabIndex = 2;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            txtSearch.Location = new Point(3, 10);
+            txtSearch.Margin = new Padding(3, 10, 3, 3);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(262, 23);
+            txtSearch.TabIndex = 0;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
+            // btnSearch
+            // 
+            btnSearch.BackColor = Color.Orange;
+            btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSearch.ForeColor = Color.DarkGreen;
+            btnSearch.Location = new Point(271, 3);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(119, 40);
+            btnSearch.TabIndex = 13;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // tableLayoutPanel2
             // 
@@ -259,7 +314,7 @@
             // 
             cmsMessage.Name = "cmsMessage";
             cmsMessage.RenderMode = ToolStripRenderMode.Professional;
-            cmsMessage.Size = new Size(181, 26);
+            cmsMessage.Size = new Size(61, 4);
             cmsMessage.Opening += cmsMessage_Opening;
             // 
             // ucMessage
@@ -275,6 +330,10 @@
             tableLayoutPanel1.ResumeLayout(false);
             tblMessagesWithHeader.ResumeLayout(false);
             tblMessagesWithHeader.PerformLayout();
+            tblHeader.ResumeLayout(false);
+            tblHeader.PerformLayout();
+            panelSearch.ResumeLayout(false);
+            panelSearch.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -287,7 +346,6 @@
         private ListBox lstContacts;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tblMessagesWithHeader;
-        private Label lblSelectedContact;
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnCreateGroup;
         private Button btnManageContacts;
@@ -296,5 +354,10 @@
         private Button btnImagePreview;
         private NotifyIcon notification;
         private ContextMenuStrip cmsMessage;
+        private TableLayoutPanel tblHeader;
+        private Label lblSelectedContact;
+        private FlowLayoutPanel panelSearch;
+        private TextBox txtSearch;
+        private Button btnSearch;
     }
 }
