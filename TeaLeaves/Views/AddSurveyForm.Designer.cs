@@ -1,6 +1,6 @@
 ﻿namespace TeaLeaves.Views
 {
-    partial class addSurveyForm
+    partial class AddSurveyForm
     {
         /// <summary>
         /// Required designer variable.
@@ -189,13 +189,13 @@
             Option.ReadOnly=true;
             Option.Width=475;
             // 
-            // addSurveyForm
+            // AddSurveyForm
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             ClientSize=new Size(800, 450);
             Controls.Add(tableLayoutPanelAddSurvey);
-            Name="addSurveyForm";
+            Name="AddSurveyForm";
             StartPosition=FormStartPosition.CenterScreen;
             Text="AddSurveyForm";
             Load+=addSurveyForm_Load;

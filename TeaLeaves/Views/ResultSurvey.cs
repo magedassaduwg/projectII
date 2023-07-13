@@ -1,33 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
 using TeaLeaves.Controllers;
 using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
+    /// <summary>
+    /// View Survey result in this form
+    /// </summary>
     public partial class ResultSurvey : Form
     {
-        private SurveyController _surveyController;
         private List<SurveyOption> _surveyOption;
-        private List<SurveyOption> _newSurveyOption;
         private SurveyOptionController _surveyOptionController;
         private Survey _survey;
+        /// <summary>
+        /// The constructor for the ResultSurvey class
+        /// </summary>
+        /// <param name="selectedSurvey"></param>
         public ResultSurvey(Models.Survey selectedSurvey)
         {
 
             InitializeComponent();
-            _surveyController = new SurveyController();
             _surveyOptionController = new SurveyOptionController();
             _surveyOption = new List<SurveyOption>();
-            _newSurveyOption = new List<SurveyOption>();
-            _survey = selectedSurvey ?? new Survey(); ;
+            _survey = selectedSurvey ?? new Survey(); 
             BindSurveyValue();
             dataGridViewSurvey.AutoGenerateColumns = false;
         }

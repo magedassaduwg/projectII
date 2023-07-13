@@ -48,7 +48,7 @@ namespace TeaLeaves.UserControls
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             Survey newSurvey = new Survey();
-            using (addSurveyForm surveyForm = new addSurveyForm(newSurvey))
+            using (AddSurveyForm surveyForm = new AddSurveyForm(newSurvey))
             {
                 surveyForm.ShowDialog();
 
@@ -63,7 +63,7 @@ namespace TeaLeaves.UserControls
             {
                 Survey selectedSurvey = (Survey)dataGridViewSurvey.SelectedRows[0].DataBoundItem;
 
-                using (addSurveyForm surveyForm = new addSurveyForm(selectedSurvey))
+                using (AddSurveyForm surveyForm = new AddSurveyForm(selectedSurvey))
                 {
                     surveyForm.ShowDialog();
                 }

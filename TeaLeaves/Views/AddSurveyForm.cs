@@ -8,7 +8,7 @@ namespace TeaLeaves.Views
     /// <summary>
     /// The form for adding a new survey
     /// </summary>
-    public partial class addSurveyForm : Form
+    public partial class AddSurveyForm : Form
     {
         private SurveyController _surveyController;
         private List<SurveyOption> _surveyOption;
@@ -17,10 +17,10 @@ namespace TeaLeaves.Views
         private Survey _survey;
 
         /// <summary>
-        /// The constructor for the addSurveyForm class
+        /// The constructor for the AddSurveyForm class
         /// </summary>
         /// <param name="selectedSurvey"></param>
-        public addSurveyForm(Survey selectedSurvey)
+        public AddSurveyForm(Survey selectedSurvey)
         {
             InitializeComponent();
             _surveyController = new SurveyController();
