@@ -80,6 +80,16 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Returns all the events for which the start date has passed
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Event> GetPastEventsReceivedByUserId(int userId)
+        {
+            return _eventDAL.GetPastEventsReceivedByUserId(userId);
+        }
+
+        /// <summary>
         /// Returns an event by it's id
         /// </summary>
         /// <param name="selectedEventId"></param>

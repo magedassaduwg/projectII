@@ -16,5 +16,7 @@
         public string? City { get; set; }
         public int Zipcode { get; set; }
         public string? StreetNumber { get; set; }
+        public bool Accepted { get; set; }
+        public bool Declined { get; set; }
     }
 }

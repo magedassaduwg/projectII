@@ -1,6 +1,6 @@
 ﻿namespace TeaLeaves.Views
 {
-    partial class ViewPassedEventsForm
+    partial class ViewPastEventsForm
     {
         /// <summary>
         /// Required designer variable.

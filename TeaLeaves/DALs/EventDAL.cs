@@ -118,7 +118,7 @@ namespace TeaLeaves.DALs
                     ON e.EventID = er.EventID
                     JOIN Users u
                     ON u.UserId = e.CreatorId
-                    WHERE er.EventReceiverId = @UserId AND er.Accepted = 1;";
+                    WHERE er.EventReceiverId = @UserId AND er.Accepted = 1 AND e.EventDateTime > GETDATE();";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);
@@ -164,7 +164,7 @@ namespace TeaLeaves.DALs
                                  ON e.EventID = er.EventID
                                  JOIN Users u
                                  ON u.UserId = e.CreatorId
-                                 WHERE er.EventReceiverId = @UserId AND er.Declined = 1;";
+                                 WHERE er.EventReceiverId = @UserId AND er.Declined = 1 AND e.EventDateTime > GETDATE();";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);
@@ -210,7 +210,7 @@ namespace TeaLeaves.DALs
                                  ON e.EventID = er.EventID
                                  JOIN Users u
                                  ON u.UserId = e.CreatorId
-                                 WHERE er.EventReceiverId = @UserId AND er.Accepted = 0 AND er.Declined = 0;";
+                                 WHERE er.EventReceiverId = @UserId AND er.Accepted = 0 AND er.Declined = 0 AND e.EventDateTime > GETDATE();";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);
@@ -232,6 +232,54 @@ namespace TeaLeaves.DALs
                         EventName = reader["Name"].ToString(),
                         Category = reader["Category"].ToString(),
                         Description = reader["Description"].ToString(),
+                    };
+                    userEvents.Add(userEvent);
+                }
+            }
+            return userEvents;
+        }
+
+        /// <summary>
+        /// Returns the past events the user has been invited to
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Event> GetPastEventsReceivedByUserId(int userId)
+        {
+            List<Event> userEvents = new List<Event>();
+
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                string query = @"SELECT e.EventId as UserEventId, CreatorId, FirstName, LastName, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description, Accepted, Declined
+                                 FROM Events e
+                                 JOIN EventResponses er
+                                 ON e.EventID = er.EventID
+                                 JOIN Users u
+                                 ON u.UserId = e.CreatorId
+                                 WHERE er.EventReceiverId = @UserId AND e.EventDateTime < GETDATE();";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Event userEvent = new Event
+                    {
+                        Id = Convert.ToInt32(reader["UserEventId"]),
+                        CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        CreatorName = reader["FirstName"].ToString() + " " + reader["LastName"].ToString(),
+                        EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
+                        State = reader["State"].ToString(),
+                        City = reader["City"].ToString(),
+                        StreetNumber = reader["StreetNumber"].ToString(),
+                        Zipcode = Convert.ToInt32(reader["Zipcode"]),
+                        EventName = reader["Name"].ToString(),
+                        Category = reader["Category"].ToString(),
+                        Description = reader["Description"].ToString(),
+                        Accepted = Convert.ToInt32(reader["Accepted"]) > 0,
+                        Declined = Convert.ToInt32(reader["Declined"]) > 0,
                     };
                     userEvents.Add(userEvent);
                 }

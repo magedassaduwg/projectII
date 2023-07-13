@@ -204,7 +204,7 @@ namespace TeaLeaves.UserControls
 
         private void btnPassedEvents_Click(object sender, EventArgs e)
         {
-            using (ViewPassedEventsForm viewEventForm = new ViewPassedEventsForm())
+            using (ViewPastEventsForm viewEventForm = new ViewPastEventsForm())
             {
                 viewEventForm.ShowDialog();
             }

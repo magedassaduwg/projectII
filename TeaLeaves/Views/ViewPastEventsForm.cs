@@ -4,7 +4,7 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
-    public partial class ViewPassedEventsForm : Form
+    public partial class ViewPastEventsForm : Form
     {
         EventController _eventController;
         List<Event> _events;
@@ -12,7 +12,7 @@ namespace TeaLeaves.Views
         /// <summary>
         /// Initializes a new instance of the ucEventInvities
         /// </summary>
-        public ViewPassedEventsForm()
+        public ViewPastEventsForm()
         {
             InitializeComponent();
             _eventController = new EventController();
@@ -25,7 +25,7 @@ namespace TeaLeaves.Views
         {
             try
             {
-                _events = _eventController.GetEventsReceivedByUserId(CurrentUserStore.User.UserId);
+                _events = _eventController.GetPastEventsReceivedByUserId(CurrentUserStore.User.UserId);
 
                 dgvEventInvites.DataSource = _events;
             }
