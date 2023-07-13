@@ -61,7 +61,7 @@
             lblDeclinedInvites = new Label();
             tbCategory = new ComboBox();
             btnViewAccepted = new Button();
-            btnPassedEvents = new Button();
+            btnPastEvents = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             ((System.ComponentModel.ISupportInitialize)eventBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedInvites).BeginInit();
@@ -402,24 +402,24 @@
             btnViewAccepted.UseVisualStyleBackColor = false;
             btnViewAccepted.Click += btnResponsibilities_Click;
             // 
-            // btnPassedEvents
+            // btnPastEvents
             // 
-            btnPassedEvents.BackColor = Color.YellowGreen;
-            btnPassedEvents.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPassedEvents.ForeColor = Color.DarkGreen;
-            btnPassedEvents.Location = new Point(945, 528);
-            btnPassedEvents.Name = "btnPassedEvents";
-            btnPassedEvents.Size = new Size(151, 30);
-            btnPassedEvents.TabIndex = 21;
-            btnPassedEvents.Text = "View Passed Events";
-            btnPassedEvents.UseVisualStyleBackColor = false;
-            btnPassedEvents.Click += btnPassedEvents_Click;
+            btnPastEvents.BackColor = Color.YellowGreen;
+            btnPastEvents.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPastEvents.ForeColor = Color.DarkGreen;
+            btnPastEvents.Location = new Point(945, 528);
+            btnPastEvents.Name = "btnPastEvents";
+            btnPastEvents.Size = new Size(151, 30);
+            btnPastEvents.TabIndex = 21;
+            btnPastEvents.Text = "View Past Events";
+            btnPastEvents.UseVisualStyleBackColor = false;
+            btnPastEvents.Click += btnPassedEvents_Click;
             // 
             // ucEventInvites
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(btnPassedEvents);
+            Controls.Add(btnPastEvents);
             Controls.Add(btnViewAccepted);
             Controls.Add(tbCategory);
             Controls.Add(lblDeclinedInvites);
@@ -481,6 +481,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn CreatorName2;
-        private Button btnPassedEvents;
+        private Button btnPastEvents;
     }
 }
