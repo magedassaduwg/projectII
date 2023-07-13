@@ -20,9 +20,11 @@ namespace TeaLeaves.UserControls
         private UsersController _usersController;
         private ContactsController _contactsController;
         private object _selectedUser;
+        private List<IUserMessage> _userMessages;
         private List<object> _allContacts;
         private string _messageImage;
         private bool _isFormMinimized = false;
+        private int _searchIndex;
 
         /// <summary>
         /// constructor to initialize components, controllers, and then load contacts
@@ -85,7 +87,7 @@ namespace TeaLeaves.UserControls
                 {
                     UpdateContactUnreadStatus(e, true);
                 }
-                
+
                 ShowNotification(e);
                 playSimpleSound();
             });
@@ -280,6 +282,7 @@ namespace TeaLeaves.UserControls
                     else
                     {
                         GroupMember groupMember = (GroupMember)_selectedUser;
+
                         foreach (int userId in groupMember.UserIds)
                         {
                             User user = _usersController.GetUserById(userId);
@@ -323,11 +326,11 @@ namespace TeaLeaves.UserControls
                 tblMessages.Controls.Clear();
                 tblMessages.RowCount = 0;
 
-                List<IUserMessage> userMessages = _messageController.GetMessagesByUserId(CurrentUserStore.User.UserId, contactId);
+                _userMessages = _messageController.GetMessagesByUserId(CurrentUserStore.User.UserId, contactId);
 
-                if (userMessages != null && userMessages.Count > 0)
+                if (_userMessages != null && _userMessages.Count > 0)
                 {
-                    foreach (IUserMessage message in userMessages)
+                    foreach (IUserMessage message in _userMessages)
                     {
                         AddMessageToScreen(message);
                     }
@@ -597,6 +600,41 @@ namespace TeaLeaves.UserControls
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            _searchIndex = 0;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSearch.Text) && _userMessages != null && _userMessages.Count > 0)
+            {
+                IUserMessage message = _userMessages.Where(x => x.Text.ToLower().IndexOf(txtSearch.Text.ToLower().Trim()) > -1).Skip(_searchIndex).FirstOrDefault();
+                if (message != null)
+                {
+                    foreach (Control ctrl in tblMessages.Controls)
+                    {
+                        if (ctrl.Name.Equals(message.MessageId.ToString()))
+                        {
+                            tblMessages.ScrollControlIntoView(ctrl);
+                            _searchIndex++;
+                        }
+                    }
+                }
+                else
+                {
+                    if (_searchIndex == 0)
+                    {
+                        MessageBox.Show($"Could not find a message containing \"{txtSearch.Text}\"", "No match");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Could not find anymore messages matching the search keyword", "No more matching");
+                    }
+                }
             }
         }
     }
