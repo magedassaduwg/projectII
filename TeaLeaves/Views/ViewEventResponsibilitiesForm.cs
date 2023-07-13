@@ -45,6 +45,11 @@ namespace TeaLeaves.Views
                 {
                     dgvUnassignedResponsibilities.Rows[0].Selected = true;
                 }
+
+                if (dgvMyResponsibilities.Rows.Count > 0)
+                {
+                    dgvMyResponsibilities.Rows[0].Selected = true;
+                }
             }
             catch (Exception ex)
             {
@@ -52,12 +57,34 @@ namespace TeaLeaves.Views
             }
         }
 
+        private bool ShouldAcceptResponsibility()
+        {
+            DialogResult decline = MessageBox.Show("Are you sure you want to accept this responsibility?", "" +
+                "", MessageBoxButtons.YesNo);
+            return DialogResult.Yes == decline;
+        }
+
         private void btnAcceptResponsibility_Click(object sender, EventArgs e)
         {
+            if (!ShouldAcceptResponsibility())
+            {
+                return;
+            }
+
             if (dgvUnassignedResponsibilities.Rows.Count > 0)
             {
                 EventResponsibility selectedEventResponsibility = (EventResponsibility)dgvUnassignedResponsibilities.SelectedRows[0].DataBoundItem;
                 _eventResponsibilityController.AssignEventResponsibility(CurrentUserStore.User, _event.Id, selectedEventResponsibility.Name);
+            }
+            GetEventResponsibilities();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dgvMyResponsibilities.Rows.Count > 0)
+            {
+                EventResponsibility selectedEventResponsibility = (EventResponsibility)dgvMyResponsibilities.SelectedRows[0].DataBoundItem;
+                _eventResponsibilityController.UnassignEventResponsibility(_event.Id, selectedEventResponsibility.Name);
             }
             GetEventResponsibilities();
         }

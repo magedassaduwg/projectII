@@ -81,6 +81,31 @@ namespace TeaLeaves.DALs
         }
 
         /// <summary>
+        /// Unassigns a user to an EventResponsibility
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public int UnassignEventResponsibility(int eventId, string name)
+        {
+            string query = @"UPDATE EventResponsibilities
+                            SET UserId = NULL
+                            WHERE eventId = @eventId AND Name = @name
+                            select EventResponsibilityId FROM EventResponsibilities WHERE eventId = @eventId AND Name = @name";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@eventId", eventId);
+                    saveCommand.Parameters.AddWithValue("@name", name);
+                    return Convert.ToInt32(saveCommand.ExecuteScalar());
+                }
+            }
+        }
+
+        /// <summary>
         /// method to retrieve a list of EventResponsibilities with the given UserId and EventId
         /// </summary>
         /// <param name="userId"></param>

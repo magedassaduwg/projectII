@@ -42,13 +42,14 @@
             btnBack = new Button();
             lblEventResponsibilities = new Label();
             dgvMyResponsibilities = new DataGridView();
+            ResponsibilityName = new DataGridViewTextBoxColumn();
+            User = new DataGridViewTextBoxColumn();
             dgvUnassignedResponsibilities = new DataGridView();
             ResponsibilityName1 = new DataGridViewTextBoxColumn();
             lblMyResponsibilities = new Label();
             lblUnassignedResponsibilities = new Label();
             btnAcceptResponsibility = new Button();
-            ResponsibilityName = new DataGridViewTextBoxColumn();
-            User = new DataGridViewTextBoxColumn();
+            btnRemove = new Button();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMyResponsibilities).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUnassignedResponsibilities).BeginInit();
@@ -81,6 +82,7 @@
             tableLayoutPanelAddEvent.Controls.Add(lblMyResponsibilities, 1, 5);
             tableLayoutPanelAddEvent.Controls.Add(lblUnassignedResponsibilities, 4, 5);
             tableLayoutPanelAddEvent.Controls.Add(btnAcceptResponsibility, 3, 7);
+            tableLayoutPanelAddEvent.Controls.Add(btnRemove, 3, 6);
             tableLayoutPanelAddEvent.Dock = DockStyle.Fill;
             tableLayoutPanelAddEvent.Location = new Point(0, 0);
             tableLayoutPanelAddEvent.Name = "tableLayoutPanelAddEvent";
@@ -93,6 +95,7 @@
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 8.2232F));
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 18.3553581F));
             tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Percent, 11.0132141F));
+            tableLayoutPanelAddEvent.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanelAddEvent.Size = new Size(1085, 557);
             tableLayoutPanelAddEvent.TabIndex = 2;
             // 
@@ -221,7 +224,7 @@
             btnBack.Margin = new Padding(20, 3, 3, 3);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(150, 39);
-            btnBack.TabIndex = 20;
+            btnBack.TabIndex = 0;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
@@ -249,8 +252,25 @@
             dgvMyResponsibilities.ReadOnly = true;
             tableLayoutPanelAddEvent.SetRowSpan(dgvMyResponsibilities, 2);
             dgvMyResponsibilities.RowTemplate.Height = 25;
+            dgvMyResponsibilities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMyResponsibilities.Size = new Size(338, 160);
-            dgvMyResponsibilities.TabIndex = 22;
+            dgvMyResponsibilities.TabIndex = 3;
+            // 
+            // ResponsibilityName
+            // 
+            ResponsibilityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ResponsibilityName.DataPropertyName = "Name";
+            ResponsibilityName.HeaderText = "Name";
+            ResponsibilityName.Name = "ResponsibilityName";
+            ResponsibilityName.ReadOnly = true;
+            // 
+            // User
+            // 
+            User.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            User.DataPropertyName = "UserFullName";
+            User.HeaderText = "User";
+            User.Name = "User";
+            User.ReadOnly = true;
             // 
             // dgvUnassignedResponsibilities
             // 
@@ -265,7 +285,7 @@
             dgvUnassignedResponsibilities.RowTemplate.Height = 25;
             dgvUnassignedResponsibilities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUnassignedResponsibilities.Size = new Size(273, 160);
-            dgvUnassignedResponsibilities.TabIndex = 23;
+            dgvUnassignedResponsibilities.TabIndex = 4;
             // 
             // ResponsibilityName1
             // 
@@ -307,26 +327,20 @@
             btnAcceptResponsibility.Margin = new Padding(70, 20, 3, 3);
             btnAcceptResponsibility.Name = "btnAcceptResponsibility";
             btnAcceptResponsibility.Size = new Size(90, 41);
-            btnAcceptResponsibility.TabIndex = 26;
+            btnAcceptResponsibility.TabIndex = 2;
             btnAcceptResponsibility.Text = "Accept";
             btnAcceptResponsibility.UseVisualStyleBackColor = true;
             btnAcceptResponsibility.Click += btnAcceptResponsibility_Click;
             // 
-            // ResponsibilityName
+            // btnRemove
             // 
-            ResponsibilityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ResponsibilityName.DataPropertyName = "Name";
-            ResponsibilityName.HeaderText = "Name";
-            ResponsibilityName.Name = "ResponsibilityName";
-            ResponsibilityName.ReadOnly = true;
-            // 
-            // User
-            // 
-            User.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            User.DataPropertyName = "FullName";
-            User.HeaderText = "User";
-            User.Name = "User";
-            User.ReadOnly = true;
+            btnRemove.Location = new Point(614, 394);
+            btnRemove.Name = "btnRemove";
+            btnRemove.Size = new Size(90, 41);
+            btnRemove.TabIndex = 1;
+            btnRemove.Text = "Remove";
+            btnRemove.UseVisualStyleBackColor = true;
+            btnRemove.Click += btnRemove_Click;
             // 
             // ViewEventResponsibilitiesForm
             // 
@@ -368,5 +382,6 @@
         private DataGridViewTextBoxColumn ResponsibilityName1;
         private DataGridViewTextBoxColumn ResponsibilityName;
         private DataGridViewTextBoxColumn User;
+        private Button btnRemove;
     }
 }

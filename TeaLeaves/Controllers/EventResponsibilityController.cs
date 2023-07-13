@@ -51,6 +51,17 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Removes the user from a given EventResponsibility
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public int UnassignEventResponsibility(int eventId, string name)
+        {
+            return _eventResponsibilityDAL.UnassignEventResponsibility(eventId, name);
+        }
+
+        /// <summary>
         /// Returns a list of EventResponsibilities from the database based on the given userId and eventId
         /// </summary>
         /// <param name="userId"></param>
