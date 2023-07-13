@@ -36,6 +36,7 @@ namespace TeaLeaves.Views
 
         private void GetUserEvents()
         {
+            lblEventDetails.Text = _event.EventName + " " + _event.EventDateTime;
             try
             {
                 _invitedUsers = _contactsController.GetUsersContactsByEvent(CurrentUserStore.User, _event);

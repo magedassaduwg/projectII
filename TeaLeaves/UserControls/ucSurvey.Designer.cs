@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tableLayoutPanelSurvey = new TableLayoutPanel();
-            btnInvites = new Button();
-            btnDelete = new Button();
-            btnEdit = new Button();
-            buttonAdd = new Button();
-            dataGridViewSurvey = new DataGridView();
-            SurveyName = new DataGridViewTextBoxColumn();
-            Date = new DataGridViewTextBoxColumn();
-            panelSurveyHeader = new Panel();
-            lblMySurveys = new Label();
+            tableLayoutPanelSurvey=new TableLayoutPanel();
+            btnInvites=new Button();
+            btnDelete=new Button();
+            btnEdit=new Button();
+            buttonAdd=new Button();
+            dataGridViewSurvey=new DataGridView();
+            SurveyName=new DataGridViewTextBoxColumn();
+            Date=new DataGridViewTextBoxColumn();
+            panelSurveyHeader=new Panel();
+            lblMySurveys=new Label();
             tableLayoutPanelSurvey.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).BeginInit();
             panelSurveyHeader.SuspendLayout();
@@ -45,28 +45,29 @@
             // 
             // tableLayoutPanelSurvey
             // 
-            tableLayoutPanelSurvey.ColumnCount = 3;
-            tableLayoutPanelSurvey.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65F));
+            tableLayoutPanelSurvey.ColumnCount=4;
+            tableLayoutPanelSurvey.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanelSurvey.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanelSurvey.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanelSurvey.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            tableLayoutPanelSurvey.Controls.Add(btnInvites, 1, 4);
-            tableLayoutPanelSurvey.Controls.Add(btnDelete, 1, 3);
-            tableLayoutPanelSurvey.Controls.Add(btnEdit, 1, 2);
-            tableLayoutPanelSurvey.Controls.Add(buttonAdd, 1, 1);
-            tableLayoutPanelSurvey.Controls.Add(dataGridViewSurvey, 0, 1);
-            tableLayoutPanelSurvey.Controls.Add(panelSurveyHeader, 0, 0);
-            tableLayoutPanelSurvey.Dock = DockStyle.Fill;
-            tableLayoutPanelSurvey.Location = new Point(0, 0);
-            tableLayoutPanelSurvey.Name = "tableLayoutPanelSurvey";
-            tableLayoutPanelSurvey.RowCount = 6;
+            tableLayoutPanelSurvey.Controls.Add(btnInvites, 2, 4);
+            tableLayoutPanelSurvey.Controls.Add(btnDelete, 2, 3);
+            tableLayoutPanelSurvey.Controls.Add(btnEdit, 2, 2);
+            tableLayoutPanelSurvey.Controls.Add(buttonAdd, 2, 1);
+            tableLayoutPanelSurvey.Controls.Add(dataGridViewSurvey, 1, 1);
+            tableLayoutPanelSurvey.Controls.Add(panelSurveyHeader, 1, 0);
+            tableLayoutPanelSurvey.Dock=DockStyle.Fill;
+            tableLayoutPanelSurvey.Location=new Point(0, 0);
+            tableLayoutPanelSurvey.Name="tableLayoutPanelSurvey";
+            tableLayoutPanelSurvey.RowCount=6;
             tableLayoutPanelSurvey.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanelSurvey.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanelSurvey.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanelSurvey.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanelSurvey.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanelSurvey.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanelSurvey.Size = new Size(694, 442);
-            tableLayoutPanelSurvey.TabIndex = 0;
+            tableLayoutPanelSurvey.Size=new Size(694, 442);
+            tableLayoutPanelSurvey.TabIndex=0;
             // 
             // btnInvites
             // 
@@ -106,84 +107,86 @@
             btnEdit.Name="btnEdit";
             btnEdit.Size=new Size(132, 46);
             btnEdit.TabIndex=1;
-            btnEdit.Text="Edit";
+            btnEdit.Text="View/Edit";
             btnEdit.UseVisualStyleBackColor=false;
             btnEdit.Click+=btnEdit_Click;
             // 
             // buttonAdd
             // 
-            buttonAdd.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            buttonAdd.BackColor = Color.Orange;
-            buttonAdd.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAdd.ForeColor = Color.DarkGreen;
-            buttonAdd.Location = new Point(454, 66);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(132, 43);
-            buttonAdd.TabIndex = 0;
-            buttonAdd.Text = "Add";
-            buttonAdd.UseVisualStyleBackColor = false;
-            buttonAdd.Click += buttonAdd_Click;
+            buttonAdd.Anchor=AnchorStyles.Left|AnchorStyles.Right;
+            buttonAdd.BackColor=Color.Orange;
+            buttonAdd.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAdd.ForeColor=Color.DarkGreen;
+            buttonAdd.Location=new Point(454, 66);
+            buttonAdd.Name="buttonAdd";
+            buttonAdd.Size=new Size(132, 43);
+            buttonAdd.TabIndex=0;
+            buttonAdd.Text="Add";
+            buttonAdd.UseVisualStyleBackColor=false;
+            buttonAdd.Click+=buttonAdd_Click;
             // 
             // dataGridViewSurvey
             // 
-            dataGridViewSurvey.AllowUserToAddRows = false;
-            dataGridViewSurvey.AllowUserToDeleteRows = false;
-            dataGridViewSurvey.BackgroundColor = Color.PapayaWhip;
-            dataGridViewSurvey.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSurvey.AllowUserToAddRows=false;
+            dataGridViewSurvey.AllowUserToDeleteRows=false;
+            dataGridViewSurvey.BackgroundColor=Color.PapayaWhip;
+            dataGridViewSurvey.ColumnHeadersHeightSizeMode=DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewSurvey.Columns.AddRange(new DataGridViewColumn[] { SurveyName, Date });
-            dataGridViewSurvey.Dock = DockStyle.Fill;
-            dataGridViewSurvey.Location = new Point(3, 47);
-            dataGridViewSurvey.Name = "dataGridViewSurvey";
-            dataGridViewSurvey.ReadOnly = true;
+            dataGridViewSurvey.Dock=DockStyle.Fill;
+            dataGridViewSurvey.Location=new Point(107, 47);
+            dataGridViewSurvey.Name="dataGridViewSurvey";
+            dataGridViewSurvey.ReadOnly=true;
             tableLayoutPanelSurvey.SetRowSpan(dataGridViewSurvey, 4);
-            dataGridViewSurvey.RowTemplate.Height = 25;
-            dataGridViewSurvey.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewSurvey.Size = new Size(445, 346);
-            dataGridViewSurvey.TabIndex = 0;
+            dataGridViewSurvey.RowTemplate.Height=25;
+            dataGridViewSurvey.SelectionMode=DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewSurvey.Size=new Size(341, 346);
+            dataGridViewSurvey.TabIndex=0;
             // 
             // SurveyName
             // 
-            SurveyName.DataPropertyName = "SurveyName";
-            SurveyName.HeaderText = "Name";
-            SurveyName.Name = "SurveyName";
-            SurveyName.ReadOnly = true;
+            SurveyName.DataPropertyName="SurveyName";
+            SurveyName.HeaderText="Name";
+            SurveyName.Name="SurveyName";
+            SurveyName.ReadOnly=true;
+            SurveyName.Width=390;
             // 
             // Date
             // 
-            Date.DataPropertyName = "SurveyDateTime";
-            Date.HeaderText = "Date";
-            Date.Name = "Date";
-            Date.ReadOnly = true;
+            Date.DataPropertyName="SurveyDateTime";
+            Date.HeaderText="Date";
+            Date.Name="Date";
+            Date.ReadOnly=true;
+            Date.Width=200;
             // 
             // panelSurveyHeader
             // 
-            panelSurveyHeader.BackColor = Color.DarkOrange;
+            panelSurveyHeader.BackColor=Color.DarkOrange;
             tableLayoutPanelSurvey.SetColumnSpan(panelSurveyHeader, 2);
             panelSurveyHeader.Controls.Add(lblMySurveys);
-            panelSurveyHeader.Location = new Point(3, 3);
-            panelSurveyHeader.Name = "panelSurveyHeader";
-            panelSurveyHeader.Size = new Size(583, 38);
-            panelSurveyHeader.TabIndex = 1;
+            panelSurveyHeader.Location=new Point(107, 3);
+            panelSurveyHeader.Name="panelSurveyHeader";
+            panelSurveyHeader.Size=new Size(479, 38);
+            panelSurveyHeader.TabIndex=1;
             // 
             // lblMySurveys
             // 
-            lblMySurveys.AutoSize = true;
-            lblMySurveys.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            lblMySurveys.ForeColor = Color.DarkGreen;
-            lblMySurveys.Location = new Point(16, 0);
-            lblMySurveys.Name = "lblMySurveys";
-            lblMySurveys.Size = new Size(134, 32);
-            lblMySurveys.TabIndex = 0;
-            lblMySurveys.Text = "My Surveys";
+            lblMySurveys.AutoSize=true;
+            lblMySurveys.Font=new Font("Segoe UI Semibold", 18F, FontStyle.Bold|FontStyle.Italic, GraphicsUnit.Point);
+            lblMySurveys.ForeColor=Color.DarkGreen;
+            lblMySurveys.Location=new Point(16, 0);
+            lblMySurveys.Name="lblMySurveys";
+            lblMySurveys.Size=new Size(134, 32);
+            lblMySurveys.TabIndex=0;
+            lblMySurveys.Text="My Surveys";
             // 
             // ucSurvey
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions=new SizeF(7F, 15F);
+            AutoScaleMode=AutoScaleMode.Font;
             Controls.Add(tableLayoutPanelSurvey);
-            Name = "ucSurvey";
-            Size = new Size(694, 442);
-            Load += ucSurvey_Load;
+            Name="ucSurvey";
+            Size=new Size(694, 442);
+            Load+=ucSurvey_Load;
             tableLayoutPanelSurvey.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewSurvey).EndInit();
             panelSurveyHeader.ResumeLayout(false);

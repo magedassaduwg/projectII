@@ -1,4 +1,4 @@
-﻿using MassTransit;
+﻿
 using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
@@ -23,34 +23,37 @@ namespace TeaLeaves.Views
         public addSurveyForm(Survey selectedSurvey)
         {
             InitializeComponent();
-            _surveyOption = new List<SurveyOption>();
-            _newSurveyOption = new List<SurveyOption>();
-            _survey = selectedSurvey ?? new Survey();
             _surveyController = new SurveyController();
             _surveyOptionController = new SurveyOptionController();
+            _surveyOption = new List<SurveyOption>();
+            _newSurveyOption = new List<SurveyOption>();
+            _survey = selectedSurvey ?? new Survey(); ;
+            BindSurveyValue();
             dataGridViewSurvey.AutoGenerateColumns = false;
-            BindEventValue();
+
         }
 
-        private void BindEventValue()
+        private void BindSurveyValue()
         {
             richTextBoxDescription.Text = _survey.SurveyName;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(surveyOption.Text))
+            if (surveyOption.Text != "" && CheckSurveyName(surveyOption.Text))
             {
-                SurveyOption addedOption = new SurveyOption
+                SurveyOption addedSurvey = new SurveyOption
                 {
-                    Name = surveyOption.Text
+                    Name = surveyOption.Text,
                 };
-                _newSurveyOption.Add(addedOption);
+                _newSurveyOption.Add(addedSurvey);
 
+                List<SurveyOption> allOption = new List<SurveyOption>();
+                allOption.AddRange(_surveyOption);
+                allOption.AddRange(_newSurveyOption);
                 try
                 {
-                    dataGridViewSurvey.DataSource = null;
-                    dataGridViewSurvey.DataSource = _newSurveyOption;
+                    dataGridViewSurvey.DataSource = allOption;
                 }
                 catch (Exception ex)
                 {
@@ -58,12 +61,30 @@ namespace TeaLeaves.Views
                 }
                 surveyOption.Text = "";
             }
+            else if (!CheckSurveyName(surveyOption.Text))
+            {
+                labelError.Text = "A Survey with that name already exists";
+            }
             else
             {
-                labelError.Text = "Please add the option";
+                labelError.Text = "Survey name cannot be blank";
             }
         }
 
+        private bool CheckSurveyName(string name)
+        {
+            foreach (SurveyOption option in _surveyOption)
+            {
+                if (option.Name == name) { return false; }
+            }
+
+            foreach (SurveyOption option in _newSurveyOption)
+            {
+                if (option.Name == name) { return false; }
+            }
+
+            return true;
+        }
 
         private void addSurveyForm_Load(object sender, EventArgs e)
         {
@@ -74,7 +95,7 @@ namespace TeaLeaves.Views
         {
             try
             {
-                _surveyOption = _surveyOptionController.GetSurveyOptionByEventId(_survey.Id);
+                _surveyOption = _surveyOptionController.GetSurveyOptionsBySurveyId(_survey.Id);
 
                 dataGridViewSurvey.DataSource = _surveyOption;
             }
@@ -118,9 +139,9 @@ namespace TeaLeaves.Views
                 labelError.Text = "Please enter the survey description/question";
                 return false;
             }
-            if (dataGridViewSurvey.Rows.Count < 3)
+            if (dataGridViewSurvey.Rows.Count < 2)
             {
-                labelError.Text = "Please add at least three survey options";
+                labelError.Text = "Please add at least two survey options";
                 return false;
             }
             return true;
@@ -128,12 +149,12 @@ namespace TeaLeaves.Views
 
         private void surveyOption_TextChanged(object sender, EventArgs e)
         {
-            labelError.Text="";
+            labelError.Text = "";
         }
 
         private void richTextBoxDescription_TextChanged(object sender, EventArgs e)
         {
-            labelError.Text="";
+            labelError.Text = "";
         }
     }
 }

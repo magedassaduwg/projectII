@@ -1,4 +1,7 @@
 ﻿using TeaLeaves.Controllers;
+using TeaLeaves.Helper;
+using TeaLeaves.Models;
+using TeaLeaves.Views;
 
 namespace TeaLeaves.UserControls
 {
@@ -7,11 +10,83 @@ namespace TeaLeaves.UserControls
     /// </summary>
     public partial class ucSurveyInvites : UserControl
     {
-        SurveyController surveyController = new SurveyController();
+        SurveyController _surveyController;
+        List<Survey> _surveys;
+        List<Survey> _answeredSurveys;
 
+        /// <summary>
+        /// The constructor for the ucSurveyInvites
+        /// </summary>
         public ucSurveyInvites()
         {
+            _surveyController = new SurveyController();
+            _surveys = new List<Survey>();
+            _answeredSurveys = new List<Survey>();
             InitializeComponent();
+            GetUserSurveys();
+        }
+
+        /// <summary>
+        /// Populates the datagridviews with the correct survey invites
+        /// </summary>
+        public void GetUserSurveys()
+        {
+            try
+            {
+                _surveys = _surveyController.GetSurveysReceivedByUserId(CurrentUserStore.User.UserId);
+
+                dgvSurveyInvites.DataSource = _surveys;
+
+                _answeredSurveys = _surveyController.GetAnsweredSurveysReceivedByUserId(CurrentUserStore.User.UserId);
+
+                dgvAcceptedInvites.DataSource = _answeredSurveys;
+
+                if (dgvSurveyInvites.Rows.Count > 0)
+                {
+                    dgvSurveyInvites.Rows[0].Selected = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void btnViewSurvey_Click(object sender, EventArgs e)
+        {
+            if (dgvSurveyInvites.SelectedRows.Count > 0)
+            {
+                Survey selectedSurvey = (Survey)dgvSurveyInvites.SelectedRows[0].DataBoundItem;
+                using (VoteSurveyForm viewEventForm = new VoteSurveyForm(selectedSurvey, true, this))
+                {
+                    viewEventForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnViewAnswered_Click(object sender, EventArgs e)
+        {
+            if (dgvAcceptedInvites.SelectedRows.Count > 0)
+            {
+                Survey selectedSurvey = (Survey)dgvAcceptedInvites.SelectedRows[0].DataBoundItem;
+                using (VoteSurveyForm viewEventForm = new VoteSurveyForm(selectedSurvey, false, this))
+                {
+                    viewEventForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            GetUserSurveys();
         }
     }
 }

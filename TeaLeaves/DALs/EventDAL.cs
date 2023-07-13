@@ -112,10 +112,12 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = @"SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description
+                string query = @"SELECT e.EventId as UserEventId, CreatorId, FirstName, LastName, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description
                     FROM Events e
                     JOIN EventResponses er
                     ON e.EventID = er.EventID
+                    JOIN Users u
+                    ON u.UserId = e.CreatorId
                     WHERE er.EventReceiverId = @UserId AND er.Accepted = 1;";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -129,6 +131,7 @@ namespace TeaLeaves.DALs
                     {
                         Id = Convert.ToInt32(reader["UserEventId"]),
                         CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        CreatorName = reader["FirstName"].ToString() + " " + reader["LastName"].ToString(),
                         EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
                         State = reader["State"].ToString(),
                         City = reader["City"].ToString(),
@@ -155,11 +158,13 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description " +
-                    "FROM Events e " +
-                    "JOIN EventResponses er " +
-                    "ON e.EventID = er.EventID " +
-                    "WHERE er.EventReceiverId = @UserId AND er.Declined = 1;";
+                string query = @"SELECT e.EventId as UserEventId, CreatorId, FirstName, LastName, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description
+                                 FROM Events e
+                                 JOIN EventResponses er
+                                 ON e.EventID = er.EventID
+                                 JOIN Users u
+                                 ON u.UserId = e.CreatorId
+                                 WHERE er.EventReceiverId = @UserId AND er.Declined = 1;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);
@@ -172,6 +177,7 @@ namespace TeaLeaves.DALs
                     {
                         Id = Convert.ToInt32(reader["UserEventId"]),
                         CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        CreatorName = reader["FirstName"].ToString() + " " + reader["LastName"].ToString(),
                         EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
                         State = reader["State"].ToString(),
                         City = reader["City"].ToString(),
@@ -198,11 +204,13 @@ namespace TeaLeaves.DALs
 
             using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
             {
-                string query = "SELECT e.EventId as UserEventId, CreatorId, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description " +
-                    "FROM Events e " +
-                    "JOIN EventResponses er " +
-                    "ON e.EventID = er.EventID " +
-                    "WHERE er.EventReceiverId = @UserId AND er.Accepted = 0 AND er.Declined = 0;";
+                string query = @"SELECT e.EventId as UserEventId, CreatorId, FirstName, LastName, EventDateTime, Category, State, City, StreetNumber, Zipcode, Name, Description
+                                 FROM Events e
+                                 JOIN EventResponses er
+                                 ON e.EventID = er.EventID
+                                 JOIN Users u
+                                 ON u.UserId = e.CreatorId
+                                 WHERE er.EventReceiverId = @UserId AND er.Accepted = 0 AND er.Declined = 0;";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserId", userId);
@@ -215,6 +223,7 @@ namespace TeaLeaves.DALs
                     {
                         Id = Convert.ToInt32(reader["UserEventId"]),
                         CreatorId = Convert.ToInt32(reader["CreatorId"]),
+                        CreatorName = reader["FirstName"].ToString() + " " + reader["LastName"].ToString(),
                         EventDateTime = Convert.ToDateTime(reader["EventDateTime"]),
                         State = reader["State"].ToString(),
                         City = reader["City"].ToString(),

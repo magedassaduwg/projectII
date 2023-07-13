@@ -1,13 +1,14 @@
 ﻿namespace TeaLeaves.Models
 {
     /// <summary>
-    /// The model object for the SurveyOption table
+    /// The model class for the SurveyVote object
     /// </summary>
-    public class SurveyOption
+    public class SurveyVote
     {
-        public string? Name { get; set; }
-        public int Votes { get; set; }
+        public int Id { get; set; }
         public int SurveyId { get; set; }
+        public int UserId { get; set; }
         public int SurveyOptionId { get; set; }
+
     }
 }

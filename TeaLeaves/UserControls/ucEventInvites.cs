@@ -63,8 +63,6 @@ namespace TeaLeaves.UserControls
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             GetUserEvents();
-           
-
         }
 
         private void ucEventInvites_Load(object sender, EventArgs e)
@@ -143,7 +141,6 @@ namespace TeaLeaves.UserControls
             {
                 MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
         private void radioButtonFilterByCategory_CheckedChanged(object sender, EventArgs e)
@@ -202,6 +199,14 @@ namespace TeaLeaves.UserControls
             else
             {
                 MessageBox.Show("No event on your Invite!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnPassedEvents_Click(object sender, EventArgs e)
+        {
+            using (ViewPassedEventsForm viewEventForm = new ViewPassedEventsForm())
+            {
+                viewEventForm.ShowDialog();
             }
         }
     }

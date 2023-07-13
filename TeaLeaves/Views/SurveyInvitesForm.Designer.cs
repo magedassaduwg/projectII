@@ -30,15 +30,16 @@
         {
             lblUninvitedContacts = new Label();
             dgvUninvitedContacts = new DataGridView();
+            FirstName = new DataGridViewTextBoxColumn();
+            lastName = new DataGridViewTextBoxColumn();
+            username = new DataGridViewTextBoxColumn();
             lblInvitedContacts = new Label();
             btnInvite = new Button();
             dgvInvitedContacts = new DataGridView();
             firstName1 = new DataGridViewTextBoxColumn();
             lastName2 = new DataGridViewTextBoxColumn();
             username1 = new DataGridViewTextBoxColumn();
-            FirstName = new DataGridViewTextBoxColumn();
-            lastName = new DataGridViewTextBoxColumn();
-            username = new DataGridViewTextBoxColumn();
+            lblSurveyInvitesDetails = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvUninvitedContacts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvInvitedContacts).BeginInit();
             SuspendLayout();
@@ -48,7 +49,7 @@
             lblUninvitedContacts.AutoSize = true;
             lblUninvitedContacts.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblUninvitedContacts.ForeColor = Color.DarkOrange;
-            lblUninvitedContacts.Location = new Point(536, 16);
+            lblUninvitedContacts.Location = new Point(534, 111);
             lblUninvitedContacts.Name = "lblUninvitedContacts";
             lblUninvitedContacts.Size = new Size(156, 21);
             lblUninvitedContacts.TabIndex = 13;
@@ -63,20 +64,44 @@
             dgvUninvitedContacts.BackgroundColor = Color.PapayaWhip;
             dgvUninvitedContacts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUninvitedContacts.Columns.AddRange(new DataGridViewColumn[] { FirstName, lastName, username });
-            dgvUninvitedContacts.Location = new Point(429, 40);
+            dgvUninvitedContacts.Location = new Point(429, 135);
             dgvUninvitedContacts.Name = "dgvUninvitedContacts";
             dgvUninvitedContacts.ReadOnly = true;
-            dgvUninvitedContacts.RowTemplate.Height = 25;
+            dgvUninvitedContacts.RowTemplate.Height = 40;
             dgvUninvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUninvitedContacts.Size = new Size(377, 551);
+            dgvUninvitedContacts.Size = new Size(377, 456);
             dgvUninvitedContacts.TabIndex = 12;
+            // 
+            // FirstName
+            // 
+            FirstName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FirstName.DataPropertyName = "FirstName";
+            FirstName.HeaderText = "First Name";
+            FirstName.Name = "FirstName";
+            FirstName.ReadOnly = true;
+            // 
+            // lastName
+            // 
+            lastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            lastName.DataPropertyName = "LastName";
+            lastName.HeaderText = "Last Name";
+            lastName.Name = "lastName";
+            lastName.ReadOnly = true;
+            // 
+            // username
+            // 
+            username.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            username.DataPropertyName = "Username";
+            username.HeaderText = "Username";
+            username.Name = "username";
+            username.ReadOnly = true;
             // 
             // lblInvitedContacts
             // 
             lblInvitedContacts.AutoSize = true;
             lblInvitedContacts.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblInvitedContacts.ForeColor = Color.DarkOrange;
-            lblInvitedContacts.Location = new Point(147, 16);
+            lblInvitedContacts.Location = new Point(145, 111);
             lblInvitedContacts.Name = "lblInvitedContacts";
             lblInvitedContacts.Size = new Size(134, 21);
             lblInvitedContacts.TabIndex = 11;
@@ -91,6 +116,7 @@
             btnInvite.TabIndex = 10;
             btnInvite.Text = "Invite";
             btnInvite.UseVisualStyleBackColor = true;
+            btnInvite.Click += btnInvite_Click;
             // 
             // dgvInvitedContacts
             // 
@@ -101,12 +127,12 @@
             dgvInvitedContacts.BackgroundColor = Color.PapayaWhip;
             dgvInvitedContacts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInvitedContacts.Columns.AddRange(new DataGridViewColumn[] { firstName1, lastName2, username1 });
-            dgvInvitedContacts.Location = new Point(23, 40);
+            dgvInvitedContacts.Location = new Point(23, 135);
             dgvInvitedContacts.Name = "dgvInvitedContacts";
             dgvInvitedContacts.ReadOnly = true;
             dgvInvitedContacts.RowTemplate.Height = 25;
             dgvInvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvInvitedContacts.Size = new Size(378, 551);
+            dgvInvitedContacts.Size = new Size(378, 456);
             dgvInvitedContacts.TabIndex = 9;
             // 
             // firstName1
@@ -134,35 +160,23 @@
             username1.Name = "username1";
             username1.ReadOnly = true;
             // 
-            // FirstName
+            // lblSurveyInvitesDetails
             // 
-            FirstName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            FirstName.DataPropertyName = "FirstName";
-            FirstName.HeaderText = "First Name";
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
-            // 
-            // lastName
-            // 
-            lastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            lastName.DataPropertyName = "LastName";
-            lastName.HeaderText = "Last Name";
-            lastName.Name = "lastName";
-            lastName.ReadOnly = true;
-            // 
-            // username
-            // 
-            username.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            username.DataPropertyName = "Username";
-            username.HeaderText = "Username";
-            username.Name = "username";
-            username.ReadOnly = true;
+            lblSurveyInvitesDetails.AutoSize = true;
+            lblSurveyInvitesDetails.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSurveyInvitesDetails.ForeColor = Color.DarkGreen;
+            lblSurveyInvitesDetails.Location = new Point(286, 26);
+            lblSurveyInvitesDetails.Name = "lblSurveyInvitesDetails";
+            lblSurveyInvitesDetails.Size = new Size(14, 21);
+            lblSurveyInvitesDetails.TabIndex = 14;
+            lblSurveyInvitesDetails.Text = ":";
             // 
             // SurveyInvitesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(830, 709);
+            Controls.Add(lblSurveyInvitesDetails);
             Controls.Add(lblUninvitedContacts);
             Controls.Add(dgvUninvitedContacts);
             Controls.Add(lblInvitedContacts);
@@ -190,5 +204,6 @@
         private DataGridViewTextBoxColumn firstName1;
         private DataGridViewTextBoxColumn lastName2;
         private DataGridViewTextBoxColumn username1;
+        private Label lblSurveyInvitesDetails;
     }
 }

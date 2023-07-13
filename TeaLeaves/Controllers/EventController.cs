@@ -47,8 +47,7 @@ namespace TeaLeaves.Controllers
         public List<Event> GetEventsReceivedByUserId(int userId)
         {
             return _eventDAL.GetEventsReceivedByUserId(userId);
-        }
-       
+        }       
 
         /// <summary>
         /// Returns all the events the given user has accepted
@@ -89,7 +88,5 @@ namespace TeaLeaves.Controllers
         {
             return _eventDAL.GetEventById(selectedEventId);
         }
-  
-       
     }
 }

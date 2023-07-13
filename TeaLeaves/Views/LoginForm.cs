@@ -13,6 +13,7 @@ namespace TeaLeaves
         private UsersController _userController;
         private User _userLogin;
         private bool _rememberMe;
+        private string storedPassword;
 
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace TeaLeaves
             InitializeComponent();
             _userController = new UsersController();
             _userLogin = new User();
-            _rememberMe = false;
+            _rememberMe = Properties.Settings.Default.RememberMe;
         }
 
 
@@ -45,17 +46,17 @@ namespace TeaLeaves
             try
             {
                 _userLogin.Username = textBoxUsername.Text.Trim();
+                _userLogin.Password = textBoxPassword.Text;
+                storedPassword = _userLogin.Password;
                 _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
-                if (_rememberMe)
-                {
-                    LoginHelper.SaveCredentials(_userLogin.Username, _userLogin.Password);
-                    _userLogin.Password = EncryptionHelper.EncryptString(_userLogin.Password);
-
-                }
                 User verifiedUser = _userController.VerifyUserCredentials(_userLogin);
+
                 if (verifiedUser != null)
                 {
-              
+                    if (_rememberMe)
+                    {
+                        LoginHelper.SaveCredentials(_userLogin.Username, storedPassword);
+                    }
 
                     CurrentUserStore.SetCurrentUser(verifiedUser);
 
@@ -74,12 +75,14 @@ namespace TeaLeaves
                         (string username, string password) = LoginHelper.LoadCredentials();
                         textBoxUsername.Text = username;
                         textBoxPassword.Text = password;
+                        storedPassword = password;
                     }
                 }
                 else
                 {
+                    textBoxPassword.Text = string.Empty;
                     lblError.Text = "Invalid username/password.Please try again!";
-           
+                    
                 }
             }
             catch (Exception ex)
@@ -100,7 +103,7 @@ namespace TeaLeaves
         {
             Show();
             textBoxUsername.Clear();
-            textBoxPassword.Clear();
+            textBoxPassword.Text = storedPassword;
             textBoxPassword.Focus();
         }
 
@@ -112,15 +115,30 @@ namespace TeaLeaves
             }
         }
 
-        private void rememberMe_CheckedChanged(object sender, EventArgs e)
-        {
-            _rememberMe = rememberMe.Checked;
-        }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
             rememberMe.Checked = _rememberMe;
-           
+
+            if (_rememberMe)
+            {
+                (string username, string password) = LoginHelper.LoadCredentials();
+                textBoxUsername.Text = username;
+                textBoxPassword.Text = password;
+                storedPassword = password;
+            }
+
+        }
+        private void SaveRememberMeSetting(bool rememberMe)
+        {
+            Properties.Settings.Default.RememberMe = rememberMe;
+            Properties.Settings.Default.Save();
+        }
+
+        private void rememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+            _rememberMe = rememberMe.Checked;
+            SaveRememberMeSetting(_rememberMe);
         }
     }
 }

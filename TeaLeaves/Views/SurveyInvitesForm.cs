@@ -28,10 +28,12 @@ namespace TeaLeaves.Views
             _uninvitedUsers = new List<User>();
             dgvInvitedContacts.AutoGenerateColumns = false;
             dgvUninvitedContacts.AutoGenerateColumns = false;
+            GetUserSurveys();
         }
 
         private void GetUserSurveys()
         {
+            lblSurveyInvitesDetails.Text = _survey.SurveyName;
             try
             {
                 _invitedUsers = _contactsController.GetUserContactsBySurvey(CurrentUserStore.User, _survey);

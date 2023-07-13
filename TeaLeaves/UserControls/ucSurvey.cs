@@ -1,33 +1,26 @@
-﻿using MassTransit;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TeaLeaves.Controllers;
+﻿using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
 using TeaLeaves.Views;
 
 namespace TeaLeaves.UserControls
 {
+    /// <summary>
+    ///  Represents a user control for survey.
+    /// </summary>
     public partial class ucSurvey : UserControl
     {
         private List<Survey> _survey;
         private SurveyController _surveyController;
+        /// <summary>
+        /// Initializes a new instance of the ucSurvey.
+        /// </summary>
         public ucSurvey()
         {
             InitializeComponent();
             _surveyController = new SurveyController();
             dataGridViewSurvey.AutoGenerateColumns = false;
         }
-
-
-
         private void InitializeSurvey()
         {
             try
@@ -68,9 +61,9 @@ namespace TeaLeaves.UserControls
         {
             if (dataGridViewSurvey.SelectedRows.Count > 0)
             {
-                Survey selectedEvent = (Survey)dataGridViewSurvey.SelectedRows[0].DataBoundItem;
+                Survey selectedSurvey = (Survey)dataGridViewSurvey.SelectedRows[0].DataBoundItem;
 
-                using (addSurveyForm surveyForm = new addSurveyForm(selectedEvent))
+                using (addSurveyForm surveyForm = new addSurveyForm(selectedSurvey))
                 {
                     surveyForm.ShowDialog();
                 }
@@ -81,7 +74,25 @@ namespace TeaLeaves.UserControls
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dataGridViewSurvey.SelectedRows.Count > 0)
+            {
+                Survey selectedSurvey = (Survey)dataGridViewSurvey.SelectedRows[0].DataBoundItem;
 
+
+                bool deleted = _surveyController.DeleteSurvey(selectedSurvey.Id);
+                if (deleted)
+                {
+                    MessageBox.Show("Survey deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    InitializeSurvey();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to Survey the event.");
+                }
+
+
+            }
         }
 
         private void btnInvites_Click(object sender, EventArgs e)
@@ -97,5 +108,7 @@ namespace TeaLeaves.UserControls
                 InitializeSurvey();
             }
         }
+
+
     }
 }
