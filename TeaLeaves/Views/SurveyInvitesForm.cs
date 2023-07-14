@@ -69,5 +69,10 @@ namespace TeaLeaves.Views
                 GetUserSurveys();
             }
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -80,7 +80,7 @@
             dgvEventInvites.Location = new Point(3, 52);
             dgvEventInvites.Name = "dgvEventInvites";
             dgvEventInvites.ReadOnly = true;
-            dgvEventInvites.RowTemplate.Height = 25;
+            dgvEventInvites.RowTemplate.Height = 40;
             dgvEventInvites.ScrollBars = ScrollBars.Vertical;
             dgvEventInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEventInvites.Size = new Size(902, 160);
@@ -193,7 +193,7 @@
             dgvAcceptedInvites.Location = new Point(3, 250);
             dgvAcceptedInvites.Name = "dgvAcceptedInvites";
             dgvAcceptedInvites.ReadOnly = true;
-            dgvAcceptedInvites.RowTemplate.Height = 25;
+            dgvAcceptedInvites.RowTemplate.Height = 40;
             dgvAcceptedInvites.ScrollBars = ScrollBars.Vertical;
             dgvAcceptedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAcceptedInvites.Size = new Size(902, 160);
@@ -323,7 +323,7 @@
             dgvDeclinedInvites.Location = new Point(3, 446);
             dgvDeclinedInvites.Name = "dgvDeclinedInvites";
             dgvDeclinedInvites.ReadOnly = true;
-            dgvDeclinedInvites.RowTemplate.Height = 25;
+            dgvDeclinedInvites.RowTemplate.Height = 40;
             dgvDeclinedInvites.ScrollBars = ScrollBars.Vertical;
             dgvDeclinedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDeclinedInvites.Size = new Size(902, 160);

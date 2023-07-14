@@ -50,6 +50,7 @@
             lblAcceptedContacts = new Label();
             lblDeclinedContacts = new Label();
             lblEventDetails = new Label();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvInvitedContacts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUninvitedContacts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcceptedContacts).BeginInit();
@@ -68,7 +69,7 @@
             dgvInvitedContacts.Location = new Point(12, 111);
             dgvInvitedContacts.Name = "dgvInvitedContacts";
             dgvInvitedContacts.ReadOnly = true;
-            dgvInvitedContacts.RowTemplate.Height = 25;
+            dgvInvitedContacts.RowTemplate.Height = 40;
             dgvInvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvInvitedContacts.Size = new Size(380, 180);
             dgvInvitedContacts.TabIndex = 0;
@@ -99,13 +100,15 @@
             // 
             // btnInvite
             // 
-            btnInvite.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInvite.BackColor = Color.YellowGreen;
+            btnInvite.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInvite.ForeColor = Color.DarkGreen;
             btnInvite.Location = new Point(458, 582);
             btnInvite.Name = "btnInvite";
             btnInvite.Size = new Size(250, 64);
             btnInvite.TabIndex = 1;
             btnInvite.Text = "Invite";
-            btnInvite.UseVisualStyleBackColor = true;
+            btnInvite.UseVisualStyleBackColor = false;
             btnInvite.Click += btnInvite_Click;
             // 
             // lblInvitedContacts
@@ -131,7 +134,7 @@
             dgvUninvitedContacts.Location = new Point(398, 111);
             dgvUninvitedContacts.Name = "dgvUninvitedContacts";
             dgvUninvitedContacts.ReadOnly = true;
-            dgvUninvitedContacts.RowTemplate.Height = 25;
+            dgvUninvitedContacts.RowTemplate.Height = 40;
             dgvUninvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUninvitedContacts.Size = new Size(392, 465);
             dgvUninvitedContacts.TabIndex = 3;
@@ -183,7 +186,7 @@
             dgvAcceptedContacts.Location = new Point(12, 318);
             dgvAcceptedContacts.Name = "dgvAcceptedContacts";
             dgvAcceptedContacts.ReadOnly = true;
-            dgvAcceptedContacts.RowTemplate.Height = 25;
+            dgvAcceptedContacts.RowTemplate.Height = 40;
             dgvAcceptedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAcceptedContacts.Size = new Size(380, 176);
             dgvAcceptedContacts.TabIndex = 5;
@@ -224,7 +227,7 @@
             dgvDeclinedContacts.Location = new Point(12, 521);
             dgvDeclinedContacts.Name = "dgvDeclinedContacts";
             dgvDeclinedContacts.ReadOnly = true;
-            dgvDeclinedContacts.RowTemplate.Height = 25;
+            dgvDeclinedContacts.RowTemplate.Height = 40;
             dgvDeclinedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDeclinedContacts.Size = new Size(380, 186);
             dgvDeclinedContacts.TabIndex = 6;
@@ -286,11 +289,25 @@
             lblEventDetails.TabIndex = 9;
             lblEventDetails.Text = ":";
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Orange;
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBack.ForeColor = Color.DarkGreen;
+            btnBack.Location = new Point(706, 662);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(123, 45);
+            btnBack.TabIndex = 10;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // EventInvitesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(830, 709);
+            Controls.Add(btnBack);
             Controls.Add(lblEventDetails);
             Controls.Add(lblDeclinedContacts);
             Controls.Add(lblAcceptedContacts);
@@ -336,5 +353,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private Label lblEventDetails;
+        private Button btnBack;
     }
 }

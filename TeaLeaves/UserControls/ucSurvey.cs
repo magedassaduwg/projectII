@@ -72,8 +72,20 @@ namespace TeaLeaves.UserControls
 
         }
 
+        private bool ShouldDelete()
+        {
+            DialogResult decline = MessageBox.Show("Are you sure you want to delete this survey?", "" +
+                "", MessageBoxButtons.YesNo);
+            return DialogResult.Yes == decline;
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (!ShouldDelete())
+            {
+                return;
+            }
+
             if (dataGridViewSurvey.SelectedRows.Count > 0)
             {
                 Survey selectedSurvey = (Survey)dataGridViewSurvey.SelectedRows[0].DataBoundItem;

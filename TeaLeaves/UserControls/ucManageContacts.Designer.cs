@@ -58,10 +58,10 @@
             bindingSource1 = new BindingSource(components);
             button4 = new Button();
             dgvContacts = new DataGridView();
+            FullName = new DataGridViewTextBoxColumn();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             splitContainer1 = new SplitContainer();
-            FullName = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)usersBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)contactDataGridView).BeginInit();
             contactLayoutPanel.SuspendLayout();
@@ -397,10 +397,17 @@
             dgvContacts.MultiSelect = false;
             dgvContacts.Name = "dgvContacts";
             dgvContacts.ReadOnly = true;
-            dgvContacts.RowTemplate.Height = 25;
+            dgvContacts.RowTemplate.Height = 40;
             dgvContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvContacts.Size = new Size(252, 428);
             dgvContacts.TabIndex = 0;
+            // 
+            // FullName
+            // 
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -464,13 +471,6 @@
             splitContainer1.Size = new Size(776, 495);
             splitContainer1.SplitterDistance = 258;
             splitContainer1.TabIndex = 1;
-            // 
-            // FullName
-            // 
-            FullName.DataPropertyName = "FullName";
-            FullName.HeaderText = "Name";
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
             // 
             // ucManageContacts
             // 

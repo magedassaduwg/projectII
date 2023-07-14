@@ -251,7 +251,7 @@
             dgvMyResponsibilities.Name = "dgvMyResponsibilities";
             dgvMyResponsibilities.ReadOnly = true;
             tableLayoutPanelAddEvent.SetRowSpan(dgvMyResponsibilities, 2);
-            dgvMyResponsibilities.RowTemplate.Height = 25;
+            dgvMyResponsibilities.RowTemplate.Height = 40;
             dgvMyResponsibilities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMyResponsibilities.Size = new Size(338, 160);
             dgvMyResponsibilities.TabIndex = 3;
@@ -282,7 +282,7 @@
             dgvUnassignedResponsibilities.Name = "dgvUnassignedResponsibilities";
             dgvUnassignedResponsibilities.ReadOnly = true;
             tableLayoutPanelAddEvent.SetRowSpan(dgvUnassignedResponsibilities, 2);
-            dgvUnassignedResponsibilities.RowTemplate.Height = 25;
+            dgvUnassignedResponsibilities.RowTemplate.Height = 40;
             dgvUnassignedResponsibilities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUnassignedResponsibilities.Size = new Size(273, 160);
             dgvUnassignedResponsibilities.TabIndex = 4;
@@ -323,23 +323,29 @@
             // 
             // btnAcceptResponsibility
             // 
+            btnAcceptResponsibility.BackColor = Color.YellowGreen;
+            btnAcceptResponsibility.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAcceptResponsibility.ForeColor = Color.DarkGreen;
             btnAcceptResponsibility.Location = new Point(681, 513);
             btnAcceptResponsibility.Margin = new Padding(70, 20, 3, 3);
             btnAcceptResponsibility.Name = "btnAcceptResponsibility";
             btnAcceptResponsibility.Size = new Size(90, 41);
             btnAcceptResponsibility.TabIndex = 2;
             btnAcceptResponsibility.Text = "Accept";
-            btnAcceptResponsibility.UseVisualStyleBackColor = true;
+            btnAcceptResponsibility.UseVisualStyleBackColor = false;
             btnAcceptResponsibility.Click += btnAcceptResponsibility_Click;
             // 
             // btnRemove
             // 
+            btnRemove.BackColor = Color.YellowGreen;
+            btnRemove.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRemove.ForeColor = Color.DarkGreen;
             btnRemove.Location = new Point(614, 394);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(90, 41);
             btnRemove.TabIndex = 1;
             btnRemove.Text = "Remove";
-            btnRemove.UseVisualStyleBackColor = true;
+            btnRemove.UseVisualStyleBackColor = false;
             btnRemove.Click += btnRemove_Click;
             // 
             // ViewEventResponsibilitiesForm

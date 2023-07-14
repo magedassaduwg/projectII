@@ -43,11 +43,11 @@
             usersBindingSource = new BindingSource(components);
             sortButton = new Button();
             contactDataGridView = new DataGridView();
+            FullName = new DataGridViewTextBoxColumn();
             contactLayoutPanel = new TableLayoutPanel();
             SelectedContactTable = new TableLayoutPanel();
             addContactButton = new Button();
             splitContainer1 = new SplitContainer();
-            FullName = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)userProfilePictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usersBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)contactDataGridView).BeginInit();
@@ -214,12 +214,20 @@
             contactDataGridView.MultiSelect = false;
             contactDataGridView.Name = "contactDataGridView";
             contactDataGridView.ReadOnly = true;
-            contactDataGridView.RowTemplate.Height = 25;
+            contactDataGridView.RowTemplate.Height = 40;
             contactDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             contactDataGridView.Size = new Size(260, 389);
             contactDataGridView.TabIndex = 0;
             contactDataGridView.CellFormatting += contactDataGridView_CellFormatting;
             contactDataGridView.RowEnter += contactDataGridView_RowEnter;
+            // 
+            // FullName
+            // 
+            FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
             // 
             // contactLayoutPanel
             // 
@@ -298,14 +306,6 @@
             splitContainer1.Size = new Size(800, 450);
             splitContainer1.SplitterDistance = 266;
             splitContainer1.TabIndex = 1;
-            // 
-            // FullName
-            // 
-            FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            FullName.DataPropertyName = "FullName";
-            FullName.HeaderText = "Name";
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
             // 
             // ProfileContactBookForm
             // 

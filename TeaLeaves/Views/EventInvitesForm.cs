@@ -31,6 +31,8 @@ namespace TeaLeaves.Views
             _event = @event;
             dgvInvitedContacts.AutoGenerateColumns = false;
             dgvUninvitedContacts.AutoGenerateColumns = false;
+            dgvAcceptedContacts.AutoGenerateColumns = false;
+            dgvDeclinedContacts.AutoGenerateColumns = false;
             GetUserEvents();
         }
 
@@ -79,6 +81,11 @@ namespace TeaLeaves.Views
                 _eventResponseController.AddEventResponse(eventResponse);
                 GetUserEvents();
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

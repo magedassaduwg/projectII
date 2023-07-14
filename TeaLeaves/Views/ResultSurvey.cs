@@ -22,7 +22,7 @@ namespace TeaLeaves.Views
             InitializeComponent();
             _surveyOptionController = new SurveyOptionController();
             _surveyOption = new List<SurveyOption>();
-            _survey = selectedSurvey ?? new Survey(); 
+            _survey = selectedSurvey ?? new Survey();
             BindSurveyValue();
             dataGridViewSurvey.AutoGenerateColumns = false;
         }

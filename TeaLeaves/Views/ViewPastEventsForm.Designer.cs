@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             dgvEventInvites = new DataGridView();
-            lblPastEvents = new Label();
-            btnBack = new Button();
             EventName = new DataGridViewTextBoxColumn();
             EventDateTime = new DataGridViewTextBoxColumn();
             Creator = new DataGridViewTextBoxColumn();
             Accepted = new DataGridViewTextBoxColumn();
             Declined = new DataGridViewTextBoxColumn();
+            lblPastEvents = new Label();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEventInvites).BeginInit();
             SuspendLayout();
             // 
@@ -49,37 +49,11 @@
             dgvEventInvites.Location = new Point(2, 84);
             dgvEventInvites.Name = "dgvEventInvites";
             dgvEventInvites.ReadOnly = true;
-            dgvEventInvites.RowTemplate.Height = 25;
+            dgvEventInvites.RowTemplate.Height = 40;
             dgvEventInvites.ScrollBars = ScrollBars.Vertical;
             dgvEventInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEventInvites.Size = new Size(905, 452);
             dgvEventInvites.TabIndex = 22;
-            // 
-            // lblPastEvents
-            // 
-            lblPastEvents.AutoSize = true;
-            lblPastEvents.BackColor = SystemColors.Control;
-            lblPastEvents.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPastEvents.ForeColor = Color.DarkGreen;
-            lblPastEvents.Location = new Point(392, 38);
-            lblPastEvents.Name = "lblPastEvents";
-            lblPastEvents.Size = new Size(96, 21);
-            lblPastEvents.TabIndex = 23;
-            lblPastEvents.Text = "Past Events";
-            // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.Orange;
-            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBack.ForeColor = Color.DarkGreen;
-            btnBack.Location = new Point(20, 573);
-            btnBack.Margin = new Padding(20, 3, 3, 3);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(150, 39);
-            btnBack.TabIndex = 24;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
             // 
             // EventName
             // 
@@ -118,6 +92,32 @@
             Declined.HeaderText = "Declined";
             Declined.Name = "Declined";
             Declined.ReadOnly = true;
+            // 
+            // lblPastEvents
+            // 
+            lblPastEvents.AutoSize = true;
+            lblPastEvents.BackColor = SystemColors.Control;
+            lblPastEvents.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPastEvents.ForeColor = Color.DarkGreen;
+            lblPastEvents.Location = new Point(392, 38);
+            lblPastEvents.Name = "lblPastEvents";
+            lblPastEvents.Size = new Size(96, 21);
+            lblPastEvents.TabIndex = 23;
+            lblPastEvents.Text = "Past Events";
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Orange;
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBack.ForeColor = Color.DarkGreen;
+            btnBack.Location = new Point(20, 573);
+            btnBack.Margin = new Padding(20, 3, 3, 3);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(150, 39);
+            btnBack.TabIndex = 24;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // ViewPastEventsForm
             // 

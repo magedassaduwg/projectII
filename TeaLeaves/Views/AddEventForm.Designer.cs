@@ -52,12 +52,12 @@
             comboBoxCategory = new ComboBox();
             lblEventResponsibilities = new Label();
             dgvResponsibilities = new DataGridView();
+            ResponsibilityName = new DataGridViewTextBoxColumn();
+            User = new DataGridViewTextBoxColumn();
             lblResponsibilities = new Label();
             lblResponsibilityName = new Label();
             tbResponsibilityName = new TextBox();
             btnAddResponsibility = new Button();
-            ResponsibilityName = new DataGridViewTextBoxColumn();
-            User = new DataGridViewTextBoxColumn();
             tableLayoutPanelAddEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownHour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownMinute).BeginInit();
@@ -386,9 +386,25 @@
             dgvResponsibilities.Location = new Point(504, 430);
             dgvResponsibilities.Name = "dgvResponsibilities";
             dgvResponsibilities.ReadOnly = true;
-            dgvResponsibilities.RowTemplate.Height = 25;
+            dgvResponsibilities.RowTemplate.Height = 40;
             dgvResponsibilities.Size = new Size(503, 112);
             dgvResponsibilities.TabIndex = 21;
+            // 
+            // ResponsibilityName
+            // 
+            ResponsibilityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ResponsibilityName.DataPropertyName = "Name";
+            ResponsibilityName.HeaderText = "Name";
+            ResponsibilityName.Name = "ResponsibilityName";
+            ResponsibilityName.ReadOnly = true;
+            // 
+            // User
+            // 
+            User.DataPropertyName = "UserFullName";
+            User.HeaderText = "User";
+            User.Name = "User";
+            User.ReadOnly = true;
+            User.Width = 230;
             // 
             // lblResponsibilities
             // 
@@ -433,22 +449,6 @@
             btnAddResponsibility.Text = "add";
             btnAddResponsibility.UseVisualStyleBackColor = true;
             btnAddResponsibility.Click += btnAddResponsibility_Click;
-            // 
-            // ResponsibilityName
-            // 
-            ResponsibilityName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ResponsibilityName.DataPropertyName = "Name";
-            ResponsibilityName.HeaderText = "Name";
-            ResponsibilityName.Name = "ResponsibilityName";
-            ResponsibilityName.ReadOnly = true;
-            // 
-            // User
-            // 
-            User.DataPropertyName = "UserFullName";
-            User.HeaderText = "User";
-            User.Name = "User";
-            User.ReadOnly = true;
-            User.Width = 230;
             // 
             // AddEventForm
             // 

@@ -40,6 +40,7 @@
             lastName2 = new DataGridViewTextBoxColumn();
             username1 = new DataGridViewTextBoxColumn();
             lblSurveyInvitesDetails = new Label();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUninvitedContacts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvInvitedContacts).BeginInit();
             SuspendLayout();
@@ -109,13 +110,15 @@
             // 
             // btnInvite
             // 
-            btnInvite.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInvite.BackColor = Color.YellowGreen;
+            btnInvite.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInvite.ForeColor = Color.DarkGreen;
             btnInvite.Location = new Point(495, 597);
             btnInvite.Name = "btnInvite";
             btnInvite.Size = new Size(250, 64);
             btnInvite.TabIndex = 10;
             btnInvite.Text = "Invite";
-            btnInvite.UseVisualStyleBackColor = true;
+            btnInvite.UseVisualStyleBackColor = false;
             btnInvite.Click += btnInvite_Click;
             // 
             // dgvInvitedContacts
@@ -130,7 +133,7 @@
             dgvInvitedContacts.Location = new Point(23, 135);
             dgvInvitedContacts.Name = "dgvInvitedContacts";
             dgvInvitedContacts.ReadOnly = true;
-            dgvInvitedContacts.RowTemplate.Height = 25;
+            dgvInvitedContacts.RowTemplate.Height = 40;
             dgvInvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvInvitedContacts.Size = new Size(378, 456);
             dgvInvitedContacts.TabIndex = 9;
@@ -171,11 +174,25 @@
             lblSurveyInvitesDetails.TabIndex = 14;
             lblSurveyInvitesDetails.Text = ":";
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Orange;
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBack.ForeColor = Color.DarkGreen;
+            btnBack.Location = new Point(23, 640);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(162, 57);
+            btnBack.TabIndex = 15;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // SurveyInvitesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(830, 709);
+            Controls.Add(btnBack);
             Controls.Add(lblSurveyInvitesDetails);
             Controls.Add(lblUninvitedContacts);
             Controls.Add(dgvUninvitedContacts);
@@ -205,5 +222,6 @@
         private DataGridViewTextBoxColumn lastName2;
         private DataGridViewTextBoxColumn username1;
         private Label lblSurveyInvitesDetails;
+        private Button btnBack;
     }
 }
