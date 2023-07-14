@@ -111,7 +111,20 @@ namespace TeaLeaves.Views
 
         private void blockButton_Click(object sender, EventArgs e)
         {
-            this._blockedController.BlockUser(CurrentUserStore.User.UserId, this.viewedUser.UserId);
+            if (this._blockedController.IsUserBlocked(CurrentUserStore.User.UserId, this.viewedUser.UserId))
+            {
+                MessageBox.Show(this.viewedUser.FullName + " is already blocked!", "User Blocked", MessageBoxButtons.OK);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to block " + this.viewedUser.FullName + "? " +
+                    "This is not reversable. Once blocked, they can not add you as a contact and neither can you.", "Warning", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    this._blockedController.BlockUser(CurrentUserStore.User.UserId, this.viewedUser.UserId);
+                }
+            }
         }
     }
 }

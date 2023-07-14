@@ -16,9 +16,26 @@ namespace TeaLeaves.Controllers
             this._blockedDAL = new BlockedDAL();
         }
 
+        /// <summary>
+        /// method creating a Blocked relationship between two Users
+        /// </summary>
+        /// <param name="currentUserId"></param>
+        /// <param name="blockedUserId"></param>
+        /// <returns></returns>
         public bool BlockUser(int currentUserId, int blockedUserId)
         {
             return this._blockedDAL.BlockUser(currentUserId, blockedUserId);
+        }
+
+        /// <summary>
+        /// method checking if a blocked relationship exists between two given users. If yes, returns true. Otherwise false.
+        /// </summary>
+        /// <param name="currentUserId"></param>
+        /// <param name="blockedUserId"></param>
+        /// <returns></returns>
+        public bool IsUserBlocked(int currentUserId, int blockedUserId)
+        {
+            return this._blockedDAL.IsUserBlocked(currentUserId, blockedUserId);
         }
     }
 }
