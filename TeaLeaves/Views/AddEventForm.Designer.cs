@@ -381,13 +381,13 @@
             dgvResponsibilities.BackgroundColor = Color.PapayaWhip;
             dgvResponsibilities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvResponsibilities.Columns.AddRange(new DataGridViewColumn[] { ResponsibilityName, User });
-            tableLayoutPanelAddEvent.SetColumnSpan(dgvResponsibilities, 2);
+            tableLayoutPanelAddEvent.SetColumnSpan(dgvResponsibilities, 3);
             dgvResponsibilities.Dock = DockStyle.Fill;
             dgvResponsibilities.Location = new Point(504, 430);
             dgvResponsibilities.Name = "dgvResponsibilities";
             dgvResponsibilities.ReadOnly = true;
             dgvResponsibilities.RowTemplate.Height = 25;
-            dgvResponsibilities.Size = new Size(349, 112);
+            dgvResponsibilities.Size = new Size(503, 112);
             dgvResponsibilities.TabIndex = 21;
             // 
             // lblResponsibilities
@@ -444,11 +444,11 @@
             // 
             // User
             // 
-            User.DataPropertyName = "Username";
+            User.DataPropertyName = "UserFullName";
             User.HeaderText = "User";
             User.Name = "User";
             User.ReadOnly = true;
-            User.Width = 130;
+            User.Width = 230;
             // 
             // AddEventForm
             // 
