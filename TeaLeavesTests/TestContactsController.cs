@@ -92,6 +92,30 @@ namespace TeaLeavesTests
         }
 
         [TestMethod]
+        public void GetUserContactsBySurvey()
+        {
+            ContactsController contactsController = new ContactsController();
+            User user = new User
+            {
+                UserId = 24
+            };
+            Survey survey = new Survey
+            {
+                Id = 32,
+            };
+            List<User> users;
+            try
+            {
+                users = contactsController.GetUserContactsBySurvey(user, survey);
+                Assert.AreEqual(users[0].UserId, 25);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        [TestMethod]
         public void TestRemoveContact()
         {
             ContactsController contactsController = new ContactsController();
