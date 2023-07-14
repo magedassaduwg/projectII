@@ -38,6 +38,16 @@ namespace TeaLeaves.Controllers
         }
 
         /// <summary>
+        /// Deletes a surveyVote from the database
+        /// </summary>
+        /// <param name="surveyVoteId"></param>
+        /// <returns></returns>
+        public bool DeleteVote(int surveyVoteId)
+        {
+            return _surveyVoteDAL.DeleteSurveyVote(surveyVoteId);
+        }
+
+        /// <summary>
         /// Returns a survey vote with the given userId and surveyId
         /// </summary>
         /// <param name="surveyId"></param>

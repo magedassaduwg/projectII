@@ -121,6 +121,29 @@ namespace TeaLeaves.DALs
         }
 
         /// <summary>
+        /// Deletes a SurveyVote from the database
+        /// </summary>
+        /// <param name="surveyVoteId"></param>
+        /// <returns></returns>
+        public bool DeleteSurveyVote(int surveyVoteId)
+        {
+            string query = @"DELETE SurveyVotes " +
+                            "WHERE surveyVoteId = @surveyVoteId";
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand saveCommand = new SqlCommand(query, connection))
+                {
+                    saveCommand.Parameters.AddWithValue("@surveyVoteId", surveyVoteId);
+
+                    int rowsAffected = saveCommand.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
+        /// <summary>
         /// Returns a survey vote with the given userId and surveyId
         /// </summary>
         /// <param name="surveyId"></param>
