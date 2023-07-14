@@ -274,11 +274,11 @@
             // 
             btnRegister.BackColor = Color.Orange;
             btnRegister.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btnRegister.ForeColor = Color.OliveDrab;
+            btnRegister.ForeColor = Color.DarkGreen;
             btnRegister.Location = new Point(269, 395);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(260, 43);
-            btnRegister.TabIndex = 20;
+            btnRegister.TabIndex = 6;
             btnRegister.Text = "Sign Up";
             btnRegister.UseVisualStyleBackColor = false;
             btnRegister.Click += btnRegister_Click;
@@ -323,7 +323,7 @@
             buttonLoginBack.Location = new Point(670, 395);
             buttonLoginBack.Name = "buttonLoginBack";
             buttonLoginBack.Size = new Size(127, 43);
-            buttonLoginBack.TabIndex = 23;
+            buttonLoginBack.TabIndex = 7;
             buttonLoginBack.Text = "Click to Login";
             buttonLoginBack.UseVisualStyleBackColor = false;
             buttonLoginBack.Click += buttonLoginBack_Click;

@@ -83,7 +83,7 @@
             dgvAcceptedInvites.ScrollBars = ScrollBars.Vertical;
             dgvAcceptedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAcceptedInvites.Size = new Size(701, 180);
-            dgvAcceptedInvites.TabIndex = 26;
+            dgvAcceptedInvites.TabIndex = 4;
             // 
             // SurveyName1
             // 
@@ -117,7 +117,7 @@
             btnViewSurvey.Location = new Point(764, 65);
             btnViewSurvey.Name = "btnViewSurvey";
             btnViewSurvey.Size = new Size(126, 57);
-            btnViewSurvey.TabIndex = 25;
+            btnViewSurvey.TabIndex = 0;
             btnViewSurvey.Text = "View Survey";
             btnViewSurvey.UseVisualStyleBackColor = false;
             btnViewSurvey.Click += btnViewSurvey_Click;
@@ -136,7 +136,7 @@
             dgvSurveyInvites.ScrollBars = ScrollBars.Vertical;
             dgvSurveyInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvSurveyInvites.Size = new Size(701, 180);
-            dgvSurveyInvites.TabIndex = 21;
+            dgvSurveyInvites.TabIndex = 3;
             // 
             // SurveyName
             // 
@@ -170,7 +170,7 @@
             btnRefresh.Location = new Point(764, 191);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(126, 57);
-            btnRefresh.TabIndex = 24;
+            btnRefresh.TabIndex = 2;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
@@ -183,7 +183,7 @@
             btnViewAnswered.Location = new Point(764, 128);
             btnViewAnswered.Name = "btnViewAnswered";
             btnViewAnswered.Size = new Size(126, 57);
-            btnViewAnswered.TabIndex = 36;
+            btnViewAnswered.TabIndex = 1;
             btnViewAnswered.Text = "View Answered Survey";
             btnViewAnswered.UseVisualStyleBackColor = false;
             btnViewAnswered.Click += btnViewAnswered_Click;

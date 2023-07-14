@@ -311,7 +311,7 @@
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(198, 23);
-            textBox1.TabIndex = 10;
+            textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
@@ -321,7 +321,7 @@
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
             textBox2.Size = new Size(198, 23);
-            textBox2.TabIndex = 11;
+            textBox2.TabIndex = 2;
             // 
             // textBox3
             // 
@@ -331,7 +331,7 @@
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(198, 23);
-            textBox3.TabIndex = 12;
+            textBox3.TabIndex = 3;
             // 
             // textBox4
             // 
@@ -341,7 +341,7 @@
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
             textBox4.Size = new Size(198, 23);
-            textBox4.TabIndex = 13;
+            textBox4.TabIndex = 4;
             // 
             // button2
             // 
@@ -352,7 +352,7 @@
             button2.Location = new Point(183, 429);
             button2.Name = "button2";
             button2.Size = new Size(94, 33);
-            button2.TabIndex = 15;
+            button2.TabIndex = 5;
             button2.Text = "Profile";
             button2.UseVisualStyleBackColor = false;
             // 
@@ -366,7 +366,7 @@
             button3.Location = new Point(285, 429);
             button3.Name = "button3";
             button3.Size = new Size(94, 33);
-            button3.TabIndex = 14;
+            button3.TabIndex = 6;
             button3.Text = "Delete";
             button3.UseVisualStyleBackColor = false;
             // 
@@ -380,7 +380,7 @@
             button4.Location = new Point(83, 448);
             button4.Name = "button4";
             button4.Size = new Size(92, 33);
-            button4.TabIndex = 8;
+            button4.TabIndex = 0;
             button4.Text = "Add";
             button4.UseVisualStyleBackColor = false;
             // 
@@ -400,7 +400,7 @@
             dgvContacts.RowTemplate.Height = 40;
             dgvContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvContacts.Size = new Size(252, 428);
-            dgvContacts.TabIndex = 0;
+            dgvContacts.TabIndex = 7;
             // 
             // FullName
             // 

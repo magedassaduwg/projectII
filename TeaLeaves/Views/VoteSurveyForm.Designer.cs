@@ -64,7 +64,7 @@
             btnVote.Location = new Point(384, 116);
             btnVote.Name = "btnVote";
             btnVote.Size = new Size(75, 23);
-            btnVote.TabIndex = 2;
+            btnVote.TabIndex = 1;
             btnVote.Text = "Vote";
             btnVote.UseVisualStyleBackColor = false;
             btnVote.Click += btnVote_Click;
@@ -88,7 +88,7 @@
             btnBack.Location = new Point(12, 231);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(107, 43);
-            btnBack.TabIndex = 4;
+            btnBack.TabIndex = 2;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;

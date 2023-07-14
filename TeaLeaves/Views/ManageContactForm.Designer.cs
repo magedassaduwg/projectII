@@ -103,7 +103,7 @@
             sortButton.Location = new Point(20, 406);
             sortButton.Name = "sortButton";
             sortButton.Size = new Size(92, 33);
-            sortButton.TabIndex = 9;
+            sortButton.TabIndex = 0;
             sortButton.Text = "Sort";
             sortButton.UseVisualStyleBackColor = false;
             sortButton.Click += sortButton_Click;
@@ -126,7 +126,7 @@
             contactDataGridView.RowTemplate.Height = 40;
             contactDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             contactDataGridView.Size = new Size(260, 389);
-            contactDataGridView.TabIndex = 0;
+            contactDataGridView.TabIndex = 9;
             contactDataGridView.RowEnter += contactDataGridView_RowEnter;
             // 
             // FullName
@@ -146,7 +146,7 @@
             addButton.Location = new Point(153, 406);
             addButton.Name = "addButton";
             addButton.Size = new Size(92, 33);
-            addButton.TabIndex = 8;
+            addButton.TabIndex = 1;
             addButton.Text = "Add";
             addButton.UseVisualStyleBackColor = false;
             addButton.Click += addButton_Click;
@@ -246,7 +246,7 @@
             firstNameText.Name = "firstNameText";
             firstNameText.ReadOnly = true;
             firstNameText.Size = new Size(210, 23);
-            firstNameText.TabIndex = 10;
+            firstNameText.TabIndex = 2;
             // 
             // lastNameText
             // 
@@ -256,7 +256,7 @@
             lastNameText.Name = "lastNameText";
             lastNameText.ReadOnly = true;
             lastNameText.Size = new Size(210, 23);
-            lastNameText.TabIndex = 11;
+            lastNameText.TabIndex = 3;
             // 
             // emailText
             // 
@@ -266,7 +266,7 @@
             emailText.Name = "emailText";
             emailText.ReadOnly = true;
             emailText.Size = new Size(210, 23);
-            emailText.TabIndex = 12;
+            emailText.TabIndex = 4;
             // 
             // usernameText
             // 
@@ -276,7 +276,7 @@
             usernameText.Name = "usernameText";
             usernameText.ReadOnly = true;
             usernameText.Size = new Size(210, 23);
-            usernameText.TabIndex = 13;
+            usernameText.TabIndex = 5;
             // 
             // closeButton
             // 
@@ -287,7 +287,7 @@
             closeButton.Location = new Point(394, 388);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(94, 33);
-            closeButton.TabIndex = 9;
+            closeButton.TabIndex = 8;
             closeButton.Text = "Close";
             closeButton.UseVisualStyleBackColor = false;
             closeButton.Click += closeButton_Click;
@@ -302,7 +302,7 @@
             viewProfileButton.Location = new Point(121, 388);
             viewProfileButton.Name = "viewProfileButton";
             viewProfileButton.Size = new Size(94, 33);
-            viewProfileButton.TabIndex = 15;
+            viewProfileButton.TabIndex = 6;
             viewProfileButton.Text = "Profile";
             viewProfileButton.UseVisualStyleBackColor = false;
             viewProfileButton.Click += viewProfileButton_Click;
@@ -317,7 +317,7 @@
             deleteButton.Location = new Point(249, 388);
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(94, 33);
-            deleteButton.TabIndex = 14;
+            deleteButton.TabIndex = 7;
             deleteButton.Text = "Delete";
             deleteButton.UseVisualStyleBackColor = false;
             deleteButton.Click += deleteButton_Click;

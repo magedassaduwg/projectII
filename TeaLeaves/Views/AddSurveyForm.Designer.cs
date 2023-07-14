@@ -163,7 +163,7 @@
             buttonAdd.Location = new Point(547, 325);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(123, 23);
-            buttonAdd.TabIndex = 13;
+            buttonAdd.TabIndex = 2;
             buttonAdd.Text = "Add";
             buttonAdd.Click += buttonAdd_Click;
             // 

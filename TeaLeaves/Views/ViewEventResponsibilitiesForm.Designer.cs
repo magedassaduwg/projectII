@@ -168,7 +168,7 @@
             tbName.Name = "tbName";
             tbName.ReadOnly = true;
             tbName.Size = new Size(657, 23);
-            tbName.TabIndex = 1;
+            tbName.TabIndex = 5;
             // 
             // tbAddress
             // 
@@ -179,7 +179,7 @@
             tbAddress.Name = "tbAddress";
             tbAddress.ReadOnly = true;
             tbAddress.Size = new Size(657, 23);
-            tbAddress.TabIndex = 2;
+            tbAddress.TabIndex = 6;
             // 
             // tbDescription
             // 
@@ -190,7 +190,7 @@
             tbDescription.Name = "tbDescription";
             tbDescription.ReadOnly = true;
             tbDescription.Size = new Size(657, 74);
-            tbDescription.TabIndex = 9;
+            tbDescription.TabIndex = 20;
             tbDescription.Text = "";
             // 
             // tbDate

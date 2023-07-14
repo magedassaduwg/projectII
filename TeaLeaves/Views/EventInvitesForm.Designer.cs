@@ -137,7 +137,7 @@
             dgvUninvitedContacts.RowTemplate.Height = 40;
             dgvUninvitedContacts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUninvitedContacts.Size = new Size(392, 465);
-            dgvUninvitedContacts.TabIndex = 3;
+            dgvUninvitedContacts.TabIndex = 0;
             // 
             // FirstName
             // 
@@ -297,7 +297,7 @@
             btnBack.Location = new Point(706, 662);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(123, 45);
-            btnBack.TabIndex = 10;
+            btnBack.TabIndex = 2;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;

@@ -85,7 +85,7 @@
             btnCancel.Location = new Point(3, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(172, 56);
-            btnCancel.TabIndex = 17;
+            btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
             // 
@@ -99,7 +99,7 @@
             btnCreate.Location = new Point(181, 3);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(172, 56);
-            btnCreate.TabIndex = 16;
+            btnCreate.TabIndex = 2;
             btnCreate.Text = "Create Group";
             btnCreate.UseVisualStyleBackColor = false;
             btnCreate.Click += btnCreate_Click;
@@ -115,7 +115,7 @@
             lstContacts.Name = "lstContacts";
             lstContacts.SelectionMode = SelectionMode.MultiSimple;
             lstContacts.Size = new Size(356, 309);
-            lstContacts.TabIndex = 1;
+            lstContacts.TabIndex = 3;
             // 
             // tableLayoutPanel1
             // 

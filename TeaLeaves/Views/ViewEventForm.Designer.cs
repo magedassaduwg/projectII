@@ -157,7 +157,7 @@
             tbName.Name = "tbName";
             tbName.ReadOnly = true;
             tbName.Size = new Size(531, 23);
-            tbName.TabIndex = 1;
+            tbName.TabIndex = 2;
             // 
             // tbAddress
             // 
@@ -168,7 +168,7 @@
             tbAddress.Name = "tbAddress";
             tbAddress.ReadOnly = true;
             tbAddress.Size = new Size(531, 23);
-            tbAddress.TabIndex = 2;
+            tbAddress.TabIndex = 3;
             // 
             // tbDescription
             // 
@@ -179,7 +179,7 @@
             tbDescription.Name = "tbDescription";
             tbDescription.ReadOnly = true;
             tbDescription.Size = new Size(531, 74);
-            tbDescription.TabIndex = 9;
+            tbDescription.TabIndex = 20;
             tbDescription.Text = "";
             // 
             // tbDate
@@ -213,7 +213,7 @@
             btnBack.Margin = new Padding(20, 3, 3, 3);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(150, 39);
-            btnBack.TabIndex = 20;
+            btnBack.TabIndex = 0;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
@@ -242,7 +242,7 @@
             tableLayoutPanelAddEvent.SetRowSpan(dgvUnassignedResponsibilities, 2);
             dgvUnassignedResponsibilities.RowTemplate.Height = 40;
             dgvUnassignedResponsibilities.Size = new Size(273, 129);
-            dgvUnassignedResponsibilities.TabIndex = 23;
+            dgvUnassignedResponsibilities.TabIndex = 1;
             // 
             // ResponsibilityName
             // 

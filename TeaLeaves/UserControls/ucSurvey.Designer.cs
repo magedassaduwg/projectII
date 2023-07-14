@@ -116,7 +116,7 @@
             dataGridViewSurvey.RowTemplate.Height = 40;
             dataGridViewSurvey.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewSurvey.Size = new Size(341, 309);
-            dataGridViewSurvey.TabIndex = 0;
+            dataGridViewSurvey.TabIndex = 6;
             // 
             // SurveyName
             // 
@@ -164,7 +164,7 @@
             btnDelete.Location = new Point(454, 302);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(132, 46);
-            btnDelete.TabIndex = 2;
+            btnDelete.TabIndex = 5;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;

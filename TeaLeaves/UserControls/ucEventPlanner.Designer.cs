@@ -121,7 +121,7 @@
             dgEvents.RowTemplate.Height = 40;
             dgEvents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgEvents.Size = new Size(856, 219);
-            dgEvents.TabIndex = 1;
+            dgEvents.TabIndex = 4;
             // 
             // EventName
             // 
@@ -230,7 +230,7 @@
             btnInvites.Location = new Point(3, 295);
             btnInvites.Name = "btnInvites";
             btnInvites.Size = new Size(166, 46);
-            btnInvites.TabIndex = 4;
+            btnInvites.TabIndex = 0;
             btnInvites.Text = "Invites";
             btnInvites.UseVisualStyleBackColor = false;
             btnInvites.Click += btnInvites_Click;

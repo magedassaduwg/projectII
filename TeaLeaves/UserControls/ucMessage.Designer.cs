@@ -100,7 +100,7 @@
             btnSend.Location = new Point(697, 3);
             btnSend.Name = "btnSend";
             btnSend.Size = new Size(119, 71);
-            btnSend.TabIndex = 12;
+            btnSend.TabIndex = 3;
             btnSend.Text = "Send";
             btnSend.UseVisualStyleBackColor = false;
             btnSend.Click += btnSend_Click;
@@ -115,7 +115,7 @@
             btnUploadImage.Location = new Point(412, 3);
             btnUploadImage.Name = "btnUploadImage";
             btnUploadImage.Size = new Size(157, 71);
-            btnUploadImage.TabIndex = 10;
+            btnUploadImage.TabIndex = 1;
             btnUploadImage.Text = "Upload Image";
             btnUploadImage.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnUploadImage.UseVisualStyleBackColor = false;
@@ -129,7 +129,7 @@
             txtMessage.MaxLength = 500;
             txtMessage.Name = "txtMessage";
             txtMessage.Size = new Size(403, 71);
-            txtMessage.TabIndex = 4;
+            txtMessage.TabIndex = 0;
             txtMessage.Text = "";
             // 
             // btnImagePreview
@@ -143,7 +143,7 @@
             btnImagePreview.Location = new Point(575, 3);
             btnImagePreview.Name = "btnImagePreview";
             btnImagePreview.Size = new Size(116, 71);
-            btnImagePreview.TabIndex = 13;
+            btnImagePreview.TabIndex = 2;
             btnImagePreview.Text = "Clear Image";
             btnImagePreview.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnImagePreview.UseVisualStyleBackColor = false;
@@ -245,7 +245,7 @@
             txtSearch.Margin = new Padding(3, 10, 3, 3);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(262, 23);
-            txtSearch.TabIndex = 0;
+            txtSearch.TabIndex = 6;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // btnSearch
@@ -256,7 +256,7 @@
             btnSearch.Location = new Point(271, 3);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(119, 40);
-            btnSearch.TabIndex = 13;
+            btnSearch.TabIndex = 7;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
@@ -286,7 +286,7 @@
             btnCreateGroup.Location = new Point(137, 3);
             btnCreateGroup.Name = "btnCreateGroup";
             btnCreateGroup.Size = new Size(129, 71);
-            btnCreateGroup.TabIndex = 4;
+            btnCreateGroup.TabIndex = 5;
             btnCreateGroup.Text = "Create Group";
             btnCreateGroup.UseVisualStyleBackColor = false;
             btnCreateGroup.Click += btnCreateGroup_Click;
@@ -300,7 +300,7 @@
             btnManageContacts.Location = new Point(3, 3);
             btnManageContacts.Name = "btnManageContacts";
             btnManageContacts.Size = new Size(128, 71);
-            btnManageContacts.TabIndex = 3;
+            btnManageContacts.TabIndex = 4;
             btnManageContacts.Text = "Manage Contacts";
             btnManageContacts.UseVisualStyleBackColor = false;
             btnManageContacts.Click += btnManageContacts_Click;

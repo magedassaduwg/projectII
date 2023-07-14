@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
-            statsButton = new Button();
             userProfilePictureBox = new PictureBox();
             userBlurbLabel = new Label();
             userBlurbBox = new TextBox();
-            closeButton = new Button();
             editButton = new Button();
             saveButton = new Button();
             uploadButton = new Button();
-            friendListButton = new Button();
+            statsButton = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            friendListButton = new Button();
+            closeButton = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userProfilePictureBox).BeginInit();
             flowLayoutPanel1.SuspendLayout();
@@ -69,18 +69,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(449, 583);
             tableLayoutPanel1.TabIndex = 0;
-            // 
-            // statsButton
-            // 
-            statsButton.Anchor = AnchorStyles.None;
-            statsButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            statsButton.Location = new Point(8, 427);
-            statsButton.Name = "statsButton";
-            statsButton.Size = new Size(58, 31);
-            statsButton.TabIndex = 7;
-            statsButton.Text = "Stats";
-            statsButton.UseVisualStyleBackColor = true;
-            statsButton.Click += statsButton_Click;
             // 
             // userProfilePictureBox
             // 
@@ -114,18 +102,6 @@
             userBlurbBox.Size = new Size(294, 182);
             userBlurbBox.TabIndex = 2;
             // 
-            // closeButton
-            // 
-            closeButton.Anchor = AnchorStyles.Right;
-            closeButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            closeButton.Location = new Point(160, 3);
-            closeButton.Name = "closeButton";
-            closeButton.Size = new Size(127, 31);
-            closeButton.TabIndex = 3;
-            closeButton.Text = "Close";
-            closeButton.UseVisualStyleBackColor = true;
-            closeButton.Click += closeButton_Click;
-            // 
             // editButton
             // 
             editButton.Anchor = AnchorStyles.None;
@@ -134,7 +110,7 @@
             editButton.Location = new Point(379, 544);
             editButton.Name = "editButton";
             editButton.Size = new Size(66, 31);
-            editButton.TabIndex = 4;
+            editButton.TabIndex = 6;
             editButton.Text = "Edit";
             editButton.UseVisualStyleBackColor = true;
             editButton.Visible = false;
@@ -148,7 +124,7 @@
             saveButton.Location = new Point(379, 427);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(66, 31);
-            saveButton.TabIndex = 5;
+            saveButton.TabIndex = 3;
             saveButton.Text = "Save";
             saveButton.UseVisualStyleBackColor = true;
             saveButton.Visible = false;
@@ -162,23 +138,23 @@
             uploadButton.Location = new Point(379, 146);
             uploadButton.Name = "uploadButton";
             uploadButton.Size = new Size(66, 31);
-            uploadButton.TabIndex = 6;
+            uploadButton.TabIndex = 0;
             uploadButton.Text = "Upload";
             uploadButton.UseVisualStyleBackColor = true;
             uploadButton.Visible = false;
             uploadButton.Click += uploadButton_Click;
             // 
-            // friendListButton
+            // statsButton
             // 
-            friendListButton.Anchor = AnchorStyles.Left;
-            friendListButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            friendListButton.Location = new Point(3, 3);
-            friendListButton.Name = "friendListButton";
-            friendListButton.Size = new Size(151, 31);
-            friendListButton.TabIndex = 8;
-            friendListButton.Text = "Friends";
-            friendListButton.UseVisualStyleBackColor = true;
-            friendListButton.Click += friendListButton_Click;
+            statsButton.Anchor = AnchorStyles.None;
+            statsButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            statsButton.Location = new Point(8, 427);
+            statsButton.Name = "statsButton";
+            statsButton.Size = new Size(58, 31);
+            statsButton.TabIndex = 1;
+            statsButton.Text = "Stats";
+            statsButton.UseVisualStyleBackColor = true;
+            statsButton.Click += statsButton_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -189,6 +165,30 @@
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(294, 40);
             flowLayoutPanel1.TabIndex = 9;
+            // 
+            // friendListButton
+            // 
+            friendListButton.Anchor = AnchorStyles.Left;
+            friendListButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            friendListButton.Location = new Point(3, 3);
+            friendListButton.Name = "friendListButton";
+            friendListButton.Size = new Size(151, 31);
+            friendListButton.TabIndex = 4;
+            friendListButton.Text = "Friends";
+            friendListButton.UseVisualStyleBackColor = true;
+            friendListButton.Click += friendListButton_Click;
+            // 
+            // closeButton
+            // 
+            closeButton.Anchor = AnchorStyles.Right;
+            closeButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            closeButton.Location = new Point(160, 3);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(127, 31);
+            closeButton.TabIndex = 5;
+            closeButton.Text = "Close";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // ProfileForm
             // 

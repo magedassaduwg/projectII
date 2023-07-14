@@ -184,7 +184,7 @@
             textBoxEName.MaxLength = 100;
             textBoxEName.Name = "textBoxEName";
             textBoxEName.Size = new Size(314, 23);
-            textBoxEName.TabIndex = 1;
+            textBoxEName.TabIndex = 0;
             textBoxEName.TextChanged += textBoxEName_TextChanged;
             // 
             // textBoxStreetName
@@ -299,7 +299,7 @@
             buttonSave.Location = new Point(353, 571);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(145, 23);
-            buttonSave.TabIndex = 10;
+            buttonSave.TabIndex = 12;
             buttonSave.Text = "Save";
             buttonSave.UseVisualStyleBackColor = false;
             buttonSave.Click += buttonSave_Click;
@@ -313,7 +313,7 @@
             buttonClose.Location = new Point(504, 571);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(194, 23);
-            buttonClose.TabIndex = 11;
+            buttonClose.TabIndex = 13;
             buttonClose.Text = "Close";
             buttonClose.UseVisualStyleBackColor = false;
             buttonClose.Click += buttonClose_click;
@@ -362,7 +362,7 @@
             comboBoxCategory.Location = new Point(704, 23);
             comboBoxCategory.Name = "comboBoxCategory";
             comboBoxCategory.Size = new Size(303, 23);
-            comboBoxCategory.TabIndex = 19;
+            comboBoxCategory.TabIndex = 1;
             // 
             // lblEventResponsibilities
             // 
@@ -388,7 +388,7 @@
             dgvResponsibilities.ReadOnly = true;
             dgvResponsibilities.RowTemplate.Height = 40;
             dgvResponsibilities.Size = new Size(503, 112);
-            dgvResponsibilities.TabIndex = 21;
+            dgvResponsibilities.TabIndex = 14;
             // 
             // ResponsibilityName
             // 
@@ -436,7 +436,7 @@
             tbResponsibilityName.Margin = new Padding(3, 48, 3, 3);
             tbResponsibilityName.Name = "tbResponsibilityName";
             tbResponsibilityName.Size = new Size(163, 23);
-            tbResponsibilityName.TabIndex = 27;
+            tbResponsibilityName.TabIndex = 10;
             tbResponsibilityName.TextChanged += tbResponsibilityName_TextChanged;
             // 
             // btnAddResponsibility
@@ -445,7 +445,7 @@
             btnAddResponsibility.Margin = new Padding(3, 48, 3, 3);
             btnAddResponsibility.Name = "btnAddResponsibility";
             btnAddResponsibility.Size = new Size(145, 23);
-            btnAddResponsibility.TabIndex = 28;
+            btnAddResponsibility.TabIndex = 11;
             btnAddResponsibility.Text = "add";
             btnAddResponsibility.UseVisualStyleBackColor = true;
             btnAddResponsibility.Click += btnAddResponsibility_Click;

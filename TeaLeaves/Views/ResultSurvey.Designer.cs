@@ -68,7 +68,7 @@
             buttonClose.Location = new Point(203, 414);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(594, 23);
-            buttonClose.TabIndex = 13;
+            buttonClose.TabIndex = 0;
             buttonClose.Text = "Close";
             buttonClose.UseVisualStyleBackColor = false;
             buttonClose.Click += buttonClose_Click;
@@ -82,7 +82,7 @@
             richTextBoxDescription.MaxLength = 250;
             richTextBoxDescription.Name = "richTextBoxDescription";
             richTextBoxDescription.Size = new Size(594, 88);
-            richTextBoxDescription.TabIndex = 12;
+            richTextBoxDescription.TabIndex = 1;
             richTextBoxDescription.Text = "";
             // 
             // dataGridViewSurvey
@@ -96,7 +96,7 @@
             dataGridViewSurvey.ReadOnly = true;
             dataGridViewSurvey.RowTemplate.Height = 40;
             dataGridViewSurvey.Size = new Size(594, 278);
-            dataGridViewSurvey.TabIndex = 11;
+            dataGridViewSurvey.TabIndex = 2;
             // 
             // Option
             // 

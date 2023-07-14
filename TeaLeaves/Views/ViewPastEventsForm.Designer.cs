@@ -114,7 +114,7 @@
             btnBack.Margin = new Padding(20, 3, 3, 3);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(150, 39);
-            btnBack.TabIndex = 24;
+            btnBack.TabIndex = 0;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;

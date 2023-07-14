@@ -123,7 +123,7 @@
             firstNameText.Name = "firstNameText";
             firstNameText.ReadOnly = true;
             firstNameText.Size = new Size(210, 23);
-            firstNameText.TabIndex = 10;
+            firstNameText.TabIndex = 1;
             // 
             // lastNameText
             // 
@@ -133,7 +133,7 @@
             lastNameText.Name = "lastNameText";
             lastNameText.ReadOnly = true;
             lastNameText.Size = new Size(210, 23);
-            lastNameText.TabIndex = 11;
+            lastNameText.TabIndex = 2;
             // 
             // emailText
             // 
@@ -143,7 +143,7 @@
             emailText.Name = "emailText";
             emailText.ReadOnly = true;
             emailText.Size = new Size(210, 23);
-            emailText.TabIndex = 12;
+            emailText.TabIndex = 3;
             // 
             // usernameText
             // 
@@ -153,7 +153,7 @@
             usernameText.Name = "usernameText";
             usernameText.ReadOnly = true;
             usernameText.Size = new Size(210, 23);
-            usernameText.TabIndex = 13;
+            usernameText.TabIndex = 4;
             // 
             // closeButton
             // 
@@ -164,7 +164,7 @@
             closeButton.Location = new Point(394, 388);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(94, 33);
-            closeButton.TabIndex = 9;
+            closeButton.TabIndex = 7;
             closeButton.Text = "Close";
             closeButton.UseVisualStyleBackColor = false;
             closeButton.Click += closeButton_Click;
@@ -179,7 +179,7 @@
             viewProfileButton.Location = new Point(249, 388);
             viewProfileButton.Name = "viewProfileButton";
             viewProfileButton.Size = new Size(94, 33);
-            viewProfileButton.TabIndex = 15;
+            viewProfileButton.TabIndex = 6;
             viewProfileButton.Text = "Profile";
             viewProfileButton.UseVisualStyleBackColor = false;
             viewProfileButton.Click += viewProfileButton_Click;
@@ -194,7 +194,7 @@
             sortButton.Location = new Point(87, 406);
             sortButton.Name = "sortButton";
             sortButton.Size = new Size(92, 33);
-            sortButton.TabIndex = 9;
+            sortButton.TabIndex = 0;
             sortButton.Text = "Sort";
             sortButton.UseVisualStyleBackColor = false;
             sortButton.Click += sortButton_Click;
@@ -217,7 +217,7 @@
             contactDataGridView.RowTemplate.Height = 40;
             contactDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             contactDataGridView.Size = new Size(260, 389);
-            contactDataGridView.TabIndex = 0;
+            contactDataGridView.TabIndex = 8;
             contactDataGridView.CellFormatting += contactDataGridView_CellFormatting;
             contactDataGridView.RowEnter += contactDataGridView_RowEnter;
             // 
@@ -285,7 +285,7 @@
             addContactButton.Location = new Point(111, 388);
             addContactButton.Name = "addContactButton";
             addContactButton.Size = new Size(115, 33);
-            addContactButton.TabIndex = 17;
+            addContactButton.TabIndex = 5;
             addContactButton.Text = " Add Friend";
             addContactButton.UseVisualStyleBackColor = false;
             addContactButton.Click += addContactButton_Click;

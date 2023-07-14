@@ -84,7 +84,7 @@
             dgvEventInvites.ScrollBars = ScrollBars.Vertical;
             dgvEventInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEventInvites.Size = new Size(902, 160);
-            dgvEventInvites.TabIndex = 0;
+            dgvEventInvites.TabIndex = 11;
             // 
             // eventNameDataGridViewTextBoxColumn
             // 
@@ -137,7 +137,7 @@
             btnAccept.Location = new Point(983, 22);
             btnAccept.Name = "btnAccept";
             btnAccept.Size = new Size(126, 57);
-            btnAccept.TabIndex = 1;
+            btnAccept.TabIndex = 0;
             btnAccept.Text = "Accept";
             btnAccept.UseVisualStyleBackColor = false;
             btnAccept.Click += btnAccept_Click;
@@ -150,7 +150,7 @@
             btnDecline.Location = new Point(983, 85);
             btnDecline.Name = "btnDecline";
             btnDecline.Size = new Size(126, 57);
-            btnDecline.TabIndex = 2;
+            btnDecline.TabIndex = 1;
             btnDecline.Text = "Decline";
             btnDecline.UseVisualStyleBackColor = false;
             btnDecline.Click += btnDecline_Click;
@@ -163,7 +163,7 @@
             btnRefresh.Location = new Point(983, 277);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(126, 57);
-            btnRefresh.TabIndex = 3;
+            btnRefresh.TabIndex = 4;
             btnRefresh.Text = "No Filter";
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
@@ -176,7 +176,7 @@
             btnView.Location = new Point(983, 148);
             btnView.Name = "btnView";
             btnView.Size = new Size(126, 57);
-            btnView.TabIndex = 4;
+            btnView.TabIndex = 2;
             btnView.Text = "View";
             btnView.UseVisualStyleBackColor = false;
             btnView.Click += btnView_Click;
@@ -197,7 +197,7 @@
             dgvAcceptedInvites.ScrollBars = ScrollBars.Vertical;
             dgvAcceptedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAcceptedInvites.Size = new Size(902, 160);
-            dgvAcceptedInvites.TabIndex = 5;
+            dgvAcceptedInvites.TabIndex = 12;
             // 
             // eventNameDataGridViewTextBoxColumn1
             // 
@@ -270,7 +270,7 @@
             radioButtonFilterByCategory.Location = new Point(945, 354);
             radioButtonFilterByCategory.Name = "radioButtonFilterByCategory";
             radioButtonFilterByCategory.Size = new Size(117, 19);
-            radioButtonFilterByCategory.TabIndex = 12;
+            radioButtonFilterByCategory.TabIndex = 5;
             radioButtonFilterByCategory.TabStop = true;
             radioButtonFilterByCategory.Text = "Filter By Category";
             radioButtonFilterByCategory.UseVisualStyleBackColor = true;
@@ -282,7 +282,7 @@
             dateTimePickerFilter.Location = new Point(930, 433);
             dateTimePickerFilter.Name = "dateTimePickerFilter";
             dateTimePickerFilter.Size = new Size(194, 23);
-            dateTimePickerFilter.TabIndex = 14;
+            dateTimePickerFilter.TabIndex = 8;
             // 
             // buttonSearch
             // 
@@ -292,7 +292,7 @@
             buttonSearch.Location = new Point(983, 471);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(75, 30);
-            buttonSearch.TabIndex = 15;
+            buttonSearch.TabIndex = 9;
             buttonSearch.Text = "Search";
             buttonSearch.UseVisualStyleBackColor = false;
             buttonSearch.Click += buttonSearch_Click;
@@ -305,7 +305,7 @@
             radioButtonDate.Location = new Point(945, 408);
             radioButtonDate.Name = "radioButtonDate";
             radioButtonDate.Size = new Size(95, 19);
-            radioButtonDate.TabIndex = 16;
+            radioButtonDate.TabIndex = 7;
             radioButtonDate.TabStop = true;
             radioButtonDate.Text = "Filter By Date";
             radioButtonDate.UseVisualStyleBackColor = true;
@@ -327,7 +327,7 @@
             dgvDeclinedInvites.ScrollBars = ScrollBars.Vertical;
             dgvDeclinedInvites.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDeclinedInvites.Size = new Size(902, 160);
-            dgvDeclinedInvites.TabIndex = 17;
+            dgvDeclinedInvites.TabIndex = 13;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -387,7 +387,7 @@
             tbCategory.Location = new Point(930, 383);
             tbCategory.Name = "tbCategory";
             tbCategory.Size = new Size(194, 23);
-            tbCategory.TabIndex = 19;
+            tbCategory.TabIndex = 6;
             // 
             // btnViewAccepted
             // 
@@ -397,7 +397,7 @@
             btnViewAccepted.Location = new Point(983, 211);
             btnViewAccepted.Name = "btnViewAccepted";
             btnViewAccepted.Size = new Size(126, 57);
-            btnViewAccepted.TabIndex = 20;
+            btnViewAccepted.TabIndex = 3;
             btnViewAccepted.Text = "View Accepted";
             btnViewAccepted.UseVisualStyleBackColor = false;
             btnViewAccepted.Click += btnResponsibilities_Click;
@@ -410,7 +410,7 @@
             btnPastEvents.Location = new Point(945, 528);
             btnPastEvents.Name = "btnPastEvents";
             btnPastEvents.Size = new Size(151, 30);
-            btnPastEvents.TabIndex = 21;
+            btnPastEvents.TabIndex = 10;
             btnPastEvents.Text = "View Past Events";
             btnPastEvents.UseVisualStyleBackColor = false;
             btnPastEvents.Click += btnPassedEvents_Click;
