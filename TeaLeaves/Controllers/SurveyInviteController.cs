@@ -31,12 +31,12 @@ namespace TeaLeaves.Controllers
         /// <summary>
         /// Deletes a survey invite from the database
         /// </summary>
-        /// <param name="surveyInviteId"></param>
+        /// <param name="surveyReceiverId"></param>
         /// <param name="surveyId"></param>
         /// <returns></returns>
-        public bool DeleteSurveyInvite(int surveyInviteId, int surveyId)
+        public bool DeleteSurveyInvite(int surveyReceiverId, int surveyId)
         {
-            return _surveyInviteDAL.DeleteSurveyInvite(surveyInviteId, surveyId);
+            return _surveyInviteDAL.DeleteSurveyInvite(surveyReceiverId, surveyId);
         }
     }
 }
