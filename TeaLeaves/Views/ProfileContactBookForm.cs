@@ -4,6 +4,9 @@ using TeaLeaves.Helper;
 
 namespace TeaLeaves.Views
 {
+    /// <summary>
+    /// The form for the viewing the profile contact book form
+    /// </summary>
     public partial class ProfileContactBookForm : Form
     {
         private Models.User viewedUser;
@@ -13,6 +16,10 @@ namespace TeaLeaves.Views
         private Models.User selectedContact;
         private bool hasBeenSorted;
 
+        /// <summary>
+        /// The constructor for the ProfileContactBookForm
+        /// </summary>
+        /// <param name="user"></param>
         public ProfileContactBookForm(Models.User user)
         {
             this._userController = new UsersController();

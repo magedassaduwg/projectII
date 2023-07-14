@@ -32,6 +32,7 @@
             lblSurveyQuestion = new Label();
             btnVote = new Button();
             lblSeletedVote = new Label();
+            btnBack = new Button();
             SuspendLayout();
             // 
             // cbSurveyOptions
@@ -57,7 +58,7 @@
             // 
             // btnVote
             // 
-            btnVote.BackColor = Color.Orange;
+            btnVote.BackColor = Color.YellowGreen;
             btnVote.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnVote.ForeColor = Color.DarkGreen;
             btnVote.Location = new Point(384, 116);
@@ -79,11 +80,25 @@
             lblSeletedVote.Size = new Size(0, 21);
             lblSeletedVote.TabIndex = 3;
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Orange;
+            btnBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBack.ForeColor = Color.DarkGreen;
+            btnBack.Location = new Point(12, 231);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(107, 43);
+            btnBack.TabIndex = 4;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // VoteSurveyForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(537, 286);
+            Controls.Add(btnBack);
             Controls.Add(lblSeletedVote);
             Controls.Add(btnVote);
             Controls.Add(lblSurveyQuestion);
@@ -103,5 +118,6 @@
         private Label lblSurveyQuestion;
         private Button btnVote;
         private Label lblSeletedVote;
+        private Button btnBack;
     }
 }

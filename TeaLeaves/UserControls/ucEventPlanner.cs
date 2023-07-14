@@ -12,6 +12,7 @@ namespace TeaLeaves.UserControls
     {
         private List<Event> _events;
         private EventController _eventController;
+
         /// <summary>
         /// Initializes a new instance of the ucEventPlanner.
         /// </summary>

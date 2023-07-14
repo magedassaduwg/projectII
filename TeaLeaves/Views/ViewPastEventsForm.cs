@@ -4,6 +4,9 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.Views
 {
+    /// <summary>
+    /// The form for viewing events with start dates which have passed
+    /// </summary>
     public partial class ViewPastEventsForm : Form
     {
         EventController _eventController;

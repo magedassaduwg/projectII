@@ -3,6 +3,9 @@ using TeaLeaves.Models;
 
 namespace TeaLeaves.Controllers
 {
+    /// <summary>
+    /// The controller class for the UsersDAL
+    /// </summary>
     public class UsersController
     {
         private UsersDAL _userDAL;

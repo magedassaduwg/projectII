@@ -244,7 +244,7 @@
             lblInvites.BackColor = SystemColors.Control;
             lblInvites.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblInvites.ForeColor = Color.DarkOrange;
-            lblInvites.Location = new Point(382, 22);
+            lblInvites.Location = new Point(354, 22);
             lblInvites.Name = "lblInvites";
             lblInvites.Size = new Size(129, 21);
             lblInvites.TabIndex = 6;

@@ -1,9 +1,11 @@
-﻿
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace TeaLeaves.Helper
 {
+    /// <summary>
+    /// The helper class for the password encryption
+    /// </summary>
     public static class EncryptionHelper
     {
         private static string _key = "z1sdf5h1r61rswhfvq1f65bas1fama16";

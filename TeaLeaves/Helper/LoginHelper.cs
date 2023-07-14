@@ -1,7 +1,8 @@
-﻿
-
-namespace TeaLeaves.Helper
+﻿namespace TeaLeaves.Helper
 {
+    /// <summary>
+    /// The helper class for the login
+    /// </summary>
     public static class LoginHelper
     {
         private static readonly string CredentialsFilePath = "loginCredentials.txt";

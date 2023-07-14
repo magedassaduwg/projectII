@@ -1,9 +1,4 @@
 ﻿using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using System.Reflection.Metadata;
-using TeaLeaves.Models;
-using Microsoft.VisualBasic.ApplicationServices;
 
 namespace TeaLeaves.DALs
 {

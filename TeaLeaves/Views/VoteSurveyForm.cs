@@ -104,5 +104,10 @@ namespace TeaLeaves.Views
         {
             _ucSurveyInvites.GetUserSurveys();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
