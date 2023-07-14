@@ -39,6 +39,7 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             friendListButton = new Button();
             closeButton = new Button();
+            blockButton = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userProfilePictureBox).BeginInit();
             flowLayoutPanel1.SuspendLayout();
@@ -50,6 +51,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 73F));
+            tableLayoutPanel1.Controls.Add(blockButton, 0, 3);
             tableLayoutPanel1.Controls.Add(userProfilePictureBox, 1, 0);
             tableLayoutPanel1.Controls.Add(userBlurbLabel, 1, 1);
             tableLayoutPanel1.Controls.Add(userBlurbBox, 1, 2);
@@ -190,6 +192,20 @@
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += closeButton_Click;
             // 
+            // blockButton
+            // 
+            blockButton.Anchor = AnchorStyles.None;
+            blockButton.Enabled = false;
+            blockButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            blockButton.Location = new Point(4, 544);
+            blockButton.Name = "blockButton";
+            blockButton.Size = new Size(66, 31);
+            blockButton.TabIndex = 10;
+            blockButton.Text = "Block";
+            blockButton.UseVisualStyleBackColor = true;
+            blockButton.Visible = false;
+            blockButton.Click += blockButton_Click;
+            // 
             // ProfileForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -220,5 +236,6 @@
         private Button statsButton;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button friendListButton;
+        private Button blockButton;
     }
 }

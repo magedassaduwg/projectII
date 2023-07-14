@@ -10,15 +10,19 @@ namespace TeaLeaves.Views
     {
         private UsersController _userController;
         private Models.User viewedUser;
+        private BlockedController _blockedController;
 
         public ProfileForm()
         {
+            this._blockedController = new BlockedController();
             this._userController = new UsersController();
             this.viewedUser = CurrentUserStore.User;
             InitializeComponent();
 
             this.editButton.Visible = true;
             this.editButton.Enabled = true;
+            this.blockButton.Visible = false;
+            this.blockButton.Enabled = false;
 
             this.viewedUser.Blurb = this._userController.GetUserBlurb(this.viewedUser.UserId);
             this.viewedUser.ProfilePicture = this._userController.GetUserProfilePicture(this.viewedUser.UserId);
@@ -103,6 +107,11 @@ namespace TeaLeaves.Views
             {
                 contactBookForm.ShowDialog();
             }
+        }
+
+        private void blockButton_Click(object sender, EventArgs e)
+        {
+            this._blockedController.BlockUser(CurrentUserStore.User.UserId, this.viewedUser.UserId);
         }
     }
 }
