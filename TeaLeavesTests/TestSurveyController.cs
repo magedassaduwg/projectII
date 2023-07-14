@@ -70,5 +70,17 @@ namespace TeaLeavesTests
 
             Assert.AreNotEqual(0, surveys.Count);
         }
+
+        /// <summary>
+        /// Tests getting surveys a user has answered
+        /// </summary>
+        [TestMethod]
+        public void TestAnsweredSurveys()
+        {
+            SurveyController surveyController = new SurveyController();
+            List<Survey> surveys = surveyController.GetAnsweredSurveysReceivedByUserId(3);
+
+            Assert.AreNotEqual(0, surveys.Count);
+        }
     }
 }

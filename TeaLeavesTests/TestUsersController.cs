@@ -138,6 +138,25 @@ namespace TeaLeavesTests
             }
         }
 
+        /// <summary>
+        /// Tests the GetUserById method
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserById()
+        {
+            UsersController controller = new UsersController();
+
+            try
+            {
+                User user = controller.GetUserById(24);
+                Assert.AreEqual(user.Username, "test");
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
         [TestMethod]
         public void TestGetUserStats()
         {

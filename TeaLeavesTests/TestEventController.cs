@@ -28,6 +28,25 @@ namespace TeaLeavesTests
         }
 
         /// <summary>
+        /// Tests the GetEventsByUserId method.
+        /// </summary>
+        [TestMethod]
+        public void TestGetPastEventsByUserId()
+        {
+            EventController controller = new EventController();
+            try
+            {
+                var userEvents = controller.GetPastEventsReceivedByUserId(70);
+                Assert.AreEqual(userEvents[0].Id, 284);
+                Assert.AreEqual(userEvents[1].Id, 285);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        /// <summary>
         /// Tests the SaveEvent and DeleteEvent methods
         /// </summary>
         [TestMethod]

@@ -77,6 +77,51 @@ namespace TeaLeavesTests
         }
 
         // <summary>
+        /// Tests the UnassignEventResponsibility method
+        /// </summary>
+        [TestMethod]
+        public void TestUnassignEventResponsibility()
+        {
+            EventResponsibilityController controller = new EventResponsibilityController();
+            EventResponsibility userEventResponsibility = new EventResponsibility
+            {
+                Name = "test",
+                EventId = 153,
+            };
+
+            User user = new User
+            {
+                UserId = 84,
+            };
+            List<EventResponsibility> eventResponsibilities = new List<EventResponsibility>();
+
+            try
+            {
+                int eventResponsibilityId = controller.AddEventResponsibility(userEventResponsibility);
+                Assert.AreNotEqual(eventResponsibilityId, 0);
+
+                int eventResponsibilityId2 = controller.AssignEventResponsibility(user, 153, "test");
+                Assert.AreNotEqual(eventResponsibilityId2, 0);
+
+                eventResponsibilities = controller.GetEventResponsibilitiesByEventId(153);
+
+                eventResponsibilities[4].UserId = 84;
+
+                int eventResponsibilityId3 = controller.UnassignEventResponsibility(153, "test");
+                Assert.AreNotEqual(eventResponsibilityId3, 0);
+
+                eventResponsibilities[4].UserId = 0;
+
+                controller.DeleteEventResponsibility(eventResponsibilityId);
+                Assert.IsTrue(true);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        // <summary>
         /// Tests the GetEventResponsibilitiesByUserIdAndEventId method
         /// </summary>
         [TestMethod]

@@ -92,6 +92,52 @@ namespace TeaLeavesTests
         }
 
         [TestMethod]
+        public void TestGetAcceptedUsersContactsByEvent()
+        {
+            ContactsController contactsController = new ContactsController();
+            User user = new User
+            {
+                UserId = 24
+            };
+            Event @event = new Event
+            {
+                Id = 153
+            };
+            try
+            {
+                var users = contactsController.GetAcceptedUsersContactsByEvent(user, @event);
+                Assert.AreEqual(users[0].UserId, 69);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetDeclinedUsersContactsByEvent()
+        {
+            ContactsController contactsController = new ContactsController();
+            User user = new User
+            {
+                UserId = 24
+            };
+            Event @event = new Event
+            {
+                Id = 153
+            };
+            try
+            {
+                var users = contactsController.GetDeclinedUsersContactsByEvent(user, @event);
+                Assert.AreEqual(users[0].UserId, 70);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        [TestMethod]
         public void GetUserContactsBySurvey()
         {
             ContactsController contactsController = new ContactsController();
@@ -108,6 +154,30 @@ namespace TeaLeavesTests
             {
                 users = contactsController.GetUserContactsBySurvey(user, survey);
                 Assert.AreEqual(users[0].UserId, 25);
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        [TestMethod]
+        public void GetUserContactsNotInvitedToSurvey()
+        {
+            ContactsController contactsController = new ContactsController();
+            User user = new User
+            {
+                UserId = 24
+            };
+            Survey survey = new Survey
+            {
+                Id = 32,
+            };
+            List<User> users;
+            try
+            {
+                users = contactsController.GetUsersContactsNotInvitedBySurvey(user, survey);
+                Assert.AreEqual(users[0].UserId, 70);
             }
             catch (Exception)
             {
