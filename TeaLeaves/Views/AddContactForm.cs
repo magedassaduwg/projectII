@@ -8,6 +8,7 @@ namespace TeaLeaves.Views
     /// </summary>
     public partial class AddContactForm : Form
     {
+        private BlockedController _blockedController;
         private ContactsController _contactsController;
         private List<Models.User> _contacts;
         /// <summary>
@@ -15,6 +16,7 @@ namespace TeaLeaves.Views
         /// </summary>
         public AddContactForm(List<Models.User> listOfContacts)
         {
+            this._blockedController = new BlockedController();
             this._contactsController = new ContactsController();
             this._contacts = listOfContacts;
             InitializeComponent();
@@ -31,7 +33,11 @@ namespace TeaLeaves.Views
                     return;
                 }
             }
-
+            if (this._blockedController.IsUserEmailBlocked(contactEmail))
+            {
+                MessageBox.Show("We're sorry, but a user with that email doesn't exist.", "User Not Found", MessageBoxButtons.OK);
+                return;
+            }
 
             if (!this._contactsController.AddContact(CurrentUserStore.User, contactEmail))
             {

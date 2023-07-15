@@ -11,9 +11,11 @@ namespace TeaLeaves.Views
         private UsersController _userController;
         private Models.User viewedUser;
         private BlockedController _blockedController;
+        private ContactsController _contactsController;
 
         public ProfileForm()
         {
+            this._contactsController = new ContactsController();
             this._blockedController = new BlockedController();
             this._userController = new UsersController();
             this.viewedUser = CurrentUserStore.User;
@@ -123,6 +125,7 @@ namespace TeaLeaves.Views
                 if (result == DialogResult.Yes)
                 {
                     this._blockedController.BlockUser(CurrentUserStore.User.UserId, this.viewedUser.UserId);
+                    this._contactsController.RemoveContact(CurrentUserStore.User, this.viewedUser);
                 }
             }
         }

@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeaLeaves.Helper;
 
 namespace TeaLeaves.DALs
 {
@@ -59,6 +60,28 @@ namespace TeaLeaves.DALs
                 {
                     return true;
                 }
+            }
+        }
+
+        /// <summary>
+        /// method accepted an email and checks to see if the associated user is blocked. Returns true if blocked.
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <returns></returns>
+        public bool IsUserEmailBlocked(string userEmail)
+        {
+            using (SqlConnection connection = TeaLeavesConnectionstring.GetConnection())
+            {
+                int userId = 0;
+                SqlCommand command = new SqlCommand("SELECT UserId FROM Users WHERE Email = @Email;", connection);
+                command.Parameters.AddWithValue("@Email", userEmail);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    userId = reader.GetInt32(0);
+                }
+                return this.IsUserBlocked(CurrentUserStore.User.UserId, userId);
             }
         }
     }

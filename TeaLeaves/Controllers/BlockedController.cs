@@ -37,5 +37,15 @@ namespace TeaLeaves.Controllers
         {
             return this._blockedDAL.IsUserBlocked(currentUserId, blockedUserId);
         }
+
+        /// <summary>
+        /// method checking if a user with the given email is blocked.
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <returns></returns>
+        public bool IsUserEmailBlocked(string userEmail)
+        {
+            return this._blockedDAL.IsUserEmailBlocked(userEmail);
+        }
     }
 }
