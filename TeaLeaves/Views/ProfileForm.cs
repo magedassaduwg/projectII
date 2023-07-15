@@ -36,7 +36,9 @@ namespace TeaLeaves.Views
         /// <param name="selectedUser">The user whose profile is being viewed.</param>
         public ProfileForm(Models.User selectedUser)
         {
+            this._blockedController = new BlockedController();
             this._userController = new UsersController();
+            this._contactsController = new ContactsController();
 
             this.viewedUser = selectedUser;
 

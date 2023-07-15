@@ -76,10 +76,10 @@ namespace TeaLeaves.Views
         {
             List<Models.User> usersContactList = this._contactsController.GetUsersContacts(CurrentUserStore.User);
             string contactEmail = this.emailText.Text;
-
-            if (this._blockedController.IsUserBlocked(CurrentUserStore.User.UserId, this.viewedUser.UserId))
+            
+            if (this._blockedController.IsUserEmailBlocked(contactEmail))
             {
-                MessageBox.Show("There was an error adding this user. :(", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("There was a error adding this user. :(", "Error", MessageBoxButtons.OK);
                 return;
             }
 
