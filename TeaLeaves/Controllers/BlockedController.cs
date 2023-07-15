@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeaLeaves.DALs;
+﻿using TeaLeaves.DALs;
 
 namespace TeaLeaves.Controllers
 {
-    internal class BlockedController
+    /// <summary>
+    /// The controller for the blocked
+    /// </summary>
+    public class BlockedController
     {
         private BlockedDAL _blockedDAL;
 
