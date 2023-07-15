@@ -7,7 +7,7 @@ using TeaLeaves.DALs;
 
 namespace TeaLeaves.Controllers
 {
-    internal class BlockedController
+    public class BlockedController
     {
         private BlockedDAL _blockedDAL;
 
