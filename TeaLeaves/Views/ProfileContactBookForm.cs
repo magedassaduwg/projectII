@@ -9,6 +9,7 @@ namespace TeaLeaves.Views
     /// </summary>
     public partial class ProfileContactBookForm : Form
     {
+        private BlockedController _blockedController;
         private Models.User viewedUser;
         private ContactsController _contactsController;
         private UsersController _userController;
@@ -22,6 +23,7 @@ namespace TeaLeaves.Views
         /// <param name="user"></param>
         public ProfileContactBookForm(Models.User user)
         {
+            this._blockedController = new BlockedController();
             this._userController = new UsersController();
             this._contactsController = new ContactsController();
             this.viewedUser = user;
@@ -75,23 +77,24 @@ namespace TeaLeaves.Views
             List<Models.User> usersContactList = this._contactsController.GetUsersContacts(CurrentUserStore.User);
             string contactEmail = this.emailText.Text;
 
+            if (this._blockedController.IsUserBlocked(CurrentUserStore.User.UserId, this.viewedUser.UserId))
+            {
+                MessageBox.Show("There was an error adding this user. :(", "Error", MessageBoxButtons.OK);
+                return;
+            }
+
             foreach (Models.User contact in usersContactList)
             {
                 if (contact.Email == contactEmail)
                 {
                     MessageBox.Show("You already have that user as a contact!", "Duplicate Contact", MessageBoxButtons.OK);
                     return;
+                } else
+                {
+                    MessageBox.Show("Contact Added!", "Contact Added!", MessageBoxButtons.OK);
                 }
             }
 
-            if (!this._contactsController.AddContact(CurrentUserStore.User, contactEmail))
-            {
-                MessageBox.Show("We're sorry, but a user with that email doesn't exist.", "User Not Found", MessageBoxButtons.OK);
-            }
-            else
-            {
-                MessageBox.Show("Contact Added!", "Contact Added!", MessageBoxButtons.OK);
-            }
         }
 
         private void contactDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
