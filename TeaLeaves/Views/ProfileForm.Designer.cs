@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            blockButton = new Button();
             userProfilePictureBox = new PictureBox();
             userBlurbLabel = new Label();
             userBlurbBox = new TextBox();
@@ -39,7 +40,6 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             friendListButton = new Button();
             closeButton = new Button();
-            blockButton = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userProfilePictureBox).BeginInit();
             flowLayoutPanel1.SuspendLayout();
@@ -71,6 +71,18 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(449, 583);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // blockButton
+            // 
+            blockButton.Anchor = AnchorStyles.None;
+            blockButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            blockButton.Location = new Point(4, 544);
+            blockButton.Name = "blockButton";
+            blockButton.Size = new Size(66, 31);
+            blockButton.TabIndex = 10;
+            blockButton.Text = "Block";
+            blockButton.UseVisualStyleBackColor = true;
+            blockButton.Click += blockButton_Click;
             // 
             // userProfilePictureBox
             // 
@@ -191,20 +203,6 @@
             closeButton.Text = "Close";
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += closeButton_Click;
-            // 
-            // blockButton
-            // 
-            blockButton.Anchor = AnchorStyles.None;
-            blockButton.Enabled = false;
-            blockButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            blockButton.Location = new Point(4, 544);
-            blockButton.Name = "blockButton";
-            blockButton.Size = new Size(66, 31);
-            blockButton.TabIndex = 10;
-            blockButton.Text = "Block";
-            blockButton.UseVisualStyleBackColor = true;
-            blockButton.Visible = false;
-            blockButton.Click += blockButton_Click;
             // 
             // ProfileForm
             // 
