@@ -543,7 +543,7 @@ namespace TeaLeaves.UserControls
             cmsMessage.Items.Clear();
 
             ToolStripItem title = new ToolStripMenuItem();
-            title.Text = "Forward Message";
+            title.Text = "Forward Message To:";
             title.Enabled = false;
 
             cmsMessage.Items.Add(title);
