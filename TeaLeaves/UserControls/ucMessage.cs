@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Media;
+using System.Windows.Forms;
 using TeaLeaves.Controllers;
 using TeaLeaves.Helper;
 using TeaLeaves.Models;
@@ -570,7 +571,38 @@ namespace TeaLeaves.UserControls
 
             try
             {
-                _messageController.ForwardMessage(messageId, CurrentUserStore.User.UserId, userId, false);
+                IUserMessage newMessage = new UserMessage
+                {
+                    ReceiverId = userId,
+                    SenderId = CurrentUserStore.User.UserId,
+                    Text = txtMessage.Text,
+                    MediaId = null,
+                    GroupId = _selectedUser.GetType() == typeof(GroupMember) ? ((GroupMember)_selectedUser).GroupId : null,
+                    TimeStamp = DateTime.Now.ToUniversalTime(),
+                };
+
+                if (_selectedUser.GetType() == typeof(User))
+                {
+                    User receiver = _usersController.GetUserById(userId);
+
+                    RabbitBusController.SendMessage(receiver.Username, newMessage);
+                    _messageController.ForwardMessage(messageId, CurrentUserStore.User.UserId, userId, false);
+                }
+                else
+                {
+                    _messageController.ForwardMessage(messageId, CurrentUserStore.User.UserId, userId, true);
+                    GroupMember groupMember = (GroupMember)_selectedUser;
+
+                    foreach (int groupUserId in groupMember.UserIds)
+                    {
+                        User user = _usersController.GetUserById(groupUserId);
+
+                        if (user != null && user.UserId != CurrentUserStore.User.UserId)
+                        {
+                            RabbitBusController.SendMessage(user.Username, newMessage);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
