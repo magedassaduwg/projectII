@@ -62,11 +62,11 @@ namespace TeaLeaves.Views
             }
             else if (!CheckSurveyName(surveyOption.Text))
             {
-                labelError.Text = "A Survey with that name already exists";
+                labelError.Text = "A Survey option with that name already exists";
             }
             else
             {
-                labelError.Text = "Survey name cannot be blank";
+                labelError.Text = "Survey option name cannot be blank";
             }
         }
 
