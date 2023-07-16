@@ -108,6 +108,7 @@ namespace TeaLeaves.Views
             {
                 profileForm.ShowDialog();
             }
+            this.refreshContactList();
         }
 
         private void sortButton_Click(object sender, EventArgs e)

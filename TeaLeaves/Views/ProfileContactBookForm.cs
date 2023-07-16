@@ -79,7 +79,7 @@ namespace TeaLeaves.Views
             
             if (this._blockedController.IsUserEmailBlocked(contactEmail))
             {
-                MessageBox.Show("There was a error adding this user. :(", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("There was a error adding this user.", "Error", MessageBoxButtons.OK);
                 return;
             }
 
@@ -92,6 +92,8 @@ namespace TeaLeaves.Views
                 } else
                 {
                     MessageBox.Show("Contact Added!", "Contact Added!", MessageBoxButtons.OK);
+                    _contactsController.AddContact(CurrentUserStore.User, contactEmail);
+                    return;
                 }
             }
 

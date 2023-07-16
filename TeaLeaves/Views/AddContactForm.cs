@@ -35,7 +35,7 @@ namespace TeaLeaves.Views
             }
             if (this._blockedController.IsUserEmailBlocked(contactEmail))
             {
-                MessageBox.Show("We're sorry, but a user with that email doesn't exist.", "User Not Found", MessageBoxButtons.OK);
+                MessageBox.Show("We're sorry, but that user is unavailable.", "User Not Found", MessageBoxButtons.OK);
                 return;
             }
 

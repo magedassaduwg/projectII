@@ -84,6 +84,7 @@ namespace TeaLeaves.UserControls
             {
                 profileForm.ShowDialog();
             }
+            refreshContactList();
         }
     }
 }
