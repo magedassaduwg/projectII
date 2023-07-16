@@ -159,7 +159,14 @@ namespace TeaLeaves.UserControls
 
         private void AddMessageToScreen(IUserMessage message)
         {
-            int row;
+            int row = tblMessages.RowCount - 1;
+
+            if (row < 1)
+            {
+                tblMessages.AutoScroll = true;
+                tblMessages.RowStyles.Clear();
+                tblMessages.RowStyles.Add(new RowStyle(SizeType.AutoSize, 35));
+            }
 
             if (message.MediaId.HasValue)
             {
@@ -187,9 +194,7 @@ namespace TeaLeaves.UserControls
                         tblMessages.Controls.Add(pictureBox, 0, row);
                     }
 
-                    tblMessages.AutoScroll = true;
                     tblMessages.ScrollControlIntoView(pictureBox);
-
                 }
                 catch (Exception ex)
                 {
@@ -205,16 +210,16 @@ namespace TeaLeaves.UserControls
                 lblMessage.Padding = new Padding(5, 5, 5, 5);
                 lblMessage.Margin = new Padding(0, 0, 20, 0);
                 lblMessage.BackColor = Color.White;
+                lblMessage.AutoSize = true;
                 lblMessage.UseMnemonic = false;
                 lblMessage.ContextMenuStrip = cmsMessage;
                 lblMessage.Name = message.MessageId.ToString();
-                lblMessage.AutoSize = true;
 
                 new ToolTip().SetToolTip(lblMessage, message.TimeStamp.ToLocalTime().ToString());
 
                 tblMessages.RowCount++;
-                tblHeader.AutoSize = true;
                 tblMessages.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
                 row = tblMessages.RowCount - 1;
 
                 if (CurrentUserStore.User.UserId == message.SenderId)
@@ -228,11 +233,8 @@ namespace TeaLeaves.UserControls
                     tblMessages.Controls.Add(lblMessage, 0, row);
                 }
 
-                tblMessages.AutoScroll = true;
                 tblMessages.ScrollControlIntoView(lblMessage);
             }
-
-            tblMessages.RowStyles.Add(new RowStyle { SizeType = SizeType.AutoSize });
         }
 
         private async void btnSend_Click(object sender, EventArgs e)

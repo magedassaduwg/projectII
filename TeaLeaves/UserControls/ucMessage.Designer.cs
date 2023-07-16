@@ -59,12 +59,13 @@
             // 
             // tblMessages
             // 
+            tblMessages.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tblMessages.AutoScroll = true;
             tblMessages.AutoSize = true;
             tblMessages.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tblMessages.ColumnCount = 2;
             tblMessages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblMessages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblMessages.Dock = DockStyle.Top;
             tblMessages.Location = new Point(4, 57);
             tblMessages.Name = "tblMessages";
             tblMessages.RowCount = 1;
