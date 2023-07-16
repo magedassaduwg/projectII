@@ -342,11 +342,11 @@ namespace TeaLeaves.UserControls
 
             try
             {
-                List<IUserMessage> userMessages = _messageController.GetMessagesByGroupId(groupId);
+                _userMessages = _messageController.GetMessagesByGroupId(groupId);
 
-                if (userMessages != null && userMessages.Count > 0)
+                if (_userMessages != null && _userMessages.Count > 0)
                 {
-                    foreach (IUserMessage message in userMessages)
+                    foreach (IUserMessage message in _userMessages)
                     {
                         AddMessageToScreen(message);
                     }
@@ -603,9 +603,27 @@ namespace TeaLeaves.UserControls
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (_selectedUser.GetType() == typeof(User))
+                {
+                    _userMessages = _messageController.GetMessagesByUserId(CurrentUserStore.User.UserId, ((User)_selectedUser).UserId);
+                }
+                else
+                {
+                    _userMessages = _messageController.GetMessagesByGroupId(((GroupMember)_selectedUser).GroupId);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
             if (!string.IsNullOrEmpty(txtSearch.Text) && _userMessages != null && _userMessages.Count > 0)
             {
                 IUserMessage message = _userMessages.Where(x => x.Text.ToLower().IndexOf(txtSearch.Text.ToLower().Trim()) > -1).Skip(_searchIndex).FirstOrDefault();
+
+
                 if (message != null)
                 {
                     foreach (Control ctrl in tblMessages.Controls)
