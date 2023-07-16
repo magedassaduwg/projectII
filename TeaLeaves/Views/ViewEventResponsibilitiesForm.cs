@@ -66,13 +66,12 @@ namespace TeaLeaves.Views
 
         private void btnAcceptResponsibility_Click(object sender, EventArgs e)
         {
-            if (!ShouldAcceptResponsibility())
-            {
-                return;
-            }
-
             if (dgvUnassignedResponsibilities.Rows.Count > 0)
             {
+                if (!ShouldAcceptResponsibility())
+                {
+                    return;
+                }
                 EventResponsibility selectedEventResponsibility = (EventResponsibility)dgvUnassignedResponsibilities.SelectedRows[0].DataBoundItem;
                 _eventResponsibilityController.AssignEventResponsibility(CurrentUserStore.User, _event.Id, selectedEventResponsibility.Name);
             }
