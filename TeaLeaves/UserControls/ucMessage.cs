@@ -166,6 +166,8 @@ namespace TeaLeaves.UserControls
                 tblMessages.AutoScroll = true;
                 tblMessages.RowStyles.Clear();
                 tblMessages.RowStyles.Add(new RowStyle(SizeType.AutoSize, 35));
+                int vertScrollWidth = SystemInformation.VerticalScrollBarWidth;
+                tblMessages.Padding = new Padding(0, 0, vertScrollWidth, 0);
             }
 
             if (message.MediaId.HasValue)
